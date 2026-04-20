@@ -1,0 +1,87 @@
+name: Agent Council Sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "codex/agent-council/**"
+
+concurrency:
+  group: research-automation-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  models: read
+  pull-requests: write
+
+jobs:
+  sync-agent-council:
+    runs-on: ubuntu-latest
+    env:
+      RESEARCH_PIPELINE_PROVIDER: auto
+      AI_API_URL: ${{ secrets.AI_API_URL }}
+      AI_API_KEY: ${{ secrets.AI_API_KEY }}
+      AI_MODEL: ${{ secrets.AI_MODEL }}
+      AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate AI configuration
+        shell: bash
+        run: |
+          test -n "$GITHUB_TOKEN"
+
+      - name: Generate research snapshot
+        run: npm run research:generate
+
+      - name: Sync agent execution metadata
+        run: npm run research:issues
+
+      - name: Publish generated snapshot to repository
+        shell: bash
+        run: |
+          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git stash push -m "pre-publish-generated-snapshot" -- generated/research/latest.json generated/research/latest.md
+          git pull --rebase origin main
+
+          npm run research:generate
+          npm run research:issues
+
+          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+            exit 0
+          fi
+
+          git add generated/research/latest.json generated/research/latest.md
+          git commit -m "chore: sync agent council execution snapshot [skip ci]"
+          git push origin HEAD:main
+
+      - name: Publish agent council summary
+        run: cat generated/research/latest.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload agent council artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-council-sync
+          path: |
+            generated/research/latest.json
+            generated/research/latest.md

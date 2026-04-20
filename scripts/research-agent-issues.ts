@@ -53,6 +53,10 @@ interface GitHubContentFile {
   encoding?: string;
 }
 
+interface GitHubPullRequestFile {
+  filename: string;
+}
+
 function buildIssueMarker(itemId: string): string {
   return `<!-- research-action-item:${itemId} -->`;
 }
@@ -82,6 +86,14 @@ function encodeContentPath(value: string): string {
 
 function buildIssueTitle(item: ProductActionItem): string {
   return `[Agent Council] ${item.title}`;
+}
+
+function buildPlanPath(item: ProductActionItem): string {
+  return `${PLAN_DIR}/${item.id}.md`;
+}
+
+function implementationArtifactPath(item: ProductActionItem): string {
+  return buildPlanPath(item);
 }
 
 function buildIssueBody(
@@ -123,9 +135,19 @@ function buildPlanFileContent(item: ProductActionItem, issue: GitHubIssue, works
     `- Issue: ${issue.html_url}`,
     `- Branch: ${branchName}`,
     `- Generated At: ${workspace.generatedAt}`,
+    `- Status: ${item.implementationStatus}`,
     "",
     "## Detail",
     item.detail,
+    "",
+    "## Implementation Focus",
+    item.implementationFocus,
+    "",
+    "## Target Files",
+    ...item.targetPaths.map((path) => `- ${path}`),
+    "",
+    "## Verification",
+    ...item.verificationCommands.map((command) => `- ${command}`),
     "",
     "## References",
     ...item.references.map((reference) => `- ${reference}`),
@@ -153,6 +175,16 @@ function buildPullRequestBody(item: ProductActionItem, issue: GitHubIssue, branc
     "## Ownership",
     `- Owner: ${item.owner}`,
     `- Branch: ${branchName}`,
+    `- Plan: ${buildPlanPath(item)}`,
+    "",
+    "## Implementation Focus",
+    item.implementationFocus,
+    "",
+    "## Target Files",
+    ...item.targetPaths.map((path) => `- ${path}`),
+    "",
+    "## Verification",
+    ...item.verificationCommands.map((command) => `- ${command}`),
     "",
     "## Notes",
     "- This draft PR is automatically created so implementation can start from a live branch immediately.",
@@ -176,7 +208,40 @@ function pullRequestState(pr: GitHubPullRequest | null): ProductActionItem["pull
   return pr.draft ? "draft" : "open";
 }
 
-function withSyncedMetadata(item: ProductActionItem, issue: GitHubIssue | null, branchName: string, pr: GitHubPullRequest | null): ProductActionItem {
+function nonArtifactChangedFiles(item: ProductActionItem, files: GitHubPullRequestFile[]): string[] {
+  const artifactPath = implementationArtifactPath(item);
+  return files.map((file) => file.filename).filter((filename) => filename !== artifactPath);
+}
+
+function implementationStatus(pr: GitHubPullRequest | null, changedFiles: string[]): ProductActionItem["implementationStatus"] {
+  if (pr?.merged_at) {
+    return "merged";
+  }
+
+  if (pr && pr.state === "open" && !pr.draft) {
+    return "reviewing";
+  }
+
+  if (changedFiles.length > 0) {
+    return "in-progress";
+  }
+
+  if (pr) {
+    return "ready";
+  }
+
+  return "queued";
+}
+
+function withSyncedMetadata(
+  item: ProductActionItem,
+  issue: GitHubIssue | null,
+  branchName: string,
+  pr: GitHubPullRequest | null,
+  files: GitHubPullRequestFile[]
+): ProductActionItem {
+  const changedFiles = nonArtifactChangedFiles(item, files);
+
   return {
     ...item,
     issueNumber: issue?.number ?? null,
@@ -185,7 +250,10 @@ function withSyncedMetadata(item: ProductActionItem, issue: GitHubIssue | null, 
     branchName,
     pullRequestNumber: pr?.number ?? null,
     pullRequestUrl: pr?.html_url ?? null,
-    pullRequestState: pullRequestState(pr)
+    pullRequestState: pullRequestState(pr),
+    planPath: buildPlanPath(item),
+    changedFiles,
+    implementationStatus: implementationStatus(pr, changedFiles)
   };
 }
 
@@ -297,6 +365,16 @@ async function listManagedPullRequests(context: NonNullable<ReturnType<typeof ge
   );
 
   return pulls.filter((pull) => pull.body?.includes("research-action-pr:"));
+}
+
+async function listPullRequestFiles(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  pullRequestNumber: number
+): Promise<GitHubPullRequestFile[]> {
+  return githubRequest<GitHubPullRequestFile[]>(
+    context,
+    `/repos/${context.owner}/${context.repo}/pulls/${pullRequestNumber}/files?per_page=100`
+  );
 }
 
 function findManagedIssue(issues: GitHubIssue[], itemId: string): GitHubIssue | null {
@@ -428,7 +506,7 @@ async function syncPlanFile(
   workspace: ResearchWorkspaceData,
   branchName: string
 ) {
-  const path = `${PLAN_DIR}/${item.id}.md`;
+  const path = buildPlanPath(item);
   const content = buildPlanFileContent(item, issue, workspace, branchName);
   const existing = await readContentFile(context, path, branchName);
   const current =
@@ -568,7 +646,10 @@ async function main() {
       pullRequestUrl: pull.html_url
     });
 
-    syncedItems.push(withSyncedMetadata(item, finalIssue, branchName, pull));
+    const pullFiles = await listPullRequestFiles(context, pull.number);
+    const syncedItem = withSyncedMetadata(item, finalIssue, branchName, pull, pullFiles);
+    await syncPlanFile(context, syncedItem, finalIssue, snapshot.workspace, branchName);
+    syncedItems.push(syncedItem);
   }
 
   await closeStaleIssues(context, existingIssues, new Set(snapshot.workspace.productReview.actionItems.map((item) => item.id)));

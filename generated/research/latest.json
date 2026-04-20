@@ -1,6 +1,6 @@
 {
   "workspace": {
-    "generatedAt": "2026-04-20T13:50:05.262Z",
+    "generatedAt": "2026-04-20T14:01:07.142Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -105,7 +105,7 @@
           "source": "247WALLST",
           "sourceUrl": "https://247wallst.com/investing/2026/04/19/this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027/?.tsrc=rss",
           "publishedAt": "2026-04-19T17:09:18.000Z",
-          "imageUrl": "https://247wallst.com/wp-content/uploads/2024/02/shutterstock-2231197849-medium-licensed.jpg",
+          "imageUrl": null,
           "sectorTag": "semiconductors",
           "tickerTags": [
             "AMD",
@@ -120,7 +120,7 @@
         {
           "id": "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
           "title": "Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’",
-          "summary": "While the stock market fixates on a temporary surge from its competitors, the king of artificial intelligence is quietly building an insurmountable lead. Nvidia (NVDA) is being hailed by top analysts as the undisputed leader of the semiconductor world, even as AMD (AMD) and Intel (INTC) post larger percentage gains this month. Despite trailing the recent CPU hype, experts argue that Nvidia’s massive technological moats make it the only logical top pick for the upcoming earnings season. Nvidia Pu",
+          "summary": "While the stock market fixates on a temporary surge from its competitors, the king of artificial intelligence is quietly building an insurmountable lead. Nvidia (NVDA) is being hailed by top analysts as the undisputed leader of the semiconductor world, even as AMD (AMD) and Intel (INTC) post larger percentage gains this month. Despite trailing the recent CPU hype, experts argue that Nvidia’s massive technological moats make it the only logical top pick for the upcoming earnings season.Claim 30%",
           "source": "FINANCE",
           "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-slaughters-rivals-amd-132028107.html?.tsrc=rss",
           "publishedAt": "2026-04-18T13:20:28.000Z",
@@ -167,7 +167,7 @@
             "source": "247WALLST",
             "sourceUrl": "https://247wallst.com/investing/2026/04/19/this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027/?.tsrc=rss",
             "publishedAt": "2026-04-19T17:09:18.000Z",
-            "imageUrl": "https://247wallst.com/wp-content/uploads/2024/02/shutterstock-2231197849-medium-licensed.jpg",
+            "imageUrl": null,
             "sectorTag": "semiconductors",
             "tickerTags": [
               "AMD",
@@ -215,9 +215,9 @@
         "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $287.61 / $287.61입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
         "patternAnalysis": [
           {
-            "name": "상승 추세 내 눌림 후 재가속",
-            "detail": "20일선 위에서 가격이 버티고 있어, 고점 재시험이 실패하지 않으면 추세 지속 확률이 높습니다.",
-            "confidence": "high"
+            "name": "뚜렷한 패턴 없음",
+            "detail": "지금은 강한 패턴보다 지지/저항 반응 확인이 더 중요합니다.",
+            "confidence": "low"
           }
         ],
         "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다.",
@@ -361,7 +361,7 @@
           "outputLines": [
             "요약: 추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
             "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $287.61 / $287.61입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
-            "패턴: 상승 추세 내 눌림 후 재가속",
+            "패턴: 뚜렷한 패턴 없음",
             "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다."
           ],
           "handoffNote": "이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
@@ -461,14 +461,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-20T13:50:05.262Z",
+        "runId": "fallback-2026-04-20T14:01:07.142Z",
         "provider": "rule-based",
-        "model": "openai/gpt-4.1",
-        "source": "github-actions",
+        "model": null,
+        "source": "local-script",
         "status": "fallback",
-        "generatedAt": "2026-04-20T13:50:05.262Z",
+        "generatedAt": "2026-04-20T14:01:07.142Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T13:50:05.262Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T14:01:07.142Z\n- Provider: rule-based\n- Model: n/a\n- Source: local-script\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -614,13 +614,28 @@
             "ticker-analyst",
             "execution-trader"
           ],
+          "implementationFocus": "shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.",
+          "targetPaths": [
+            "packages/shared/src/research.ts",
+            "packages/shared/src/researchPipeline.ts",
+            "apps/web/lib/researchPipelineStore.ts",
+            "apps/web/app/api/research/pipeline/route.ts"
+          ],
+          "verificationCommands": [
+            "npm run typecheck",
+            "npm run build:web",
+            "npm run research:generate"
+          ],
           "issueNumber": 1,
           "issueUrl": "https://github.com/mlender-ai/auto-trading-bot/issues/1",
           "issueState": "open",
           "branchName": "codex/agent-council/schema-contract",
           "pullRequestNumber": 4,
           "pullRequestUrl": "https://github.com/mlender-ai/auto-trading-bot/pull/4",
-          "pullRequestState": "draft"
+          "pullRequestState": "draft",
+          "planPath": ".github/agent-council/schema-contract.md",
+          "changedFiles": [],
+          "implementationStatus": "ready"
         },
         {
           "id": "headline-to-action-flow",
@@ -631,13 +646,26 @@
             "news-editor",
             "execution-trader"
           ],
+          "implementationFocus": "뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.",
+          "targetPaths": [
+            "apps/web/components/research/ResearchWorkspace.tsx",
+            "apps/web/app/globals.css",
+            "packages/shared/src/research.ts"
+          ],
+          "verificationCommands": [
+            "npm run typecheck",
+            "npm run build:web"
+          ],
           "issueNumber": 2,
           "issueUrl": "https://github.com/mlender-ai/auto-trading-bot/issues/2",
           "issueState": "open",
           "branchName": "codex/agent-council/headline-to-action-flow",
           "pullRequestNumber": 5,
           "pullRequestUrl": "https://github.com/mlender-ai/auto-trading-bot/pull/5",
-          "pullRequestState": "draft"
+          "pullRequestState": "draft",
+          "planPath": ".github/agent-council/headline-to-action-flow.md",
+          "changedFiles": [],
+          "implementationStatus": "ready"
         },
         {
           "id": "behavior-tracking",
@@ -649,13 +677,26 @@
             "ticker-analyst",
             "execution-trader"
           ],
+          "implementationFocus": "뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.",
+          "targetPaths": [
+            "apps/web/components/research/ResearchWorkspace.tsx",
+            "packages/shared/src/research.ts",
+            "apps/web/app/api/research/pipeline/route.ts"
+          ],
+          "verificationCommands": [
+            "npm run typecheck",
+            "npm run build:web"
+          ],
           "issueNumber": 3,
           "issueUrl": "https://github.com/mlender-ai/auto-trading-bot/issues/3",
           "issueState": "open",
           "branchName": "codex/agent-council/behavior-tracking",
           "pullRequestNumber": 6,
           "pullRequestUrl": "https://github.com/mlender-ai/auto-trading-bot/pull/6",
-          "pullRequestState": "draft"
+          "pullRequestState": "draft",
+          "planPath": ".github/agent-council/behavior-tracking.md",
+          "changedFiles": [],
+          "implementationStatus": "ready"
         }
       ]
     },
@@ -721,8 +762,8 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-20T13:50:05.262Z",
-      "nextRunAt": "2026-04-21T07:30:00.000Z",
+      "generatedAt": "2026-04-20T14:01:07.142Z",
+      "nextRunAt": "2026-04-20T22:30:00.000Z",
       "subject": "[Daily Brief] Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)",
       "previewText": "Stock Market Today: The Dow Jones index dropped Monday on rising U.S.-Iran tensions. Oil prices jumped. Boeing and Tesla earnings loom. / 행동 제안: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.",
       "to": [],
@@ -730,8 +771,6 @@
       "bodyHtml": "<h1>[Daily Brief] Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)</h1><p>Stock Market Today: The Dow Jones index dropped Monday on rising U.S.-Iran tensions. Oil prices jumped. Boeing and Tesla earnings loom. / 행동 제안: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p><h2>메인 헤드라인</h2><article><strong>Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)</strong><p>실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.</p><p>AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p></article><h2>파생 기사</h2><ul><li><strong>This Stock Will Be More Profitable Than Amazon and Meta by 2027</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Nvidia Stock Slaughters Rivals AMD &amp; Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)</strong><br />에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - This Stock Will Be More Profitable Than Amazon and Meta by 2027<br />AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T13:50:05.262Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n",
-  "warnings": [
-    "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
-  ]
+  "markdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T14:01:07.142Z\n- Provider: rule-based\n- Model: n/a\n- Source: local-script\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+  "warnings": []
 }

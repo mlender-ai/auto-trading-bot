@@ -1,9 +1,9 @@
 # Research Pipeline
 
-- Generated At: 2026-04-20T13:50:05.262Z
+- Generated At: 2026-04-20T14:01:07.142Z
 - Provider: rule-based
-- Model: openai/gpt-4.1
-- Source: github-actions
+- Model: n/a
+- Source: local-script
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: AMD, NVDA, XOM
@@ -44,20 +44,38 @@ References: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-ama
 - 에이전트 출력 스키마를 API 계약으로 고정합니다.
   Owner: CTO
   Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.
+  Implementation Status: ready
+  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.
+  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts
+  Verify: npm run typecheck | npm run build:web | npm run research:generate
   Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1
   Branch: codex/agent-council/schema-contract
   PR: https://github.com/mlender-ai/auto-trading-bot/pull/4
+  Plan: .github/agent-council/schema-contract.md
+  Changed Files: none yet
 
 - 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.
   Owner: PM
   Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.
+  Implementation Status: ready
+  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.
+  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts
+  Verify: npm run typecheck | npm run build:web
   Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2
   Branch: codex/agent-council/headline-to-action-flow
   PR: https://github.com/mlender-ai/auto-trading-bot/pull/5
+  Plan: .github/agent-council/headline-to-action-flow.md
+  Changed Files: none yet
 
 - 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.
   Owner: DA
   Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.
+  Implementation Status: ready
+  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.
+  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts
+  Verify: npm run typecheck | npm run build:web
   Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3
   Branch: codex/agent-council/behavior-tracking
   PR: https://github.com/mlender-ai/auto-trading-bot/pull/6
+  Plan: .github/agent-council/behavior-tracking.md
+  Changed Files: none yet

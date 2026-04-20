@@ -10,6 +10,7 @@ import {
   researchTickerOptions,
   type PatternConfidence,
   type ProductReviewNote,
+  type ProductImplementationStatus,
   type ResearchNewsItem,
   type ResearchPipelineStep,
   type ResearchPipelineTranscriptMessage,
@@ -48,6 +49,21 @@ function getConfidenceLabel(confidence: PatternConfidence) {
       return "보통";
     default:
       return "낮음";
+  }
+}
+
+function getImplementationStatusLabel(status: ProductImplementationStatus) {
+  switch (status) {
+    case "ready":
+      return "구현 준비";
+    case "in-progress":
+      return "구현 중";
+    case "reviewing":
+      return "리뷰 중";
+    case "merged":
+      return "반영 완료";
+    default:
+      return "대기";
   }
 }
 
@@ -1018,8 +1034,39 @@ function MeetingTab({ workspace }: { workspace: ResearchWorkspaceData }) {
         <ul className="action-item-list">
           {workspace.productReview.actionItems.map((item) => (
             <li key={item.id}>
-              <strong>{item.title}</strong>
+              <div className="action-item-head">
+                <strong>{item.title}</strong>
+                <span className={`action-status-chip status-${item.implementationStatus}`}>{getImplementationStatusLabel(item.implementationStatus)}</span>
+              </div>
               <p>{item.detail}</p>
+              <p className="action-focus-copy">{item.implementationFocus}</p>
+              <div className="action-implementation-grid">
+                <div>
+                  <span className="eyebrow">대상 파일</span>
+                  <ul className="action-detail-list">
+                    {item.targetPaths.map((path) => (
+                      <li key={path}>
+                        <code>{path}</code>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <span className="eyebrow">검증</span>
+                  <ul className="action-detail-list">
+                    {item.verificationCommands.map((command) => (
+                      <li key={command}>
+                        <code>{command}</code>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {item.changedFiles.length > 0 ? (
+                <p className="review-references">
+                  구현 변경 파일 · {item.changedFiles.join(" · ")}
+                </p>
+              ) : null}
               <p className="review-references">
                 {item.owner} · {item.references.join(" · ")}
                 {item.issueUrl ? (
@@ -1034,6 +1081,7 @@ function MeetingTab({ workspace }: { workspace: ResearchWorkspaceData }) {
                   <> · GitHub 이슈 미생성</>
                 )}
                 {item.branchName ? <> · Branch <code>{item.branchName}</code></> : null}
+                {item.planPath ? <> · Plan <code>{item.planPath}</code></> : null}
                 {item.pullRequestUrl ? (
                   <>
                     {" "}
