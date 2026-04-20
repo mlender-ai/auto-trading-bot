@@ -1,9 +1,9 @@
 # Research Pipeline
 
-- Generated At: 2026-04-20T09:59:40.078Z
+- Generated At: 2026-04-20T10:00:57.928Z
 - Provider: rule-based
-- Model: n/a
-- Source: local-script
+- Model: openai/gpt-4.1
+- Source: github-actions
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: NVDA, XOM, AMD
