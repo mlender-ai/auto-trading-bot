@@ -1,20 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { parseResearchPreferences } from "../../../../lib/research";
-import { readStoredResearchSnapshot, runAndPersistResearchPipeline } from "../../../../lib/researchPipelineStore";
+import { readPreferredResearchSnapshot, runAndPersistResearchPipeline } from "../../../../lib/researchPipelineStore";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const preferences = parseResearchPreferences(request.nextUrl.searchParams);
-  const snapshot = await readStoredResearchSnapshot();
-  const hasRequestedPreferences = Boolean(preferences.sectors?.length || preferences.tickers?.length);
-  const matchesStoredPreferences =
-    snapshot &&
-    snapshot.workspace.preferences.sectors.join(",") === (preferences.sectors ?? []).join(",") &&
-    snapshot.workspace.preferences.tickers.join(",") === (preferences.tickers ?? []).join(",");
+  const snapshot = await readPreferredResearchSnapshot(preferences);
 
-  if (snapshot && (!hasRequestedPreferences || matchesStoredPreferences)) {
+  if (snapshot) {
     return NextResponse.json(snapshot);
   }
 

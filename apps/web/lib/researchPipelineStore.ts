@@ -7,6 +7,7 @@ import { generateResearchPipelineSnapshot, type GeneratedResearchSnapshot } from
 const OUTPUT_DIR = path.join(process.cwd(), "generated", "research");
 const JSON_BASENAME = "latest.json";
 const MARKDOWN_BASENAME = "latest.md";
+const DEFAULT_PUBLISHED_SNAPSHOT_URL = "https://raw.githubusercontent.com/mlender-ai/auto-trading-bot/main/generated/research/latest.json";
 
 export const RESEARCH_PIPELINE_JSON_PATH = path.join(OUTPUT_DIR, JSON_BASENAME);
 export const RESEARCH_PIPELINE_MARKDOWN_PATH = path.join(OUTPUT_DIR, MARKDOWN_BASENAME);
@@ -35,6 +36,21 @@ function buildStaticSnapshot(preferences?: Partial<UserResearchPreferences>): Ge
   };
 }
 
+function getSnapshotTimestamp(snapshot: GeneratedResearchSnapshot): number {
+  const candidate = snapshot.workspace.agentPipeline.runtime.generatedAt || snapshot.workspace.generatedAt;
+  const parsed = Date.parse(candidate);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function snapshotMatchesPreferences(snapshot: GeneratedResearchSnapshot, preferences?: Partial<UserResearchPreferences>): boolean {
+  if (!preferences) {
+    return true;
+  }
+
+  const normalized = buildResearchWorkspace(preferences).preferences;
+  return samePreferences(snapshot.workspace.preferences, normalized);
+}
+
 export async function readStoredResearchSnapshot(): Promise<GeneratedResearchSnapshot | null> {
   try {
     const raw = await fs.readFile(RESEARCH_PIPELINE_JSON_PATH, "utf8");
@@ -48,15 +64,44 @@ export async function readStoredResearchSnapshot(): Promise<GeneratedResearchSna
   }
 }
 
+export async function readPublishedResearchSnapshot(): Promise<GeneratedResearchSnapshot | null> {
+  const snapshotUrl = process.env.RESEARCH_PUBLISHED_SNAPSHOT_URL || DEFAULT_PUBLISHED_SNAPSHOT_URL;
+
+  try {
+    const response = await fetch(snapshotUrl, {
+      headers: {
+        accept: "application/json"
+      },
+      cache: "no-store",
+      signal: AbortSignal.timeout(4_000)
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return (await response.json()) as GeneratedResearchSnapshot;
+  } catch {
+    return null;
+  }
+}
+
+export async function readPreferredResearchSnapshot(preferences?: Partial<UserResearchPreferences>): Promise<GeneratedResearchSnapshot | null> {
+  const [stored, published] = await Promise.all([readStoredResearchSnapshot(), readPublishedResearchSnapshot()]);
+  const candidates = [published, stored].filter((snapshot): snapshot is GeneratedResearchSnapshot => Boolean(snapshot && snapshotMatchesPreferences(snapshot, preferences)));
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  return candidates.sort((left, right) => getSnapshotTimestamp(right) - getSnapshotTimestamp(left))[0] ?? null;
+}
+
 export async function getInitialResearchWorkspace(preferences?: Partial<UserResearchPreferences>): Promise<ResearchWorkspaceData> {
-  const snapshot = await readStoredResearchSnapshot();
+  const snapshot = await readPreferredResearchSnapshot(preferences);
   const fallback = buildStaticSnapshot(preferences);
 
   if (!snapshot) {
-    return fallback.workspace;
-  }
-
-  if (preferences && !samePreferences(snapshot.workspace.preferences, fallback.workspace.preferences)) {
     return fallback.workspace;
   }
 

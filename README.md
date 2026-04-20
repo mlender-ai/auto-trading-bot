@@ -106,6 +106,7 @@ Research pipeline workflow currently:
 - runs on `main` pushes, daily schedule, and manual dispatch
 - executes `npm run research:generate`
 - writes the latest pipeline JSON and Markdown to `generated/research/`
+- commits the latest pipeline JSON and Markdown back to `main` so the frontend can read the published snapshot
 - publishes the agent thread to the GitHub Actions job summary
 - uploads the JSON and Markdown as workflow artifacts
 - defaults to GitHub Models with the per-run `GITHUB_TOKEN` when `AI_API_KEY` is empty or set to `USE_GITHUB_TOKEN`
@@ -149,6 +150,7 @@ Shared or common variables:
 - `AI_API_KEY`
 - `AI_MODEL`
 - `AI_TEMPERATURE`
+- `RESEARCH_PUBLISHED_SNAPSHOT_URL`
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL`
 - `OPENAI_BASE_URL`

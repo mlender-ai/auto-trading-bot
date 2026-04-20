@@ -107,6 +107,13 @@ interface ExecutionTraderOutput {
   traderMessage: string;
 }
 
+interface UnifiedPipelineOutput {
+  news: NewsEditorOutput;
+  macro: MacroAnalystOutput;
+  ticker: TickerAnalystOutput;
+  action: ExecutionTraderOutput;
+}
+
 const DEFAULT_GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions";
 const DEFAULT_GITHUB_MODELS_MODEL = "openai/gpt-4.1";
 const DEFAULT_OPENAI_API_URL = "https://api.openai.com/v1";
@@ -442,7 +449,7 @@ async function callAiJson<T>(config: ResolvedPipelineConfig, system: string, use
   const payload = JSON.stringify({
     model: config.model,
     temperature: config.temperature,
-    max_tokens: 2200,
+    max_tokens: config.provider === "github-models" ? 1400 : 2200,
     messages: [
       {
         role: "system",
@@ -456,8 +463,9 @@ async function callAiJson<T>(config: ResolvedPipelineConfig, system: string, use
   });
 
   let lastError: Error | null = null;
+  const maxAttempts = config.provider === "github-models" ? 2 : 5;
 
-  for (let attempt = 1; attempt <= 5; attempt += 1) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
     try {
       const response = await fetch(config.apiUrl, {
         method: "POST",
@@ -468,7 +476,13 @@ async function callAiJson<T>(config: ResolvedPipelineConfig, system: string, use
       if (response.status === 429 || response.status >= 500) {
         const detail = await response.text();
         lastError = new Error(`AI request failed (${response.status}): ${detail}`);
-        await new Promise((resolve) => setTimeout(resolve, Math.min(60_000, 5_000 * 2 ** (attempt - 1))));
+
+        if (attempt === maxAttempts) {
+          break;
+        }
+
+        const retryDelay = response.status === 429 && config.provider === "github-models" ? 5_000 : Math.min(60_000, 5_000 * 2 ** (attempt - 1));
+        await new Promise((resolve) => setTimeout(resolve, retryDelay));
         continue;
       }
 
@@ -494,7 +508,7 @@ async function callAiJson<T>(config: ResolvedPipelineConfig, system: string, use
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
 
-      if (attempt === 5) {
+      if (attempt === maxAttempts) {
         break;
       }
 
@@ -624,6 +638,17 @@ function parseExecutionTraderOutput(value: unknown): ExecutionTraderOutput {
     avoidActions: asStringArray(record.avoidActions, 3),
     risks: asStringArray(record.risks, 3),
     traderMessage: asString(record.traderMessage)
+  };
+}
+
+function parseUnifiedPipelineOutput(value: unknown, preferences: UserResearchPreferences): UnifiedPipelineOutput {
+  const record = asRecord(value);
+
+  return {
+    news: parseNewsEditorOutput(record.news, preferences),
+    macro: parseMacroAnalystOutput(record.macro),
+    ticker: parseTickerAnalystOutput(record.ticker),
+    action: parseExecutionTraderOutput(record.action)
   };
 }
 
@@ -1009,6 +1034,94 @@ async function runExecutionTrader(
   return parseExecutionTraderOutput(response);
 }
 
+async function runUnifiedPipeline(config: ResolvedPipelineConfig, workspace: ResearchWorkspaceData): Promise<UnifiedPipelineOutput> {
+  const payload = {
+    preferences: {
+      sectors: workspace.preferences.sectors.map(getResearchSectorLabel),
+      tickers: workspace.focusedTickers
+    },
+    candidateNews: getCandidateNews(workspace).slice(0, 6).map((item) => ({
+      id: item.id,
+      title: item.title,
+      summary: item.summary,
+      analysis: item.analysis,
+      recommendation: item.recommendation,
+      sectorTag: item.sectorTag,
+      sectorLabel: getResearchSectorLabel(item.sectorTag),
+      tickerTags: item.tickerTags,
+      importanceScore: item.importanceScore
+    })),
+    tickerContexts: workspace.tickerAnalyses.slice(0, 4).map((analysis) => ({
+      ticker: analysis.ticker,
+      company: analysis.company,
+      summary: analysis.summary,
+      technicalAnalysis: analysis.technicalAnalysis,
+      patternAnalysis: analysis.patternAnalysis,
+      marketContext: analysis.marketContext,
+      recommendation: analysis.recommendation
+    }))
+  };
+
+  const response = await callAiJson<UnifiedPipelineOutput>(
+    config,
+    "당신은 리서치 데스크를 운영하는 AI 시장 분석팀이다. 한 번의 응답으로 뉴스 선별, 시황 해석, 티커 분석, 행동 제안을 모두 JSON으로 반환한다. 각 섹션은 짧고 실행 가능해야 하며, 중복 설명을 줄여라.",
+    [
+      JSON.stringify(payload, null, 2),
+      "",
+      "반드시 아래 스키마로만 답하라.",
+      JSON.stringify(
+        {
+          news: {
+            headlineId: "string | null",
+            headlineSummary: "string",
+            whyImportant: "string",
+            derived: [{ newsId: "string", whyImportant: "string" }],
+            sectorIssues: [{ sectorTag: "semiconductors", newsId: "string", whyImportant: "string" }],
+            editorMessage: "string",
+            handoffNote: "string"
+          },
+          macro: {
+            summary: "string",
+            shortTermView: "string",
+            mediumTermView: "string",
+            strongSectors: [{ sector: "string", horizon: "단기", reason: "string" }],
+            riskSectors: [{ sector: "string", horizon: "중기", reason: "string" }],
+            keyEvents: [{ title: "string", reason: "string" }],
+            analystMessage: "string",
+            handoffNote: "string"
+          },
+          ticker: {
+            leadTicker: "string | null",
+            analyses: [
+              {
+                ticker: "string",
+                summary: "string",
+                technicalAnalysis: "string",
+                patternAnalysis: [{ name: "string", detail: "string", confidence: "high" }],
+                marketContext: "string",
+                recommendation: "string"
+              }
+            ],
+            analystMessage: "string",
+            handoffNote: "string"
+          },
+          action: {
+            strategy: "string",
+            recommendedActions: ["string"],
+            avoidActions: ["string"],
+            risks: ["string"],
+            traderMessage: "string"
+          }
+        },
+        null,
+        2
+      )
+    ].join("\n")
+  );
+
+  return parseUnifiedPipelineOutput(response, workspace.preferences);
+}
+
 export async function generateResearchPipelineSnapshot(options: GenerateResearchPipelineOptions = {}): Promise<GeneratedResearchSnapshot> {
   const normalizedPreferences = normalizeResearchPreferences(options.preferences);
   const baseWorkspace = buildResearchWorkspace(normalizedPreferences);
@@ -1019,13 +1132,14 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
   }
 
   try {
-    const newsOutput = await runNewsEditor(config, baseWorkspace);
+    const unifiedOutput = await runUnifiedPipeline(config, baseWorkspace);
+    const newsOutput = unifiedOutput.news;
     const news = buildNewsBoardFromSelection(baseWorkspace, newsOutput);
-    const macroOutput = await runMacroAnalyst(config, baseWorkspace, news);
+    const macroOutput = unifiedOutput.macro;
     const market = buildMarketInterpretation(baseWorkspace, macroOutput);
-    const tickerOutput = await runTickerAnalyst(config, baseWorkspace, market, news);
+    const tickerOutput = unifiedOutput.ticker;
     const tickerAnalyses = mergeTickerAnalyses(baseWorkspace.tickerAnalyses, tickerOutput);
-    const actionOutput = await runExecutionTrader(config, market, tickerAnalyses, news);
+    const actionOutput = unifiedOutput.action;
     const actionPlan = buildActionPlan(baseWorkspace, actionOutput);
     const generatedAt = new Date().toISOString();
     const steps = buildPipelineSteps(baseWorkspace.agentPipeline.definitions, news, market, tickerAnalyses, newsOutput, macroOutput, tickerOutput, actionPlan, actionOutput);
