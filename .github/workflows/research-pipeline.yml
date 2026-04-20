@@ -63,6 +63,15 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+
+          npm run research:generate
+          npm run research:issues
+
+          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+            exit 0
+          fi
+
           git add generated/research/latest.json generated/research/latest.md
           git commit -m "chore: publish research snapshot [skip ci]"
           git push
