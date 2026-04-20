@@ -24,7 +24,8 @@ function toSnapshot(workspace: ResearchWorkspaceData, warnings: string[] = []): 
     preferences: workspace.preferences,
     news: workspace.news,
     tickerAnalyses: workspace.tickerAnalyses,
-    agentPipeline: workspace.agentPipeline
+    agentPipeline: workspace.agentPipeline,
+    productReview: workspace.productReview
   });
 
   workspace.agentPipeline.runtime.summaryMarkdown = markdown;

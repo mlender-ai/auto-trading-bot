@@ -316,7 +316,8 @@ function buildFallbackSnapshot(baseWorkspace: ResearchWorkspaceData, config: Res
     preferences: workspace.preferences,
     news: workspace.news,
     tickerAnalyses: workspace.tickerAnalyses,
-    agentPipeline: workspace.agentPipeline
+    agentPipeline: workspace.agentPipeline,
+    productReview: workspace.productReview
   });
 
   return {
@@ -1177,7 +1178,8 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
       preferences: workspace.preferences,
       news: workspace.news,
       tickerAnalyses: workspace.tickerAnalyses,
-      agentPipeline: workspace.agentPipeline
+      agentPipeline: workspace.agentPipeline,
+      productReview: workspace.productReview
     });
 
     return {

@@ -1,34 +1,34 @@
 # Research Pipeline
 
-- Generated At: 2026-04-20T11:07:08.970Z
+- Generated At: 2026-04-20T11:24:47.761Z
 - Provider: rule-based
-- Model: openai/gpt-4.1
-- Source: github-actions
+- Model: n/a
+- Source: local-script
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: AMD, NVDA, XOM
 
 ## Main Headline
-- NVIDIA Refocuses On AI Infrastructure As Partnerships Grow And Shares Rally
-- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.
-- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
+- Dow Jones Futures Fall; Trump Says Talks, Iran Says No; Marvell Jumps, Tesla Earnings Due
+- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
+- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "NVIDIA Refocuses On AI Infrastructure As Partnerships Grow And Shares Rally"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-firing-on-all-cylinders-wall-street-strategists-expect-a-strong-quarter-of-earni
+메인 헤드라인을 "Dow Jones Futures Fall; Trump Says Talks, Iran Says No; Marvell Jumps, Tesla Earnings Due"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-firing-on-all-cylinders-wall-street-strategists-expect-a-strong-quarter-of-earni
+References: live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-energy-oil-firing-on-all-cylinders-wall-street-strategists-expect-a-strong-quarter-of-earni
 
 ### 03 Ticker Analyst -> Execution Trader
 AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: AMD, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
+References: AMD, live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027
 
 ### 04 Execution Trader -> Operator
 AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-firing-on-all-cylinders-wall-street-strategists-expect-a-strong-quarter-of-earni
+References: AMD, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
 
 ## Trader Plan
 - Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
@@ -39,3 +39,19 @@ References: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-ama
 - Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.
 - Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.
 - Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.
+
+## Product Action Items
+- 에이전트 출력 스키마를 API 계약으로 고정합니다.
+  Owner: CTO
+  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1
+
+- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.
+  Owner: PM
+  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2
+
+- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.
+  Owner: DA
+  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3

@@ -27,6 +27,7 @@
     "typecheck:web": "npm --workspace @trading/web run typecheck",
     "paper:status": "tsx scripts/paper-status.ts",
     "research:generate": "tsx scripts/research-pipeline.ts",
+    "research:issues": "tsx scripts/research-agent-issues.ts",
     "research:newsletter": "tsx scripts/research-newsletter.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate:dev": "prisma migrate dev",

@@ -16,6 +16,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
   models: read
 
 jobs:
@@ -48,6 +49,9 @@ jobs:
 
       - name: Generate research pipeline
         run: npm run research:generate
+
+      - name: Sync agent action items to GitHub Issues
+        run: npm run research:issues
 
       - name: Publish generated snapshot to repository
         shell: bash

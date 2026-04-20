@@ -167,9 +167,20 @@ export interface ProductReviewNote {
   references: string[];
 }
 
+export interface ProductActionItem {
+  id: string;
+  owner: AgentRole;
+  title: string;
+  detail: string;
+  references: string[];
+  issueNumber: number | null;
+  issueUrl: string | null;
+  issueState: "proposed" | "open" | "closed";
+}
+
 export interface ProductTeamReview {
   notes: ProductReviewNote[];
-  actionItems: string[];
+  actionItems: ProductActionItem[];
 }
 
 export interface ResearchAgentPipeline {
@@ -918,9 +929,36 @@ export function buildResearchProductReview(
       }
     ],
     actionItems: [
-      "뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 API 응답으로 고정합니다.",
-      "메인 헤드라인 아래에 오늘 전략과 금지 행동을 붙여 뉴스에서 행동으로 바로 이어지게 만듭니다.",
-      "headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 어느 단계에서 이탈하는지 측정합니다."
+      {
+        id: "schema-contract",
+        owner: "CTO",
+        title: "에이전트 출력 스키마를 API 계약으로 고정합니다.",
+        detail: "뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.",
+        references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"],
+        issueNumber: null,
+        issueUrl: null,
+        issueState: "proposed"
+      },
+      {
+        id: "headline-to-action-flow",
+        owner: "PM",
+        title: "메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.",
+        detail: "메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.",
+        references: ["news-editor", "execution-trader"],
+        issueNumber: null,
+        issueUrl: null,
+        issueState: "proposed"
+      },
+      {
+        id: "behavior-tracking",
+        owner: "DA",
+        title: "핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.",
+        detail: `headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 ${behavior.frictionPoint} 지점을 실제 데이터로 확인합니다.`,
+        references: ["macro-analyst", "ticker-analyst", "execution-trader"],
+        issueNumber: null,
+        issueUrl: null,
+        issueState: "proposed"
+      }
     ]
   };
 }
@@ -1007,7 +1045,9 @@ export function buildResearchNewsletter(news: ResearchNewsBoard, analyses: Ticke
   };
 }
 
-export function renderResearchPipelineMarkdown(workspace: Pick<ResearchWorkspaceData, "generatedAt" | "preferences" | "news" | "tickerAnalyses" | "agentPipeline">): string {
+export function renderResearchPipelineMarkdown(
+  workspace: Pick<ResearchWorkspaceData, "generatedAt" | "preferences" | "news" | "tickerAnalyses" | "agentPipeline" | "productReview">
+): string {
   const { runtime } = workspace.agentPipeline;
   const headline = workspace.news.headline;
 
@@ -1038,7 +1078,16 @@ export function renderResearchPipelineMarkdown(workspace: Pick<ResearchWorkspace
     `- Strategy: ${workspace.agentPipeline.actionPlan.strategy}`,
     ...workspace.agentPipeline.actionPlan.recommendedActions.map((item) => `- Do: ${item}`),
     ...workspace.agentPipeline.actionPlan.avoidActions.map((item) => `- Avoid: ${item}`),
-    ...workspace.agentPipeline.actionPlan.risks.map((item) => `- Risk: ${item}`)
+    ...workspace.agentPipeline.actionPlan.risks.map((item) => `- Risk: ${item}`),
+    "",
+    "## Product Action Items",
+    ...workspace.productReview.actionItems.flatMap((item) => [
+      `- ${item.title}`,
+      `  Owner: ${item.owner}`,
+      `  Detail: ${item.detail}`,
+      `  Issue: ${item.issueUrl ?? "not synced"}`,
+      ""
+    ])
   ];
 
   return lines.join("\n");
@@ -1094,7 +1143,8 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
     preferences: normalizedPreferences,
     news,
     tickerAnalyses,
-    agentPipeline
+    agentPipeline,
+    productReview
   });
 
   return {

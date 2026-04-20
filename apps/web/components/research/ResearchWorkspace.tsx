@@ -1017,7 +1017,24 @@ function MeetingTab({ workspace }: { workspace: ResearchWorkspaceData }) {
         </div>
         <ul className="action-item-list">
           {workspace.productReview.actionItems.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item.id}>
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+              <p className="review-references">
+                {item.owner} · {item.references.join(" · ")}
+                {item.issueUrl ? (
+                  <>
+                    {" "}
+                    ·{" "}
+                    <a href={item.issueUrl} rel="noreferrer" target="_blank">
+                      GitHub Issue #{item.issueNumber}
+                    </a>
+                  </>
+                ) : (
+                  <> · GitHub 이슈 미생성</>
+                )}
+              </p>
+            </li>
           ))}
         </ul>
       </section>
