@@ -176,6 +176,10 @@ export interface ProductActionItem {
   issueNumber: number | null;
   issueUrl: string | null;
   issueState: "proposed" | "open" | "closed";
+  branchName: string | null;
+  pullRequestNumber: number | null;
+  pullRequestUrl: string | null;
+  pullRequestState: "proposed" | "draft" | "open" | "closed" | "merged";
 }
 
 export interface ProductTeamReview {
@@ -937,7 +941,11 @@ export function buildResearchProductReview(
         references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"],
         issueNumber: null,
         issueUrl: null,
-        issueState: "proposed"
+        issueState: "proposed",
+        branchName: null,
+        pullRequestNumber: null,
+        pullRequestUrl: null,
+        pullRequestState: "proposed"
       },
       {
         id: "headline-to-action-flow",
@@ -947,7 +955,11 @@ export function buildResearchProductReview(
         references: ["news-editor", "execution-trader"],
         issueNumber: null,
         issueUrl: null,
-        issueState: "proposed"
+        issueState: "proposed",
+        branchName: null,
+        pullRequestNumber: null,
+        pullRequestUrl: null,
+        pullRequestState: "proposed"
       },
       {
         id: "behavior-tracking",
@@ -957,7 +969,11 @@ export function buildResearchProductReview(
         references: ["macro-analyst", "ticker-analyst", "execution-trader"],
         issueNumber: null,
         issueUrl: null,
-        issueState: "proposed"
+        issueState: "proposed",
+        branchName: null,
+        pullRequestNumber: null,
+        pullRequestUrl: null,
+        pullRequestState: "proposed"
       }
     ]
   };
@@ -1086,6 +1102,8 @@ export function renderResearchPipelineMarkdown(
       `  Owner: ${item.owner}`,
       `  Detail: ${item.detail}`,
       `  Issue: ${item.issueUrl ?? "not synced"}`,
+      `  Branch: ${item.branchName ?? "not provisioned"}`,
+      `  PR: ${item.pullRequestUrl ?? "not created"}`,
       ""
     ])
   ];

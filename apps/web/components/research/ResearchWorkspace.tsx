@@ -1033,6 +1033,18 @@ function MeetingTab({ workspace }: { workspace: ResearchWorkspaceData }) {
                 ) : (
                   <> · GitHub 이슈 미생성</>
                 )}
+                {item.branchName ? <> · Branch <code>{item.branchName}</code></> : null}
+                {item.pullRequestUrl ? (
+                  <>
+                    {" "}
+                    ·{" "}
+                    <a href={item.pullRequestUrl} rel="noreferrer" target="_blank">
+                      Draft PR #{item.pullRequestNumber}
+                    </a>
+                  </>
+                ) : (
+                  <> · Draft PR 미생성</>
+                )}
               </p>
             </li>
           ))}

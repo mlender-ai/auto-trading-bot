@@ -1,13 +1,19 @@
 import { promises as fs } from "fs";
 
-import { renderResearchPipelineMarkdown, type ProductActionItem, type ResearchWorkspaceData } from "../packages/shared/src/research";
+import { renderResearchPipelineMarkdown, type AgentRole, type ProductActionItem, type ResearchWorkspaceData } from "../packages/shared/src/research";
 import { type GeneratedResearchSnapshot } from "../packages/shared/src/researchPipeline";
 
 const SNAPSHOT_PATH = "generated/research/latest.json";
 const MARKDOWN_PATH = "generated/research/latest.md";
+const PLAN_DIR = ".github/agent-council";
 const LABELS = [
   { name: "agent-council", color: "1d76db", description: "Action items proposed by the agent council" },
-  { name: "research-automation", color: "0e8a16", description: "Automatically managed research workflow issue" }
+  { name: "research-automation", color: "0e8a16", description: "Automatically managed research workflow issue" },
+  { name: "owner:pm", color: "c5def5", description: "Owned by product management" },
+  { name: "owner:trader", color: "5319e7", description: "Owned by trader workflow" },
+  { name: "owner:da", color: "0e8a16", description: "Owned by data analysis" },
+  { name: "owner:qa", color: "d73a4a", description: "Owned by quality assurance" },
+  { name: "owner:cto", color: "fbca04", description: "Owned by engineering leadership" }
 ];
 
 interface GitHubIssue {
@@ -16,18 +22,73 @@ interface GitHubIssue {
   body: string | null;
   html_url: string;
   state: "open" | "closed";
+  labels?: Array<{ name: string }>;
   pull_request?: unknown;
+}
+
+interface GitHubPullRequest {
+  number: number;
+  title: string;
+  body: string | null;
+  html_url: string;
+  state: "open" | "closed";
+  draft: boolean;
+  merged_at: string | null;
+  head: { ref: string };
+}
+
+interface GitHubRepository {
+  default_branch: string;
+}
+
+interface GitHubRef {
+  object: {
+    sha: string;
+  };
+}
+
+interface GitHubContentFile {
+  sha: string;
+  content?: string;
+  encoding?: string;
 }
 
 function buildIssueMarker(itemId: string): string {
   return `<!-- research-action-item:${itemId} -->`;
 }
 
+function buildPullRequestMarker(itemId: string): string {
+  return `<!-- research-action-pr:${itemId} -->`;
+}
+
+function buildBranchName(item: ProductActionItem): string {
+  return `codex/agent-council/${item.id}`;
+}
+
+function ownerLabel(owner: AgentRole): string {
+  return `owner:${owner.toLowerCase()}`;
+}
+
+function actionLabels(item: ProductActionItem): string[] {
+  return ["agent-council", "research-automation", ownerLabel(item.owner)];
+}
+
+function encodeContentPath(value: string): string {
+  return value
+    .split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
+}
+
 function buildIssueTitle(item: ProductActionItem): string {
   return `[Agent Council] ${item.title}`;
 }
 
-function buildIssueBody(item: ProductActionItem, workspace: ResearchWorkspaceData): string {
+function buildIssueBody(
+  item: ProductActionItem,
+  workspace: ResearchWorkspaceData,
+  metadata: { branchName: string; pullRequestUrl: string | null; issueUrl?: string | null }
+): string {
   const headline = workspace.news.headline?.title ?? "헤드라인 없음";
   const strategy = workspace.agentPipeline.actionPlan.strategy;
 
@@ -40,6 +101,8 @@ function buildIssueBody(item: ProductActionItem, workspace: ResearchWorkspaceDat
     `- Strategy: ${strategy}`,
     `- Owner: ${item.owner}`,
     `- References: ${item.references.join(", ") || "n/a"}`,
+    `- Branch: ${metadata.branchName}`,
+    `- Draft PR: ${metadata.pullRequestUrl ?? "not created yet"}`,
     "",
     "## Action Item",
     item.detail,
@@ -51,21 +114,78 @@ function buildIssueBody(item: ProductActionItem, workspace: ResearchWorkspaceDat
   ].join("\n");
 }
 
-function withIssueMetadata(item: ProductActionItem, issue: GitHubIssue | null): ProductActionItem {
-  if (!issue) {
-    return {
-      ...item,
-      issueNumber: null,
-      issueUrl: null,
-      issueState: "proposed"
-    };
+function buildPlanFileContent(item: ProductActionItem, issue: GitHubIssue, workspace: ResearchWorkspaceData, branchName: string): string {
+  return [
+    "# Agent Council Work Plan",
+    "",
+    `- Item: ${item.title}`,
+    `- Owner: ${item.owner}`,
+    `- Issue: ${issue.html_url}`,
+    `- Branch: ${branchName}`,
+    `- Generated At: ${workspace.generatedAt}`,
+    "",
+    "## Detail",
+    item.detail,
+    "",
+    "## References",
+    ...item.references.map((reference) => `- ${reference}`),
+    "",
+    "## Acceptance",
+    "- [ ] 작업 범위를 제품 변경으로 구체화한다.",
+    "- [ ] 구현 또는 측정 지표를 연결한다.",
+    "- [ ] 완료 후 에이전트 회의 탭과 snapshot에 반영한다."
+  ].join("\n");
+}
+
+function buildPullRequestTitle(item: ProductActionItem): string {
+  return `[Agent Council] ${item.title}`;
+}
+
+function buildPullRequestBody(item: ProductActionItem, issue: GitHubIssue, branchName: string): string {
+  return [
+    buildPullRequestMarker(item.id),
+    "",
+    `Related to #${issue.number}`,
+    "",
+    "## Action Item",
+    item.detail,
+    "",
+    "## Ownership",
+    `- Owner: ${item.owner}`,
+    `- Branch: ${branchName}`,
+    "",
+    "## Notes",
+    "- This draft PR is automatically created so implementation can start from a live branch immediately.",
+    "- Update the branch with real code changes and move the checklist to implementation detail as work progresses."
+  ].join("\n");
+}
+
+function pullRequestState(pr: GitHubPullRequest | null): ProductActionItem["pullRequestState"] {
+  if (!pr) {
+    return "proposed";
   }
 
+  if (pr.merged_at) {
+    return "merged";
+  }
+
+  if (pr.state === "closed") {
+    return "closed";
+  }
+
+  return pr.draft ? "draft" : "open";
+}
+
+function withSyncedMetadata(item: ProductActionItem, issue: GitHubIssue | null, branchName: string, pr: GitHubPullRequest | null): ProductActionItem {
   return {
     ...item,
-    issueNumber: issue.number,
-    issueUrl: issue.html_url,
-    issueState: issue.state
+    issueNumber: issue?.number ?? null,
+    issueUrl: issue?.html_url ?? null,
+    issueState: issue?.state ?? "proposed",
+    branchName,
+    pullRequestNumber: pr?.number ?? null,
+    pullRequestUrl: pr?.html_url ?? null,
+    pullRequestState: pullRequestState(pr)
   };
 }
 
@@ -118,6 +238,30 @@ async function githubRequest<T>(context: NonNullable<ReturnType<typeof getRepoCo
   return (await response.json()) as T;
 }
 
+async function githubRequestOptional<T>(context: NonNullable<ReturnType<typeof getRepoContext>>, path: string, init?: RequestInit): Promise<T | null> {
+  const response = await fetch(`https://api.github.com${path}`, {
+    ...init,
+    headers: {
+      accept: "application/vnd.github+json",
+      authorization: `Bearer ${context.token}`,
+      "content-type": "application/json",
+      "x-github-api-version": "2022-11-28",
+      ...(init?.headers ?? {})
+    }
+  });
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`GitHub API ${response.status}: ${text}`);
+  }
+
+  return (await response.json()) as T;
+}
+
 async function ensureLabels(context: NonNullable<ReturnType<typeof getRepoContext>>) {
   for (const label of LABELS) {
     try {
@@ -133,6 +277,10 @@ async function ensureLabels(context: NonNullable<ReturnType<typeof getRepoContex
   }
 }
 
+async function repositoryInfo(context: NonNullable<ReturnType<typeof getRepoContext>>): Promise<GitHubRepository> {
+  return githubRequest<GitHubRepository>(context, `/repos/${context.owner}/${context.repo}`);
+}
+
 async function listManagedIssues(context: NonNullable<ReturnType<typeof getRepoContext>>): Promise<GitHubIssue[]> {
   const issues = await githubRequest<GitHubIssue[]>(
     context,
@@ -142,43 +290,86 @@ async function listManagedIssues(context: NonNullable<ReturnType<typeof getRepoC
   return issues.filter((issue) => !issue.pull_request && issue.body?.includes("research-action-item:"));
 }
 
+async function listManagedPullRequests(context: NonNullable<ReturnType<typeof getRepoContext>>): Promise<GitHubPullRequest[]> {
+  const pulls = await githubRequest<GitHubPullRequest[]>(
+    context,
+    `/repos/${context.owner}/${context.repo}/pulls?state=all&per_page=100`
+  );
+
+  return pulls.filter((pull) => pull.body?.includes("research-action-pr:"));
+}
+
 function findManagedIssue(issues: GitHubIssue[], itemId: string): GitHubIssue | null {
   const marker = buildIssueMarker(itemId);
   return issues.find((issue) => issue.body?.includes(marker)) ?? null;
+}
+
+function findManagedPullRequest(pulls: GitHubPullRequest[], itemId: string, branchName: string): GitHubPullRequest | null {
+  const marker = buildPullRequestMarker(itemId);
+  return pulls.find((pull) => pull.body?.includes(marker) || pull.head.ref === branchName) ?? null;
+}
+
+async function syncLabelsOnIssueLike(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  issueNumber: number,
+  labels: string[]
+) {
+  await githubRequest(context, `/repos/${context.owner}/${context.repo}/issues/${issueNumber}/labels`, {
+    method: "PUT",
+    body: JSON.stringify(labels)
+  });
+}
+
+async function updateIssueLikeState(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  issueNumber: number,
+  state: "open" | "closed"
+) {
+  await githubRequest(context, `/repos/${context.owner}/${context.repo}/issues/${issueNumber}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      state
+    })
+  });
 }
 
 async function upsertIssue(
   context: NonNullable<ReturnType<typeof getRepoContext>>,
   existing: GitHubIssue | null,
   item: ProductActionItem,
-  workspace: ResearchWorkspaceData
+  workspace: ResearchWorkspaceData,
+  metadata: { branchName: string; pullRequestUrl: string | null }
 ): Promise<GitHubIssue> {
-  const body = buildIssueBody(item, workspace);
+  const body = buildIssueBody(item, workspace, metadata);
   const title = buildIssueTitle(item);
 
   if (!existing) {
-    return githubRequest<GitHubIssue>(context, `/repos/${context.owner}/${context.repo}/issues`, {
+    const created = await githubRequest<GitHubIssue>(context, `/repos/${context.owner}/${context.repo}/issues`, {
       method: "POST",
       body: JSON.stringify({
         title,
         body,
-        labels: LABELS.map((label) => label.name)
+        labels: actionLabels(item)
       })
     });
+
+    return created;
   }
 
-  if (existing.title === title && existing.body === body && existing.state === "open") {
-    return existing;
-  }
+  const updated =
+    existing.title === title && existing.body === body && existing.state === "open"
+      ? existing
+      : await githubRequest<GitHubIssue>(context, `/repos/${context.owner}/${context.repo}/issues/${existing.number}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            title,
+            body,
+            state: "open"
+          })
+        });
 
-  return githubRequest<GitHubIssue>(context, `/repos/${context.owner}/${context.repo}/issues/${existing.number}`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      title,
-      body,
-      state: "open"
-    })
-  });
+  await syncLabelsOnIssueLike(context, updated.number, actionLabels(item));
+  return updated;
 }
 
 async function closeStaleIssues(
@@ -193,12 +384,133 @@ async function closeStaleIssues(
       continue;
     }
 
-    await githubRequest(context, `/repos/${context.owner}/${context.repo}/issues/${issue.number}`, {
-      method: "PATCH",
+    await updateIssueLikeState(context, issue.number, "closed");
+  }
+}
+
+async function ensureBranch(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  branchName: string,
+  defaultBranch: string
+): Promise<void> {
+  const existing = await githubRequestOptional<GitHubRef>(context, `/repos/${context.owner}/${context.repo}/git/ref/heads/${branchName}`);
+
+  if (existing) {
+    return;
+  }
+
+  const defaultRef = await githubRequest<GitHubRef>(context, `/repos/${context.owner}/${context.repo}/git/ref/heads/${defaultBranch}`);
+
+  await githubRequest(context, `/repos/${context.owner}/${context.repo}/git/refs`, {
+    method: "POST",
+    body: JSON.stringify({
+      ref: `refs/heads/${branchName}`,
+      sha: defaultRef.object.sha
+    })
+  });
+}
+
+async function readContentFile(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  path: string,
+  branchName: string
+): Promise<GitHubContentFile | null> {
+  return githubRequestOptional<GitHubContentFile>(
+    context,
+    `/repos/${context.owner}/${context.repo}/contents/${encodeContentPath(path)}?ref=${encodeURIComponent(branchName)}`
+  );
+}
+
+async function syncPlanFile(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  item: ProductActionItem,
+  issue: GitHubIssue,
+  workspace: ResearchWorkspaceData,
+  branchName: string
+) {
+  const path = `${PLAN_DIR}/${item.id}.md`;
+  const content = buildPlanFileContent(item, issue, workspace, branchName);
+  const existing = await readContentFile(context, path, branchName);
+  const current =
+    existing?.content && existing.encoding === "base64" ? Buffer.from(existing.content.replace(/\n/g, ""), "base64").toString("utf8") : null;
+
+  if (current === content) {
+    return;
+  }
+
+  await githubRequest(context, `/repos/${context.owner}/${context.repo}/contents/${encodeContentPath(path)}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      message: `chore: seed agent council plan for ${item.id}`,
+      content: Buffer.from(content, "utf8").toString("base64"),
+      branch: branchName,
+      ...(existing?.sha ? { sha: existing.sha } : {})
+    })
+  });
+}
+
+async function upsertPullRequest(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  existing: GitHubPullRequest | null,
+  item: ProductActionItem,
+  issue: GitHubIssue,
+  branchName: string,
+  defaultBranch: string
+): Promise<GitHubPullRequest> {
+  const title = buildPullRequestTitle(item);
+  const body = buildPullRequestBody(item, issue, branchName);
+
+  if (!existing) {
+    const created = await githubRequest<GitHubPullRequest>(context, `/repos/${context.owner}/${context.repo}/pulls`, {
+      method: "POST",
       body: JSON.stringify({
-        state: "closed"
+        title,
+        body,
+        head: branchName,
+        base: defaultBranch,
+        draft: true
       })
     });
+
+    await syncLabelsOnIssueLike(context, created.number, actionLabels(item));
+    return created;
+  }
+
+  if (existing.state === "closed" && !existing.merged_at) {
+    await updateIssueLikeState(context, existing.number, "open");
+  }
+
+  const updated =
+    existing.title === title && existing.body === body && existing.state === "open"
+      ? existing
+      : await githubRequest<GitHubPullRequest>(context, `/repos/${context.owner}/${context.repo}/pulls/${existing.number}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            title,
+            body,
+            base: defaultBranch
+          })
+        });
+
+  await syncLabelsOnIssueLike(context, updated.number, actionLabels(item));
+  return updated;
+}
+
+async function closeStalePullRequests(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  pulls: GitHubPullRequest[],
+  activeIds: Set<string>
+) {
+  for (const pull of pulls) {
+    const marker = pull.body?.match(/research-action-pr:([a-z0-9-]+)/i)?.[1];
+
+    if (!marker || activeIds.has(marker) || pull.state === "closed") {
+      continue;
+    }
+
+    if (!pull.merged_at) {
+      await updateIssueLikeState(context, pull.number, "closed");
+    }
   }
 }
 
@@ -222,32 +534,54 @@ async function main() {
   const context = getRepoContext();
 
   if (!context) {
-    process.stdout.write("issues=skipped\nreason=GITHUB_TOKEN 또는 GITHUB_REPOSITORY가 없어 이슈 동기화를 건너뜁니다.\n");
+    process.stdout.write("issues=skipped\nreason=GITHUB_TOKEN 또는 GITHUB_REPOSITORY가 없어 GitHub 동기화를 건너뜁니다.\n");
     return;
   }
 
   await ensureLabels(context);
+  const repo = await repositoryInfo(context);
   const existingIssues = await listManagedIssues(context);
-  const synced: GitHubIssue[] = [];
+  const existingPulls = await listManagedPullRequests(context);
+  const syncedItems: ProductActionItem[] = [];
 
   for (const item of snapshot.workspace.productReview.actionItems) {
-    const issue = await upsertIssue(context, findManagedIssue(existingIssues, item.id), item, snapshot.workspace);
-    synced.push(issue);
+    const branchName = buildBranchName(item);
+    const initialIssue = await upsertIssue(context, findManagedIssue(existingIssues, item.id), item, snapshot.workspace, {
+      branchName,
+      pullRequestUrl: null
+    });
+
+    await ensureBranch(context, branchName, repo.default_branch);
+    await syncPlanFile(context, item, initialIssue, snapshot.workspace, branchName);
+
+    const pull = await upsertPullRequest(
+      context,
+      findManagedPullRequest(existingPulls, item.id, branchName),
+      item,
+      initialIssue,
+      branchName,
+      repo.default_branch
+    );
+
+    const finalIssue = await upsertIssue(context, initialIssue, item, snapshot.workspace, {
+      branchName,
+      pullRequestUrl: pull.html_url
+    });
+
+    syncedItems.push(withSyncedMetadata(item, finalIssue, branchName, pull));
   }
 
   await closeStaleIssues(context, existingIssues, new Set(snapshot.workspace.productReview.actionItems.map((item) => item.id)));
+  await closeStalePullRequests(context, existingPulls, new Set(snapshot.workspace.productReview.actionItems.map((item) => item.id)));
 
-  snapshot.workspace.productReview.actionItems = snapshot.workspace.productReview.actionItems.map((item) =>
-    withIssueMetadata(item, synced.find((issue) => issue.body?.includes(buildIssueMarker(item.id))) ?? null)
-  );
-
+  snapshot.workspace.productReview.actionItems = syncedItems;
   await persistSnapshot(snapshot);
 
   process.stdout.write(
     [
       `issues=synced`,
-      `count=${snapshot.workspace.productReview.actionItems.length}`,
-      ...snapshot.workspace.productReview.actionItems.map((item) => `${item.id}=${item.issueUrl ?? "pending"}`)
+      `count=${syncedItems.length}`,
+      ...syncedItems.map((item) => `${item.id}=issue:${item.issueUrl ?? "pending"}|pr:${item.pullRequestUrl ?? "pending"}`)
     ].join("\n")
   );
   process.stdout.write("\n");
