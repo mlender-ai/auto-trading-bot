@@ -106,6 +106,17 @@ interface ExecutionTraderOutput {
   traderMessage: string;
 }
 
+function readEnvString(name: string): string | undefined {
+  const value = process.env[name];
+
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
 function dedupeNews(items: Array<ResearchNewsItem | null | undefined>): ResearchNewsItem[] {
   const seen = new Set<string>();
 
@@ -270,10 +281,11 @@ function buildFallbackSnapshot(baseWorkspace: ResearchWorkspaceData, config: Res
 
 function resolvePipelineConfig(options: GenerateResearchPipelineOptions): { config: ResolvedPipelineConfig; warnings: string[] } {
   const warnings: string[] = [];
-  const providerSetting = options.provider ?? (process.env.RESEARCH_PIPELINE_PROVIDER as ResearchPipelineProvider | "auto" | undefined) ?? "auto";
-  const apiKey = options.openAiApiKey ?? process.env.OPENAI_API_KEY ?? null;
-  const model = options.model ?? process.env.OPENAI_MODEL ?? process.env.RESEARCH_PIPELINE_MODEL ?? "gpt-4.1-mini";
-  const baseUrl = (options.openAiBaseUrl ?? process.env.OPENAI_BASE_URL ?? "https://api.openai.com/v1").replace(/\/+$/, "");
+  const providerSetting =
+    options.provider ?? ((readEnvString("RESEARCH_PIPELINE_PROVIDER") as ResearchPipelineProvider | "auto" | undefined) ?? "auto");
+  const apiKey = options.openAiApiKey ?? readEnvString("OPENAI_API_KEY") ?? null;
+  const model = options.model ?? readEnvString("OPENAI_MODEL") ?? readEnvString("RESEARCH_PIPELINE_MODEL") ?? "gpt-4.1-mini";
+  const baseUrl = (options.openAiBaseUrl ?? readEnvString("OPENAI_BASE_URL") ?? "https://api.openai.com/v1").replace(/\/+$/, "");
 
   if (providerSetting === "openai" && !apiKey) {
     warnings.push("OPENAI_API_KEY가 없어 규칙 기반 파이프라인으로 대체했습니다.");
