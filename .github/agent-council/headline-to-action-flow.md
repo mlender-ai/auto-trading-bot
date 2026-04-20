@@ -4,10 +4,23 @@
 - Owner: PM
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2
 - Branch: codex/agent-council/headline-to-action-flow
-- Generated At: 2026-04-20T13:50:05.262Z
+- Generated At: 2026-04-20T13:59:19.454Z
+- Status: queued
 
 ## Detail
 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.
+
+## Implementation Focus
+뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.
+
+## Target Files
+- apps/web/components/research/ResearchWorkspace.tsx
+- apps/web/app/globals.css
+- packages/shared/src/research.ts
+
+## Verification
+- npm run typecheck
+- npm run build:web
 
 ## References
 - news-editor
