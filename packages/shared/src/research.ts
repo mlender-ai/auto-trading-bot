@@ -5,7 +5,7 @@ export type PatternConfidence = "high" | "medium" | "low";
 export type AgentRole = "PM" | "Trader" | "DA" | "QA" | "CTO";
 export type ResearchPipelineStage = "news" | "macro" | "ticker" | "action";
 export type ResearchPipelineAgentId = "news-editor" | "macro-analyst" | "ticker-analyst" | "execution-trader";
-export type ResearchPipelineProvider = "rule-based" | "openai";
+export type ResearchPipelineProvider = "rule-based" | "openai" | "github-models";
 export type ResearchPipelineRunSource = "static" | "web-api" | "local-script" | "github-actions";
 
 export interface ResearchSectorOption {

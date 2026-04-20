@@ -47,7 +47,8 @@ interface ResolvedPipelineConfig {
   provider: ResearchPipelineProvider;
   model: string | null;
   apiKey: string | null;
-  baseUrl: string;
+  apiUrl: string;
+  temperature: number;
 }
 
 interface NewsEditorDerivedSelection {
@@ -106,6 +107,11 @@ interface ExecutionTraderOutput {
   traderMessage: string;
 }
 
+const DEFAULT_GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions";
+const DEFAULT_GITHUB_MODELS_MODEL = "openai/gpt-4.1";
+const DEFAULT_OPENAI_API_URL = "https://api.openai.com/v1";
+const DEFAULT_OPENAI_MODEL = "gpt-4.1-mini";
+
 function readEnvString(name: string): string | undefined {
   const value = process.env[name];
 
@@ -115,6 +121,40 @@ function readEnvString(name: string): string | undefined {
 
   const trimmed = value.trim();
   return trimmed.length > 0 ? trimmed : undefined;
+}
+
+function resolveApiUrl(rawUrl: string): string {
+  const url = rawUrl.replace(/\/+$/, "");
+
+  if (url.endsWith("/chat/completions") || url.endsWith("/v1/chat/completions")) {
+    return url;
+  }
+
+  if (url.endsWith("/v1")) {
+    return `${url}/chat/completions`;
+  }
+
+  return `${url}/v1/chat/completions`;
+}
+
+function unwrapContent(content: unknown): string {
+  if (typeof content === "string") {
+    return content;
+  }
+
+  if (Array.isArray(content)) {
+    const parts = content.map((item) => {
+      if (item && typeof item === "object" && "text" in item && typeof item.text === "string") {
+        return item.text;
+      }
+
+      return typeof item === "string" ? item : JSON.stringify(item);
+    });
+
+    return parts.join("\n");
+  }
+
+  return String(content ?? "");
 }
 
 function dedupeNews(items: Array<ResearchNewsItem | null | undefined>): ResearchNewsItem[] {
@@ -249,7 +289,7 @@ function buildFallbackSnapshot(baseWorkspace: ResearchWorkspaceData, config: Res
     ...baseWorkspace.agentPipeline.runtime,
     runId: `fallback-${baseWorkspace.generatedAt}`,
     provider: "rule-based" as const,
-    model: config.provider === "openai" ? config.model : null,
+    model: config.provider !== "rule-based" ? config.model : null,
     source: options.source ?? "local-script",
     status: "fallback" as const,
     generatedAt: baseWorkspace.generatedAt,
@@ -283,43 +323,77 @@ function resolvePipelineConfig(options: GenerateResearchPipelineOptions): { conf
   const warnings: string[] = [];
   const providerSetting =
     options.provider ?? ((readEnvString("RESEARCH_PIPELINE_PROVIDER") as ResearchPipelineProvider | "auto" | undefined) ?? "auto");
-  const apiKey = options.openAiApiKey ?? readEnvString("OPENAI_API_KEY") ?? null;
-  const model = options.model ?? readEnvString("OPENAI_MODEL") ?? readEnvString("RESEARCH_PIPELINE_MODEL") ?? "gpt-4.1-mini";
-  const baseUrl = (options.openAiBaseUrl ?? readEnvString("OPENAI_BASE_URL") ?? "https://api.openai.com/v1").replace(/\/+$/, "");
+  const configuredApiKey = options.openAiApiKey ?? readEnvString("AI_API_KEY") ?? readEnvString("OPENAI_API_KEY") ?? null;
+  const githubToken = readEnvString("GITHUB_TOKEN") ?? null;
+  const usesGithubToken = !configuredApiKey || configuredApiKey.toUpperCase() === "USE_GITHUB_TOKEN";
+  const apiKey = usesGithubToken ? githubToken : configuredApiKey;
+  const requestedApiUrl = options.openAiBaseUrl ?? readEnvString("AI_API_URL") ?? readEnvString("OPENAI_BASE_URL");
+  const temperature = Number.parseFloat(readEnvString("AI_TEMPERATURE") ?? "0.2");
+  const resolvedTemperature = Number.isFinite(temperature) ? temperature : 0.2;
+  const provider =
+    providerSetting === "github-models"
+      ? "github-models"
+      : providerSetting === "openai"
+        ? "openai"
+        : requestedApiUrl
+          ? requestedApiUrl.includes("models.github.ai")
+            ? "github-models"
+            : configuredApiKey && !usesGithubToken
+              ? "openai"
+              : githubToken
+                ? "github-models"
+                : "rule-based"
+          : configuredApiKey && !usesGithubToken
+            ? "openai"
+            : githubToken
+              ? "github-models"
+              : "rule-based";
+  const model =
+    options.model ??
+    readEnvString("AI_MODEL") ??
+    readEnvString("OPENAI_MODEL") ??
+    readEnvString("RESEARCH_PIPELINE_MODEL") ??
+    (provider === "github-models" ? DEFAULT_GITHUB_MODELS_MODEL : DEFAULT_OPENAI_MODEL);
+  const apiUrl = resolveApiUrl(requestedApiUrl ?? (provider === "github-models" ? DEFAULT_GITHUB_MODELS_URL : DEFAULT_OPENAI_API_URL));
 
-  if (providerSetting === "openai" && !apiKey) {
-    warnings.push("OPENAI_API_KEY가 없어 규칙 기반 파이프라인으로 대체했습니다.");
+  if ((providerSetting === "openai" || provider === "openai") && !apiKey) {
+    warnings.push("AI_API_KEY 또는 OPENAI_API_KEY가 없어 규칙 기반 파이프라인으로 대체했습니다.");
 
     return {
       config: {
         provider: "rule-based",
         model: null,
         apiKey: null,
-        baseUrl
+        apiUrl,
+        temperature: resolvedTemperature
       },
       warnings
     };
   }
 
-  if (providerSetting === "auto" && apiKey) {
+  if (provider === "github-models" && !apiKey) {
+    warnings.push("GITHUB_TOKEN fallback이 없어 GitHub Models 대신 규칙 기반 파이프라인으로 대체했습니다.");
+
     return {
       config: {
-        provider: "openai",
-        model,
-        apiKey,
-        baseUrl
+        provider: "rule-based",
+        model: null,
+        apiKey: null,
+        apiUrl,
+        temperature: resolvedTemperature
       },
       warnings
     };
   }
 
-  if (providerSetting === "openai") {
+  if (provider !== "rule-based" && apiKey) {
     return {
       config: {
-        provider: "openai",
+        provider,
         model,
         apiKey,
-        baseUrl
+        apiUrl,
+        temperature: resolvedTemperature
       },
       warnings
     };
@@ -330,7 +404,8 @@ function resolvePipelineConfig(options: GenerateResearchPipelineOptions): { conf
       provider: "rule-based",
       model: null,
       apiKey: null,
-      baseUrl
+      apiUrl,
+      temperature: resolvedTemperature
     },
     warnings
   };
@@ -349,55 +424,85 @@ function extractJson(content: string): Record<string, unknown> {
   return asRecord(JSON.parse(candidate.slice(start, end + 1)));
 }
 
-async function callOpenAIJson<T>(config: ResolvedPipelineConfig, system: string, user: string): Promise<T> {
+async function callAiJson<T>(config: ResolvedPipelineConfig, system: string, user: string): Promise<T> {
   if (!config.apiKey || !config.model) {
-    throw new Error("OpenAI configuration is incomplete.");
+    throw new Error("AI configuration is incomplete.");
   }
 
-  const response = await fetch(`${config.baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${config.apiKey}`
-    },
-    body: JSON.stringify({
-      model: config.model,
-      temperature: 0.2,
-      response_format: {
-        type: "json_object"
+  const headers: Record<string, string> = {
+    "content-type": "application/json",
+    authorization: `Bearer ${config.apiKey}`
+  };
+
+  if (config.apiUrl.includes("models.github.ai")) {
+    headers.Accept = "application/vnd.github+json";
+    headers["X-GitHub-Api-Version"] = "2022-11-28";
+  }
+
+  const payload = JSON.stringify({
+    model: config.model,
+    temperature: config.temperature,
+    max_tokens: 2200,
+    messages: [
+      {
+        role: "system",
+        content: system
       },
-      messages: [
-        {
-          role: "system",
-          content: system
-        },
-        {
-          role: "user",
-          content: user
-        }
-      ]
-    })
+      {
+        role: "user",
+        content: user
+      }
+    ]
   });
 
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(`OpenAI request failed (${response.status}): ${detail}`);
-  }
+  let lastError: Error | null = null;
 
-  const payload = (await response.json()) as {
-    choices?: Array<{
-      message?: {
-        content?: string;
+  for (let attempt = 1; attempt <= 5; attempt += 1) {
+    try {
+      const response = await fetch(config.apiUrl, {
+        method: "POST",
+        headers,
+        body: payload
+      });
+
+      if (response.status === 429 || response.status >= 500) {
+        const detail = await response.text();
+        lastError = new Error(`AI request failed (${response.status}): ${detail}`);
+        await new Promise((resolve) => setTimeout(resolve, Math.min(60_000, 5_000 * 2 ** (attempt - 1))));
+        continue;
+      }
+
+      if (!response.ok) {
+        const detail = await response.text();
+        throw new Error(`AI request failed (${response.status}): ${detail}`);
+      }
+
+      const parsed = (await response.json()) as {
+        choices?: Array<{
+          message?: {
+            content?: unknown;
+          };
+        }>;
       };
-    }>;
-  };
-  const content = payload.choices?.[0]?.message?.content;
+      const content = unwrapContent(parsed.choices?.[0]?.message?.content).trim();
 
-  if (!content) {
-    throw new Error("OpenAI response did not contain a message.");
+      if (!content) {
+        throw new Error("AI response content was empty.");
+      }
+
+      return extractJson(content) as T;
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+
+      if (attempt === 5) {
+        break;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, Math.min(30_000, 3_000 * attempt)));
+    }
   }
 
-  return extractJson(content) as T;
+  throw lastError ?? new Error("AI request exhausted retries without a response.");
 }
 
 function parseNewsEditorOutput(value: unknown, preferences: UserResearchPreferences): NewsEditorOutput {
@@ -725,7 +830,7 @@ async function runNewsEditor(config: ResolvedPipelineConfig, workspace: Research
     importanceScore: item.importanceScore
   }));
 
-  const response = await callOpenAIJson<NewsEditorOutput>(
+  const response = await callAiJson<NewsEditorOutput>(
     config,
     "당신은 글로벌 금융시장 뉴스 편집자다. 가격 영향이 있는 뉴스만 선택하고 반드시 JSON만 반환한다.",
     [
@@ -776,7 +881,7 @@ async function runMacroAnalyst(config: ResolvedPipelineConfig, workspace: Resear
     }))
   };
 
-  const response = await callOpenAIJson<MacroAnalystOutput>(
+  const response = await callAiJson<MacroAnalystOutput>(
     config,
     "당신은 글로벌 매크로 시장 분석가다. 뉴스를 반복하지 말고 시장 해석만 JSON으로 반환한다.",
     [
@@ -827,7 +932,7 @@ async function runTickerAnalyst(
     }))
   };
 
-  const response = await callOpenAIJson<TickerAnalystOutput>(
+  const response = await callAiJson<TickerAnalystOutput>(
     config,
     "당신은 전문 트레이더이자 기술적 분석가다. 지표를 단순 나열하지 말고 해석 중심 JSON만 반환한다.",
     [
@@ -880,7 +985,7 @@ async function runExecutionTrader(
     }))
   };
 
-  const response = await callOpenAIJson<ExecutionTraderOutput>(
+  const response = await callAiJson<ExecutionTraderOutput>(
     config,
     "당신은 기관 트레이더다. 실제 실행 가능한 행동 제안만 JSON으로 반환한다.",
     [
@@ -925,8 +1030,8 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
     const generatedAt = new Date().toISOString();
     const steps = buildPipelineSteps(baseWorkspace.agentPipeline.definitions, news, market, tickerAnalyses, newsOutput, macroOutput, tickerOutput, actionPlan, actionOutput);
     const runtime = buildRuntime(steps, generatedAt, {
-      runId: `openai-${generatedAt}`,
-      provider: "openai",
+      runId: `${config.provider}-${generatedAt}`,
+      provider: config.provider,
       model: config.model,
       source: options.source ?? "local-script",
       status: "completed",
@@ -967,7 +1072,7 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
   } catch (error) {
     return buildFallbackSnapshot(baseWorkspace, config, options, [
       ...warnings,
-      error instanceof Error ? `OpenAI 파이프라인 실행 실패: ${error.message}` : "OpenAI 파이프라인 실행에 실패했습니다."
+      error instanceof Error ? `AI 파이프라인 실행 실패: ${error.message}` : "AI 파이프라인 실행에 실패했습니다."
     ]);
   }
 }

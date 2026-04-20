@@ -108,6 +108,7 @@ Research pipeline workflow currently:
 - writes the latest pipeline JSON and Markdown to `generated/research/`
 - publishes the agent thread to the GitHub Actions job summary
 - uploads the JSON and Markdown as workflow artifacts
+- defaults to GitHub Models with the per-run `GITHUB_TOKEN` when `AI_API_KEY` is empty or set to `USE_GITHUB_TOKEN`
 
 ## Deploy Overview
 
@@ -144,11 +145,26 @@ Shared or common variables:
 - `REPORT_PROVIDER`
 - `MARKET_DATA_PROVIDER`
 - `RESEARCH_PIPELINE_PROVIDER`
+- `AI_API_URL`
+- `AI_API_KEY`
+- `AI_MODEL`
+- `AI_TEMPERATURE`
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL`
 - `OPENAI_BASE_URL`
 
 Reference values are in [`.env.example`](.env.example).
+
+## GitHub Models
+
+The research pipeline can run without an external OpenAI API key.
+
+- default endpoint: `https://models.github.ai/inference/chat/completions`
+- default model: `openai/gpt-4.1`
+- auth fallback: if `AI_API_KEY` is empty or `USE_GITHUB_TOKEN`, the runner uses `GITHUB_TOKEN`
+- GitHub Actions workflow permission required: `models: read`
+
+This means the workflow can call GitHub Models directly with the token GitHub issues for that run, while still supporting OpenAI-compatible endpoints through `AI_API_URL` and `AI_API_KEY` when needed.
 
 ## Operational Rule
 

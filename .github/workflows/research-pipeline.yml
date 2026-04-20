@@ -10,15 +10,18 @@ on:
 
 permissions:
   contents: read
+  models: read
 
 jobs:
   generate-briefing:
     runs-on: ubuntu-latest
     env:
       RESEARCH_PIPELINE_PROVIDER: auto
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
-      OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
+      AI_API_URL: ${{ secrets.AI_API_URL }}
+      AI_API_KEY: ${{ secrets.AI_API_KEY }}
+      AI_MODEL: ${{ secrets.AI_MODEL }}
+      AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,6 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate AI configuration
+        shell: bash
+        run: |
+          test -n "$GITHUB_TOKEN"
 
       - name: Generate research pipeline
         run: npm run research:generate
