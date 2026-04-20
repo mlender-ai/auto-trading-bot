@@ -59,8 +59,9 @@ function compactCopy(text: string, maxLength = 120) {
   return `${text.slice(0, maxLength).trimEnd()}...`;
 }
 
-function buildNewsLookup(workspace: ResearchWorkspaceData) {
+function buildNewsLookup(workspace: ResearchWorkspaceData, supplementalNews: ResearchNewsItem[] = []) {
   const entries = [
+    ...supplementalNews,
     workspace.news.headline,
     ...workspace.news.derivedArticles,
     ...workspace.news.sectorIssues.map((issue) => issue.item)
@@ -181,8 +182,13 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   const [selectedTicker, setSelectedTicker] = useState(initialData.focusedTickers[0] ?? "");
   const [isRunningPipeline, setIsRunningPipeline] = useState(false);
   const [isRefreshingWorkspace, setIsRefreshingWorkspace] = useState(false);
+  const [isAnalyzingTicker, setIsAnalyzingTicker] = useState(false);
+  const [customTickerInput, setCustomTickerInput] = useState("");
+  const [customTickerSector, setCustomTickerSector] = useState<ResearchSectorTag>(initialData.preferences.sectors[0] ?? "semiconductors");
+  const [supplementalNews, setSupplementalNews] = useState<ResearchNewsItem[]>([]);
+  const [tickerNotice, setTickerNotice] = useState<string | null>(null);
   const [pipelineNotice, setPipelineNotice] = useState<string | null>(null);
-  const relatedNewsLookup = useMemo(() => buildNewsLookup(workspace), [workspace]);
+  const relatedNewsLookup = useMemo(() => buildNewsLookup(workspace, supplementalNews), [workspace, supplementalNews]);
   const activeAnalysis = useMemo(
     () => workspace.tickerAnalyses.find((analysis) => analysis.ticker === selectedTicker) ?? workspace.tickerAnalyses[0] ?? null,
     [selectedTicker, workspace.tickerAnalyses]
@@ -250,6 +256,14 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
     setSelectedTicker(workspace.tickerAnalyses[0]?.ticker ?? "");
   }, [selectedTicker, workspace.tickerAnalyses]);
 
+  useEffect(() => {
+    if (preferences.sectors.includes(customTickerSector)) {
+      return;
+    }
+
+    setCustomTickerSector(preferences.sectors[0] ?? "semiconductors");
+  }, [customTickerSector, preferences.sectors]);
+
   async function refreshWorkspace(nextPreferences: UserResearchPreferences) {
     const normalized = normalizeResearchPreferences(nextPreferences);
     const params = new URLSearchParams();
@@ -266,6 +280,8 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
       setPreferences(normalized);
       setWorkspace(buildResearchWorkspace(normalized));
     });
+    setSupplementalNews([]);
+    setTickerNotice(null);
 
     setIsRefreshingWorkspace(true);
 
@@ -286,12 +302,74 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
         setPreferences(payload.workspace.preferences);
         setSelectedTicker((current) => (payload.workspace.tickerAnalyses.some((analysis) => analysis.ticker === current) ? current : payload.workspace.focusedTickers[0] ?? ""));
       });
+      setSupplementalNews([]);
 
       setPipelineNotice(payload.warnings.length > 0 ? payload.warnings.join(" ") : "실데이터 기준으로 화면을 새로고침했습니다.");
     } catch (error) {
       setPipelineNotice(error instanceof Error ? error.message : "실데이터 불러오기에 실패했습니다.");
     } finally {
       setIsRefreshingWorkspace(false);
+    }
+  }
+
+  async function handleAnalyzeTicker() {
+    const ticker = customTickerInput.trim().toUpperCase();
+
+    if (!ticker) {
+      setTickerNotice("티커를 입력해 주세요.");
+      return;
+    }
+
+    setIsAnalyzingTicker(true);
+    setTickerNotice(`${ticker} 라이브 분석을 불러오는 중입니다.`);
+
+    try {
+      const response = await fetch("/api/research/ticker", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          ticker,
+          sectorTag: customTickerSector,
+          preferences
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Ticker analysis request failed with ${response.status}`);
+      }
+
+      const payload = (await response.json()) as {
+        analysis: TickerAnalysis | null;
+        relatedNews: ResearchNewsItem[];
+        warnings: string[];
+      };
+
+      if (!payload.analysis) {
+        setTickerNotice(payload.warnings.join(" ") || `${ticker} 분석을 만들 수 없었습니다.`);
+        return;
+      }
+
+      const nextAnalysis = payload.analysis;
+
+      startTransition(() => {
+        setWorkspace((current) => ({
+          ...current,
+          focusedTickers: [nextAnalysis.ticker, ...current.focusedTickers.filter((item) => item !== nextAnalysis.ticker)],
+          tickerAnalyses: [nextAnalysis, ...current.tickerAnalyses.filter((item) => item.ticker !== nextAnalysis.ticker)]
+        }));
+        setSelectedTicker(nextAnalysis.ticker);
+      });
+      setSupplementalNews((current) => {
+        const merged = [...payload.relatedNews, ...current];
+        return Array.from(new Map(merged.map((item) => [item.id, item])).values());
+      });
+      setTickerNotice(payload.warnings.length > 0 ? payload.warnings.join(" ") : `${ticker} 실데이터 분석으로 업데이트했습니다.`);
+    } catch (error) {
+      setTickerNotice(error instanceof Error ? error.message : "티커 분석 요청에 실패했습니다.");
+    } finally {
+      setIsAnalyzingTicker(false);
     }
   }
 
@@ -452,7 +530,19 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
           ) : null}
 
           {activeTab === "signals" ? (
-            <SignalsTab analysis={activeAnalysis} newsLookup={relatedNewsLookup} onSelectTicker={setSelectedTicker} workspace={workspace} />
+            <SignalsTab
+              analysis={activeAnalysis}
+              customTickerInput={customTickerInput}
+              customTickerSector={customTickerSector}
+              isAnalyzingTicker={isAnalyzingTicker}
+              newsLookup={relatedNewsLookup}
+              onAnalyzeTicker={handleAnalyzeTicker}
+              onChangeTickerInput={setCustomTickerInput}
+              onChangeTickerSector={setCustomTickerSector}
+              onSelectTicker={setSelectedTicker}
+              tickerNotice={tickerNotice}
+              workspace={workspace}
+            />
           ) : null}
 
           {activeTab === "meeting" ? (
@@ -609,13 +699,27 @@ function NewsTab({ workspace }: { workspace: ResearchWorkspaceData }) {
 
 function SignalsTab({
   analysis,
+  customTickerInput,
+  customTickerSector,
+  isAnalyzingTicker,
   newsLookup,
+  onAnalyzeTicker,
+  onChangeTickerInput,
+  onChangeTickerSector,
   onSelectTicker,
+  tickerNotice,
   workspace
 }: {
   analysis: TickerAnalysis | null;
+  customTickerInput: string;
+  customTickerSector: ResearchSectorTag;
+  isAnalyzingTicker: boolean;
   newsLookup: Map<string, ResearchNewsItem>;
+  onAnalyzeTicker: () => void;
+  onChangeTickerInput: (value: string) => void;
+  onChangeTickerSector: (value: ResearchSectorTag) => void;
   onSelectTicker: (ticker: string) => void;
+  tickerNotice: string | null;
   workspace: ResearchWorkspaceData;
 }) {
   if (!analysis) {
@@ -632,6 +736,45 @@ function SignalsTab({
 
   return (
     <section className="signal-shell">
+      <section className="section-panel ticker-search-panel">
+        <div className="section-heading compact">
+          <div>
+            <span className="section-kicker">Live Search</span>
+            <h2>티커 직접 분석</h2>
+          </div>
+          <p>관심 섹터 안에서 원하는 티커를 바로 넣고 실데이터 분석을 추가할 수 있습니다.</p>
+        </div>
+        <div className="ticker-search-controls">
+          <input
+            autoCapitalize="characters"
+            className="ticker-search-input"
+            onChange={(event) => onChangeTickerInput(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                void onAnalyzeTicker();
+              }
+            }}
+            placeholder="예: PLTR, TSM, OXY"
+            type="text"
+            value={customTickerInput}
+          />
+          <select className="ticker-search-select" onChange={(event) => onChangeTickerSector(event.target.value as ResearchSectorTag)} value={customTickerSector}>
+            {workspace.availableSectors
+              .filter((sector) => workspace.preferences.sectors.includes(sector.id))
+              .map((sector) => (
+                <option key={sector.id} value={sector.id}>
+                  {sector.label}
+                </option>
+              ))}
+          </select>
+          <button className="api-button" disabled={isAnalyzingTicker} onClick={() => void onAnalyzeTicker()} type="button">
+            {isAnalyzingTicker ? "분석 중..." : "티커 분석 추가"}
+          </button>
+        </div>
+        {tickerNotice ? <p className="ticker-search-notice">{tickerNotice}</p> : null}
+      </section>
+
       <section className="section-panel signal-selector">
         <div className="section-heading compact">
           <div>

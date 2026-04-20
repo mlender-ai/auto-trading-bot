@@ -60,6 +60,12 @@ interface LiveResearchWorkspaceResult {
   warnings: string[];
 }
 
+export interface LiveTickerAnalysisResult {
+  analysis: TickerAnalysis | null;
+  relatedNews: ResearchNewsItem[];
+  warnings: string[];
+}
+
 const sectorFeedMap: Record<ResearchSectorTag, FeedContext[]> = {
   semiconductors: [
     { symbol: "NVDA", sectorTag: "semiconductors", tickerTags: ["NVDA", "AMD", "TSM"] },
@@ -840,6 +846,10 @@ function buildSelectedTickers(preferences: UserResearchPreferences): string[] {
     .map((option) => option.ticker);
 }
 
+function normalizeTicker(ticker: string): string {
+  return ticker.trim().toUpperCase();
+}
+
 async function buildLiveNews(preferences: UserResearchPreferences): Promise<{ items: ResearchNewsItem[]; warnings: string[] }> {
   const warnings: string[] = [];
   const contexts = buildFeedContexts(preferences);
@@ -873,15 +883,11 @@ async function buildLiveNews(preferences: UserResearchPreferences): Promise<{ it
   };
 }
 
-async function buildLiveTickerAnalyses(
-  preferences: UserResearchPreferences,
-  newsItems: ResearchNewsItem[]
-): Promise<{ analyses: TickerAnalysis[]; warnings: string[] }> {
+async function buildProxySnapshotMap(sectors: ResearchSectorTag[]): Promise<{ map: Map<string, PriceSnapshot>; warnings: string[] }> {
   const warnings: string[] = [];
-  const selectedTickers = buildSelectedTickers(preferences);
-  const proxySymbols = Array.from(new Set(preferences.sectors.map((sector) => sectorProxyMap[sector]).filter(Boolean)));
+  const proxySymbols = Array.from(new Set(sectors.map((sector) => sectorProxyMap[sector]).filter(Boolean)));
   const proxyResults = await Promise.allSettled(proxySymbols.map((symbol) => fetchYahooChart(symbol)));
-  const proxySnapshotBySymbol = new Map<string, PriceSnapshot>();
+  const map = new Map<string, PriceSnapshot>();
 
   proxyResults.forEach((result, index) => {
     const symbol = proxySymbols[index];
@@ -891,12 +897,134 @@ async function buildLiveTickerAnalyses(
     }
 
     if (result.status === "fulfilled" && result.value.length > 0) {
-      proxySnapshotBySymbol.set(symbol, buildPriceSnapshot(result.value));
+      map.set(symbol, buildPriceSnapshot(result.value));
       return;
     }
 
     warnings.push(`${symbol} 섹터 프록시 수집 실패`);
   });
+
+  return {
+    map,
+    warnings
+  };
+}
+
+function buildTickerAnalysisFromBars(
+  ticker: string,
+  company: string,
+  sectorTag: ResearchSectorTag,
+  bars: PriceBar[],
+  relatedNews: ResearchNewsItem[],
+  proxySnapshot: PriceSnapshot | undefined
+): TickerAnalysis {
+  const snapshot = buildPriceSnapshot(bars);
+  const patternAnalysis = buildPatternAnalysis(bars, snapshot);
+
+  return {
+    ticker,
+    company,
+    sectorTag,
+    importanceScore: buildTickerImportance(snapshot, relatedNews),
+    summary:
+      snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50
+        ? "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다."
+        : snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50
+          ? "반등보다 구조 복원 확인이 먼저 필요한 방어 구간입니다."
+          : "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
+    technicalAnalysis: [
+      describeTrend(snapshot),
+      `주요 지지는 ${formatLevel(snapshot.support20)} / ${formatLevel(snapshot.support60)}, 저항은 ${formatLevel(snapshot.resistance20)} / ${formatLevel(snapshot.resistance60)}입니다.`,
+      describeRsi(snapshot),
+      describeMacd(snapshot)
+    ].join(" "),
+    patternAnalysis:
+      patternAnalysis.length > 0
+        ? patternAnalysis
+        : [{ name: "뚜렷한 패턴 없음", detail: "지금은 강한 패턴보다 지지/저항 반응 확인이 더 중요합니다.", confidence: "low" }],
+    marketContext: [
+      proxySnapshot ? describeSectorFlow(proxySnapshot) : `${getResearchSectorLabel(sectorTag)} 섹터 프록시 확인이 부족해 개별 종목 뉴스 의존도가 높습니다.`,
+      relatedNews[0] ? `연결 뉴스에서는 "${relatedNews[0].title}"가 가장 큰 가격 재료로 작동하고 있습니다.` : "직결 뉴스보다 업종 흐름 자체가 더 중요하게 작동하는 구간입니다."
+    ].join(" "),
+    recommendation: buildTickerRecommendation(snapshot, ticker),
+    linkedNewsIds: relatedNews.map((item) => item.id)
+  };
+}
+
+export async function analyzeLiveTicker(
+  ticker: string,
+  sectorTag: ResearchSectorTag,
+  preferences?: Partial<UserResearchPreferences>
+): Promise<LiveTickerAnalysisResult> {
+  const normalizedTicker = normalizeTicker(ticker);
+  const normalizedPreferences = normalizeResearchPreferences({
+    ...preferences,
+    sectors: preferences?.sectors?.length ? preferences.sectors : [sectorTag]
+  });
+  const warnings: string[] = [];
+  const company = researchTickerOptions.find((entry) => entry.ticker === normalizedTicker)?.label ?? normalizedTicker;
+  const feedContext: FeedContext = {
+    symbol: normalizedTicker,
+    sectorTag,
+    tickerTags: [normalizedTicker, ...researchTickerOptions.filter((entry) => entry.sectorTag === sectorTag).slice(0, 2).map((entry) => entry.ticker)]
+  };
+
+  const [feedResult, chartResult, proxyResult] = await Promise.allSettled([
+    fetchYahooFeed(feedContext),
+    fetchYahooChart(normalizedTicker),
+    buildProxySnapshotMap([sectorTag])
+  ]);
+
+  const rawNews =
+    feedResult.status === "fulfilled"
+      ? feedResult.value
+      : (warnings.push(`${normalizedTicker} 뉴스 피드 수집 실패`), []);
+  const relatedNews = await attachImages(
+    dedupeByKey(
+      rawNews
+        .map((item) => toResearchNewsItem(item, feedContext, normalizedPreferences))
+        .filter((item): item is ResearchNewsItem => Boolean(item))
+        .sort((left, right) => right.importanceScore - left.importanceScore)
+        .slice(0, 3),
+      (item) => item.id
+    )
+  );
+
+  const proxySnapshot =
+    proxyResult.status === "fulfilled" ? proxyResult.value.map.get(sectorProxyMap[sectorTag]) : undefined;
+
+  if (proxyResult.status === "fulfilled") {
+    warnings.push(...proxyResult.value.warnings);
+  } else {
+    warnings.push(`${getResearchSectorLabel(sectorTag)} 섹터 프록시 수집 실패`);
+  }
+
+  if (chartResult.status !== "fulfilled" || chartResult.value.length < 60) {
+    warnings.push(`${normalizedTicker} 가격 데이터 수집 실패`);
+
+    return {
+      analysis: null,
+      relatedNews,
+      warnings
+    };
+  }
+
+  return {
+    analysis: buildTickerAnalysisFromBars(normalizedTicker, company, sectorTag, chartResult.value, relatedNews, proxySnapshot),
+    relatedNews,
+    warnings
+  };
+}
+
+async function buildLiveTickerAnalyses(
+  preferences: UserResearchPreferences,
+  newsItems: ResearchNewsItem[]
+): Promise<{ analyses: TickerAnalysis[]; warnings: string[] }> {
+  const warnings: string[] = [];
+  const selectedTickers = buildSelectedTickers(preferences);
+  const proxyMapResult = await buildProxySnapshotMap(preferences.sectors);
+  const proxySnapshotBySymbol = proxyMapResult.map;
+  warnings.push(...proxyMapResult.warnings);
 
   const chartResults = await Promise.allSettled(selectedTickers.map((ticker) => fetchYahooChart(ticker)));
   const analyses = chartResults
@@ -918,36 +1046,9 @@ async function buildLiveTickerAnalyses(
         return null;
       }
 
-      const snapshot = buildPriceSnapshot(result.value);
       const linkedNews = newsItems.filter((item) => item.tickerTags.includes(ticker) || item.sectorTag === option.sectorTag).slice(0, 3);
       const proxySnapshot = proxySnapshotBySymbol.get(sectorProxyMap[option.sectorTag]);
-      const patternAnalysis = buildPatternAnalysis(result.value, snapshot);
-
-      return {
-        ticker,
-        company: option.label,
-        sectorTag: option.sectorTag,
-        importanceScore: buildTickerImportance(snapshot, linkedNews),
-        summary:
-          snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50
-            ? "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다."
-            : snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50
-              ? "반등보다 구조 복원 확인이 먼저 필요한 방어 구간입니다."
-              : "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
-        technicalAnalysis: [
-          describeTrend(snapshot),
-          `주요 지지는 ${formatLevel(snapshot.support20)} / ${formatLevel(snapshot.support60)}, 저항은 ${formatLevel(snapshot.resistance20)} / ${formatLevel(snapshot.resistance60)}입니다.`,
-          describeRsi(snapshot),
-          describeMacd(snapshot)
-        ].join(" "),
-        patternAnalysis: patternAnalysis.length > 0 ? patternAnalysis : [{ name: "뚜렷한 패턴 없음", detail: "지금은 강한 패턴보다 지지/저항 반응 확인이 더 중요합니다.", confidence: "low" }],
-        marketContext: [
-          proxySnapshot ? describeSectorFlow(proxySnapshot) : `${getResearchSectorLabel(option.sectorTag)} 섹터 프록시 확인이 부족해 개별 종목 뉴스 의존도가 높습니다.`,
-          linkedNews[0] ? `연결 뉴스에서는 "${linkedNews[0].title}"가 가장 큰 가격 재료로 작동하고 있습니다.` : "직결 뉴스보다 업종 흐름 자체가 더 중요하게 작동하는 구간입니다."
-        ].join(" "),
-        recommendation: buildTickerRecommendation(snapshot, ticker),
-        linkedNewsIds: linkedNews.map((item) => item.id)
-      } satisfies TickerAnalysis;
+      return buildTickerAnalysisFromBars(ticker, option.label, option.sectorTag, result.value, linkedNews, proxySnapshot);
     })
     .filter((item): item is TickerAnalysis => Boolean(item))
     .sort((left, right) => right.importanceScore - left.importanceScore);
