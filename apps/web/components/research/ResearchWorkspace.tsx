@@ -180,6 +180,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   const [workspace, setWorkspace] = useState<ResearchWorkspaceData>(initialData);
   const [selectedTicker, setSelectedTicker] = useState(initialData.focusedTickers[0] ?? "");
   const [isRunningPipeline, setIsRunningPipeline] = useState(false);
+  const [isRefreshingWorkspace, setIsRefreshingWorkspace] = useState(false);
   const [pipelineNotice, setPipelineNotice] = useState<string | null>(null);
   const relatedNewsLookup = useMemo(() => buildNewsLookup(workspace), [workspace]);
   const activeAnalysis = useMemo(
@@ -230,6 +231,8 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
         setPreferences(nextPreferences);
         setWorkspace(buildResearchWorkspace(nextPreferences));
       });
+
+      void refreshWorkspace(nextPreferences);
     } catch {
       window.localStorage.removeItem(STORAGE_KEY);
     }
@@ -247,14 +250,49 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
     setSelectedTicker(workspace.tickerAnalyses[0]?.ticker ?? "");
   }, [selectedTicker, workspace.tickerAnalyses]);
 
-  function updatePreferences(nextPreferences: UserResearchPreferences) {
+  async function refreshWorkspace(nextPreferences: UserResearchPreferences) {
     const normalized = normalizeResearchPreferences(nextPreferences);
-    const nextWorkspace = buildResearchWorkspace(normalized);
+    const params = new URLSearchParams();
+
+    if (normalized.sectors.length > 0) {
+      params.set("sectors", normalized.sectors.join(","));
+    }
+
+    if (normalized.tickers.length > 0) {
+      params.set("tickers", normalized.tickers.join(","));
+    }
 
     startTransition(() => {
       setPreferences(normalized);
-      setWorkspace(nextWorkspace);
+      setWorkspace(buildResearchWorkspace(normalized));
     });
+
+    setIsRefreshingWorkspace(true);
+
+    try {
+      const href = params.toString() ? `/api/research/pipeline?${params.toString()}` : "/api/research/pipeline";
+      const response = await fetch(href, {
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error(`Workspace request failed with ${response.status}`);
+      }
+
+      const payload = (await response.json()) as GeneratedResearchSnapshot;
+
+      startTransition(() => {
+        setWorkspace(payload.workspace);
+        setPreferences(payload.workspace.preferences);
+        setSelectedTicker((current) => (payload.workspace.tickerAnalyses.some((analysis) => analysis.ticker === current) ? current : payload.workspace.focusedTickers[0] ?? ""));
+      });
+
+      setPipelineNotice(payload.warnings.length > 0 ? payload.warnings.join(" ") : "실데이터 기준으로 화면을 새로고침했습니다.");
+    } catch (error) {
+      setPipelineNotice(error instanceof Error ? error.message : "실데이터 불러오기에 실패했습니다.");
+    } finally {
+      setIsRefreshingWorkspace(false);
+    }
   }
 
   function handleToggleSector(sector: ResearchSectorTag) {
@@ -269,14 +307,14 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
       return option ? nextSectors.includes(option.sectorTag) : false;
     });
 
-    updatePreferences({
+    void refreshWorkspace({
       sectors: nextSectors,
       tickers: nextTickers
     });
   }
 
   function handleToggleTicker(ticker: string) {
-    updatePreferences({
+    void refreshWorkspace({
       sectors: preferences.sectors,
       tickers: toggleStringValue(preferences.tickers, ticker)
     });
@@ -444,12 +482,13 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
 
           <article className="rail-card">
             <span className="section-kicker">Pipeline Runtime</span>
-            <h2>{workspace.agentPipeline.runtime.provider === "openai" ? "실행된 AI 파이프라인" : "정적 프리뷰 파이프라인"}</h2>
+            <h2>{workspace.agentPipeline.runtime.provider === "openai" ? "실행된 AI 파이프라인" : "실데이터 파이프라인"}</h2>
             <p>
               {workspace.agentPipeline.runtime.provider.toUpperCase()} · {workspace.agentPipeline.runtime.source} ·{" "}
               {formatResearchDateTime(workspace.agentPipeline.runtime.generatedAt)}
             </p>
             {pipelineNotice ? <p>{pipelineNotice}</p> : null}
+            {isRefreshingWorkspace ? <p>실데이터 스냅샷을 불러오는 중입니다.</p> : null}
             <div className="rail-actions">
               <button className="api-button" disabled={isRunningPipeline} onClick={handleRunPipeline} type="button">
                 {isRunningPipeline ? "실행 중..." : "AI 파이프라인 실행"}

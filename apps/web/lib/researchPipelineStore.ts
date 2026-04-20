@@ -3,6 +3,7 @@ import path from "path";
 
 import { buildResearchWorkspace, renderResearchPipelineMarkdown, type ResearchWorkspaceData, type UserResearchPreferences } from "@trading/shared/src/research";
 import { generateResearchPipelineSnapshot, type GeneratedResearchSnapshot } from "@trading/shared/src/researchPipeline";
+import { buildLiveResearchWorkspace } from "@trading/shared/src/researchLive";
 
 const OUTPUT_DIR = path.join(process.cwd(), "generated", "research");
 const JSON_BASENAME = "latest.json";
@@ -17,8 +18,7 @@ function samePreferences(left: UserResearchPreferences, right: UserResearchPrefe
   return left.sectors.join(",") === right.sectors.join(",") && left.tickers.join(",") === right.tickers.join(",");
 }
 
-function buildStaticSnapshot(preferences?: Partial<UserResearchPreferences>): GeneratedResearchSnapshot {
-  const workspace = buildResearchWorkspace(preferences);
+function toSnapshot(workspace: ResearchWorkspaceData, warnings: string[] = []): GeneratedResearchSnapshot {
   const markdown = renderResearchPipelineMarkdown({
     generatedAt: workspace.generatedAt,
     preferences: workspace.preferences,
@@ -32,7 +32,7 @@ function buildStaticSnapshot(preferences?: Partial<UserResearchPreferences>): Ge
   return {
     workspace,
     markdown,
-    warnings: []
+    warnings
   };
 }
 
@@ -99,7 +99,8 @@ export async function readPreferredResearchSnapshot(preferences?: Partial<UserRe
 
 export async function getInitialResearchWorkspace(preferences?: Partial<UserResearchPreferences>): Promise<ResearchWorkspaceData> {
   const snapshot = await readPreferredResearchSnapshot(preferences);
-  const fallback = buildStaticSnapshot(preferences);
+  const live = await buildLiveResearchWorkspace(preferences);
+  const fallback = toSnapshot(live.workspace, live.warnings);
 
   if (!snapshot) {
     return fallback.workspace;

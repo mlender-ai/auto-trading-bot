@@ -212,6 +212,13 @@ export interface ResearchWorkspaceData {
   newsletter: NewsletterEnvelope;
 }
 
+export interface ResearchWorkspaceBuildInput {
+  preferences?: Partial<UserResearchPreferences>;
+  generatedAt?: string;
+  newsItems?: ResearchNewsItem[];
+  tickerAnalyses?: TickerAnalysis[];
+}
+
 export const researchSectorOptions: ResearchSectorOption[] = [
   {
     id: "semiconductors",
@@ -1037,13 +1044,13 @@ export function renderResearchPipelineMarkdown(workspace: Pick<ResearchWorkspace
   return lines.join("\n");
 }
 
-export function buildResearchWorkspace(preferences?: Partial<UserResearchPreferences>): ResearchWorkspaceData {
-  const normalizedPreferences = normalizeResearchPreferences(preferences);
-  const generatedAt = new Date().toISOString();
+export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInput = {}): ResearchWorkspaceData {
+  const normalizedPreferences = normalizeResearchPreferences(input.preferences);
+  const generatedAt = input.generatedAt ?? new Date().toISOString();
   const selectedTickers = buildTickerSelection(normalizedPreferences);
   const allowedSectors = new Set(normalizedPreferences.sectors);
 
-  const eligibleNews = researchNewsWire
+  const eligibleNews = (input.newsItems ?? researchNewsWire)
     .filter((item) => allowedSectors.has(item.sectorTag))
     .sort((left, right) => right.importanceScore - left.importanceScore);
 
@@ -1065,9 +1072,9 @@ export function buildResearchWorkspace(preferences?: Partial<UserResearchPrefere
     })
     .filter((value): value is ResearchSectorIssue => Boolean(value));
 
-  const tickerAnalyses = selectedTickers
-    .map((ticker) => tickerAnalysisLibrary.find((analysis) => analysis.ticker === ticker))
-    .filter((value): value is TickerAnalysis => Boolean(value))
+  const tickerAnalyses = (input.tickerAnalyses ?? tickerAnalysisLibrary)
+    .filter((analysis) => allowedSectors.has(analysis.sectorTag))
+    .filter((analysis) => selectedTickers.includes(analysis.ticker))
     .sort((left, right) => right.importanceScore - left.importanceScore);
 
   const news: ResearchNewsBoard = {
@@ -1107,4 +1114,8 @@ export function buildResearchWorkspace(preferences?: Partial<UserResearchPrefere
     meeting,
     newsletter
   };
+}
+
+export function buildResearchWorkspace(preferences?: Partial<UserResearchPreferences>): ResearchWorkspaceData {
+  return preferences ? buildResearchWorkspaceFromData({ preferences }) : buildResearchWorkspaceFromData();
 }

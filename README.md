@@ -151,6 +151,9 @@ Shared or common variables:
 - `AI_MODEL`
 - `AI_TEMPERATURE`
 - `RESEARCH_PUBLISHED_SNAPSHOT_URL`
+- `NEWSLETTER_TO`
+- `NEWSLETTER_FROM`
+- `RESEND_API_KEY`
 - `OPENAI_API_KEY`
 - `OPENAI_MODEL`
 - `OPENAI_BASE_URL`
@@ -167,6 +170,28 @@ The research pipeline can run without an external OpenAI API key.
 - GitHub Actions workflow permission required: `models: read`
 
 This means the workflow can call GitHub Models directly with the token GitHub issues for that run, while still supporting OpenAI-compatible endpoints through `AI_API_URL` and `AI_API_KEY` when needed.
+
+## Live Research Data
+
+The research MVP now prefers live data before falling back to the curated sample set.
+
+- news ingestion: Yahoo Finance RSS feeds for selected tickers and sector proxies
+- article links: direct source article URLs from the feed
+- article images: best-effort `og:image` / `twitter:image` extraction from the source page
+- ticker data: Yahoo Finance chart API with daily candles
+- technical layer: SMA 20/50/200, RSI 14, MACD, support/resistance, simple pattern detection
+
+If a feed or chart request fails, the pipeline records a warning and falls back to the static workspace instead of failing the UI.
+
+## Automations
+
+There are now two GitHub Actions workflows for the research product:
+
+- `Research Pipeline`
+  Runs every 6 hours, regenerates the shared research snapshot, publishes the latest markdown/json back to `generated/research/`, and keeps the local web UI in sync through the published snapshot URL.
+
+- `Daily Newsletter`
+  Runs once a day at 07:30 KST, regenerates the latest snapshot, writes `generated/research/newsletter-preview.html`, and sends the email when `RESEND_API_KEY`, `NEWSLETTER_FROM`, and `NEWSLETTER_TO` are configured.
 
 ## Operational Rule
 

@@ -1,13 +1,14 @@
-import { buildResearchWorkspace } from "@trading/shared/src/research";
 import { NextRequest, NextResponse } from "next/server";
 
 import { parseResearchPreferences } from "../../../../lib/research";
+import { readPreferredResearchSnapshot, runAndPersistResearchPipeline } from "../../../../lib/researchPipelineStore";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const preferences = parseResearchPreferences(request.nextUrl.searchParams);
-  const workspace = buildResearchWorkspace(preferences);
+  const snapshot = (await readPreferredResearchSnapshot(preferences)) ?? (await runAndPersistResearchPipeline(preferences, "web-api"));
+  const workspace = snapshot.workspace;
 
   return NextResponse.json({
     cadence: workspace.newsletter.cadence,

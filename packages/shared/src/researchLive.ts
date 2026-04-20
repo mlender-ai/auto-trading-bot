@@ -1,0 +1,995 @@
+import {
+  buildResearchWorkspace,
+  buildResearchWorkspaceFromData,
+  getResearchSectorLabel,
+  normalizeResearchPreferences,
+  researchTickerOptions,
+  type ResearchNewsItem,
+  type ResearchPriority,
+  type ResearchSectorTag,
+  type ResearchWorkspaceData,
+  type TickerAnalysis,
+  type TickerPattern,
+  type UserResearchPreferences
+} from "./research";
+
+const RSS_USER_AGENT = "Mozilla/5.0 (compatible; TradingResearchBot/1.0; +https://github.com/mlender-ai/auto-trading-bot)";
+const YAHOO_RSS_URL = "https://feeds.finance.yahoo.com/rss/2.0/headline";
+const YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart";
+
+interface FeedContext {
+  symbol: string;
+  sectorTag: ResearchSectorTag;
+  tickerTags: string[];
+}
+
+interface ParsedRssItem {
+  title: string;
+  description: string;
+  link: string;
+  publishedAt: string;
+  source: string;
+}
+
+interface PriceBar {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+interface PriceSnapshot {
+  price: number;
+  sma20: number | null;
+  sma50: number | null;
+  sma200: number | null;
+  rsi14: number | null;
+  macd: number | null;
+  macdSignal: number | null;
+  macdHistogram: number | null;
+  support20: number | null;
+  support60: number | null;
+  resistance20: number | null;
+  resistance60: number | null;
+}
+
+interface LiveResearchWorkspaceResult {
+  workspace: ResearchWorkspaceData;
+  warnings: string[];
+}
+
+const sectorFeedMap: Record<ResearchSectorTag, FeedContext[]> = {
+  semiconductors: [
+    { symbol: "NVDA", sectorTag: "semiconductors", tickerTags: ["NVDA", "AMD", "TSM"] },
+    { symbol: "AMD", sectorTag: "semiconductors", tickerTags: ["AMD", "NVDA", "TSM"] },
+    { symbol: "SOXX", sectorTag: "semiconductors", tickerTags: ["NVDA", "AMD", "TSM"] }
+  ],
+  "energy-oil": [
+    { symbol: "XOM", sectorTag: "energy-oil", tickerTags: ["XOM", "CVX", "SLB"] },
+    { symbol: "CVX", sectorTag: "energy-oil", tickerTags: ["CVX", "XOM", "SLB"] },
+    { symbol: "XLE", sectorTag: "energy-oil", tickerTags: ["XOM", "CVX", "SLB"] }
+  ],
+  "ai-infra": [
+    { symbol: "VRT", sectorTag: "ai-infra", tickerTags: ["VRT", "ETN", "NVDA"] },
+    { symbol: "ETN", sectorTag: "ai-infra", tickerTags: ["ETN", "VRT"] }
+  ],
+  "industrial-tech": [{ symbol: "ETN", sectorTag: "industrial-tech", tickerTags: ["ETN"] }]
+};
+
+const sectorProxyMap: Record<ResearchSectorTag, string> = {
+  semiconductors: "SOXX",
+  "energy-oil": "XLE",
+  "ai-infra": "VRT",
+  "industrial-tech": "ETN"
+};
+
+const sourceWeightMap: Record<string, number> = {
+  "reuters.com": 20,
+  "bloomberg.com": 18,
+  "wsj.com": 18,
+  "marketwatch.com": 15,
+  "barrons.com": 15,
+  "cnbc.com": 13,
+  "morningstar.com": 11,
+  "finance.yahoo.com": 10,
+  "yahoo.com": 9,
+  "seekingalpha.com": 7,
+  "benzinga.com": 6,
+  "investing.com": 6,
+  "stockstory.org": 4,
+  "fool.com": 3,
+  "nerdwallet.com": 2
+};
+
+const impactPatterns: Array<{ pattern: RegExp; score: number }> = [
+  { pattern: /\b(earnings|guidance|forecast|margin|revenue|profit|orders?)\b/i, score: 14 },
+  { pattern: /\b(chip|semiconductor|hbm|gpu|foundry|memory|ai)\b/i, score: 10 },
+  { pattern: /\b(oil|energy|opec|crude|refin|upstream|capex)\b/i, score: 10 },
+  { pattern: /\b(export|tariff|sanction|policy|rate|inflation|treasury)\b/i, score: 8 },
+  { pattern: /\b(power|cooling|datacenter|infrastructure)\b/i, score: 8 }
+];
+
+const lowSignalPatterns = [
+  /\bbest-performing\b/i,
+  /\bbest\b.*\bstocks?\b/i,
+  /\bthank yourself\b/i,
+  /\blong-term investors?\b/i,
+  /\bshould (you|investors?) buy\b/i,
+  /\btop \d+\b/i,
+  /\bdividend\b/i,
+  /\bdecade\b/i
+];
+
+function parseCsvEnv(value: string | undefined): string[] {
+  return (value ?? "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function xmlDecode(value: string): string {
+  return value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'");
+}
+
+function stripHtml(value: string): string {
+  return xmlDecode(value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")).trim();
+}
+
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+}
+
+function normalizeHeadline(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/\s+-\s+[a-z0-9 .&]+$/i, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
+}
+
+function dedupeByKey<T>(items: T[], getKey: (item: T) => string): T[] {
+  const seen = new Set<string>();
+
+  return items.filter((item) => {
+    const key = getKey(item);
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+function extractTag(block: string, tag: string): string {
+  const match = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`, "i"));
+  return match?.[1]?.trim() ?? "";
+}
+
+function parseYahooRss(xml: string): ParsedRssItem[] {
+  const matches = Array.from(xml.matchAll(/<item>([\s\S]*?)<\/item>/gi));
+
+  return matches
+    .map((match) => {
+      const block = match[1] ?? "";
+      const title = stripHtml(extractTag(block, "title"));
+      const description = stripHtml(extractTag(block, "description"));
+      const link = xmlDecode(extractTag(block, "link"));
+      const pubDate = stripHtml(extractTag(block, "pubDate"));
+
+      if (!title || !link || !pubDate) {
+        return null;
+      }
+
+      const url = new URL(link);
+      const sourceDomain = url.hostname.replace(/^www\./, "");
+      const source = sourceDomain.split(".")[0]?.toUpperCase() ?? sourceDomain;
+
+      return {
+        title,
+        description,
+        link,
+        publishedAt: new Date(pubDate).toISOString(),
+        source
+      } satisfies ParsedRssItem;
+    })
+    .filter((item): item is ParsedRssItem => Boolean(item));
+}
+
+async function fetchText(url: string): Promise<string> {
+  const response = await fetch(url, {
+    headers: {
+      accept: "application/rss+xml, application/xml, application/json, text/html;q=0.9, */*;q=0.8",
+      "user-agent": RSS_USER_AGENT
+    },
+    cache: "no-store",
+    redirect: "follow",
+    signal: AbortSignal.timeout(6_000)
+  });
+
+  if (!response.ok) {
+    throw new Error(`${response.status} ${response.statusText}`);
+  }
+
+  return response.text();
+}
+
+async function fetchYahooFeed(context: FeedContext): Promise<ParsedRssItem[]> {
+  const url = new URL(YAHOO_RSS_URL);
+  url.searchParams.set("s", context.symbol);
+  url.searchParams.set("region", "US");
+  url.searchParams.set("lang", "en-US");
+
+  return parseYahooRss(await fetchText(url.toString()));
+}
+
+function scoreArticle(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerTags: string[], preferences: UserResearchPreferences): number {
+  const ageHours = (Date.now() - Date.parse(item.publishedAt)) / 3_600_000;
+  const recencyScore = ageHours <= 8 ? 24 : ageHours <= 24 ? 18 : ageHours <= 48 ? 12 : ageHours <= 96 ? 6 : -18;
+  const sourceDomain = new URL(item.link).hostname.replace(/^www\./, "");
+  const sourceScore = sourceWeightMap[sourceDomain] ?? 5;
+  const text = `${item.title} ${item.description}`.toLowerCase();
+  const keywordScore = impactPatterns.reduce((total, entry) => total + (entry.pattern.test(text) ? entry.score : 0), 0);
+  const lowSignalPenalty = lowSignalPatterns.reduce((total, pattern) => total + (pattern.test(text) ? 18 : 0), 0);
+  const tickerScore = tickerTags.reduce((total, ticker) => total + (text.includes(ticker.toLowerCase()) ? 5 : 0), 0);
+  const preferenceScore = preferences.sectors.includes(sectorTag) ? 8 : 0;
+
+  return clamp(Math.round(38 + recencyScore + sourceScore + keywordScore + tickerScore + preferenceScore - lowSignalPenalty), 20, 98);
+}
+
+function inferPriority(score: number): ResearchPriority {
+  if (score >= 88) {
+    return "critical";
+  }
+
+  if (score >= 72) {
+    return "focus";
+  }
+
+  return "monitor";
+}
+
+function buildNewsAnalysis(item: ParsedRssItem, sectorTag: ResearchSectorTag): string {
+  const text = `${item.title} ${item.description}`.toLowerCase();
+
+  if (sectorTag === "semiconductors") {
+    if (/\b(earnings|guidance|orders?|margin)\b/i.test(text)) {
+      return "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.";
+    }
+
+    return "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.";
+  }
+
+  if (sectorTag === "energy-oil") {
+    if (/\b(opec|crude|oil|capex|upstream|refin)\b/i.test(text)) {
+      return "에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.";
+    }
+
+    return "오일 메이저와 서비스주는 같은 에너지여도 민감도가 달라, 이런 뉴스는 포지션을 어디에 둘지 다시 정하게 만듭니다.";
+  }
+
+  if (sectorTag === "ai-infra") {
+    return "AI 인프라는 GPU 기대가 실제 설비 발주로 번지는 순간 멀티플이 다시 열릴 수 있어, 후행 CAPEX 확인 뉴스의 영향이 큽니다.";
+  }
+
+  return "공급망과 생산성 투자 회복 속도가 실제 주문으로 이어지는지 확인하는 뉴스라, 업종 확산 강도를 판단하는 데 유효합니다.";
+}
+
+function buildNewsRecommendation(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerTags: string[]): string {
+  const text = `${item.title} ${item.description}`.toLowerCase();
+  const leadTicker = tickerTags[0];
+
+  if (sectorTag === "semiconductors") {
+    if (/\b(earnings|guidance)\b/i.test(text)) {
+      return `${leadTicker ?? "반도체 리더"}는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.`;
+    }
+
+    return `${leadTicker ?? "반도체 리더"} 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.`;
+  }
+
+  if (sectorTag === "energy-oil") {
+    return `${leadTicker ?? "메이저 오일"} 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.`;
+  }
+
+  if (sectorTag === "ai-infra") {
+    return "AI 인프라는 반도체 리더를 이미 담았을 때만 보조 성장축으로 접근하고, 급등일 추격은 자제합니다.";
+  }
+
+  return "주도 업종 확인 전까지는 감시 리스트 위주로 두고, 실적과 주문잔고가 함께 확인될 때만 비중 확대를 검토합니다.";
+}
+
+function buildFeedContexts(preferences: UserResearchPreferences): FeedContext[] {
+  const selectedTickers = preferences.tickers
+    .map((ticker) => researchTickerOptions.find((option) => option.ticker === ticker))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .map((item) => ({
+      symbol: item.ticker,
+      sectorTag: item.sectorTag,
+      tickerTags: [item.ticker, ...researchTickerOptions.filter((candidate) => candidate.sectorTag === item.sectorTag).slice(0, 2).map((candidate) => candidate.ticker)]
+    }));
+
+  const sectorFeeds = preferences.sectors.flatMap((sector) => sectorFeedMap[sector] ?? []);
+  return dedupeByKey([...selectedTickers, ...sectorFeeds], (context) => `${context.symbol}:${context.sectorTag}`);
+}
+
+function isRecentEnough(iso: string): boolean {
+  return Date.now() - Date.parse(iso) <= 1000 * 60 * 60 * 96;
+}
+
+function toResearchNewsItem(item: ParsedRssItem, context: FeedContext, preferences: UserResearchPreferences): ResearchNewsItem | null {
+  if (!isRecentEnough(item.publishedAt)) {
+    return null;
+  }
+
+  const importanceScore = scoreArticle(item, context.sectorTag, context.tickerTags, preferences);
+
+  if (importanceScore < 48) {
+    return null;
+  }
+
+  return {
+    id: `live-${context.sectorTag}-${slugify(item.title)}`,
+    title: item.title,
+    summary: item.description || item.title,
+    source: item.source,
+    sourceUrl: item.link,
+    publishedAt: item.publishedAt,
+    imageUrl: null,
+    sectorTag: context.sectorTag,
+    tickerTags: context.tickerTags,
+    importanceScore,
+    priority: inferPriority(importanceScore),
+    analysis: buildNewsAnalysis(item, context.sectorTag),
+    recommendation: buildNewsRecommendation(item, context.sectorTag, context.tickerTags)
+  };
+}
+
+function extractMetaContent(html: string, name: string): string | null {
+  const match = html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${name}["'][^>]+content=["']([^"']+)["'][^>]*>`, "i"));
+  return match?.[1] ? xmlDecode(match[1].trim()) : null;
+}
+
+async function resolveArticleImage(url: string | null): Promise<string | null> {
+  if (!url) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        accept: "text/html,application/xhtml+xml",
+        "user-agent": RSS_USER_AGENT
+      },
+      cache: "no-store",
+      redirect: "follow",
+      signal: AbortSignal.timeout(4_500)
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const html = await response.text();
+    const image = extractMetaContent(html, "og:image") ?? extractMetaContent(html, "twitter:image");
+
+    if (!image) {
+      return null;
+    }
+
+    return new URL(image, response.url).toString();
+  } catch {
+    return null;
+  }
+}
+
+async function attachImages(items: ResearchNewsItem[]): Promise<ResearchNewsItem[]> {
+  const targets = items.slice(0, 6);
+  const imageEntries = await Promise.all(
+    targets.map(async (item) => {
+      const imageUrl = await resolveArticleImage(item.sourceUrl);
+      return [item.id, imageUrl] as const;
+    })
+  );
+  const imageMap = new Map(imageEntries);
+
+  return items.map((item) => ({
+    ...item,
+    imageUrl: imageMap.get(item.id) ?? item.imageUrl
+  }));
+}
+
+function average(values: number[]): number | null {
+  if (values.length === 0) {
+    return null;
+  }
+
+  return values.reduce((total, value) => total + value, 0) / values.length;
+}
+
+function latestAverage(values: number[], period: number): number | null {
+  if (values.length < period) {
+    return null;
+  }
+
+  return average(values.slice(-period));
+}
+
+function calculateEmaSeries(values: number[], period: number): Array<number | null> {
+  if (values.length === 0) {
+    return [];
+  }
+
+  const multiplier = 2 / (period + 1);
+  const series: Array<number | null> = Array.from({ length: values.length }, () => null);
+  let previousEma: number | null = null;
+
+  for (let index = 0; index < values.length; index += 1) {
+    const value = values[index];
+
+    if (value === undefined) {
+      continue;
+    }
+
+    if (index === period - 1) {
+      previousEma = average(values.slice(0, period));
+      series[index] = previousEma;
+      continue;
+    }
+
+    if (index < period - 1 || previousEma === null) {
+      continue;
+    }
+
+    previousEma = (value - previousEma) * multiplier + previousEma;
+    series[index] = previousEma;
+  }
+
+  return series;
+}
+
+function calculateRsi(values: number[], period = 14): number | null {
+  if (values.length <= period) {
+    return null;
+  }
+
+  let gains = 0;
+  let losses = 0;
+
+  for (let index = 1; index <= period; index += 1) {
+    const current = values[index];
+    const previous = values[index - 1];
+
+    if (current === undefined || previous === undefined) {
+      continue;
+    }
+
+    const delta = current - previous;
+
+    if (delta >= 0) {
+      gains += delta;
+    } else {
+      losses += Math.abs(delta);
+    }
+  }
+
+  let averageGain = gains / period;
+  let averageLoss = losses / period;
+
+  for (let index = period + 1; index < values.length; index += 1) {
+    const current = values[index];
+    const previous = values[index - 1];
+
+    if (current === undefined || previous === undefined) {
+      continue;
+    }
+
+    const delta = current - previous;
+    const gain = delta > 0 ? delta : 0;
+    const loss = delta < 0 ? Math.abs(delta) : 0;
+
+    averageGain = (averageGain * (period - 1) + gain) / period;
+    averageLoss = (averageLoss * (period - 1) + loss) / period;
+  }
+
+  if (averageLoss === 0) {
+    return 100;
+  }
+
+  const rs = averageGain / averageLoss;
+  return 100 - 100 / (1 + rs);
+}
+
+function calculateMacd(values: number[]): { macd: number | null; signal: number | null; histogram: number | null } {
+  const fastSeries = calculateEmaSeries(values, 12);
+  const slowSeries = calculateEmaSeries(values, 26);
+  const macdSeries = values.map((_, index) => {
+    const fast = fastSeries[index];
+    const slow = slowSeries[index];
+    return typeof fast === "number" && typeof slow === "number" ? fast - slow : null;
+  });
+  const validMacd = macdSeries.filter((value): value is number => value !== null);
+  const signalSeries = calculateEmaSeries(validMacd, 9);
+  const macd = macdSeries.at(-1) ?? null;
+  const signal = signalSeries.at(-1) ?? null;
+
+  return {
+    macd,
+    signal,
+    histogram: macd !== null && signal !== null ? macd - signal : null
+  };
+}
+
+function buildPriceSnapshot(bars: PriceBar[]): PriceSnapshot {
+  const closes = bars.map((bar) => bar.close);
+  const latest = bars.at(-1);
+  const recent20 = bars.slice(-20);
+  const recent60 = bars.slice(-60);
+  const macd = calculateMacd(closes);
+
+  return {
+    price: latest?.close ?? 0,
+    sma20: latestAverage(closes, 20),
+    sma50: latestAverage(closes, 50),
+    sma200: latestAverage(closes, 200),
+    rsi14: calculateRsi(closes, 14),
+    macd: macd.macd,
+    macdSignal: macd.signal,
+    macdHistogram: macd.histogram,
+    support20: recent20.length > 0 ? Math.min(...recent20.map((bar) => bar.low)) : null,
+    support60: recent60.length > 0 ? Math.min(...recent60.map((bar) => bar.low)) : null,
+    resistance20: recent20.length > 0 ? Math.max(...recent20.map((bar) => bar.high)) : null,
+    resistance60: recent60.length > 0 ? Math.max(...recent60.map((bar) => bar.high)) : null
+  };
+}
+
+function formatLevel(value: number | null): string {
+  return value === null ? "미확인" : `$${value.toFixed(2)}`;
+}
+
+function describeTrend(snapshot: PriceSnapshot): string {
+  if (snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50) {
+    return "단기와 중기 추세가 모두 상방입니다.";
+  }
+
+  if (snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50) {
+    return "단기와 중기 추세가 함께 꺾여 있어 반등보다 방어가 우선입니다.";
+  }
+
+  return "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다.";
+}
+
+function describeRsi(snapshot: PriceSnapshot): string {
+  if (snapshot.rsi14 === null) {
+    return "RSI 확인이 부족합니다.";
+  }
+
+  if (snapshot.rsi14 >= 70) {
+    return "RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다.";
+  }
+
+  if (snapshot.rsi14 <= 35) {
+    return "RSI는 침체권에 가까워 반등은 가능하지만 추세 복원 확인이 필요합니다.";
+  }
+
+  return "RSI는 중립대에서 추세 지속 여부를 보는 구간입니다.";
+}
+
+function describeMacd(snapshot: PriceSnapshot): string {
+  if (snapshot.macdHistogram === null) {
+    return "MACD 확인이 부족합니다.";
+  }
+
+  if (snapshot.macdHistogram > 0) {
+    return "MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.";
+  }
+
+  return "MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.";
+}
+
+function findPivots(bars: PriceBar[], lookback = 3): Array<{ kind: "high" | "low"; index: number; price: number }> {
+  const pivots: Array<{ kind: "high" | "low"; index: number; price: number }> = [];
+
+  for (let index = lookback; index < bars.length - lookback; index += 1) {
+    const target = bars[index];
+
+    if (!target) {
+      continue;
+    }
+
+    const window = bars.slice(index - lookback, index + lookback + 1);
+    const high = Math.max(...window.map((bar) => bar.high));
+    const low = Math.min(...window.map((bar) => bar.low));
+
+    if (target.high >= high) {
+      pivots.push({ kind: "high", index, price: target.high });
+    }
+
+    if (target.low <= low) {
+      pivots.push({ kind: "low", index, price: target.low });
+    }
+  }
+
+  return pivots.sort((left, right) => left.index - right.index);
+}
+
+function detectAbcdPattern(bars: PriceBar[]): TickerPattern | null {
+  const pivots = findPivots(bars.slice(-80));
+
+  if (pivots.length < 4) {
+    return null;
+  }
+
+  for (let index = pivots.length - 4; index >= 0; index -= 1) {
+    const window = pivots.slice(index, index + 4);
+    const [a, b, c, d] = window;
+
+    if (!a || !b || !c || !d) {
+      continue;
+    }
+
+    if (a.kind === b.kind || b.kind === c.kind || c.kind === d.kind) {
+      continue;
+    }
+
+    const ab = b.price - a.price;
+    const bc = c.price - b.price;
+    const cd = d.price - c.price;
+    const abLength = Math.abs(ab);
+    const bcRetrace = abLength === 0 ? 0 : Math.abs(bc) / abLength;
+    const cdRatio = abLength === 0 ? 0 : Math.abs(cd) / abLength;
+
+    if (bcRetrace < 0.35 || bcRetrace > 0.9 || cdRatio < 0.85 || cdRatio > 1.15) {
+      continue;
+    }
+
+    const bullish = ab < 0 && bc > 0 && cd < 0;
+
+    return {
+      name: bullish ? "AB=CD 조정형" : "AB=CD 반등형",
+      detail: bullish
+        ? `직전 하락파와 최근 조정파 길이가 유사해 ${d.price.toFixed(2)} 부근이 패턴 완성 구간으로 읽힙니다.`
+        : `직전 상승파와 최근 반등파 길이가 유사해 ${d.price.toFixed(2)} 부근에서 과열 해소 여부를 봐야 합니다.`,
+      confidence: cdRatio > 0.93 && cdRatio < 1.07 ? "high" : "medium"
+    };
+  }
+
+  return null;
+}
+
+function detectContinuationPattern(snapshot: PriceSnapshot): TickerPattern | null {
+  if (
+    snapshot.sma20 !== null &&
+    snapshot.sma50 !== null &&
+    snapshot.resistance20 !== null &&
+    snapshot.price > snapshot.sma20 &&
+    snapshot.sma20 > snapshot.sma50 &&
+    snapshot.price >= snapshot.resistance20 * 0.97
+  ) {
+    return {
+      name: "상승 추세 내 눌림 후 재가속",
+      detail: "20일선 위에서 가격이 버티고 있어, 고점 재시험이 실패하지 않으면 추세 지속 확률이 높습니다.",
+      confidence: "high"
+    };
+  }
+
+  return null;
+}
+
+function detectBreakdownPattern(snapshot: PriceSnapshot): TickerPattern | null {
+  if (snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50) {
+    return {
+      name: "단기 구조 이탈",
+      detail: "20일선과 50일선 아래로 밀려 단기 반등이 나와도 저항 확인이 먼저 필요한 구조입니다.",
+      confidence: "medium"
+    };
+  }
+
+  return null;
+}
+
+function buildPatternAnalysis(bars: PriceBar[], snapshot: PriceSnapshot): TickerPattern[] {
+  return [detectContinuationPattern(snapshot), detectAbcdPattern(bars), detectBreakdownPattern(snapshot)]
+    .filter((pattern): pattern is TickerPattern => Boolean(pattern))
+    .slice(0, 2);
+}
+
+async function fetchYahooChart(symbol: string): Promise<PriceBar[]> {
+  const url = new URL(`${YAHOO_CHART_URL}/${encodeURIComponent(symbol)}`);
+  url.searchParams.set("range", "6mo");
+  url.searchParams.set("interval", "1d");
+  url.searchParams.set("includePrePost", "false");
+  url.searchParams.set("events", "div,split");
+
+  const response = await fetch(url.toString(), {
+    headers: {
+      accept: "application/json",
+      "user-agent": RSS_USER_AGENT
+    },
+    cache: "no-store",
+    signal: AbortSignal.timeout(6_000)
+  });
+
+  if (!response.ok) {
+    throw new Error(`${response.status} ${response.statusText}`);
+  }
+
+  const payload = (await response.json()) as {
+    chart?: {
+      result?: Array<{
+        timestamp?: number[];
+        indicators?: {
+          quote?: Array<{
+            open?: Array<number | null>;
+            high?: Array<number | null>;
+            low?: Array<number | null>;
+            close?: Array<number | null>;
+            volume?: Array<number | null>;
+          }>;
+        };
+      }>;
+    };
+  };
+  const result = payload.chart?.result?.[0];
+  const quote = result?.indicators?.quote?.[0];
+  const timestamps = result?.timestamp ?? [];
+
+  if (!quote || timestamps.length === 0) {
+    return [];
+  }
+
+  return timestamps
+    .map((timestamp, index) => {
+      const open = quote.open?.[index];
+      const high = quote.high?.[index];
+      const low = quote.low?.[index];
+      const close = quote.close?.[index];
+      const volume = quote.volume?.[index];
+
+      if (
+        typeof open !== "number" ||
+        !Number.isFinite(open) ||
+        typeof high !== "number" ||
+        !Number.isFinite(high) ||
+        typeof low !== "number" ||
+        !Number.isFinite(low) ||
+        typeof close !== "number" ||
+        !Number.isFinite(close)
+      ) {
+        return null;
+      }
+
+      const normalizedOpen: number = open;
+      const normalizedHigh: number = high;
+      const normalizedLow: number = low;
+      const normalizedClose: number = close;
+
+      return {
+        date: new Date(timestamp * 1000).toISOString(),
+        open: normalizedOpen,
+        high: normalizedHigh,
+        low: normalizedLow,
+        close: normalizedClose,
+        volume: typeof volume === "number" && Number.isFinite(volume) ? volume : 0
+      } satisfies PriceBar;
+    })
+    .filter((bar): bar is PriceBar => Boolean(bar));
+}
+
+function describeSectorFlow(proxy: PriceSnapshot): string {
+  if (proxy.sma20 !== null && proxy.sma50 !== null && proxy.price > proxy.sma20 && proxy.sma20 > proxy.sma50) {
+    return "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다.";
+  }
+
+  if (proxy.sma20 !== null && proxy.sma50 !== null && proxy.price < proxy.sma20 && proxy.sma20 < proxy.sma50) {
+    return "섹터 프록시가 이미 약해져 있어 개별 종목 반등도 업종 역풍을 함께 고려해야 합니다.";
+  }
+
+  return "섹터 흐름은 중립이라 개별 실적과 뉴스 반응이 더 중요합니다.";
+}
+
+function buildTickerRecommendation(snapshot: PriceSnapshot, ticker: string): string {
+  if (snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50) {
+    return `${ticker}는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.`;
+  }
+
+  if (snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50) {
+    return `${ticker}는 단기 반등이 나와도 20일선 회복 전까지는 신규 진입보다 회피가 우선입니다.`;
+  }
+
+  return `${ticker}는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.`;
+}
+
+function buildTickerImportance(snapshot: PriceSnapshot, linkedNews: ResearchNewsItem[]): number {
+  const newsBoost = linkedNews[0]?.importanceScore ?? 68;
+  const trendBoost =
+    snapshot.sma20 !== null && snapshot.sma50 !== null
+      ? snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50
+        ? 9
+        : snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50
+          ? -6
+          : 0
+      : 0;
+
+  return clamp(Math.round(newsBoost * 0.55 + 34 + trendBoost), 50, 98);
+}
+
+function buildSelectedTickers(preferences: UserResearchPreferences): string[] {
+  if (preferences.tickers.length > 0) {
+    return preferences.tickers;
+  }
+
+  return researchTickerOptions
+    .filter((option) => preferences.sectors.includes(option.sectorTag))
+    .slice(0, 3)
+    .map((option) => option.ticker);
+}
+
+async function buildLiveNews(preferences: UserResearchPreferences): Promise<{ items: ResearchNewsItem[]; warnings: string[] }> {
+  const warnings: string[] = [];
+  const contexts = buildFeedContexts(preferences);
+  const responses = await Promise.allSettled(contexts.map((context) => fetchYahooFeed(context)));
+  const collected: ResearchNewsItem[] = [];
+
+  responses.forEach((result, index) => {
+    const context = contexts[index];
+
+    if (!context) {
+      return;
+    }
+
+    if (result.status !== "fulfilled") {
+      warnings.push(`${context.symbol} 뉴스 피드 수집 실패: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`);
+      return;
+    }
+
+    result.value
+      .map((item) => toResearchNewsItem(item, context, preferences))
+      .filter((item): item is ResearchNewsItem => Boolean(item))
+      .forEach((item) => collected.push(item));
+  });
+
+  const deduped = dedupeByKey(collected, (item) => normalizeHeadline(item.title));
+  const ranked = deduped.sort((left, right) => right.importanceScore - left.importanceScore).slice(0, 12);
+
+  return {
+    items: await attachImages(ranked),
+    warnings
+  };
+}
+
+async function buildLiveTickerAnalyses(
+  preferences: UserResearchPreferences,
+  newsItems: ResearchNewsItem[]
+): Promise<{ analyses: TickerAnalysis[]; warnings: string[] }> {
+  const warnings: string[] = [];
+  const selectedTickers = buildSelectedTickers(preferences);
+  const proxySymbols = Array.from(new Set(preferences.sectors.map((sector) => sectorProxyMap[sector]).filter(Boolean)));
+  const proxyResults = await Promise.allSettled(proxySymbols.map((symbol) => fetchYahooChart(symbol)));
+  const proxySnapshotBySymbol = new Map<string, PriceSnapshot>();
+
+  proxyResults.forEach((result, index) => {
+    const symbol = proxySymbols[index];
+
+    if (!symbol) {
+      return;
+    }
+
+    if (result.status === "fulfilled" && result.value.length > 0) {
+      proxySnapshotBySymbol.set(symbol, buildPriceSnapshot(result.value));
+      return;
+    }
+
+    warnings.push(`${symbol} 섹터 프록시 수집 실패`);
+  });
+
+  const chartResults = await Promise.allSettled(selectedTickers.map((ticker) => fetchYahooChart(ticker)));
+  const analyses = chartResults
+    .map((result, index) => {
+      const ticker = selectedTickers[index];
+
+      if (!ticker) {
+        return null;
+      }
+
+      if (result.status !== "fulfilled" || result.value.length < 60) {
+        warnings.push(`${ticker} 가격 데이터 수집 실패`);
+        return null;
+      }
+
+      const option = researchTickerOptions.find((entry) => entry.ticker === ticker);
+
+      if (!option) {
+        return null;
+      }
+
+      const snapshot = buildPriceSnapshot(result.value);
+      const linkedNews = newsItems.filter((item) => item.tickerTags.includes(ticker) || item.sectorTag === option.sectorTag).slice(0, 3);
+      const proxySnapshot = proxySnapshotBySymbol.get(sectorProxyMap[option.sectorTag]);
+      const patternAnalysis = buildPatternAnalysis(result.value, snapshot);
+
+      return {
+        ticker,
+        company: option.label,
+        sectorTag: option.sectorTag,
+        importanceScore: buildTickerImportance(snapshot, linkedNews),
+        summary:
+          snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50
+            ? "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다."
+            : snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price < snapshot.sma20 && snapshot.sma20 < snapshot.sma50
+              ? "반등보다 구조 복원 확인이 먼저 필요한 방어 구간입니다."
+              : "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
+        technicalAnalysis: [
+          describeTrend(snapshot),
+          `주요 지지는 ${formatLevel(snapshot.support20)} / ${formatLevel(snapshot.support60)}, 저항은 ${formatLevel(snapshot.resistance20)} / ${formatLevel(snapshot.resistance60)}입니다.`,
+          describeRsi(snapshot),
+          describeMacd(snapshot)
+        ].join(" "),
+        patternAnalysis: patternAnalysis.length > 0 ? patternAnalysis : [{ name: "뚜렷한 패턴 없음", detail: "지금은 강한 패턴보다 지지/저항 반응 확인이 더 중요합니다.", confidence: "low" }],
+        marketContext: [
+          proxySnapshot ? describeSectorFlow(proxySnapshot) : `${getResearchSectorLabel(option.sectorTag)} 섹터 프록시 확인이 부족해 개별 종목 뉴스 의존도가 높습니다.`,
+          linkedNews[0] ? `연결 뉴스에서는 "${linkedNews[0].title}"가 가장 큰 가격 재료로 작동하고 있습니다.` : "직결 뉴스보다 업종 흐름 자체가 더 중요하게 작동하는 구간입니다."
+        ].join(" "),
+        recommendation: buildTickerRecommendation(snapshot, ticker),
+        linkedNewsIds: linkedNews.map((item) => item.id)
+      } satisfies TickerAnalysis;
+    })
+    .filter((item): item is TickerAnalysis => Boolean(item))
+    .sort((left, right) => right.importanceScore - left.importanceScore);
+
+  return {
+    analyses,
+    warnings
+  };
+}
+
+export async function buildLiveResearchWorkspace(preferences?: Partial<UserResearchPreferences>): Promise<LiveResearchWorkspaceResult> {
+  const normalizedPreferences = normalizeResearchPreferences(preferences);
+  const generatedAt = new Date().toISOString();
+
+  try {
+    const newsResult = await buildLiveNews(normalizedPreferences);
+    const tickerResult = await buildLiveTickerAnalyses(normalizedPreferences, newsResult.items);
+
+    if (newsResult.items.length === 0 || tickerResult.analyses.length === 0) {
+      return {
+        workspace: buildResearchWorkspace(preferences),
+        warnings: [...newsResult.warnings, ...tickerResult.warnings, "실데이터가 부족해 정적 워크스페이스로 대체했습니다."]
+      };
+    }
+
+    return {
+      workspace: buildResearchWorkspaceFromData({
+        preferences: normalizedPreferences,
+        generatedAt,
+        newsItems: newsResult.items,
+        tickerAnalyses: tickerResult.analyses
+      }),
+      warnings: [...newsResult.warnings, ...tickerResult.warnings]
+    };
+  } catch (error) {
+    return {
+      workspace: buildResearchWorkspace(preferences),
+      warnings: [error instanceof Error ? `실데이터 워크스페이스 생성 실패: ${error.message}` : "실데이터 워크스페이스 생성 실패"]
+    };
+  }
+}
+
+export function readNewsletterRecipients(): string[] {
+  return parseCsvEnv(process.env.NEWSLETTER_TO);
+}

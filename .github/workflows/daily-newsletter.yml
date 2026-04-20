@@ -1,21 +1,16 @@
-name: Research Pipeline
+name: Daily Newsletter
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - generated/research/**
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "30 22 * * *"
 
 permissions:
   contents: write
   models: read
 
 jobs:
-  generate-briefing:
+  send-newsletter:
     runs-on: ubuntu-latest
     env:
       RESEARCH_PIPELINE_PROVIDER: auto
@@ -24,6 +19,9 @@ jobs:
       AI_MODEL: ${{ secrets.AI_MODEL }}
       AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
       GITHUB_TOKEN: ${{ github.token }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
+      NEWSLETTER_TO: ${{ secrets.NEWSLETTER_TO }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,12 +35,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Validate AI configuration
-        shell: bash
-        run: |
-          test -n "$GITHUB_TOKEN"
-
-      - name: Generate research pipeline
+      - name: Generate latest research snapshot
         run: npm run research:generate
 
       - name: Publish generated snapshot to repository
@@ -55,16 +48,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add generated/research/latest.json generated/research/latest.md
-          git commit -m "chore: publish research snapshot [skip ci]"
+          git commit -m "chore: publish daily newsletter snapshot [skip ci]"
           git push
 
-      - name: Publish agent thread to job summary
-        run: cat generated/research/latest.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Deliver newsletter
+        run: npm run research:newsletter
 
-      - name: Upload research artifact
+      - name: Publish newsletter summary
+        run: |
+          cat generated/research/latest.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f generated/research/newsletter-preview.html ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Newsletter preview generated." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload newsletter artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: research-pipeline
+          name: daily-newsletter
           path: |
             generated/research/latest.json
             generated/research/latest.md
+            generated/research/newsletter-preview.html

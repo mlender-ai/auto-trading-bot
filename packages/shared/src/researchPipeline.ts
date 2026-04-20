@@ -2,7 +2,6 @@ import {
   buildResearchMeetingThread,
   buildResearchNewsletter,
   buildResearchProductReview,
-  buildResearchWorkspace,
   getResearchSectorLabel,
   normalizeResearchPreferences,
   renderResearchPipelineMarkdown,
@@ -26,6 +25,7 @@ import {
   type TraderActionPlan,
   type UserResearchPreferences
 } from "./research";
+import { buildLiveResearchWorkspace } from "./researchLive";
 
 export interface GenerateResearchPipelineOptions {
   preferences?: Partial<UserResearchPreferences>;
@@ -1124,11 +1124,13 @@ async function runUnifiedPipeline(config: ResolvedPipelineConfig, workspace: Res
 
 export async function generateResearchPipelineSnapshot(options: GenerateResearchPipelineOptions = {}): Promise<GeneratedResearchSnapshot> {
   const normalizedPreferences = normalizeResearchPreferences(options.preferences);
-  const baseWorkspace = buildResearchWorkspace(normalizedPreferences);
+  const liveWorkspace = await buildLiveResearchWorkspace(normalizedPreferences);
+  const baseWorkspace = liveWorkspace.workspace;
   const { config, warnings } = resolvePipelineConfig(options);
+  const combinedWarnings = [...liveWorkspace.warnings, ...warnings];
 
   if (config.provider === "rule-based") {
-    return buildFallbackSnapshot(baseWorkspace, config, options, warnings);
+    return buildFallbackSnapshot(baseWorkspace, config, options, combinedWarnings);
   }
 
   try {
@@ -1181,11 +1183,11 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
     return {
       workspace,
       markdown: workspace.agentPipeline.runtime.summaryMarkdown,
-      warnings
+      warnings: combinedWarnings
     };
   } catch (error) {
     return buildFallbackSnapshot(baseWorkspace, config, options, [
-      ...warnings,
+      ...combinedWarnings,
       error instanceof Error ? `AI 파이프라인 실행 실패: ${error.message}` : "AI 파이프라인 실행에 실패했습니다."
     ]);
   }
