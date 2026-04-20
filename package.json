@@ -1,0 +1,45 @@
+{
+  "name": "auto-trading-bot",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:api": "npm --workspace @trading/api run build",
+    "build:shared": "npm --workspace @trading/shared run build",
+    "build:web": "npm --workspace @trading/web run build",
+    "ci": "npm run lint && npm run typecheck && npm run build",
+    "dev": "tsx scripts/dev.ts",
+    "dev:api": "npm --workspace @trading/api run dev",
+    "dev:web": "npm --workspace @trading/web run dev",
+    "clean:web": "npm --workspace @trading/web run clean",
+    "reset:web": "npm run clean:web && npm run dev:web",
+    "dev:worker": "npm --workspace @trading/api run worker:dev",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:api": "npm --workspace @trading/api run lint",
+    "lint:shared": "npm --workspace @trading/shared run lint",
+    "lint:web": "npm --workspace @trading/web run lint",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "typecheck:api": "npm --workspace @trading/api run typecheck",
+    "typecheck:shared": "npm --workspace @trading/shared run typecheck",
+    "typecheck:web": "npm --workspace @trading/web run typecheck",
+    "paper:status": "tsx scripts/paper-status.ts",
+    "research:generate": "tsx scripts/research-pipeline.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:seed": "tsx prisma/seed.ts",
+    "prisma:studio": "prisma studio",
+    "telegram:test": "tsx scripts/telegram-test.ts"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}

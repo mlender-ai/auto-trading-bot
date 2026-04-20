@@ -1,0 +1,17 @@
+node_modules
+.next
+.next-dev
+.next-build
+dist
+coverage
+.turbo
+.DS_Store
+.vercel
+.railway
+*.log
+.env
+.env.local
+.env.*.local
+apps/api/.env
+apps/web/.env.local
+prisma/dev.db

@@ -1,0 +1,440 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BotStatus {
+  RUNNING
+  STOPPED
+  DEGRADED
+}
+
+enum StrategyStatus {
+  ACTIVE
+  PAUSED
+  DISABLED
+}
+
+enum StrategyRunStatus {
+  SIGNAL
+  NO_SIGNAL
+  ERROR
+  SKIPPED
+}
+
+enum PositionStatus {
+  OPEN
+  CLOSED
+}
+
+enum OrderRole {
+  MAKER
+  TAKER
+}
+
+enum TradeAction {
+  BUY
+  SELL
+  CLOSE
+  STOP_LOSS
+  TAKE_PROFIT
+}
+
+enum AlertType {
+  ENTRY
+  EXIT
+  STOP_LOSS
+  TAKE_PROFIT
+  ERROR
+  INFO
+  RESTART
+}
+
+enum AlertStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+enum SystemLogLevel {
+  INFO
+  WARN
+  ERROR
+}
+
+enum StrategySessionStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+enum NewsletterDigestStatus {
+  DRAFT
+  GENERATED
+  SENT
+  FAILED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String?  @unique
+  passwordHash String?
+  displayName  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  bots         Bot[]
+  researchProfile ResearchProfile?
+  agentThreads AgentMeetingThread[]
+}
+
+model Bot {
+  id              String      @id @default(cuid())
+  userId          String?
+  name            String
+  mode            String      @default("paper")
+  status          BotStatus   @default(STOPPED)
+  exchangeKey     String      @default("mock-binance-futures")
+  baseAsset       String      @default("USDT")
+  paperBalance    Float       @default(10000)
+  reservedBalance Float       @default(0)
+  makerFeeRate    Float       @default(0.0002)
+  takerFeeRate    Float       @default(0.0005)
+  entryOrderRole  OrderRole   @default(TAKER)
+  exitOrderRole   OrderRole   @default(TAKER)
+  slippageBps     Float       @default(4)
+  heartbeatAt     DateTime?
+  lastErrorAt     DateTime?
+  lastDailyReportSentAt DateTime?
+  lastWeeklyReportSentAt DateTime?
+  metadata        Json?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  user            User?       @relation(fields: [userId], references: [id])
+  strategies      Strategy[]
+  sessions        StrategySession[]
+  strategyRuns    StrategyRun[]
+  positions       Position[]
+  trades          Trade[]
+  alerts          Alert[]
+  dailySummaries  DailySummary[]
+  systemLogs      SystemLog[]
+}
+
+model Strategy {
+  id              String         @id @default(cuid())
+  botId           String
+  key             String
+  name            String
+  description     String?
+  status          StrategyStatus @default(PAUSED)
+  symbol          String
+  timeframe       String         @default("15m")
+  config          Json
+  lastEvaluatedAt DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  bot             Bot            @relation(fields: [botId], references: [id])
+  runs            StrategyRun[]
+  positions       Position[]
+  trades          Trade[]
+  alerts          Alert[]
+
+  @@unique([botId, key])
+}
+
+model StrategySession {
+  id             String                @id @default(cuid())
+  botId          String
+  name           String
+  runLabel       String
+  status         StrategySessionStatus @default(ACTIVE)
+  notes          String?
+  configSnapshot Json?
+  startedAt      DateTime              @default(now())
+  endedAt        DateTime?
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
+  bot            Bot                   @relation(fields: [botId], references: [id])
+  strategyRuns   StrategyRun[]
+  positions      Position[]
+  trades         Trade[]
+  alerts         Alert[]
+  dailySummaries DailySummary[]
+
+  @@index([botId, status, startedAt])
+}
+
+model DailySummary {
+  id                     String   @id @default(cuid())
+  botId                  String
+  sessionId              String?
+  scopeKey               String   @unique
+  dateKey                String
+  timezone               String
+  sessionName            String?
+  runLabel               String?
+  tradeCount             Int      @default(0)
+  closedPositionCount    Int      @default(0)
+  winCount               Int      @default(0)
+  lossCount              Int      @default(0)
+  grossPnl               Float    @default(0)
+  netPnl                 Float    @default(0)
+  totalFees              Float    @default(0)
+  totalWinningPnl        Float    @default(0)
+  totalLosingPnl         Float    @default(0)
+  bestTrade              Float    @default(0)
+  worstTrade             Float    @default(0)
+  strategyPerformance    Json
+  entryReasonPerformance Json
+  exitReasonPerformance  Json
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  bot                    Bot      @relation(fields: [botId], references: [id])
+  session                StrategySession? @relation(fields: [sessionId], references: [id])
+
+  @@index([botId, dateKey])
+  @@index([sessionId, dateKey])
+}
+
+model StrategyRun {
+  id           String            @id @default(cuid())
+  botId        String
+  strategyId   String
+  sessionId    String?
+  runLabel     String?
+  symbol       String
+  timeframe    String
+  status       StrategyRunStatus
+  signalType   String
+  price        Float?
+  primaryReasonCode String?
+  primaryReasonText String?
+  reasonsText  String?
+  reasons      Json?
+  indicators   Json?
+  errorMessage String?
+  executedAt   DateTime          @default(now())
+  bot          Bot               @relation(fields: [botId], references: [id])
+  strategy     Strategy          @relation(fields: [strategyId], references: [id])
+  session      StrategySession?  @relation(fields: [sessionId], references: [id])
+
+  @@index([sessionId, executedAt])
+}
+
+model Position {
+  id              String         @id @default(cuid())
+  botId           String
+  strategyId      String?
+  sessionId       String?
+  symbol          String
+  side            String         @default("LONG")
+  status          PositionStatus @default(OPEN)
+  quantity        Float
+  entryPrice      Float
+  exitPrice       Float?
+  entryValue      Float
+  exitValue       Float?
+  realizedPnl     Float          @default(0)
+  unrealizedPnl   Float          @default(0)
+  feesPaid        Float          @default(0)
+  openedAt        DateTime       @default(now())
+  closedAt        DateTime?
+  entryReasonCode String
+  entryReasonText String
+  entryReasonMeta Json
+  exitReasonCode  String?
+  exitReasonText  String?
+  exitReasonMeta  Json?
+  bot             Bot            @relation(fields: [botId], references: [id])
+  strategy        Strategy?      @relation(fields: [strategyId], references: [id])
+  session         StrategySession? @relation(fields: [sessionId], references: [id])
+  trades          Trade[]
+
+  @@index([botId, symbol, status])
+  @@index([sessionId, status])
+}
+
+model Trade {
+  id              String      @id @default(cuid())
+  botId           String
+  strategyId      String?
+  positionId      String?
+  sessionId       String?
+  symbol          String
+  action          TradeAction
+  side            String      @default("LONG")
+  quantity        Float
+  price           Float
+  notional        Float
+  orderRole       OrderRole
+  feeRate         Float
+  slippageBps     Float       @default(0)
+  fee             Float       @default(0)
+  grossPnl        Float       @default(0)
+  realizedPnl     Float       @default(0)
+  reasonCode      String
+  reasonText      String
+  reasonMeta      Json
+  executedAt      DateTime    @default(now())
+  externalOrderId String?
+  bot             Bot         @relation(fields: [botId], references: [id])
+  strategy        Strategy?   @relation(fields: [strategyId], references: [id])
+  position        Position?   @relation(fields: [positionId], references: [id])
+  session         StrategySession? @relation(fields: [sessionId], references: [id])
+
+  @@index([botId, executedAt])
+  @@index([sessionId, executedAt])
+}
+
+model Alert {
+  id         String      @id @default(cuid())
+  botId      String
+  strategyId String?
+  sessionId  String?
+  type       AlertType
+  status     AlertStatus @default(PENDING)
+  title      String
+  message    String
+  payload    Json?
+  sentAt     DateTime?
+  createdAt  DateTime    @default(now())
+  bot        Bot         @relation(fields: [botId], references: [id])
+  strategy   Strategy?   @relation(fields: [strategyId], references: [id])
+  session    StrategySession? @relation(fields: [sessionId], references: [id])
+}
+
+model MarketCandle {
+  id          String   @id @default(cuid())
+  exchangeKey String
+  symbol      String
+  timeframe   String
+  openTime    DateTime
+  closeTime   DateTime
+  open        Float
+  high        Float
+  low         Float
+  close       Float
+  volume      Float
+  createdAt   DateTime @default(now())
+
+  @@unique([exchangeKey, symbol, timeframe, openTime])
+  @@index([symbol, timeframe, openTime])
+}
+
+model SystemLog {
+  id        String         @id @default(cuid())
+  botId     String?
+  level     SystemLogLevel
+  source    String
+  message   String
+  context   Json?
+  createdAt DateTime       @default(now())
+  bot       Bot?           @relation(fields: [botId], references: [id])
+
+  @@index([createdAt])
+}
+
+model ResearchProfile {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  preferredSectors   Json
+  preferredTickers   Json
+  newsletterEnabled  Boolean  @default(true)
+  newsletterEmail    String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [userId], references: [id])
+  newsletters        NewsletterDigest[]
+}
+
+model ResearchNews {
+  id               String   @id @default(cuid())
+  title            String
+  summary          String
+  source           String?
+  sectorTag        String
+  tickerTags       Json
+  importanceScore  Float    @default(0)
+  analysis         String
+  recommendation   String
+  publishedAt      DateTime
+  metadata         Json?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([sectorTag, importanceScore])
+  @@index([publishedAt])
+}
+
+model TickerInsight {
+  id                String   @id @default(cuid())
+  ticker            String
+  company           String?
+  sectorTag         String
+  importanceScore   Float    @default(0)
+  summary           String
+  technicalAnalysis String
+  patternAnalysis   Json
+  marketContext     String
+  recommendation    String
+  linkedNewsIds     Json
+  generatedAt       DateTime @default(now())
+  metadata          Json?
+
+  @@index([ticker, generatedAt])
+  @@index([sectorTag, importanceScore])
+}
+
+model NewsletterDigest {
+  id            String                 @id @default(cuid())
+  profileId     String?
+  cadence       String                 @default("daily")
+  status        NewsletterDigestStatus @default(GENERATED)
+  subject       String
+  previewText   String
+  payload       Json
+  htmlBody      String?
+  textBody      String?
+  generatedAt   DateTime               @default(now())
+  scheduledFor  DateTime?
+  sentAt        DateTime?
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+  profile       ResearchProfile?       @relation(fields: [profileId], references: [id])
+
+  @@index([generatedAt])
+  @@index([status, scheduledFor])
+}
+
+model AgentMeetingThread {
+  id            String   @id @default(cuid())
+  userId        String?
+  topic         String
+  objective     String
+  nextAction    String
+  context       Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User?    @relation(fields: [userId], references: [id])
+  messages      AgentMeetingMessage[]
+
+  @@index([userId, createdAt])
+}
+
+model AgentMeetingMessage {
+  id          String             @id @default(cuid())
+  threadId    String
+  role        String
+  author      String
+  content     String
+  references  Json?
+  position    Int
+  createdAt   DateTime           @default(now())
+  thread      AgentMeetingThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  @@unique([threadId, position])
+  @@index([threadId, createdAt])
+}
