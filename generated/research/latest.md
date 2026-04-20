@@ -1,6 +1,6 @@
 # Research Pipeline
 
-- Generated At: 2026-04-20T12:08:08.359Z
+- Generated At: 2026-04-20T13:50:05.262Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -9,26 +9,26 @@
 - Tickers: AMD, NVDA, XOM
 
 ## Main Headline
-- Dow Jones Futures Fall; Trump Says Talks, Iran Says No; Marvell Jumps, Tesla Earnings Due
+- Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)
 - Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
-- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
+- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "Dow Jones Futures Fall; Trump Says Talks, Iran Says No; Marvell Jumps, Tesla Earnings Due"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-latest-news-in-ai-chips-alchip-advances-ai-processor-design-with-3dic-platform, live-semiconductors-digi-power-x-signs-first-ai-revenue-contract-19-6-million-24-month-subq-ai-agree, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally
+메인 헤드라인을 "Stock Market Today: Dow Falls, Oil Prices Jump On Rising U.S.-Iran Tensions (Live Coverage)"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-latest-news-in-ai-chips-alchip-advances-ai-processor-design-with-3dic-platform, live-energy-oil-firing-on-all-cylinders-wall-street-strategists-expect-a-strong-quarter-of-earni
+References: live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom
 
 ### 03 Ticker Analyst -> Execution Trader
 AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: AMD, live-semiconductors-dow-jones-futures-fall-trump-says-talks-iran-says-no-marvell-jumps-tesla-earning, live-semiconductors-latest-news-in-ai-chips-alchip-advances-ai-processor-design-with-3dic-platform, live-semiconductors-digi-power-x-signs-first-ai-revenue-contract-19-6-million-24-month-subq-ai-agree
+References: AMD, live-semiconductors-stock-market-today-dow-falls-oil-prices-jump-on-rising-u-s-iran-tensions-live-co, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
 
 ### 04 Execution Trader -> Operator
 AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: AMD, live-semiconductors-latest-news-in-ai-chips-alchip-advances-ai-processor-design-with-3dic-platform, live-semiconductors-digi-power-x-signs-first-ai-revenue-contract-19-6-million-24-month-subq-ai-agree, live-semiconductors-nvidia-refocuses-on-ai-infrastructure-as-partnerships-grow-and-shares-rally
+References: AMD, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom
 
 ## Trader Plan
 - Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
