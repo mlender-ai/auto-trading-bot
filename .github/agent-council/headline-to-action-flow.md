@@ -4,8 +4,8 @@
 - Owner: PM
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2
 - Branch: codex/agent-council/headline-to-action-flow
-- Generated At: 2026-04-20T23:07:25.179Z
-- Status: ready
+- Generated At: 2026-04-21T02:52:30.245Z
+- Status: queued
 
 ## Detail
 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.
