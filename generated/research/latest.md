@@ -1,34 +1,35 @@
 # Research Pipeline
 
-- Generated At: 2026-04-21T07:58:26.526Z
+- Contract Version: 2026-04-21.1
+- Generated At: 2026-04-21T13:16:55.861Z
 - Provider: rule-based
-- Model: openai/gpt-4.1
-- Source: github-actions
+- Model: n/a
+- Source: local-script
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: AMD, NVDA, XOM
 
 ## Main Headline
-- Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’
+- Nasdaq Composite Jumps on Earnings Momentum, AI Spending and Mideast Deal Hopes
 - Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
-- Action: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
+- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-micron-quietly-powers-s-p-earnings-surge, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom, live-semiconductors-microsoft-vs-meta-which-ai-stock-is-a-better-buy-headed-into-their-earnings-repo
+메인 헤드라인을 "Nasdaq Composite Jumps on Earnings Momentum, AI Spending and Mideast Deal Hopes"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-semiconductors-microsoft-vs-meta-which-ai-stock-is-a-better-buy-headed-into-their-earnings-repo, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
+References: live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
 
 ### 03 Ticker Analyst -> Execution Trader
 AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: AMD, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-semiconductors-microsoft-vs-meta-which-ai-stock-is-a-better-buy-headed-into-their-earnings-repo, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027
+References: AMD, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
 
 ### 04 Execution Trader -> Operator
 AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: AMD, live-energy-oil-micron-quietly-powers-s-p-earnings-surge, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom, live-semiconductors-microsoft-vs-meta-which-ai-stock-is-a-better-buy-headed-into-their-earnings-repo
+References: AMD, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
 
 ## Trader Plan
 - Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
@@ -39,6 +40,12 @@ References: AMD, live-energy-oil-micron-quietly-powers-s-p-earnings-surge, live-
 - Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.
 - Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.
 - Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.
+
+## Behavior Funnel
+- 헤드라인 열람: 0회
+- 다음 단계 이동: 0회
+- 티커 선택: 0회
+- 행동 제안 확장: 0회
 
 ## Product Action Items
 - 에이전트 출력 스키마를 API 계약으로 고정합니다.
