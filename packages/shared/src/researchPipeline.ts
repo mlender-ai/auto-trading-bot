@@ -1,4 +1,6 @@
 import {
+  RESEARCH_CONTRACT_METADATA,
+  RESEARCH_CONTRACT_VERSION,
   buildResearchMeetingThread,
   buildResearchNewsletter,
   buildResearchProductReview,
@@ -38,6 +40,8 @@ export interface GenerateResearchPipelineOptions {
 }
 
 export interface GeneratedResearchSnapshot {
+  contractVersion: string;
+  contract: typeof RESEARCH_CONTRACT_METADATA;
   workspace: ResearchWorkspaceData;
   markdown: string;
   warnings: string[];
@@ -312,8 +316,10 @@ function buildFallbackSnapshot(baseWorkspace: ResearchWorkspaceData, config: Res
   };
 
   workspace.agentPipeline.runtime.summaryMarkdown = renderResearchPipelineMarkdown({
+    contractVersion: workspace.contractVersion,
     generatedAt: workspace.generatedAt,
     preferences: workspace.preferences,
+    behaviorSummary: workspace.behaviorSummary,
     news: workspace.news,
     tickerAnalyses: workspace.tickerAnalyses,
     agentPipeline: workspace.agentPipeline,
@@ -321,6 +327,8 @@ function buildFallbackSnapshot(baseWorkspace: ResearchWorkspaceData, config: Res
   });
 
   return {
+    contractVersion: RESEARCH_CONTRACT_VERSION,
+    contract: RESEARCH_CONTRACT_METADATA,
     workspace,
     markdown: workspace.agentPipeline.runtime.summaryMarkdown,
     warnings
@@ -1163,6 +1171,7 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
     };
     const workspace: ResearchWorkspaceData = {
       ...baseWorkspace,
+      contractVersion: RESEARCH_CONTRACT_VERSION,
       generatedAt,
       news,
       tickerAnalyses,
@@ -1174,8 +1183,10 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
 
     workspace.meeting = buildResearchMeetingThread(workspace.agentPipeline, workspace.productReview, workspace.news, workspace.tickerAnalyses);
     workspace.agentPipeline.runtime.summaryMarkdown = renderResearchPipelineMarkdown({
+      contractVersion: workspace.contractVersion,
       generatedAt: workspace.generatedAt,
       preferences: workspace.preferences,
+      behaviorSummary: workspace.behaviorSummary,
       news: workspace.news,
       tickerAnalyses: workspace.tickerAnalyses,
       agentPipeline: workspace.agentPipeline,
@@ -1183,6 +1194,8 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
     });
 
     return {
+      contractVersion: RESEARCH_CONTRACT_VERSION,
+      contract: RESEARCH_CONTRACT_METADATA,
       workspace,
       markdown: workspace.agentPipeline.runtime.summaryMarkdown,
       warnings: combinedWarnings

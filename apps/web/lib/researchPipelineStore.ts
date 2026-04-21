@@ -1,8 +1,17 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import { buildResearchWorkspace, renderResearchPipelineMarkdown, type ResearchWorkspaceData, type UserResearchPreferences } from "@trading/shared/src/research";
+import {
+  RESEARCH_CONTRACT_METADATA,
+  RESEARCH_CONTRACT_VERSION,
+  buildResearchWorkspace,
+  renderResearchPipelineMarkdown,
+  type ResearchBehaviorSummary,
+  type ResearchWorkspaceData,
+  type UserResearchPreferences
+} from "@trading/shared/src/research";
 import { generateResearchPipelineSnapshot, type GeneratedResearchSnapshot } from "@trading/shared/src/researchPipeline";
+import { readResearchBehaviorSummary } from "@trading/shared/src/researchBehaviorStore";
 import { buildLiveResearchWorkspace } from "@trading/shared/src/researchLive";
 
 const OUTPUT_DIR = path.join(process.cwd(), "generated", "research");
@@ -20,8 +29,10 @@ function samePreferences(left: UserResearchPreferences, right: UserResearchPrefe
 
 function toSnapshot(workspace: ResearchWorkspaceData, warnings: string[] = []): GeneratedResearchSnapshot {
   const markdown = renderResearchPipelineMarkdown({
+    contractVersion: workspace.contractVersion,
     generatedAt: workspace.generatedAt,
     preferences: workspace.preferences,
+    behaviorSummary: workspace.behaviorSummary,
     news: workspace.news,
     tickerAnalyses: workspace.tickerAnalyses,
     agentPipeline: workspace.agentPipeline,
@@ -31,10 +42,31 @@ function toSnapshot(workspace: ResearchWorkspaceData, warnings: string[] = []): 
   workspace.agentPipeline.runtime.summaryMarkdown = markdown;
 
   return {
+    contract: RESEARCH_CONTRACT_METADATA,
+    contractVersion: RESEARCH_CONTRACT_VERSION,
     workspace,
     markdown,
     warnings
   };
+}
+
+function attachBehaviorSummary(snapshot: GeneratedResearchSnapshot, behaviorSummary: ResearchBehaviorSummary): GeneratedResearchSnapshot {
+  snapshot.workspace.contractVersion = RESEARCH_CONTRACT_VERSION;
+  snapshot.workspace.behaviorSummary = behaviorSummary;
+  snapshot.contract = RESEARCH_CONTRACT_METADATA;
+  snapshot.contractVersion = RESEARCH_CONTRACT_VERSION;
+  snapshot.markdown = renderResearchPipelineMarkdown({
+    contractVersion: snapshot.workspace.contractVersion,
+    generatedAt: snapshot.workspace.generatedAt,
+    preferences: snapshot.workspace.preferences,
+    behaviorSummary: snapshot.workspace.behaviorSummary,
+    news: snapshot.workspace.news,
+    tickerAnalyses: snapshot.workspace.tickerAnalyses,
+    agentPipeline: snapshot.workspace.agentPipeline,
+    productReview: snapshot.workspace.productReview
+  });
+  snapshot.workspace.agentPipeline.runtime.summaryMarkdown = snapshot.markdown;
+  return snapshot;
 }
 
 function getSnapshotTimestamp(snapshot: GeneratedResearchSnapshot): number {
@@ -88,19 +120,26 @@ export async function readPublishedResearchSnapshot(): Promise<GeneratedResearch
 }
 
 export async function readPreferredResearchSnapshot(preferences?: Partial<UserResearchPreferences>): Promise<GeneratedResearchSnapshot | null> {
-  const [stored, published] = await Promise.all([readStoredResearchSnapshot(), readPublishedResearchSnapshot()]);
+  const [stored, published, behaviorSummary] = await Promise.all([
+    readStoredResearchSnapshot(),
+    readPublishedResearchSnapshot(),
+    readResearchBehaviorSummary()
+  ]);
   const candidates = [published, stored].filter((snapshot): snapshot is GeneratedResearchSnapshot => Boolean(snapshot && snapshotMatchesPreferences(snapshot, preferences)));
 
   if (candidates.length === 0) {
     return null;
   }
 
-  return candidates.sort((left, right) => getSnapshotTimestamp(right) - getSnapshotTimestamp(left))[0] ?? null;
+  return attachBehaviorSummary(candidates.sort((left, right) => getSnapshotTimestamp(right) - getSnapshotTimestamp(left))[0]!, behaviorSummary);
 }
 
 export async function getInitialResearchWorkspace(preferences?: Partial<UserResearchPreferences>): Promise<ResearchWorkspaceData> {
   const snapshot = await readPreferredResearchSnapshot(preferences);
   const live = await buildLiveResearchWorkspace(preferences);
+  const behaviorSummary = await readResearchBehaviorSummary();
+  live.workspace.behaviorSummary = behaviorSummary;
+  live.workspace.contractVersion = RESEARCH_CONTRACT_VERSION;
   const fallback = toSnapshot(live.workspace, live.warnings);
 
   if (!snapshot) {
@@ -112,11 +151,15 @@ export async function getInitialResearchWorkspace(preferences?: Partial<UserRese
 }
 
 export async function runAndPersistResearchPipeline(preferences?: Partial<UserResearchPreferences>, source: "web-api" | "local-script" | "github-actions" = "local-script") {
-  const snapshot = await generateResearchPipelineSnapshot({
+  const behaviorSummary = await readResearchBehaviorSummary();
+  const snapshot = attachBehaviorSummary(
+    await generateResearchPipelineSnapshot({
     ...(preferences ? { preferences } : {}),
     source,
     artifactPath: RESEARCH_PIPELINE_ARTIFACT_PATH
-  });
+    }),
+    behaviorSummary
+  );
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(RESEARCH_PIPELINE_JSON_PATH, JSON.stringify(snapshot, null, 2), "utf8");

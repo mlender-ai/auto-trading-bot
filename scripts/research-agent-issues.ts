@@ -1,6 +1,14 @@
 import { promises as fs } from "fs";
 
-import { renderResearchPipelineMarkdown, type AgentRole, type ProductActionItem, type ResearchWorkspaceData } from "../packages/shared/src/research";
+import {
+  RESEARCH_CONTRACT_METADATA,
+  RESEARCH_CONTRACT_VERSION,
+  createEmptyResearchBehaviorSummary,
+  renderResearchPipelineMarkdown,
+  type AgentRole,
+  type ProductActionItem,
+  type ResearchWorkspaceData
+} from "../packages/shared/src/research";
 import { type GeneratedResearchSnapshot } from "../packages/shared/src/researchPipeline";
 
 const SNAPSHOT_PATH = "generated/research/latest.json";
@@ -593,13 +601,22 @@ async function closeStalePullRequests(
 }
 
 async function persistSnapshot(snapshot: GeneratedResearchSnapshot) {
+  const contractVersion = snapshot.workspace.contractVersion ?? snapshot.contractVersion ?? RESEARCH_CONTRACT_VERSION;
+  const behaviorSummary = snapshot.workspace.behaviorSummary ?? createEmptyResearchBehaviorSummary();
+
+  snapshot.workspace.contractVersion = contractVersion;
+  snapshot.workspace.behaviorSummary = behaviorSummary;
+  snapshot.contractVersion = contractVersion;
+  snapshot.contract = snapshot.contract ?? RESEARCH_CONTRACT_METADATA;
   snapshot.markdown = renderResearchPipelineMarkdown({
     generatedAt: snapshot.workspace.generatedAt,
     preferences: snapshot.workspace.preferences,
     news: snapshot.workspace.news,
     tickerAnalyses: snapshot.workspace.tickerAnalyses,
     agentPipeline: snapshot.workspace.agentPipeline,
-    productReview: snapshot.workspace.productReview
+    productReview: snapshot.workspace.productReview,
+    contractVersion,
+    behaviorSummary
   });
   snapshot.workspace.agentPipeline.runtime.summaryMarkdown = snapshot.markdown;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   buildResearchWorkspace,
@@ -8,6 +8,8 @@ import {
   getResearchSectorLabel,
   normalizeResearchPreferences,
   researchTickerOptions,
+  type ResearchBehaviorEventName,
+  type ResearchBehaviorSummary,
   type PatternConfidence,
   type ProductReviewNote,
   type ProductImplementationStatus,
@@ -25,6 +27,7 @@ import type { GeneratedResearchSnapshot } from "@trading/shared/src/researchPipe
 
 const STORAGE_KEY = "research-preferences-v1";
 const DEFAULT_NEWS_IMAGE = "/news/default-cover.svg";
+const BEHAVIOR_API_PATH = "/api/research/behavior";
 
 function toggleStringValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
@@ -65,6 +68,31 @@ function getImplementationStatusLabel(status: ProductImplementationStatus) {
     default:
       return "대기";
   }
+}
+
+function getBehaviorMetric(summary: ResearchBehaviorSummary, eventName: ResearchBehaviorEventName) {
+  return summary.metrics.find((metric) => metric.eventName === eventName) ?? null;
+}
+
+function getBehaviorInsight(summary: ResearchBehaviorSummary) {
+  const headlineOpen = getBehaviorMetric(summary, "headline_open")?.count ?? 0;
+  const stageContinue = getBehaviorMetric(summary, "stage_continue")?.count ?? 0;
+  const tickerSelect = getBehaviorMetric(summary, "ticker_select")?.count ?? 0;
+  const actionExpand = getBehaviorMetric(summary, "action_expand")?.count ?? 0;
+
+  if (headlineOpen > 0 && stageContinue < headlineOpen) {
+    return "헤드라인을 읽고 다음 단계로 넘어가기 전 이탈이 가장 크게 발생하고 있습니다.";
+  }
+
+  if (stageContinue > 0 && tickerSelect < stageContinue) {
+    return "시황까지는 읽지만 티커 분석 선택으로 이어지지 않는 구간이 가장 약합니다.";
+  }
+
+  if (tickerSelect > 0 && actionExpand < tickerSelect) {
+    return "티커까지는 보지만 실행 조건을 펼쳐 읽지 않는 사용자가 많습니다.";
+  }
+
+  return "핵심 단계 간 전환이 비교적 고르게 이어지고 있습니다.";
 }
 
 function compactCopy(text: string, maxLength = 120) {
@@ -204,6 +232,8 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   const [supplementalNews, setSupplementalNews] = useState<ResearchNewsItem[]>([]);
   const [tickerNotice, setTickerNotice] = useState<string | null>(null);
   const [pipelineNotice, setPipelineNotice] = useState<string | null>(null);
+  const [isActionPlanExpanded, setIsActionPlanExpanded] = useState(false);
+  const trackedHeadlineRef = useRef<string | null>(null);
   const relatedNewsLookup = useMemo(() => buildNewsLookup(workspace, supplementalNews), [workspace, supplementalNews]);
   const activeAnalysis = useMemo(
     () => workspace.tickerAnalyses.find((analysis) => analysis.ticker === selectedTicker) ?? workspace.tickerAnalyses[0] ?? null,
@@ -279,6 +309,52 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
 
     setCustomTickerSector(preferences.sectors[0] ?? "semiconductors");
   }, [customTickerSector, preferences.sectors]);
+
+  useEffect(() => {
+    setIsActionPlanExpanded(false);
+  }, [workspace.news.headline?.id]);
+
+  async function recordBehaviorEvent(eventName: ResearchBehaviorEventName, value?: string) {
+    try {
+      const response = await fetch(BEHAVIOR_API_PATH, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          eventName,
+          value
+        })
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const summary = (await response.json()) as ResearchBehaviorSummary;
+      startTransition(() => {
+        setWorkspace((current) => ({
+          ...current,
+          behaviorSummary: summary
+        }));
+      });
+    } catch {
+      // Ignore best-effort analytics failures in the MVP.
+    }
+  }
+
+  useEffect(() => {
+    if (activeTab !== "news" || !workspace.news.headline?.id) {
+      return;
+    }
+
+    if (trackedHeadlineRef.current === workspace.news.headline.id) {
+      return;
+    }
+
+    trackedHeadlineRef.current = workspace.news.headline.id;
+    void recordBehaviorEvent("headline_open", workspace.news.headline.id);
+  }, [activeTab, workspace.news.headline?.id]);
 
   async function refreshWorkspace(nextPreferences: UserResearchPreferences) {
     const normalized = normalizeResearchPreferences(nextPreferences);
@@ -377,6 +453,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
         }));
         setSelectedTicker(nextAnalysis.ticker);
       });
+      void recordBehaviorEvent("ticker_select", nextAnalysis.ticker);
       setSupplementalNews((current) => {
         const merged = [...payload.relatedNews, ...current];
         return Array.from(new Map(merged.map((item) => [item.id, item])).values());
@@ -411,6 +488,35 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
     void refreshWorkspace({
       sectors: preferences.sectors,
       tickers: toggleStringValue(preferences.tickers, ticker)
+    });
+  }
+
+  function handleTabChange(nextTab: ResearchTab) {
+    if (nextTab === activeTab) {
+      return;
+    }
+
+    if (activeTab === "news" && nextTab !== "news") {
+      void recordBehaviorEvent("stage_continue", nextTab);
+    }
+
+    setActiveTab(nextTab);
+  }
+
+  function handleSelectTicker(ticker: string) {
+    setSelectedTicker(ticker);
+    void recordBehaviorEvent("ticker_select", ticker);
+  }
+
+  function handleToggleActionPlan() {
+    setIsActionPlanExpanded((current) => {
+      const next = !current;
+
+      if (next) {
+        void recordBehaviorEvent("action_expand", workspace.agentPipeline.actionPlan.strategy);
+      }
+
+      return next;
     });
   }
 
@@ -495,7 +601,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
               aria-selected={activeTab === tab.id}
               className={`tab-button ${activeTab === tab.id ? "active" : ""}`}
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as ResearchTab)}
+              onClick={() => handleTabChange(tab.id as ResearchTab)}
               role="tab"
               type="button"
             >
@@ -542,7 +648,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
       <section className="research-layout">
         <section className="research-main">
           {activeTab === "news" ? (
-            <NewsTab workspace={workspace} />
+            <NewsTab isActionPlanExpanded={isActionPlanExpanded} onToggleActionPlan={handleToggleActionPlan} workspace={workspace} />
           ) : null}
 
           {activeTab === "signals" ? (
@@ -555,7 +661,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
               onAnalyzeTicker={handleAnalyzeTicker}
               onChangeTickerInput={setCustomTickerInput}
               onChangeTickerSector={setCustomTickerSector}
-              onSelectTicker={setSelectedTicker}
+              onSelectTicker={handleSelectTicker}
               tickerNotice={tickerNotice}
               workspace={workspace}
             />
@@ -610,7 +716,15 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   );
 }
 
-function NewsTab({ workspace }: { workspace: ResearchWorkspaceData }) {
+function NewsTab({
+  workspace,
+  isActionPlanExpanded,
+  onToggleActionPlan
+}: {
+  workspace: ResearchWorkspaceData;
+  isActionPlanExpanded: boolean;
+  onToggleActionPlan: () => void;
+}) {
   if (!workspace.news.headline) {
     return (
       <article className="section-panel empty-state">
@@ -621,6 +735,7 @@ function NewsTab({ workspace }: { workspace: ResearchWorkspaceData }) {
   }
 
   const headline = workspace.news.headline;
+  const actionPlan = workspace.agentPipeline.actionPlan;
 
   return (
     <section className="news-tab">
@@ -647,6 +762,53 @@ function NewsTab({ workspace }: { workspace: ResearchWorkspaceData }) {
           </div>
         </div>
       </article>
+
+      <section className="section-panel strategy-bridge-panel">
+        <div className="section-heading compact">
+          <div>
+            <span className="section-kicker">News To Action</span>
+            <h2>오늘 전략과 금지 행동</h2>
+          </div>
+          <p>헤드라인을 읽은 직후 바로 매매 판단까지 이어지도록 전략 블록을 붙였습니다.</p>
+        </div>
+        <div className="strategy-bridge-head">
+          <div>
+            <span className="eyebrow">오늘 전략</span>
+            <p>{actionPlan.strategy}</p>
+          </div>
+          <button className="strategy-expand-button" onClick={onToggleActionPlan} type="button">
+            {isActionPlanExpanded ? "전략 접기" : "전략 자세히 보기"}
+          </button>
+        </div>
+        <div className="strategy-callout-grid">
+          <article className="strategy-callout-card emphasis">
+            <span className="eyebrow">바로 할 것</span>
+            <ul className="review-list">
+              {actionPlan.recommendedActions.slice(0, isActionPlanExpanded ? actionPlan.recommendedActions.length : 2).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article className="strategy-callout-card caution">
+            <span className="eyebrow">하지 말아야 할 것</span>
+            <ul className="review-list">
+              {actionPlan.avoidActions.slice(0, isActionPlanExpanded ? actionPlan.avoidActions.length : 2).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
+        {isActionPlanExpanded ? (
+          <div className="strategy-risk-block">
+            <span className="eyebrow">리스크</span>
+            <ul className="review-list">
+              {actionPlan.risks.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </section>
 
       <section className="section-panel brief-panel">
         <div className="section-heading">
@@ -1006,6 +1168,25 @@ function MeetingTab({ workspace }: { workspace: ResearchWorkspaceData }) {
             ))}
           </ul>
         </article>
+      </section>
+
+      <section className="section-panel">
+        <div className="section-heading">
+          <div>
+            <span className="section-kicker">Behavior Funnel</span>
+            <h2>실사용 전환 데이터</h2>
+          </div>
+          <p>{getBehaviorInsight(workspace.behaviorSummary)}</p>
+        </div>
+        <div className="behavior-metric-grid">
+          {workspace.behaviorSummary.metrics.map((metric) => (
+            <article className="behavior-metric-card" key={metric.eventName}>
+              <span className="eyebrow">{metric.label}</span>
+              <strong>{metric.count}</strong>
+              <p>{metric.lastValue ? `마지막 값 ${metric.lastValue}` : "아직 기록 없음"}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section-panel">

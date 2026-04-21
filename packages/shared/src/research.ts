@@ -8,6 +8,7 @@ export type ResearchPipelineAgentId = "news-editor" | "macro-analyst" | "ticker-
 export type ResearchPipelineProvider = "rule-based" | "openai" | "github-models";
 export type ResearchPipelineRunSource = "static" | "web-api" | "local-script" | "github-actions";
 export type ProductImplementationStatus = "queued" | "ready" | "in-progress" | "reviewing" | "merged";
+export type ResearchBehaviorEventName = "headline_open" | "stage_continue" | "ticker_select" | "action_expand";
 
 export interface ResearchSectorOption {
   id: ResearchSectorTag;
@@ -87,6 +88,30 @@ export interface UserBehaviorSignal {
   returnDriver: string;
   frictionPoint: string;
   highIntentAction: string;
+}
+
+export interface ResearchBehaviorMetric {
+  eventName: ResearchBehaviorEventName;
+  label: string;
+  count: number;
+  lastTriggeredAt: string | null;
+  lastValue: string | null;
+}
+
+export interface ResearchBehaviorSummary {
+  updatedAt: string | null;
+  totalEvents: number;
+  lastEventName: ResearchBehaviorEventName | null;
+  lastEventAt: string | null;
+  metrics: ResearchBehaviorMetric[];
+}
+
+export interface ResearchContractMetadata {
+  version: string;
+  snapshotFields: string[];
+  actionPlanFields: string[];
+  actionItemFields: string[];
+  behaviorEvents: ResearchBehaviorEventName[];
 }
 
 export interface ResearchPipelineAgentDefinition {
@@ -220,12 +245,14 @@ export interface NewsletterEnvelope {
 }
 
 export interface ResearchWorkspaceData {
+  contractVersion: string;
   generatedAt: string;
   preferences: UserResearchPreferences;
   focusedTickers: string[];
   availableSectors: ResearchSectorOption[];
   availableTickers: TickerOption[];
   userBehavior: UserBehaviorSignal;
+  behaviorSummary: ResearchBehaviorSummary;
   news: ResearchNewsBoard;
   tickerAnalyses: TickerAnalysis[];
   agentPipeline: ResearchAgentPipeline;
@@ -239,6 +266,61 @@ export interface ResearchWorkspaceBuildInput {
   generatedAt?: string;
   newsItems?: ResearchNewsItem[];
   tickerAnalyses?: TickerAnalysis[];
+}
+
+export const RESEARCH_CONTRACT_VERSION = "2026-04-21.1";
+export const RESEARCH_BEHAVIOR_EVENT_LABELS: Record<ResearchBehaviorEventName, string> = {
+  headline_open: "헤드라인 열람",
+  stage_continue: "다음 단계 이동",
+  ticker_select: "티커 선택",
+  action_expand: "행동 제안 확장"
+};
+
+export const RESEARCH_CONTRACT_METADATA: ResearchContractMetadata = {
+  version: RESEARCH_CONTRACT_VERSION,
+  snapshotFields: [
+    "contractVersion",
+    "generatedAt",
+    "preferences",
+    "behaviorSummary",
+    "news",
+    "tickerAnalyses",
+    "agentPipeline",
+    "productReview",
+    "meeting",
+    "newsletter"
+  ],
+  actionPlanFields: ["strategy", "recommendedActions", "avoidActions", "risks"],
+  actionItemFields: [
+    "id",
+    "owner",
+    "title",
+    "detail",
+    "implementationFocus",
+    "targetPaths",
+    "verificationCommands",
+    "issueUrl",
+    "branchName",
+    "pullRequestUrl",
+    "implementationStatus"
+  ],
+  behaviorEvents: ["headline_open", "stage_continue", "ticker_select", "action_expand"]
+};
+
+export function createEmptyResearchBehaviorSummary(): ResearchBehaviorSummary {
+  return {
+    updatedAt: null,
+    totalEvents: 0,
+    lastEventName: null,
+    lastEventAt: null,
+    metrics: RESEARCH_CONTRACT_METADATA.behaviorEvents.map((eventName) => ({
+      eventName,
+      label: RESEARCH_BEHAVIOR_EVENT_LABELS[eventName],
+      count: 0,
+      lastTriggeredAt: null,
+      lastValue: null
+    }))
+  };
 }
 
 export const researchSectorOptions: ResearchSectorOption[] = [
@@ -1100,14 +1182,18 @@ export function buildResearchNewsletter(news: ResearchNewsBoard, analyses: Ticke
 }
 
 export function renderResearchPipelineMarkdown(
-  workspace: Pick<ResearchWorkspaceData, "generatedAt" | "preferences" | "news" | "tickerAnalyses" | "agentPipeline" | "productReview">
+  workspace: Pick<ResearchWorkspaceData, "contractVersion" | "generatedAt" | "preferences" | "behaviorSummary" | "news" | "tickerAnalyses" | "agentPipeline" | "productReview">
 ): string {
   const { runtime } = workspace.agentPipeline;
   const headline = workspace.news.headline;
+  const behaviorLines = workspace.behaviorSummary.metrics.map(
+    (metric) => `- ${metric.label}: ${metric.count}회${metric.lastValue ? ` (마지막 값 ${metric.lastValue})` : ""}`
+  );
 
   const lines = [
     "# Research Pipeline",
     "",
+    `- Contract Version: ${workspace.contractVersion}`,
     `- Generated At: ${runtime.generatedAt}`,
     `- Provider: ${runtime.provider}`,
     `- Model: ${runtime.model ?? "n/a"}`,
@@ -1133,6 +1219,9 @@ export function renderResearchPipelineMarkdown(
     ...workspace.agentPipeline.actionPlan.recommendedActions.map((item) => `- Do: ${item}`),
     ...workspace.agentPipeline.actionPlan.avoidActions.map((item) => `- Avoid: ${item}`),
     ...workspace.agentPipeline.actionPlan.risks.map((item) => `- Risk: ${item}`),
+    "",
+    "## Behavior Funnel",
+    ...behaviorLines,
     "",
     "## Product Action Items",
     ...workspace.productReview.actionItems.flatMap((item) => [
@@ -1201,8 +1290,10 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
   const newsletter = buildResearchNewsletter(news, tickerAnalyses, generatedAt);
 
   agentPipeline.runtime.summaryMarkdown = renderResearchPipelineMarkdown({
+    contractVersion: RESEARCH_CONTRACT_VERSION,
     generatedAt,
     preferences: normalizedPreferences,
+    behaviorSummary: createEmptyResearchBehaviorSummary(),
     news,
     tickerAnalyses,
     agentPipeline,
@@ -1210,6 +1301,7 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
   });
 
   return {
+    contractVersion: RESEARCH_CONTRACT_VERSION,
     generatedAt,
     preferences: {
       sectors: normalizedPreferences.sectors,
@@ -1219,6 +1311,7 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
     availableSectors: researchSectorOptions,
     availableTickers: researchTickerOptions.filter((ticker) => allowedSectors.has(ticker.sectorTag)),
     userBehavior,
+    behaviorSummary: createEmptyResearchBehaviorSummary(),
     news,
     tickerAnalyses,
     agentPipeline,

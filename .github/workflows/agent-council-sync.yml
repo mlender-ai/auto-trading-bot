@@ -61,19 +61,36 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git stash push -m "pre-publish-generated-snapshot" -- generated/research/latest.json generated/research/latest.md
-          git pull --rebase origin main
+          branch="main"
 
-          npm run research:generate
-          npm run research:issues
+          for attempt in 1 2 3; do
+            git fetch origin "$branch"
+            git checkout -B "$branch" "origin/$branch"
 
-          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
-            exit 0
-          fi
+            npm run research:generate
+            npm run research:issues
 
-          git add generated/research/latest.json generated/research/latest.md
-          git commit -m "chore: sync agent council execution snapshot [skip ci]"
-          git push origin HEAD:main
+            if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+              exit 0
+            fi
+
+            git add generated/research/latest.json generated/research/latest.md
+
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+
+            git commit -m "chore: sync agent council execution snapshot [skip ci]"
+
+            if git push origin "HEAD:$branch"; then
+              exit 0
+            fi
+
+            sleep $((attempt * 5))
+          done
+
+          echo "::error::Failed to publish generated snapshot after 3 attempts."
+          exit 1
 
       - name: Publish agent council summary
         run: cat generated/research/latest.md >> "$GITHUB_STEP_SUMMARY"
