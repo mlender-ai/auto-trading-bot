@@ -119,6 +119,7 @@ Research pipeline workflow currently:
 - Merge to `main` only after preview and CI are green
 
 Detailed setup, environment variables, deployment order, and rollback steps are documented in [`docs/deployment.md`](docs/deployment.md).
+Research MVP deploy handoff: [`docs/research-mvp-deploy-handoff.md`](docs/research-mvp-deploy-handoff.md)
 Paper trading runbook: [`docs/paper-trading-setup.md`](docs/paper-trading-setup.md)  
 Telegram setup: [`docs/telegram-setup.md`](docs/telegram-setup.md)
 
