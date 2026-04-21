@@ -1,6 +1,6 @@
 {
   "workspace": {
-    "generatedAt": "2026-04-20T23:07:25.179Z",
+    "generatedAt": "2026-04-21T02:52:54.430Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -99,44 +99,6 @@
       },
       "derivedArticles": [
         {
-          "id": "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-          "title": "Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%",
-          "summary": "Technology stocks rebound from March lows, adding $4 trillion in value while earnings growth outlook and AI spending remain in focus",
-          "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/big-tech-drives-p-500-193443635.html?.tsrc=rss",
-          "publishedAt": "2026-04-20T19:34:43.000Z",
-          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
-          "sectorTag": "semiconductors",
-          "tickerTags": [
-            "NVDA",
-            "NVDA",
-            "AMD"
-          ],
-          "importanceScore": 98,
-          "priority": "critical",
-          "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-          "recommendation": "NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
-        },
-        {
-          "id": "live-semiconductors-intel-amd-rally-faces-quiet-challenge",
-          "title": "Intel, AMD Rally Faces Quiet Challenge",
-          "summary": "Memory stocks may hold stronger upside",
-          "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/intel-amd-rally-faces-quiet-180141441.html?.tsrc=rss",
-          "publishedAt": "2026-04-20T18:01:41.000Z",
-          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
-          "sectorTag": "semiconductors",
-          "tickerTags": [
-            "AMD",
-            "NVDA",
-            "AMD"
-          ],
-          "importanceScore": 98,
-          "priority": "critical",
-          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
-          "recommendation": "AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
-        },
-        {
           "id": "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
           "title": "Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’",
           "summary": "While the stock market fixates on a temporary surge from its competitors, the king of artificial intelligence is quietly building an insurmountable lead. Nvidia (NVDA) is being hailed by top analysts as the undisputed leader of the semiconductor world, even as AMD (AMD) and Intel (INTC) post larger percentage gains this month. Despite trailing the recent CPU hype, experts argue that Nvidia’s massive technological moats make it the only logical top pick for the upcoming earnings season.Claim 30%",
@@ -154,6 +116,44 @@
           "priority": "critical",
           "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
           "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
+        },
+        {
+          "id": "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile",
+          "title": "Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile",
+          "summary": "Exxon Mobil (NYSE:XOM) is accelerating its search for oil and gas prospects outside the Middle East as regional conflict risks increase. The company is outlining a multi billion dollar plan for Nigeria as part of a wider push to diversify future production sources. The US Supreme Court has unanimously decided that coastal environmental lawsuits involving Exxon and other oil majors will be heard in federal rather than state courts. Both the investment shift and the legal ruling are recent...",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/sectors/energy/articles/exxon-mobil-nigeria-push-federal-190606661.html?.tsrc=rss",
+          "publishedAt": "2026-04-20T19:06:06.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/simply_wall_st__316/d0e83f1986544c84469d81df07bf81f3",
+          "sectorTag": "energy-oil",
+          "tickerTags": [
+            "XOM",
+            "XOM",
+            "CVX"
+          ],
+          "importanceScore": 98,
+          "priority": "critical",
+          "analysis": "에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.",
+          "recommendation": "XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다."
+        },
+        {
+          "id": "live-energy-oil-micron-quietly-powers-s-p-earnings-surge",
+          "title": "Micron Quietly Powers S&P Earnings Surge",
+          "summary": "AI demand drives outsized revisions dominance",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/micron-quietly-powers-p-earnings-183915070.html?.tsrc=rss",
+          "publishedAt": "2026-04-20T18:39:15.000Z",
+          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+          "sectorTag": "energy-oil",
+          "tickerTags": [
+            "XOM",
+            "XOM",
+            "CVX"
+          ],
+          "importanceScore": 98,
+          "priority": "critical",
+          "analysis": "오일 메이저와 서비스주는 같은 에너지여도 민감도가 달라, 이런 뉴스는 포지션을 어디에 둘지 다시 정하게 만듭니다.",
+          "recommendation": "XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다."
         }
       ],
       "sectorIssues": [
@@ -161,23 +161,23 @@
           "sectorTag": "semiconductors",
           "sectorLabel": "반도체",
           "item": {
-            "id": "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-            "title": "Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%",
-            "summary": "Technology stocks rebound from March lows, adding $4 trillion in value while earnings growth outlook and AI spending remain in focus",
+            "id": "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+            "title": "Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’",
+            "summary": "While the stock market fixates on a temporary surge from its competitors, the king of artificial intelligence is quietly building an insurmountable lead. Nvidia (NVDA) is being hailed by top analysts as the undisputed leader of the semiconductor world, even as AMD (AMD) and Intel (INTC) post larger percentage gains this month. Despite trailing the recent CPU hype, experts argue that Nvidia’s massive technological moats make it the only logical top pick for the upcoming earnings season.Claim 30%",
             "source": "FINANCE",
-            "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/big-tech-drives-p-500-193443635.html?.tsrc=rss",
-            "publishedAt": "2026-04-20T19:34:43.000Z",
-            "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+            "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-slaughters-rivals-amd-132028107.html?.tsrc=rss",
+            "publishedAt": "2026-04-18T13:20:28.000Z",
+            "imageUrl": "https://s.yimg.com/ny/api/res/1.2/Yq_PTXqCDB_CGOALK0lPXw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD00MTE-/https://media.zenfs.com/en/tipranks_452/bab9e069535d122c34f9a5819f16155e",
             "sectorTag": "semiconductors",
             "tickerTags": [
-              "NVDA",
+              "AMD",
               "NVDA",
               "AMD"
             ],
             "importanceScore": 98,
             "priority": "critical",
             "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-            "recommendation": "NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
+            "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
           }
         },
         {
@@ -224,8 +224,8 @@
         "recommendation": "AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
           "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-          "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-          "live-semiconductors-intel-amd-rally-faces-quiet-challenge"
+          "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+          "live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027"
         ]
       },
       {
@@ -246,8 +246,8 @@
         "recommendation": "NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
         "linkedNewsIds": [
           "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-          "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-          "live-semiconductors-intel-amd-rally-faces-quiet-challenge"
+          "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+          "live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027"
         ]
       },
       {
@@ -318,18 +318,18 @@
           "summary": "메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
           "outputLines": [
             "메인 헤드라인: Google Bets on New Chips to Boost AI Results, Challenging Nvidia",
-            "파생 뉴스: Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%",
-            "파생 뉴스: Intel, AMD Rally Faces Quiet Challenge",
             "파생 뉴스: Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’",
-            "반도체: Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%",
+            "파생 뉴스: Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile",
+            "파생 뉴스: Micron Quietly Powers S&P Earnings Surge",
+            "반도체: Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’",
             "에너지(오일): Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile"
           ],
           "handoffNote": "이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
           "references": [
             "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-            "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-            "live-semiconductors-intel-amd-rally-faces-quiet-challenge",
-            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th"
+            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+            "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile",
+            "live-energy-oil-micron-quietly-powers-s-p-earnings-surge"
           ]
         },
         {
@@ -347,7 +347,7 @@
           "handoffNote": "이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
           "references": [
             "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-            "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
+            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
             "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile"
           ]
         },
@@ -368,8 +368,8 @@
           "references": [
             "AMD",
             "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-            "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-            "live-semiconductors-intel-amd-rally-faces-quiet-challenge"
+            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+            "live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027"
           ]
         },
         {
@@ -390,9 +390,9 @@
           "handoffNote": "이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
           "references": [
             "AMD",
-            "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-            "live-semiconductors-intel-amd-rally-faces-quiet-challenge",
-            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th"
+            "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+            "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile",
+            "live-energy-oil-micron-quietly-powers-s-p-earnings-surge"
           ]
         }
       ],
@@ -461,14 +461,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-20T23:07:25.179Z",
+        "runId": "fallback-2026-04-21T02:52:54.430Z",
         "provider": "rule-based",
         "model": "openai/gpt-4.1",
         "source": "github-actions",
         "status": "fallback",
-        "generatedAt": "2026-04-20T23:07:25.179Z",
+        "generatedAt": "2026-04-21T02:52:54.430Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T23:07:25.179Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Generated At: 2026-04-21T02:52:54.430Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -481,9 +481,9 @@
             "text": "메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
             "references": [
               "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-              "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-              "live-semiconductors-intel-amd-rally-faces-quiet-challenge",
-              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th"
+              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+              "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile",
+              "live-energy-oil-micron-quietly-powers-s-p-earnings-surge"
             ]
           },
           {
@@ -497,7 +497,7 @@
             "text": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
             "references": [
               "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-              "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
+              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
               "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile"
             ]
           },
@@ -513,8 +513,8 @@
             "references": [
               "AMD",
               "live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia",
-              "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-              "live-semiconductors-intel-amd-rally-faces-quiet-challenge"
+              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+              "live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027"
             ]
           },
           {
@@ -528,9 +528,9 @@
             "text": "AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
             "references": [
               "AMD",
-              "live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20",
-              "live-semiconductors-intel-amd-rally-faces-quiet-challenge",
-              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th"
+              "live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th",
+              "live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile",
+              "live-energy-oil-micron-quietly-powers-s-p-earnings-surge"
             ]
           }
         ]
@@ -762,16 +762,16 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-20T23:07:25.179Z",
+      "generatedAt": "2026-04-21T02:52:54.430Z",
       "nextRunAt": "2026-04-21T07:30:00.000Z",
       "subject": "[Daily Brief] Google Bets on New Chips to Boost AI Results, Challenging Nvidia",
       "previewText": "In a matter of months, Google's AI chips have become one of the hottest commodities in the tech sector. Leading artificial intelligence developers, including some of the firm's biggest rivals, are stocking up on them. Now, the Alphabet Inc.-owned company aims to build on its momentum with the likely introduction of new chips dedicated to inference, or running AI models after they've been trained. With this push, Google is poised to further challenge market leader Nvidia Corp. in a fast-growing category for semiconductors that's fueled by surging adoption of AI software. Bloomberg News AI Infrastructure Reporter Dina Bass joins Bloomberg Businessweek Daily to discuss. She speaks with Carol Massar and Tim Stenovec. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
       "to": [],
-      "bodyText": "[Daily Brief] Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n\nIn a matter of months, Google's AI chips have become one of the hottest commodities in the tech sector. Leading artificial intelligence developers, including some of the firm's biggest rivals, are stocking up on them. Now, the Alphabet Inc.-owned company aims to build on its momentum with the likely introduction of new chips dedicated to inference, or running AI models after they've been trained. With this push, Google is poised to further challenge market leader Nvidia Corp. in a fast-growing category for semiconductors that's fueled by surging adoption of AI software. Bloomberg News AI Infrastructure Reporter Dina Bass joins Bloomberg Businessweek Daily to discuss. She speaks with Carol Massar and Tim Stenovec. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nGoogle Bets on New Chips to Boost AI Results, Challenging Nvidia\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Intel, AMD Rally Faces Quiet Challenge\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Big Tech Drives S&P 500 Higher As Magnificent Seven Surge 20%\n  행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- 에너지(오일): Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- NVDA: NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
-      "bodyHtml": "<h1>[Daily Brief] Google Bets on New Chips to Boost AI Results, Challenging Nvidia</h1><p>In a matter of months, Google&#39;s AI chips have become one of the hottest commodities in the tech sector. Leading artificial intelligence developers, including some of the firm&#39;s biggest rivals, are stocking up on them. Now, the Alphabet Inc.-owned company aims to build on its momentum with the likely introduction of new chips dedicated to inference, or running AI models after they&#39;ve been trained. With this push, Google is poised to further challenge market leader Nvidia Corp. in a fast-growing category for semiconductors that&#39;s fueled by surging adoption of AI software. Bloomberg News AI Infrastructure Reporter Dina Bass joins Bloomberg Businessweek Daily to discuss. She speaks with Carol Massar and Tim Stenovec. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Google Bets on New Chips to Boost AI Results, Challenging Nvidia</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>Big Tech Drives S&amp;P 500 Higher As Magnificent Seven Surge 20%</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Intel, AMD Rally Faces Quiet Challenge</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Nvidia Stock Slaughters Rivals AMD &amp; Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Big Tech Drives S&amp;P 500 Higher As Magnificent Seven Surge 20%<br />NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>에너지(오일)</strong> - Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
+      "bodyText": "[Daily Brief] Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n\nIn a matter of months, Google's AI chips have become one of the hottest commodities in the tech sector. Leading artificial intelligence developers, including some of the firm's biggest rivals, are stocking up on them. Now, the Alphabet Inc.-owned company aims to build on its momentum with the likely introduction of new chips dedicated to inference, or running AI models after they've been trained. With this push, Google is poised to further challenge market leader Nvidia Corp. in a fast-growing category for semiconductors that's fueled by surging adoption of AI software. Bloomberg News AI Infrastructure Reporter Dina Bass joins Bloomberg Businessweek Daily to discuss. She speaks with Carol Massar and Tim Stenovec. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nGoogle Bets on New Chips to Boost AI Results, Challenging Nvidia\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile\n  분석: 에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n- Micron Quietly Powers S&P Earnings Surge\n  분석: 오일 메이저와 서비스주는 같은 에너지여도 민감도가 달라, 이런 뉴스는 포지션을 어디에 둘지 다시 정하게 만듭니다.\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Nvidia Stock Slaughters Rivals AMD & Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- 에너지(오일): Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- NVDA: NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
+      "bodyHtml": "<h1>[Daily Brief] Google Bets on New Chips to Boost AI Results, Challenging Nvidia</h1><p>In a matter of months, Google&#39;s AI chips have become one of the hottest commodities in the tech sector. Leading artificial intelligence developers, including some of the firm&#39;s biggest rivals, are stocking up on them. Now, the Alphabet Inc.-owned company aims to build on its momentum with the likely introduction of new chips dedicated to inference, or running AI models after they&#39;ve been trained. With this push, Google is poised to further challenge market leader Nvidia Corp. in a fast-growing category for semiconductors that&#39;s fueled by surging adoption of AI software. Bloomberg News AI Infrastructure Reporter Dina Bass joins Bloomberg Businessweek Daily to discuss. She speaks with Carol Massar and Tim Stenovec. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Google Bets on New Chips to Boost AI Results, Challenging Nvidia</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>Nvidia Stock Slaughters Rivals AMD &amp; Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile</strong><br />에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li><li><strong>Micron Quietly Powers S&amp;P Earnings Surge</strong><br />오일 메이저와 서비스주는 같은 에너지여도 민감도가 달라, 이런 뉴스는 포지션을 어디에 둘지 다시 정하게 만듭니다.<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Nvidia Stock Slaughters Rivals AMD &amp; Intel as the as Blackwell Ultra Racks ‘Lead the Market by Two Generations’<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>에너지(오일)</strong> - Exxon Mobil’s Nigeria Push And Federal Lawsuits Reframe Risk Reward Profile<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Generated At: 2026-04-20T23:07:25.179Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+  "markdown": "# Research Pipeline\n\n- Generated At: 2026-04-21T02:52:54.430Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Google Bets on New Chips to Boost AI Results, Challenging Nvidia\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Google Bets on New Chips to Boost AI Results, Challenging Nvidia\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
   "warnings": [
     "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
   ]

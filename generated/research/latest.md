@@ -1,6 +1,6 @@
 # Research Pipeline
 
-- Generated At: 2026-04-20T23:07:25.179Z
+- Generated At: 2026-04-21T02:52:54.430Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -16,19 +16,19 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "Google Bets on New Chips to Boost AI Results, Challenging Nvidia"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
+References: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile
+References: live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile
 
 ### 03 Ticker Analyst -> Execution Trader
 AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge
+References: AMD, live-semiconductors-google-bets-on-new-chips-to-boost-ai-results-challenging-nvidia, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-semiconductors-this-stock-will-be-more-profitable-than-amazon-and-meta-by-2027
 
 ### 04 Execution Trader -> Operator
 AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: AMD, live-semiconductors-big-tech-drives-s-p-500-higher-as-magnificent-seven-surge-20, live-semiconductors-intel-amd-rally-faces-quiet-challenge, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
+References: AMD, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th, live-energy-oil-exxon-mobil-s-nigeria-push-and-federal-lawsuits-reframe-risk-reward-profile, live-energy-oil-micron-quietly-powers-s-p-earnings-surge
 
 ## Trader Plan
 - Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
