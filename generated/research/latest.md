@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-21T13:26:48.203Z
+- Generated At: 2026-04-21T13:49:56.753Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -17,7 +17,7 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "What to watch as Nvidia, AMD, and Broadcom report earnings"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-what-to-watch-as-nvidia-amd-and-broadcom-report-earnings, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
+References: live-semiconductors-what-to-watch-as-nvidia-amd-and-broadcom-report-earnings, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-4-high-flying-tech-stocks-to-grab-on-nasdaq-s-ongoing-rally, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
@@ -25,11 +25,11 @@ References: live-semiconductors-what-to-watch-as-nvidia-amd-and-broadcom-report-
 
 ### 03 Ticker Analyst -> Execution Trader
 AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: AMD, live-semiconductors-what-to-watch-as-nvidia-amd-and-broadcom-report-earnings, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026
+References: AMD, live-semiconductors-what-to-watch-as-nvidia-amd-and-broadcom-report-earnings, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-4-high-flying-tech-stocks-to-grab-on-nasdaq-s-ongoing-rally
 
 ### 04 Execution Trader -> Operator
 AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: AMD, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026, live-semiconductors-nvidia-stock-slaughters-rivals-amd-intel-as-the-as-blackwell-ultra-racks-lead-th
+References: AMD, live-semiconductors-nasdaq-composite-jumps-on-earnings-momentum-ai-spending-and-mideast-deal-hopes, live-semiconductors-4-high-flying-tech-stocks-to-grab-on-nasdaq-s-ongoing-rally, live-semiconductors-forget-nvidia-why-hpe-could-be-the-overlooked-ai-infrastructure-play-of-2026
 
 ## Trader Plan
 - Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
