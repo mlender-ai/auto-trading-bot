@@ -42,7 +42,7 @@
   },
   "workspace": {
     "contractVersion": "2026-04-21.1",
-    "generatedAt": "2026-04-22T02:51:46.653Z",
+    "generatedAt": "2026-04-22T07:54:51.532Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -157,13 +157,13 @@
     },
     "news": {
       "headline": {
-        "id": "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
-        "title": "SpaceX Has Deal for Right to Acquire Cursor for $60 Billion",
-        "summary": "(Bloomberg) -- SpaceX said it has an agreement giving it the right to acquire artificial intelligence startup Cursor for $60 billion later this year or to pay $10 billion for the companies’ work together, part of the Elon Musk-run firm’s efforts to catch up with rivals in AI coding tools.Most Read from BloombergInside Alex Cooper’s Unwell: Tears, Screaming and Employees Looking for the ExitKuwait Declares Further Force Majeure on Oil ShipmentsTrump Extends Iran Ceasefire, Keeps Blockade as Talks",
+        "id": "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
+        "title": "Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
+        "summary": "In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights...",
         "source": "FINANCE",
-        "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/spacex-deal-acquire-cursor-60-003344236.html?.tsrc=rss",
-        "publishedAt": "2026-04-22T00:33:44.000Z",
-        "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+        "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/why-marvell-technology-mrvl-13-030749881.html?.tsrc=rss",
+        "publishedAt": "2026-04-22T03:07:49.000Z",
+        "imageUrl": "https://s.yimg.com/os/en/simply_wall_st__316/32b804abf710039ebb272cbf2c979023",
         "sectorTag": "semiconductors",
         "tickerTags": [
           "NVDA",
@@ -196,32 +196,32 @@
           "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
         },
         {
-          "id": "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u",
-          "title": "Flexcompute and Northrop Grumman Reduce Space Mission Preparation Time by 100X Using AI Physics Models, Enabled by NVIDIA",
-          "summary": "Flexcompute, the physics company, and Northrop Grumman have developed a foundational AI infrastructure powered by NVIDIA technology that fully automates a simulation workflow to accurately predict thruster impingement effects during space docking in real time. This AI Physics model features built-in uncertainty estimation and is designed to address some of the most complex spacecraft plume interaction challenges in space operations. The work represents a major advancement in how AI Physics model",
+          "id": "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
+          "title": "Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?",
+          "summary": "INTC heads into Q1 earnings with AI-driven momentum from new chips and expanding partnerships, but rising competition and foundry weakness cloud the outlook.",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/flexcompute-northrop-grumman-reduce-space-193000794.html?.tsrc=rss",
-          "publishedAt": "2026-04-21T19:30:00.000Z",
-          "imageUrl": "https://s.yimg.com/os/en/prnewswire.com/c7cf7f500f0ce93b13a3ad3b8a2e1e31",
+          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/add-intel-stock-portfolio-ahead-155400512.html?.tsrc=rss",
+          "publishedAt": "2026-04-21T15:54:00.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/zacks.com/919154364c00fbf714994a76d78ccb85",
           "sectorTag": "semiconductors",
           "tickerTags": [
-            "NVDA",
+            "AMD",
             "NVDA",
             "AMD"
           ],
           "importanceScore": 98,
           "priority": "critical",
-          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
-          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
+          "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
+          "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
         },
         {
-          "id": "live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026",
-          "title": "Stifel resets AMD price target for rest of 2026",
-          "summary": "Wall Street is getting more aggressive on AMD ahead of earnings, and Stifel is leading the charge. The investment banking firm raised its price target on Advanced Micro Devices to $320 from $280 on April 20, keeping its buy rating in place, according to Investing.com. The new target implies roughly ...",
-          "source": "THESTREET",
-          "sourceUrl": "https://www.thestreet.com/investing/stocks/stifel-resets-amd-price-target-for-the-rest-of-2026-wallstreet-amdearnings?.tsrc=rss",
-          "publishedAt": "2026-04-21T21:47:00.000Z",
-          "imageUrl": null,
+          "id": "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch",
+          "title": "Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch",
+          "summary": "Finding strong, market-beating stocks with a positive earnings outlook becomes easier with the Focus List, a top feature of the Zacks Premium portfolio service.",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/earnings-growth-price-strength-advanced-133003812.html?.tsrc=rss",
+          "publishedAt": "2026-04-21T13:30:03.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/zacks.com/7ea641b46fe75c0a913349e5e610d6a2",
           "sectorTag": "semiconductors",
           "tickerTags": [
             "AMD",
@@ -268,7 +268,7 @@
             "source": "FINANCE",
             "sourceUrl": "https://finance.yahoo.com/sectors/energy/articles/diversified-upstream-e-p-stocks-123732767.html?.tsrc=rss",
             "publishedAt": "2026-04-20T12:37:32.000Z",
-            "imageUrl": null,
+            "imageUrl": "https://s.yimg.com/ny/api/res/1.2/GscoXwipu5380B_eDJxRBg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/stockstory_922/853c9f7cab3c5178949577deebb19b46",
             "sectorTag": "energy-oil",
             "tickerTags": [
               "XOM",
@@ -298,12 +298,12 @@
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+          "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
           "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-          "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u"
+          "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
         ]
       },
       {
@@ -320,12 +320,12 @@
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
         "linkedNewsIds": [
-          "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+          "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
           "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-          "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u"
+          "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
         ]
       },
       {
@@ -393,21 +393,21 @@
           "name": "News Editor",
           "roleLabel": "뉴스 선별",
           "objective": "가격 영향이 큰 뉴스만 추려 메인 헤드라인과 파생 뉴스, 섹터 핵심 이슈를 만든다.",
-          "summary": "메인 헤드라인을 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+          "summary": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
           "outputLines": [
-            "메인 헤드라인: SpaceX Has Deal for Right to Acquire Cursor for $60 Billion",
+            "메인 헤드라인: Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
             "파생 뉴스: NVIDIA at $199: Buy, Sell or Hold",
-            "파생 뉴스: Flexcompute and Northrop Grumman Reduce Space Mission Preparation Time by 100X Using AI Physics Models, Enabled by NVIDIA",
-            "파생 뉴스: Stifel resets AMD price target for rest of 2026",
+            "파생 뉴스: Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?",
+            "파생 뉴스: Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch",
             "반도체: NVIDIA at $199: Buy, Sell or Hold",
             "에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)"
           ],
           "handoffNote": "이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
           "references": [
-            "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
             "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u",
-            "live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026"
+            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
+            "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
           ]
         },
         {
@@ -424,7 +424,7 @@
           ],
           "handoffNote": "이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
           "references": [
-            "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
             "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
             "live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom"
           ]
@@ -440,14 +440,14 @@
             "요약: 추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
             "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $287.61 / $287.61입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
             "패턴: 상승 추세 내 눌림 후 재가속",
-            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"가 가장 큰 가격 재료로 작동하고 있습니다."
+            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다."
           ],
           "handoffNote": "이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
           "references": [
             "AMD",
-            "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
             "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u"
+            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
           ]
         },
         {
@@ -469,8 +469,8 @@
           "references": [
             "AMD",
             "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u",
-            "live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026"
+            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
+            "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
           ]
         }
       ],
@@ -539,14 +539,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-22T02:51:46.653Z",
+        "runId": "fallback-2026-04-22T07:54:51.532Z",
         "provider": "rule-based",
         "model": "openai/gpt-4.1",
         "source": "github-actions",
         "status": "fallback",
-        "generatedAt": "2026-04-22T02:51:46.653Z",
+        "generatedAt": "2026-04-22T07:54:51.532Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T02:51:46.653Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u, live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u, live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T07:54:51.532Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -555,13 +555,13 @@
             "author": "News Editor",
             "roleLabel": "뉴스 선별",
             "audience": "Macro Analyst",
-            "summary": "메인 헤드라인을 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
-            "text": "메인 헤드라인을 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
+            "summary": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+            "text": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
             "references": [
-              "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
               "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u",
-              "live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026"
+              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
+              "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
             ]
           },
           {
@@ -574,7 +574,7 @@
             "summary": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다.",
             "text": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
             "references": [
-              "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
               "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
               "live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom"
             ]
@@ -590,9 +590,9 @@
             "text": "AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
             "references": [
               "AMD",
-              "live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion",
+              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
               "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u"
+              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
             ]
           },
           {
@@ -607,8 +607,8 @@
             "references": [
               "AMD",
               "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u",
-              "live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026"
+              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
+              "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
             ]
           }
         ]
@@ -779,7 +779,7 @@
       ]
     },
     "meeting": {
-      "topic": "SpaceX Has Deal for Right to Acquire Cursor for $60 Billion",
+      "topic": "Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
       "objective": "뉴스 → 시황 → 분석 → 행동 체인이 실제 제품 흐름으로 이어지는지 점검합니다.",
       "nextAction": "AMD는 추격 대신 조정 구간에서만 분할 진입합니다.",
       "messages": [
@@ -840,16 +840,16 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-22T02:51:46.653Z",
-      "nextRunAt": "2026-04-22T07:30:00.000Z",
-      "subject": "[Daily Brief] SpaceX Has Deal for Right to Acquire Cursor for $60 Billion",
-      "previewText": "(Bloomberg) -- SpaceX said it has an agreement giving it the right to acquire artificial intelligence startup Cursor for $60 billion later this year or to pay $10 billion for the companies’ work together, part of the Elon Musk-run firm’s efforts to catch up with rivals in AI coding tools.Most Read from BloombergInside Alex Cooper’s Unwell: Tears, Screaming and Employees Looking for the ExitKuwait Declares Further Force Majeure on Oil ShipmentsTrump Extends Iran Ceasefire, Keeps Blockade as Talks / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
+      "generatedAt": "2026-04-22T07:54:51.532Z",
+      "nextRunAt": "2026-04-23T07:30:00.000Z",
+      "subject": "[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
+      "previewText": "In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
       "to": [],
-      "bodyText": "[Daily Brief] SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\n\n(Bloomberg) -- SpaceX said it has an agreement giving it the right to acquire artificial intelligence startup Cursor for $60 billion later this year or to pay $10 billion for the companies’ work together, part of the Elon Musk-run firm’s efforts to catch up with rivals in AI coding tools.Most Read from BloombergInside Alex Cooper’s Unwell: Tears, Screaming and Employees Looking for the ExitKuwait Declares Further Force Majeure on Oil ShipmentsTrump Extends Iran Ceasefire, Keeps Blockade as Talks / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nSpaceX Has Deal for Right to Acquire Cursor for $60 Billion\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- NVIDIA at $199: Buy, Sell or Hold\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Flexcompute and Northrop Grumman Reduce Space Mission Preparation Time by 100X Using AI Physics Models, Enabled by NVIDIA\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Stifel resets AMD price target for rest of 2026\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: NVIDIA at $199: Buy, Sell or Hold\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- NVDA: NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
-      "bodyHtml": "<h1>[Daily Brief] SpaceX Has Deal for Right to Acquire Cursor for $60 Billion</h1><p>(Bloomberg) -- SpaceX said it has an agreement giving it the right to acquire artificial intelligence startup Cursor for $60 billion later this year or to pay $10 billion for the companies’ work together, part of the Elon Musk-run firm’s efforts to catch up with rivals in AI coding tools.Most Read from BloombergInside Alex Cooper’s Unwell: Tears, Screaming and Employees Looking for the ExitKuwait Declares Further Force Majeure on Oil ShipmentsTrump Extends Iran Ceasefire, Keeps Blockade as Talks / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>SpaceX Has Deal for Right to Acquire Cursor for $60 Billion</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>NVIDIA at $199: Buy, Sell or Hold</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Flexcompute and Northrop Grumman Reduce Space Mission Preparation Time by 100X Using AI Physics Models, Enabled by NVIDIA</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Stifel resets AMD price target for rest of 2026</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - NVIDIA at $199: Buy, Sell or Hold<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
+      "bodyText": "[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n\nIn recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nWhy Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- NVIDIA at $199: Buy, Sell or Hold\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: NVIDIA at $199: Buy, Sell or Hold\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- NVDA: NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
+      "bodyHtml": "<h1>[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What&#39;s Next</h1><p>In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What&#39;s Next</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>NVIDIA at $199: Buy, Sell or Hold</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Earnings Growth &amp; Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - NVIDIA at $199: Buy, Sell or Hold<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T02:51:46.653Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"SpaceX Has Deal for Right to Acquire Cursor for $60 Billion\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u, live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-spacex-has-deal-for-right-to-acquire-cursor-for-60-billion, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-flexcompute-and-northrop-grumman-reduce-space-mission-preparation-time-by-100x-u, live-semiconductors-stifel-resets-amd-price-target-for-rest-of-2026\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T07:54:51.532Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
   "warnings": [
     "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
   ]
