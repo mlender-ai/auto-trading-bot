@@ -42,7 +42,7 @@
   },
   "workspace": {
     "contractVersion": "2026-04-21.1",
-    "generatedAt": "2026-04-22T07:54:51.532Z",
+    "generatedAt": "2026-04-22T13:50:49.290Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -157,13 +157,13 @@
     },
     "news": {
       "headline": {
-        "id": "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-        "title": "Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
-        "summary": "In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights...",
+        "id": "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+        "title": "Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.",
+        "summary": "Navitas Semiconductor stock and these others are gaining as investors bet power chips will benefit from artificial intelligence.",
         "source": "FINANCE",
-        "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/why-marvell-technology-mrvl-13-030749881.html?.tsrc=rss",
-        "publishedAt": "2026-04-22T03:07:49.000Z",
-        "imageUrl": "https://s.yimg.com/os/en/simply_wall_st__316/32b804abf710039ebb272cbf2c979023",
+        "sourceUrl": "https://finance.yahoo.com/m/9dd4d18a-7325-378d-bc14-c2f5ad1421ca/forget-memory%2C-power-chips.html?.tsrc=rss",
+        "publishedAt": "2026-04-22T12:58:00.000Z",
+        "imageUrl": "https://s.yimg.com/ny/api/res/1.2/EC4iRY8Ho_XSGBp5_eBJ6w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02MDA-/https://media.zenfs.com/en/Barrons.com/8f7cd4d1b248bed9bfd1a8a10391b574",
         "sectorTag": "semiconductors",
         "tickerTags": [
           "NVDA",
@@ -177,13 +177,13 @@
       },
       "derivedArticles": [
         {
-          "id": "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-          "title": "NVIDIA at $199: Buy, Sell or Hold",
-          "summary": "NVIDIA (NASDAQ:NVDA) presents a compelling bull case at $199. The AI infrastructure buildout driving its business shows no sign of slowing, and the stock trades well below its 52-week high of $212.19 despite accelerating fundamentals. NVIDIA designs the GPUs and networking systems powering modern AI infrastructure. Its data center business dominates revenue as hyperscalers, governments, and ... NVIDIA at $199: Buy, Sell or Hold",
-          "source": "247WALLST",
-          "sourceUrl": "https://247wallst.com/investing/2026/04/21/nvidia-at-199-buy-sell-or-hold/?.tsrc=rss",
-          "publishedAt": "2026-04-21T20:56:03.000Z",
-          "imageUrl": "https://247wallst.com/wp-content/uploads/2024/03/shutterstock_2012877281-scaled.jpg",
+          "id": "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+          "title": "Thinking Machines Expands Use of Google Cloud AI Hypercomputer",
+          "summary": "Cloud Next '26 -- Google Cloud today announced it has signed a new agreement to provide expanded AI Infrastructure capabilities and capacity to Thinking Machines Lab. The new agreement will expand Thinking Machines' footprint on Google Cloud, accelerating its research, platform development, and frontier model training with the AI Hypercomputer.",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/thinking-machines-expands-google-cloud-120000056.html?.tsrc=rss",
+          "publishedAt": "2026-04-22T12:00:00.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/prnewswire.com/97b8f4ec7eeaa88aa1b5cead4dba5032",
           "sectorTag": "semiconductors",
           "tickerTags": [
             "NVDA",
@@ -196,42 +196,42 @@
           "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
         },
         {
-          "id": "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
-          "title": "Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?",
-          "summary": "INTC heads into Q1 earnings with AI-driven momentum from new chips and expanding partnerships, but rising competition and foundry weakness cloud the outlook.",
+          "id": "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast",
+          "title": "QumulusAI Secures $45 Million Convertible Note Facility to Accelerate GPU Infrastructure Deployment",
+          "summary": "$15 million funded to date used for procurement and buildout as enterprise AI demand accelerates ATLANTA, GA / ACCESS Newswire / April 22, 2026 / QumulusAI, a provider of GPU-powered cloud infrastructure for artificial intelligence, today announced ...",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/add-intel-stock-portfolio-ahead-155400512.html?.tsrc=rss",
-          "publishedAt": "2026-04-21T15:54:00.000Z",
-          "imageUrl": "https://s.yimg.com/os/en/zacks.com/919154364c00fbf714994a76d78ccb85",
+          "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/qumulusai-secures-45-million-convertible-120000468.html?.tsrc=rss",
+          "publishedAt": "2026-04-22T12:00:00.000Z",
+          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
           "sectorTag": "semiconductors",
           "tickerTags": [
-            "AMD",
+            "NVDA",
             "NVDA",
             "AMD"
           ],
           "importanceScore": 98,
           "priority": "critical",
-          "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-          "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
+          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
+          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
         },
         {
-          "id": "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch",
-          "title": "Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch",
-          "summary": "Finding strong, market-beating stocks with a positive earnings outlook becomes easier with the Focus List, a top feature of the Zacks Premium portfolio service.",
+          "id": "live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla",
+          "title": "Exclusive: Google deepens Thinking Machines Lab ties with new multi-billion-dollar deal",
+          "summary": "Mira Murati's Thinking Machines Lab has signed a multi-billion-dollar deal with Google Cloud for AI infrastructure powered by Nvidia's latest GB300 chips, TechCrunch has exclusively learned.",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/earnings-growth-price-strength-advanced-133003812.html?.tsrc=rss",
-          "publishedAt": "2026-04-21T13:30:03.000Z",
-          "imageUrl": "https://s.yimg.com/os/en/zacks.com/7ea641b46fe75c0a913349e5e610d6a2",
+          "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/exclusive-google-deepens-thinking-machines-120000140.html?.tsrc=rss",
+          "publishedAt": "2026-04-22T12:00:00.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/techcrunch_finance_785/c97364f3958303a3989276f9613baa7b",
           "sectorTag": "semiconductors",
           "tickerTags": [
-            "AMD",
+            "NVDA",
             "NVDA",
             "AMD"
           ],
           "importanceScore": 98,
           "priority": "critical",
-          "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-          "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
+          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
+          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
         }
       ],
       "sectorIssues": [
@@ -239,13 +239,13 @@
           "sectorTag": "semiconductors",
           "sectorLabel": "반도체",
           "item": {
-            "id": "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "title": "NVIDIA at $199: Buy, Sell or Hold",
-            "summary": "NVIDIA (NASDAQ:NVDA) presents a compelling bull case at $199. The AI infrastructure buildout driving its business shows no sign of slowing, and the stock trades well below its 52-week high of $212.19 despite accelerating fundamentals. NVIDIA designs the GPUs and networking systems powering modern AI infrastructure. Its data center business dominates revenue as hyperscalers, governments, and ... NVIDIA at $199: Buy, Sell or Hold",
-            "source": "247WALLST",
-            "sourceUrl": "https://247wallst.com/investing/2026/04/21/nvidia-at-199-buy-sell-or-hold/?.tsrc=rss",
-            "publishedAt": "2026-04-21T20:56:03.000Z",
-            "imageUrl": "https://247wallst.com/wp-content/uploads/2024/03/shutterstock_2012877281-scaled.jpg",
+            "id": "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+            "title": "Thinking Machines Expands Use of Google Cloud AI Hypercomputer",
+            "summary": "Cloud Next '26 -- Google Cloud today announced it has signed a new agreement to provide expanded AI Infrastructure capabilities and capacity to Thinking Machines Lab. The new agreement will expand Thinking Machines' footprint on Google Cloud, accelerating its research, platform development, and frontier model training with the AI Hypercomputer.",
+            "source": "FINANCE",
+            "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/thinking-machines-expands-google-cloud-120000056.html?.tsrc=rss",
+            "publishedAt": "2026-04-22T12:00:00.000Z",
+            "imageUrl": "https://s.yimg.com/os/en/prnewswire.com/97b8f4ec7eeaa88aa1b5cead4dba5032",
             "sectorTag": "semiconductors",
             "tickerTags": [
               "NVDA",
@@ -268,14 +268,14 @@
             "source": "FINANCE",
             "sourceUrl": "https://finance.yahoo.com/sectors/energy/articles/diversified-upstream-e-p-stocks-123732767.html?.tsrc=rss",
             "publishedAt": "2026-04-20T12:37:32.000Z",
-            "imageUrl": "https://s.yimg.com/ny/api/res/1.2/GscoXwipu5380B_eDJxRBg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://media.zenfs.com/en/stockstory_922/853c9f7cab3c5178949577deebb19b46",
+            "imageUrl": null,
             "sectorTag": "energy-oil",
             "tickerTags": [
               "XOM",
               "XOM",
               "CVX"
             ],
-            "importanceScore": 98,
+            "importanceScore": 96,
             "priority": "critical",
             "analysis": "에너지 섹터는 유가 수준 자체보다 현금흐름과 투자계획 유지 여부가 중요해져 있어, 업종 내 승자와 패자를 바로 가르는 재료입니다.",
             "recommendation": "XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다."
@@ -285,12 +285,39 @@
     },
     "tickerAnalyses": [
       {
+        "ticker": "NVDA",
+        "company": "NVIDIA",
+        "sectorTag": "semiconductors",
+        "importanceScore": 97,
+        "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
+        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $164.27 / $164.27, 저항은 $202.75 / $202.75입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+        "patternAnalysis": [
+          {
+            "name": "상승 추세 내 눌림 후 재가속",
+            "detail": "20일선 위에서 가격이 버티고 있어, 고점 재시험이 실패하지 않으면 추세 지속 확률이 높습니다.",
+            "confidence": "high"
+          },
+          {
+            "name": "AB=CD 조정형",
+            "detail": "직전 하락파와 최근 조정파 길이가 유사해 164.27 부근이 패턴 완성 구간으로 읽힙니다.",
+            "confidence": "high"
+          }
+        ],
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "recommendation": "NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
+        "linkedNewsIds": [
+          "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+          "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+          "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast"
+        ]
+      },
+      {
         "ticker": "AMD",
         "company": "AMD",
         "sectorTag": "semiconductors",
         "importanceScore": 97,
         "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $287.61 / $287.61입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $292.79 / $292.79입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
         "patternAnalysis": [
           {
             "name": "상승 추세 내 눌림 후 재가속",
@@ -298,43 +325,21 @@
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-          "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-          "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
-        ]
-      },
-      {
-        "ticker": "NVDA",
-        "company": "NVIDIA",
-        "sectorTag": "semiconductors",
-        "importanceScore": 88,
-        "summary": "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
-        "technicalAnalysis": "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다. 주요 지지는 $164.27 / $164.27, 저항은 $202.75 / $202.75입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
-        "patternAnalysis": [
-          {
-            "name": "AB=CD 조정형",
-            "detail": "직전 하락파와 최근 조정파 길이가 유사해 164.27 부근이 패턴 완성 구간으로 읽힙니다.",
-            "confidence": "high"
-          }
-        ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다.",
-        "recommendation": "NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
-        "linkedNewsIds": [
-          "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-          "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-          "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
+          "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+          "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+          "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast"
         ]
       },
       {
         "ticker": "XOM",
         "company": "ExxonMobil",
         "sectorTag": "energy-oil",
-        "importanceScore": 88,
+        "importanceScore": 87,
         "summary": "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
-        "technicalAnalysis": "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다. 주요 지지는 $141.97 / $134.17, 저항은 $176.41 / $176.41입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
+        "technicalAnalysis": "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다. 주요 지지는 $141.97 / $134.71, 저항은 $176.41 / $176.41입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
         "patternAnalysis": [
           {
             "name": "뚜렷한 패턴 없음",
@@ -346,8 +351,7 @@
         "recommendation": "XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
         "linkedNewsIds": [
           "live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom",
-          "live-energy-oil-exxonmobil-vs-eog-the-better-bet-as-oil-prices-stay-elevated",
-          "live-energy-oil-micron-quietly-powers-s-p-earnings-surge"
+          "live-energy-oil-chevron-s-venezuela-opening-and-hormuz-shock-reframe-valuation-debate"
         ]
       }
     ],
@@ -393,21 +397,21 @@
           "name": "News Editor",
           "roleLabel": "뉴스 선별",
           "objective": "가격 영향이 큰 뉴스만 추려 메인 헤드라인과 파생 뉴스, 섹터 핵심 이슈를 만든다.",
-          "summary": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+          "summary": "메인 헤드라인을 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
           "outputLines": [
-            "메인 헤드라인: Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
-            "파생 뉴스: NVIDIA at $199: Buy, Sell or Hold",
-            "파생 뉴스: Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?",
-            "파생 뉴스: Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch",
-            "반도체: NVIDIA at $199: Buy, Sell or Hold",
+            "메인 헤드라인: Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.",
+            "파생 뉴스: Thinking Machines Expands Use of Google Cloud AI Hypercomputer",
+            "파생 뉴스: QumulusAI Secures $45 Million Convertible Note Facility to Accelerate GPU Infrastructure Deployment",
+            "파생 뉴스: Exclusive: Google deepens Thinking Machines Lab ties with new multi-billion-dollar deal",
+            "반도체: Thinking Machines Expands Use of Google Cloud AI Hypercomputer",
             "에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)"
           ],
           "handoffNote": "이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
           "references": [
-            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-            "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
-            "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
+            "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+            "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+            "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast",
+            "live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla"
           ]
         },
         {
@@ -424,8 +428,8 @@
           ],
           "handoffNote": "이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
           "references": [
-            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-            "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
+            "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+            "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
             "live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom"
           ]
         },
@@ -435,19 +439,19 @@
           "name": "Ticker Analyst",
           "roleLabel": "티커 딥분석",
           "objective": "선택한 핵심 티커의 기술적 상태, 패턴, 시황 연결을 해석해 판단 가능한 분석으로 만든다.",
-          "summary": "AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다.",
+          "summary": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다.",
           "outputLines": [
             "요약: 추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-            "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $287.61 / $287.61입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
-            "패턴: 상승 추세 내 눌림 후 재가속",
-            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"가 가장 큰 가격 재료로 작동하고 있습니다."
+            "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $164.27 / $164.27, 저항은 $202.75 / $202.75입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+            "패턴: 상승 추세 내 눌림 후 재가속, AB=CD 조정형",
+            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"가 가장 큰 가격 재료로 작동하고 있습니다."
           ],
           "handoffNote": "이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
           "references": [
-            "AMD",
-            "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-            "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
+            "NVDA",
+            "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+            "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+            "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast"
           ]
         },
         {
@@ -456,21 +460,21 @@
           "name": "Execution Trader",
           "roleLabel": "행동 제안",
           "objective": "시장 해석과 티커 분석을 실제 행동 계획으로 번역한다.",
-          "summary": "AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
+          "summary": "NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
           "outputLines": [
-            "오늘 전략: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
-            "추천 행동: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.",
-            "추천 행동: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.",
+            "오늘 전략: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
+            "추천 행동: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.",
+            "추천 행동: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.",
             "추천 행동: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.",
             "하지 말 것: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.",
             "하지 말 것: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다."
           ],
           "handoffNote": "이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
           "references": [
-            "AMD",
-            "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-            "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
-            "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
+            "NVDA",
+            "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+            "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast",
+            "live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla"
           ]
         }
       ],
@@ -517,16 +521,16 @@
             "reason": "에너지 방어 논리가 유지될지, 서비스주까지 확산될지를 가르는 기준입니다."
           },
           {
-            "title": "AMD 연계 수요 확인",
+            "title": "NVDA 연계 수요 확인",
             "reason": "리더 종목 강세가 섹터 전체 확산인지 단일 종목 집중인지 판별할 수 있습니다."
           }
         ]
       },
       "actionPlan": {
-        "strategy": "AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
+        "strategy": "NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
         "recommendedActions": [
-          "AMD는 추격 대신 조정 구간에서만 분할 진입합니다.",
-          "NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.",
+          "NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.",
+          "AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.",
           "XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다."
         ],
         "avoidActions": [
@@ -539,14 +543,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-22T07:54:51.532Z",
+        "runId": "fallback-2026-04-22T13:50:49.290Z",
         "provider": "rule-based",
         "model": "openai/gpt-4.1",
         "source": "github-actions",
         "status": "fallback",
-        "generatedAt": "2026-04-22T07:54:51.532Z",
+        "generatedAt": "2026-04-22T13:50:49.290Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T07:54:51.532Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T13:50:49.290Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast, live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast, live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -555,13 +559,13 @@
             "author": "News Editor",
             "roleLabel": "뉴스 선별",
             "audience": "Macro Analyst",
-            "summary": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
-            "text": "메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
+            "summary": "메인 헤드라인을 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+            "text": "메인 헤드라인을 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
             "references": [
-              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-              "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
-              "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
+              "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+              "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+              "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast",
+              "live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla"
             ]
           },
           {
@@ -574,8 +578,8 @@
             "summary": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다.",
             "text": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
             "references": [
-              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-              "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
+              "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+              "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
               "live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom"
             ]
           },
@@ -586,13 +590,13 @@
             "author": "Ticker Analyst",
             "roleLabel": "티커 딥분석",
             "audience": "Execution Trader",
-            "summary": "AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다.",
-            "text": "AMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
+            "summary": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다.",
+            "text": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
             "references": [
-              "AMD",
-              "live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w",
-              "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings"
+              "NVDA",
+              "live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging",
+              "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+              "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast"
             ]
           },
           {
@@ -602,13 +606,13 @@
             "author": "Execution Trader",
             "roleLabel": "행동 제안",
             "audience": "Operator",
-            "summary": "AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
-            "text": "AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
+            "summary": "NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.",
+            "text": "NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
             "references": [
-              "AMD",
-              "live-semiconductors-nvidia-at-199-buy-sell-or-hold",
-              "live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings",
-              "live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch"
+              "NVDA",
+              "live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer",
+              "live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast",
+              "live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla"
             ]
           }
         ]
@@ -632,7 +636,7 @@
           "role": "Trader",
           "title": "행동 제안은 매수/관망/회피보다 조건 중심으로 보여주는 편이 더 실전적입니다.",
           "points": [
-            "AMD 같은 대표 티커는 '언제 진입'보다 '어떤 조건에서만 진입'을 먼저 보여줘야 추격 매수를 줄일 수 있습니다.",
+            "NVDA 같은 대표 티커는 '언제 진입'보다 '어떤 조건에서만 진입'을 먼저 보여줘야 추격 매수를 줄일 수 있습니다.",
             "사용자가 하지 말아야 할 행동을 별도 블록으로 고정하면 잘못된 진입을 크게 줄일 수 있습니다."
           ],
           "references": [
@@ -779,9 +783,9 @@
       ]
     },
     "meeting": {
-      "topic": "Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
+      "topic": "Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.",
       "objective": "뉴스 → 시황 → 분석 → 행동 체인이 실제 제품 흐름으로 이어지는지 점검합니다.",
-      "nextAction": "AMD는 추격 대신 조정 구간에서만 분할 진입합니다.",
+      "nextAction": "NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.",
       "messages": [
         {
           "id": "pm-1",
@@ -797,7 +801,7 @@
           "id": "trader-2",
           "role": "Trader",
           "author": "Trader",
-          "content": "행동 제안은 매수/관망/회피보다 조건 중심으로 보여주는 편이 더 실전적입니다. AMD 같은 대표 티커는 '언제 진입'보다 '어떤 조건에서만 진입'을 먼저 보여줘야 추격 매수를 줄일 수 있습니다. 사용자가 하지 말아야 할 행동을 별도 블록으로 고정하면 잘못된 진입을 크게 줄일 수 있습니다.",
+          "content": "행동 제안은 매수/관망/회피보다 조건 중심으로 보여주는 편이 더 실전적입니다. NVDA 같은 대표 티커는 '언제 진입'보다 '어떤 조건에서만 진입'을 먼저 보여줘야 추격 매수를 줄일 수 있습니다. 사용자가 하지 말아야 할 행동을 별도 블록으로 고정하면 잘못된 진입을 크게 줄일 수 있습니다.",
           "references": [
             "ticker-analyst",
             "execution-trader"
@@ -840,16 +844,16 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-22T07:54:51.532Z",
+      "generatedAt": "2026-04-22T13:50:49.290Z",
       "nextRunAt": "2026-04-23T07:30:00.000Z",
-      "subject": "[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next",
-      "previewText": "In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
+      "subject": "[Daily Brief] Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.",
+      "previewText": "Navitas Semiconductor stock and these others are gaining as investors bet power chips will benefit from artificial intelligence. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
       "to": [],
-      "bodyText": "[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n\nIn recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nWhy Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- NVIDIA at $199: Buy, Sell or Hold\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Earnings Growth & Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: NVIDIA at $199: Buy, Sell or Hold\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- NVDA: NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
-      "bodyHtml": "<h1>[Daily Brief] Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What&#39;s Next</h1><p>In recent days, reports indicated that Alphabet’s Google is in advanced talks with Marvell Technology to co-develop two custom AI chips, a memory processing unit to work alongside Google’s tensor processing units and a new TPU tailored for inference workloads, potentially deepening Marvell’s role in hyperscale data center infrastructure. This potential collaboration with Google, alongside existing relationships with other major cloud providers and Nvidia’s ecosystem investment, highlights... / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What&#39;s Next</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>NVIDIA at $199: Buy, Sell or Hold</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Should You Add Intel Stock to Your Portfolio Ahead of Q1 Earnings?</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Earnings Growth &amp; Price Strength Make Advanced Micro Devices (AMD) a Stock to Watch</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - NVIDIA at $199: Buy, Sell or Hold<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>NVDA</strong> - NVDA는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
+      "bodyText": "[Daily Brief] Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\n\nNavitas Semiconductor stock and these others are gaining as investors bet power chips will benefit from artificial intelligence. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nForget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- Thinking Machines Expands Use of Google Cloud AI Hypercomputer\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- QumulusAI Secures $45 Million Convertible Note Facility to Accelerate GPU Infrastructure Deployment\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Exclusive: Google deepens Thinking Machines Lab ties with new multi-billion-dollar deal\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Thinking Machines Expands Use of Google Cloud AI Hypercomputer\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Diversified Upstream E&P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- NVDA: NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
+      "bodyHtml": "<h1>[Daily Brief] Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.</h1><p>Navitas Semiconductor stock and these others are gaining as investors bet power chips will benefit from artificial intelligence. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>Thinking Machines Expands Use of Google Cloud AI Hypercomputer</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>QumulusAI Secures $45 Million Convertible Note Facility to Accelerate GPU Infrastructure Deployment</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Exclusive: Google deepens Thinking Machines Lab ties with new multi-billion-dollar deal</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Thinking Machines Expands Use of Google Cloud AI Hypercomputer<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Diversified Upstream E&amp;P Stocks Q4 Recap: Benchmarking ExxonMobil (NYSE:XOM)<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>NVDA</strong> - NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T07:54:51.532Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: AMD, NVDA, XOM\n\n## Main Headline\n- Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Why Marvell Technology (MRVL) Is Up 13.1% After Reported Google AI Chip Talks And What's Next\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nAMD를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: AMD, live-semiconductors-why-marvell-technology-mrvl-is-up-13-1-after-reported-google-ai-chip-talks-and-w, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings\n\n### 04 Execution Trader -> Operator\nAMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: AMD, live-semiconductors-nvidia-at-199-buy-sell-or-hold, live-semiconductors-should-you-add-intel-stock-to-your-portfolio-ahead-of-q1-earnings, live-semiconductors-earnings-growth-price-strength-make-advanced-micro-devices-amd-a-stock-to-watch\n\n## Trader Plan\n- Strategy: AMD 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: AMD는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: NVDA는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-22T13:50:49.290Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Forget Memory, Power Chips Are the Next Hot AI Play. These 6 Stocks Are Surging.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast, live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-energy-oil-diversified-upstream-e-p-stocks-q4-recap-benchmarking-exxonmobil-nyse-xom\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-forget-memory-power-chips-are-the-next-hot-ai-play-these-6-stocks-are-surging, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-thinking-machines-expands-use-of-google-cloud-ai-hypercomputer, live-semiconductors-qumulusai-secures-45-million-convertible-note-facility-to-accelerate-gpu-infrast, live-semiconductors-exclusive-google-deepens-thinking-machines-lab-ties-with-new-multi-billion-dolla\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
   "warnings": [
     "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
   ]
