@@ -4,8 +4,8 @@
 - Owner: DA
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3
 - Branch: codex/agent-council/behavior-tracking
-- Generated At: 2026-04-22T07:54:51.532Z
-- Status: ready
+- Generated At: 2026-04-22T13:50:22.886Z
+- Status: queued
 
 ## Detail
 headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.
