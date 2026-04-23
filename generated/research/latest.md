@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-23T08:01:26.950Z
+- Generated At: 2026-04-23T13:53:01.144Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -10,26 +10,26 @@
 - Tickers: NVDA, AMD, XOM
 
 ## Main Headline
-- UK's BT and Nscale team up to build 14MW of AI capacity
-- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.
+- SoftBank Eyes $10B Loan Backed by OpenAI Stake
+- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
 - Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "UK's BT and Nscale team up to build 14MW of AI capacity"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-uk-s-bt-and-nscale-team-up-to-build-14mw-of-ai-capacity, live-semiconductors-sk-hynix-sets-record-as-quarterly-profit-jumps-five-fold-says-ai-chip-demand-exc, live-semiconductors-is-it-too-late-to-consider-amd-nasdaqgs-amd-after-its-ai-partnership-momentum, live-semiconductors-this-is-why-advanced-micro-devices-amd-is-a-top-ai-stock-to-own
+메인 헤드라인을 "SoftBank Eyes $10B Loan Backed by OpenAI Stake"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-softbank-eyes-10b-loan-backed-by-openai-stake, live-semiconductors-oklo-nvidia-and-los-alamos-national-laboratory-collaborate-to-advance-nuclear-fu, live-semiconductors-jim-cramer-on-intel-it-s-making-a-major-comeback-under-new-ceo-lip-bu-tan, live-semiconductors-tsmc-says-asml-s-latest-chipmaking-gear-is-too-pricey-to-use
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-uk-s-bt-and-nscale-team-up-to-build-14mw-of-ai-capacity, live-semiconductors-sk-hynix-sets-record-as-quarterly-profit-jumps-five-fold-says-ai-chip-demand-exc
+References: live-semiconductors-softbank-eyes-10b-loan-backed-by-openai-stake, live-semiconductors-oklo-nvidia-and-los-alamos-national-laboratory-collaborate-to-advance-nuclear-fu, live-energy-oil-buy-5-high-flying-old-economy-stocks-of-2026-with-more-room-to-run
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-uk-s-bt-and-nscale-team-up-to-build-14mw-of-ai-capacity, live-semiconductors-sk-hynix-sets-record-as-quarterly-profit-jumps-five-fold-says-ai-chip-demand-exc, live-semiconductors-is-it-too-late-to-consider-amd-nasdaqgs-amd-after-its-ai-partnership-momentum
+References: NVDA, live-semiconductors-softbank-eyes-10b-loan-backed-by-openai-stake, live-semiconductors-oklo-nvidia-and-los-alamos-national-laboratory-collaborate-to-advance-nuclear-fu, live-semiconductors-jim-cramer-on-intel-it-s-making-a-major-comeback-under-new-ceo-lip-bu-tan
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-sk-hynix-sets-record-as-quarterly-profit-jumps-five-fold-says-ai-chip-demand-exc, live-semiconductors-is-it-too-late-to-consider-amd-nasdaqgs-amd-after-its-ai-partnership-momentum, live-semiconductors-this-is-why-advanced-micro-devices-amd-is-a-top-ai-stock-to-own
+References: NVDA, live-semiconductors-oklo-nvidia-and-los-alamos-national-laboratory-collaborate-to-advance-nuclear-fu, live-semiconductors-jim-cramer-on-intel-it-s-making-a-major-comeback-under-new-ceo-lip-bu-tan, live-semiconductors-tsmc-says-asml-s-latest-chipmaking-gear-is-too-pricey-to-use
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
