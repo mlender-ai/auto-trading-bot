@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-24T08:10:12.069Z
+- Generated At: 2026-04-24T13:43:27.673Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -10,26 +10,26 @@
 - Tickers: NVDA, AMD, XOM
 
 ## Main Headline
-- Oracle just made Supermicro’s story a lot more complicated
+- Chinese EV maker NIO bets on in-house chips to cut reliance on Nvidia
 - Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
 - Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "Oracle just made Supermicro’s story a lot more complicated"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-more-complicated, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-dow-jones-futures-stocks-fall-on-iran-servicenow-tesla-intel-soars-late
+메인 헤드라인을 "Chinese EV maker NIO bets on in-house chips to cut reliance on Nvidia"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-chinese-ev-maker-nio-bets-on-in-house-chips-to-cut-reliance-on-nvidia, live-semiconductors-intel-jumps-on-upbeat-ai-driven-cpu-outlook, live-semiconductors-stock-market-today-dow-slips-as-intel-soars-on-earnings-amd-arm-tag-along-live-c, live-semiconductors-intel-stock-is-up-100-this-year-here-s-why
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-more-complicated, live-semiconductors-review-preview-earnings-storm, live-energy-oil-the-zacks-analyst-blog-exxon-international-business-machines-citigroup-natural-r
+References: live-semiconductors-chinese-ev-maker-nio-bets-on-in-house-chips-to-cut-reliance-on-nvidia, live-semiconductors-intel-jumps-on-upbeat-ai-driven-cpu-outlook, live-energy-oil-the-zacks-analyst-blog-exxon-international-business-machines-citigroup-natural-r
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-more-complicated, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights
+References: NVDA, live-semiconductors-chinese-ev-maker-nio-bets-on-in-house-chips-to-cut-reliance-on-nvidia, live-semiconductors-intel-jumps-on-upbeat-ai-driven-cpu-outlook, live-semiconductors-stock-market-today-dow-slips-as-intel-soars-on-earnings-amd-arm-tag-along-live-c
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-dow-jones-futures-stocks-fall-on-iran-servicenow-tesla-intel-soars-late
+References: NVDA, live-semiconductors-intel-jumps-on-upbeat-ai-driven-cpu-outlook, live-semiconductors-stock-market-today-dow-slips-as-intel-soars-on-earnings-amd-arm-tag-along-live-c, live-semiconductors-intel-stock-is-up-100-this-year-here-s-why
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
