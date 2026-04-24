@@ -42,7 +42,7 @@
   },
   "workspace": {
     "contractVersion": "2026-04-21.1",
-    "generatedAt": "2026-04-24T18:59:22.363Z",
+    "generatedAt": "2026-04-24T23:04:12.822Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -157,12 +157,12 @@
     },
     "news": {
       "headline": {
-        "id": "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-        "title": "Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?",
+        "id": "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+        "title": "Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.",
         "summary": "Intel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results.",
         "source": "FINANCE",
-        "sourceUrl": "https://finance.yahoo.com/m/10eeadd3-28d6-36fd-9802-3f570adfef9c/intel-stock-surges-23%25-after.html?.tsrc=rss",
-        "publishedAt": "2026-04-24T18:21:00.000Z",
+        "sourceUrl": "https://finance.yahoo.com/m/10eeadd3-28d6-36fd-9802-3f570adfef9c/intel-stock-surges-24%25-to.html?.tsrc=rss",
+        "publishedAt": "2026-04-24T20:53:00.000Z",
         "imageUrl": "https://s.yimg.com/ny/api/res/1.2/MGqmN4u9lCc8KpczdyEbiA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02MDA-/https://media.zenfs.com/en/Barrons.com/60aede5285fb77d60074433eaa558517",
         "sectorTag": "semiconductors",
         "tickerTags": [
@@ -177,13 +177,13 @@
       },
       "derivedArticles": [
         {
-          "id": "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-          "title": "Wedbush delivers urgent message for Orcale stock investors",
-          "summary": "Wedbush Calls Oracle AI Infrastructure Winner as Wall Street Backs Massive Cloud Shift",
+          "id": "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+          "title": "VAST Data CEO discusses AI startup's new $30B valuation",
+          "summary": "Private AI infrastructure company VAST Data has powered ahead to a new valuation of $30 billion after raising over $1 billion in its latest Series B funding round. VAST Data founder and CEO Renen Hallak speaks with Asking for a Trend's Josh Lipton about this news, where he plans to put the money to work, and who could be his firm's biggest rivals in the next phase of the AI Revolution and major data center projects.",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/wedbush-delivers-urgent-message-orcale-180525837.html?.tsrc=rss",
-          "publishedAt": "2026-04-24T18:05:25.000Z",
-          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+          "sourceUrl": "https://finance.yahoo.com/video/vast-data-ceo-discusses-ai-startups-new-30b-valuation-204943144.html?.tsrc=rss",
+          "publishedAt": "2026-04-24T20:49:43.000Z",
+          "imageUrl": "https://s.yimg.com/ny/api/res/1.2/h_UgcGQoLaQh32wZlOL0_w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://d29szjachogqwa.cloudfront.net/images/user-uploaded/57f668c2-4cb5-4e06-a75d-87988bbf65eb_1dad4e099c5699086425e917ed4c85e9886f108140d5dc398378d7983bfdd2f1.net/images/2026-04/57f668c2-4cb5-4e06-a75d-87988bbf65eb",
           "sectorTag": "semiconductors",
           "tickerTags": [
             "NVDA",
@@ -196,13 +196,13 @@
           "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
         },
         {
-          "id": "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk",
-          "title": "Equities Mostly Rise Intraday as Intel Rallies; Oil Falls Amid US-Iran Peace Talk Hopes",
-          "summary": "US benchmark equity indexes were mostly higher intraday amid Intel's (INTC) post-earnings rally, whi",
+          "id": "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market",
+          "title": "Dow Jones Futures: Apple, Amazon, Google Lead Earnings Wave For AI-Led Stock Market",
+          "summary": "The stock market is at highs but results and spending plans for Apple, Amazon, Google and more will be key for the AI-led rally",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/equities-mostly-rise-intraday-intel-175454956.html?.tsrc=rss",
-          "publishedAt": "2026-04-24T17:54:54.000Z",
-          "imageUrl": "https://s.yimg.com/os/en/mt_newswires_premium_news_706/0c887a492733aab96ac405a5871f559a",
+          "sourceUrl": "https://finance.yahoo.com/m/5adae484-b99f-331c-ba49-f7185d0faf7b/dow-jones-futures%3A-apple%2C.html?.tsrc=rss",
+          "publishedAt": "2026-04-24T20:42:02.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/ibd.com/ec8365e261a0dfa9375d79fafac86ffa",
           "sectorTag": "semiconductors",
           "tickerTags": [
             "NVDA",
@@ -215,23 +215,23 @@
           "recommendation": "NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
         },
         {
-          "id": "live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting",
-          "title": "Intel’s Post-Earnings Rally Sent Its Stock to New Highs. These Rivals Are Getting a Lift Too.",
-          "summary": "AMD and other chip stocks rallied Friday following strong results from Intel that could be taken as an encouraging signal for its peers.",
-          "source": "INVESTOPEDIA",
-          "sourceUrl": "https://www.investopedia.com/intel-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting-a-lift-too-11957851?.tsrc=rss",
-          "publishedAt": "2026-04-24T17:39:48.000Z",
-          "imageUrl": null,
+          "id": "live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings",
+          "title": "Stock Market Today: Nasdaq, S&P 500 Score Record Closes; Rally Faces Mag 7 Earnings Test (Live Coverage)",
+          "summary": "Stock Market Today: The Dow Jones index slips Friday while surging Intel stock lifted the Nasdaq higher. AI stocks AMD and Arm jump.",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/m/52e306ce-7e7b-3209-bf84-7e6ce3d57e4f/stock-market-today%3A-nasdaq%2C.html?.tsrc=rss",
+          "publishedAt": "2026-04-24T20:29:48.000Z",
+          "imageUrl": "https://s.yimg.com/os/en/ibd.com/f5040fd803901fd879b5874571854a60",
           "sectorTag": "semiconductors",
           "tickerTags": [
-            "AMD",
+            "NVDA",
             "NVDA",
             "AMD"
           ],
           "importanceScore": 98,
           "priority": "critical",
           "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-          "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
+          "recommendation": "NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
         }
       ],
       "sectorIssues": [
@@ -239,13 +239,13 @@
           "sectorTag": "semiconductors",
           "sectorLabel": "반도체",
           "item": {
-            "id": "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-            "title": "Wedbush delivers urgent message for Orcale stock investors",
-            "summary": "Wedbush Calls Oracle AI Infrastructure Winner as Wall Street Backs Massive Cloud Shift",
+            "id": "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+            "title": "VAST Data CEO discusses AI startup's new $30B valuation",
+            "summary": "Private AI infrastructure company VAST Data has powered ahead to a new valuation of $30 billion after raising over $1 billion in its latest Series B funding round. VAST Data founder and CEO Renen Hallak speaks with Asking for a Trend's Josh Lipton about this news, where he plans to put the money to work, and who could be his firm's biggest rivals in the next phase of the AI Revolution and major data center projects.",
             "source": "FINANCE",
-            "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/wedbush-delivers-urgent-message-orcale-180525837.html?.tsrc=rss",
-            "publishedAt": "2026-04-24T18:05:25.000Z",
-            "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+            "sourceUrl": "https://finance.yahoo.com/video/vast-data-ceo-discusses-ai-startups-new-30b-valuation-204943144.html?.tsrc=rss",
+            "publishedAt": "2026-04-24T20:49:43.000Z",
+            "imageUrl": "https://s.yimg.com/ny/api/res/1.2/h_UgcGQoLaQh32wZlOL0_w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://d29szjachogqwa.cloudfront.net/images/user-uploaded/57f668c2-4cb5-4e06-a75d-87988bbf65eb_1dad4e099c5699086425e917ed4c85e9886f108140d5dc398378d7983bfdd2f1.net/images/2026-04/57f668c2-4cb5-4e06-a75d-87988bbf65eb",
             "sectorTag": "semiconductors",
             "tickerTags": [
               "NVDA",
@@ -303,12 +303,12 @@
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-          "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-          "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk"
+          "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+          "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+          "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market"
         ]
       },
       {
@@ -325,12 +325,12 @@
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-          "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-          "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk"
+          "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+          "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+          "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market"
         ]
       },
       {
@@ -398,21 +398,21 @@
           "name": "News Editor",
           "roleLabel": "뉴스 선별",
           "objective": "가격 영향이 큰 뉴스만 추려 메인 헤드라인과 파생 뉴스, 섹터 핵심 이슈를 만든다.",
-          "summary": "메인 헤드라인을 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+          "summary": "메인 헤드라인을 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
           "outputLines": [
-            "메인 헤드라인: Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?",
-            "파생 뉴스: Wedbush delivers urgent message for Orcale stock investors",
-            "파생 뉴스: Equities Mostly Rise Intraday as Intel Rallies; Oil Falls Amid US-Iran Peace Talk Hopes",
-            "파생 뉴스: Intel’s Post-Earnings Rally Sent Its Stock to New Highs. These Rivals Are Getting a Lift Too.",
-            "반도체: Wedbush delivers urgent message for Orcale stock investors",
+            "메인 헤드라인: Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.",
+            "파생 뉴스: VAST Data CEO discusses AI startup's new $30B valuation",
+            "파생 뉴스: Dow Jones Futures: Apple, Amazon, Google Lead Earnings Wave For AI-Led Stock Market",
+            "파생 뉴스: Stock Market Today: Nasdaq, S&P 500 Score Record Closes; Rally Faces Mag 7 Earnings Test (Live Coverage)",
+            "반도체: VAST Data CEO discusses AI startup's new $30B valuation",
             "에너지(오일): Exxon Stock and Chevron Stock Are Up 20%+ YTD – Why the Long Oil Trade Is Stalling Out"
           ],
           "handoffNote": "이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
           "references": [
-            "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-            "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-            "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk",
-            "live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting"
+            "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+            "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+            "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market",
+            "live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings"
           ]
         },
         {
@@ -429,8 +429,8 @@
           ],
           "handoffNote": "이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
           "references": [
-            "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-            "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
+            "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+            "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
             "live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o"
           ]
         },
@@ -445,14 +445,14 @@
             "요약: 추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
             "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $164.27 / $164.27, 저항은 $210.95 / $210.95입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
             "패턴: 상승 추세 내 눌림 후 재가속, AB=CD 조정형",
-            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"가 가장 큰 가격 재료로 작동하고 있습니다."
+            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"가 가장 큰 가격 재료로 작동하고 있습니다."
           ],
           "handoffNote": "이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
           "references": [
             "NVDA",
-            "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-            "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-            "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk"
+            "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+            "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+            "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market"
           ]
         },
         {
@@ -473,9 +473,9 @@
           "handoffNote": "이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
           "references": [
             "NVDA",
-            "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-            "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk",
-            "live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting"
+            "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+            "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market",
+            "live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings"
           ]
         }
       ],
@@ -544,14 +544,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-24T18:59:22.363Z",
+        "runId": "fallback-2026-04-24T23:04:12.822Z",
         "provider": "rule-based",
         "model": "openai/gpt-4.1",
         "source": "github-actions",
         "status": "fallback",
-        "generatedAt": "2026-04-24T18:59:22.363Z",
+        "generatedAt": "2026-04-24T23:04:12.822Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-24T18:59:22.363Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk, live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk, live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-24T23:04:12.822Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -560,13 +560,13 @@
             "author": "News Editor",
             "roleLabel": "뉴스 선별",
             "audience": "Macro Analyst",
-            "summary": "메인 헤드라인을 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
-            "text": "메인 헤드라인을 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
+            "summary": "메인 헤드라인을 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+            "text": "메인 헤드라인을 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
             "references": [
-              "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-              "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-              "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk",
-              "live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting"
+              "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+              "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+              "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market",
+              "live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings"
             ]
           },
           {
@@ -579,8 +579,8 @@
             "summary": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다.",
             "text": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
             "references": [
-              "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-              "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
+              "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+              "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
               "live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o"
             ]
           },
@@ -595,9 +595,9 @@
             "text": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
             "references": [
               "NVDA",
-              "live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h",
-              "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-              "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk"
+              "live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher",
+              "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+              "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market"
             ]
           },
           {
@@ -611,9 +611,9 @@
             "text": "NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
             "references": [
               "NVDA",
-              "live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors",
-              "live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk",
-              "live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting"
+              "live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation",
+              "live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market",
+              "live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings"
             ]
           }
         ]
@@ -784,7 +784,7 @@
       ]
     },
     "meeting": {
-      "topic": "Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?",
+      "topic": "Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.",
       "objective": "뉴스 → 시황 → 분석 → 행동 체인이 실제 제품 흐름으로 이어지는지 점검합니다.",
       "nextAction": "NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.",
       "messages": [
@@ -845,16 +845,16 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-24T18:59:22.363Z",
+      "generatedAt": "2026-04-24T23:04:12.822Z",
       "nextRunAt": "2026-04-25T07:30:00.000Z",
-      "subject": "[Daily Brief] Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?",
+      "subject": "[Daily Brief] Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.",
       "previewText": "Intel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results. / 행동 제안: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.",
       "to": [],
-      "bodyText": "[Daily Brief] Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\n\nIntel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results. / 행동 제안: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[메인 헤드라인]\nIntel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\n- 분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- 행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[파생 기사]\n- Wedbush delivers urgent message for Orcale stock investors\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Equities Mostly Rise Intraday as Intel Rallies; Oil Falls Amid US-Iran Peace Talk Hopes\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Intel’s Post-Earnings Rally Sent Its Stock to New Highs. These Rivals Are Getting a Lift Too.\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Wedbush delivers urgent message for Orcale stock investors\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Exxon Stock and Chevron Stock Are Up 20%+ YTD – Why the Long Oil Trade Is Stalling Out\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- NVDA: NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
-      "bodyHtml": "<h1>[Daily Brief] Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?</h1><p>Intel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results. / 행동 제안: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p><h2>메인 헤드라인</h2><article><strong>Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?</strong><p>실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.</p><p>NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p></article><h2>파생 기사</h2><ul><li><strong>Wedbush delivers urgent message for Orcale stock investors</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Equities Mostly Rise Intraday as Intel Rallies; Oil Falls Amid US-Iran Peace Talk Hopes</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Intel’s Post-Earnings Rally Sent Its Stock to New Highs. These Rivals Are Getting a Lift Too.</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Wedbush delivers urgent message for Orcale stock investors<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Exxon Stock and Chevron Stock Are Up 20%+ YTD – Why the Long Oil Trade Is Stalling Out<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>NVDA</strong> - NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
+      "bodyText": "[Daily Brief] Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\n\nIntel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results. / 행동 제안: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[메인 헤드라인]\nIntel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\n- 분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- 행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[파생 기사]\n- VAST Data CEO discusses AI startup's new $30B valuation\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Dow Jones Futures: Apple, Amazon, Google Lead Earnings Wave For AI-Led Stock Market\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n- Stock Market Today: Nasdaq, S&P 500 Score Record Closes; Rally Faces Mag 7 Earnings Test (Live Coverage)\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: VAST Data CEO discusses AI startup's new $30B valuation\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Exxon Stock and Chevron Stock Are Up 20%+ YTD – Why the Long Oil Trade Is Stalling Out\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- NVDA: NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- XOM: XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
+      "bodyHtml": "<h1>[Daily Brief] Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.</h1><p>Intel shares were up sharply in premarket trading Friday after the chip maker reported strong first-quarter results. / 행동 제안: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p><h2>메인 헤드라인</h2><article><strong>Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.</strong><p>실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.</p><p>NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</p></article><h2>파생 기사</h2><ul><li><strong>VAST Data CEO discusses AI startup&#39;s new $30B valuation</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Dow Jones Futures: Apple, Amazon, Google Lead Earnings Wave For AI-Led Stock Market</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li><li><strong>Stock Market Today: Nasdaq, S&amp;P 500 Score Record Closes; Rally Faces Mag 7 Earnings Test (Live Coverage)</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - VAST Data CEO discusses AI startup&#39;s new $30B valuation<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Exxon Stock and Chevron Stock Are Up 20%+ YTD – Why the Long Oil Trade Is Stalling Out<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>NVDA</strong> - NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>XOM</strong> - XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-24T18:59:22.363Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Intel Stock Surges 23% After Earnings, On Track for Record Close. Can AI Drive It Higher?\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk, live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-intel-stock-surges-23-after-earnings-on-track-for-record-close-can-ai-drive-it-h, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-wedbush-delivers-urgent-message-for-orcale-stock-investors, live-semiconductors-equities-mostly-rise-intraday-as-intel-rallies-oil-falls-amid-us-iran-peace-talk, live-semiconductors-intel-s-post-earnings-rally-sent-its-stock-to-new-highs-these-rivals-are-getting\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
+  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-24T23:04:12.822Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, XOM\n\n## Main Headline\n- Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\n- Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n- Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Intel Stock Surges 24% to Record High on Earnings. AI Will Have to Drive It Higher.\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-intel-stock-surges-24-to-record-high-on-earnings-ai-will-have-to-drive-it-higher, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-vast-data-ceo-discusses-ai-startup-s-new-30b-valuation, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-stock-market-today-nasdaq-s-p-500-score-record-closes-rally-faces-mag-7-earnings\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 에이전트 출력 스키마를 API 계약으로 고정합니다.\n  Owner: CTO\n  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.\n  Implementation Status: ready\n  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.\n  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web | npm run research:generate\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1\n  Branch: codex/agent-council/schema-contract\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4\n  Plan: .github/agent-council/schema-contract.md\n  Changed Files: none yet\n\n- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.\n  Owner: PM\n  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.\n  Implementation Status: ready\n  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2\n  Branch: codex/agent-council/headline-to-action-flow\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5\n  Plan: .github/agent-council/headline-to-action-flow.md\n  Changed Files: none yet\n\n- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.\n  Owner: DA\n  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.\n  Implementation Status: ready\n  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.\n  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3\n  Branch: codex/agent-council/behavior-tracking\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6\n  Plan: .github/agent-council/behavior-tracking.md\n  Changed Files: none yet\n",
   "warnings": [
     "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
   ]
