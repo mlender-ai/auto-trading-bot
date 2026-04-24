@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-24T02:55:15.875Z
+- Generated At: 2026-04-24T08:10:12.069Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -17,7 +17,7 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "Oracle just made Supermicro’s story a lot more complicated"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-more-complicated, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-intel-earnings-were-strong-enough-to-put-the-dot-com-bust-in-the-stock-s-rearvie
+References: live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-more-complicated, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-dow-jones-futures-stocks-fall-on-iran-servicenow-tesla-intel-soars-late
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
@@ -29,7 +29,7 @@ References: NVDA, live-semiconductors-oracle-just-made-supermicro-s-story-a-lot-
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-intel-earnings-were-strong-enough-to-put-the-dot-com-bust-in-the-stock-s-rearvie
+References: NVDA, live-semiconductors-review-preview-earnings-storm, live-semiconductors-intel-q1-earnings-call-highlights, live-semiconductors-dow-jones-futures-stocks-fall-on-iran-servicenow-tesla-intel-soars-late
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
