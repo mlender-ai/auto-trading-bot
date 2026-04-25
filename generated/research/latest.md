@@ -1,10 +1,10 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-25T09:44:56.619Z
+- Generated At: 2026-04-25T10:20:58.445Z
 - Provider: rule-based
-- Model: openai/gpt-4.1
-- Source: github-actions
+- Model: n/a
+- Source: local-script
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: NVDA, AMD, XOM
@@ -51,64 +51,64 @@ References: NVDA, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-a
 - 행동 제안을 진입 조건 사다리로 바꿉니다.
   Owner: Trader
   Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.
-  Implementation Status: ready
+  Implementation Status: queued
   Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.
   Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css
   Verify: npm run typecheck | npm run build:web
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/15
-  Branch: codex/agent-council/trader-entry-condition-ladder
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16
-  Plan: .github/agent-council/trader-entry-condition-ladder.md
+  Issue: not synced
+  Branch: not provisioned
+  PR: not created
+  Plan: not seeded
   Changed Files: none yet
 
 - 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.
   Owner: CTO
   Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.
-  Implementation Status: ready
+  Implementation Status: queued
   Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.
   Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx
   Verify: npm run typecheck | npm run research:generate | npm run build:web
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/17
-  Branch: codex/agent-council/cto-live-data-health-check
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18
-  Plan: .github/agent-council/cto-live-data-health-check.md
+  Issue: not synced
+  Branch: not provisioned
+  PR: not created
+  Plan: not seeded
   Changed Files: none yet
 
 - 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.
   Owner: PM
   Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.
-  Implementation Status: ready
+  Implementation Status: queued
   Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.
   Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts
   Verify: npm run typecheck | npm run research:newsletter
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/19
-  Branch: codex/agent-council/pm-newsletter-web-parity
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20
-  Plan: .github/agent-council/pm-newsletter-web-parity.md
+  Issue: not synced
+  Branch: not provisioned
+  PR: not created
+  Plan: not seeded
   Changed Files: none yet
 
 - fallback 데이터 사용 시 사용자에게 명확히 표시합니다.
   Owner: QA
   Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.
-  Implementation Status: ready
+  Implementation Status: queued
   Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.
   Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts
   Verify: npm run typecheck | npm run build:web
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/21
-  Branch: codex/agent-council/qa-fallback-visibility
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22
-  Plan: .github/agent-council/qa-fallback-visibility.md
+  Issue: not synced
+  Branch: not provisioned
+  PR: not created
+  Plan: not seeded
   Changed Files: none yet
 
 - 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.
   Owner: DA
   Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.
-  Implementation Status: ready
+  Implementation Status: queued
   Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.
   Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts
   Verify: npm run typecheck | npm run research:issues
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/23
-  Branch: codex/agent-council/da-idea-yield-score
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24
-  Plan: .github/agent-council/da-idea-yield-score.md
+  Issue: not synced
+  Branch: not provisioned
+  PR: not created
+  Plan: not seeded
   Changed Files: none yet

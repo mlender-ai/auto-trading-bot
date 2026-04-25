@@ -446,6 +446,19 @@ async function updateIssueLikeState(
   });
 }
 
+async function updatePullRequestState(
+  context: NonNullable<ReturnType<typeof getRepoContext>>,
+  pullRequestNumber: number,
+  state: "open" | "closed"
+) {
+  await githubRequest(context, `/repos/${context.owner}/${context.repo}/pulls/${pullRequestNumber}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      state
+    })
+  });
+}
+
 async function upsertIssue(
   context: NonNullable<ReturnType<typeof getRepoContext>>,
   existing: GitHubIssue | null,
@@ -590,7 +603,7 @@ async function upsertPullRequest(
   }
 
   if (existing.state === "closed" && !existing.merged_at) {
-    await updateIssueLikeState(context, existing.number, "open");
+    await updatePullRequestState(context, existing.number, "open");
   }
 
   const updated =
@@ -622,7 +635,7 @@ async function closeStalePullRequests(
     }
 
     if (!pull.merged_at) {
-      await updateIssueLikeState(context, pull.number, "closed");
+      await updatePullRequestState(context, pull.number, "closed");
     }
   }
 }
@@ -649,7 +662,7 @@ function collectCompletedActionRecords(issues: GitHubIssue[], pulls: GitHubPullR
       const pull = pullById.get(id) ?? null;
       const owner = parseOwner(issue.labels);
 
-      if (!owner) {
+      if (!owner || !pull?.merged_at) {
         return null;
       }
 
@@ -657,7 +670,7 @@ function collectCompletedActionRecords(issues: GitHubIssue[], pulls: GitHubPullR
         id,
         title: issue.title.replace(/^\[Agent Council\]\s*/, ""),
         owner,
-        completedAt: issue.closed_at ?? pull?.merged_at ?? pull?.closed_at ?? new Date().toISOString(),
+        completedAt: pull.merged_at,
         issueUrl: issue.html_url,
         pullRequestUrl: pull?.html_url ?? null
       } satisfies CompletedActionRecord;
