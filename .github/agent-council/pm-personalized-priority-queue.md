@@ -5,7 +5,7 @@
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/9
 - Branch: codex/agent-council/pm-personalized-priority-queue
 - Generated At: 2026-04-25T07:24:31.871Z
-- Status: queued
+- Status: ready
 
 ## Detail
 반도체, 에너지(오일) 기준으로 헤드라인, 파생 기사, 섹터 이슈의 노출 순서를 다시 짜서 사용자가 첫 화면에서 자기 관심사만 바로 읽게 만듭니다.
