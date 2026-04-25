@@ -5,7 +5,7 @@
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/7
 - Branch: codex/agent-council/cto-council-memory-log
 - Generated At: 2026-04-25T07:12:07.303Z
-- Status: queued
+- Status: ready
 
 ## Detail
 매 런마다 나온 아이디어와 해결된 아이디어를 markdown memory에 따로 남겨, 24시간 자동 루프에서도 이미 끝난 일과 새 아이디어를 구분합니다.
