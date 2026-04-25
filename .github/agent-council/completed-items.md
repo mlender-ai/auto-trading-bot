@@ -1,0 +1,19 @@
+# Agent Council Completed Items
+
+24시간 자동 에이전트 루프에서 이미 해결된 아이디어 기록입니다.
+이 파일의 `id`는 이후 새 액션 아이템 생성에서 제외됩니다.
+
+<!-- completed-action-record {"id":"cto-council-memory-log","title":"에이전트 회의 결과를 markdown memory로 누적합니다.","owner":"CTO","completedAt":"2026-04-25T07:13:05Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/7","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/8"} -->
+- `cto-council-memory-log` · CTO · 에이전트 회의 결과를 markdown memory로 누적합니다. · 2026-04-25T07:13:05Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/7) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/8)
+<!-- completed-action-record {"id":"qa-cross-surface-consistency","title":"뉴스 탭, 티커 탭, 뉴스레터의 행동 제안 일관성을 검증합니다.","owner":"QA","completedAt":"2026-04-25T07:13:04Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/11","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/12"} -->
+- `qa-cross-surface-consistency` · QA · 뉴스 탭, 티커 탭, 뉴스레터의 행동 제안 일관성을 검증합니다. · 2026-04-25T07:13:04Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/11) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/12)
+<!-- completed-action-record {"id":"pm-personalized-priority-queue","title":"관심 섹터 우선순위로 뉴스 첫 화면을 재정렬합니다.","owner":"PM","completedAt":"2026-04-25T07:13:04Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/9","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/10"} -->
+- `pm-personalized-priority-queue` · PM · 관심 섹터 우선순위로 뉴스 첫 화면을 재정렬합니다. · 2026-04-25T07:13:04Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/9) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/10)
+<!-- completed-action-record {"id":"da-segmented-funnel-attribution","title":"전환 퍼널을 섹터·티커·시간대별로 분해합니다.","owner":"DA","completedAt":"2026-04-25T07:13:03Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/13","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/14"} -->
+- `da-segmented-funnel-attribution` · DA · 전환 퍼널을 섹터·티커·시간대별로 분해합니다. · 2026-04-25T07:13:03Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/13) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/14)
+<!-- completed-action-record {"id":"schema-contract","title":"에이전트 출력 스키마를 API 계약으로 고정합니다.","owner":"CTO","completedAt":"2026-04-25T07:04:29Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/1","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/4"} -->
+- `schema-contract` · CTO · 에이전트 출력 스키마를 API 계약으로 고정합니다. · 2026-04-25T07:04:29Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/1) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/4)
+<!-- completed-action-record {"id":"headline-to-action-flow","title":"메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.","owner":"PM","completedAt":"2026-04-25T07:04:28Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/2","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/5"} -->
+- `headline-to-action-flow` · PM · 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다. · 2026-04-25T07:04:28Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/2) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/5)
+<!-- completed-action-record {"id":"behavior-tracking","title":"핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.","owner":"DA","completedAt":"2026-04-25T07:04:27Z","issueUrl":"https://github.com/mlender-ai/auto-trading-bot/issues/3","pullRequestUrl":"https://github.com/mlender-ai/auto-trading-bot/pull/6"} -->
+- `behavior-tracking` · DA · 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다. · 2026-04-25T07:04:27Z · [Issue](https://github.com/mlender-ai/auto-trading-bot/issues/3) · [PR](https://github.com/mlender-ai/auto-trading-bot/pull/6)

@@ -9,6 +9,7 @@ import {
   type ProductActionItem,
   type ResearchWorkspaceData
 } from "../packages/shared/src/research";
+import { readCompletedActionArchive, writeCompletedActionArchive, type CompletedActionRecord } from "../packages/shared/src/agentCouncilMemory";
 import { type GeneratedResearchSnapshot } from "../packages/shared/src/researchPipeline";
 
 const SNAPSHOT_PATH = "generated/research/latest.json";
@@ -30,6 +31,7 @@ interface GitHubIssue {
   body: string | null;
   html_url: string;
   state: "open" | "closed";
+  closed_at?: string | null;
   labels?: Array<{ name: string }>;
   pull_request?: unknown;
 }
@@ -41,6 +43,7 @@ interface GitHubPullRequest {
   html_url: string;
   state: "open" | "closed";
   draft: boolean;
+  closed_at?: string | null;
   merged_at: string | null;
   head: { ref: string };
 }
@@ -83,6 +86,16 @@ function ownerLabel(owner: AgentRole): string {
 
 function actionLabels(item: ProductActionItem): string[] {
   return ["agent-council", "research-automation", ownerLabel(item.owner)];
+}
+
+function parseManagedMarker(body: string | null, type: "issue" | "pr"): string | null {
+  const pattern = type === "issue" ? /research-action-item:([a-z0-9-]+)/i : /research-action-pr:([a-z0-9-]+)/i;
+  return body?.match(pattern)?.[1] ?? null;
+}
+
+function parseOwner(labels: Array<{ name: string }> | undefined): AgentRole | null {
+  const value = labels?.find((label) => label.name.startsWith("owner:"))?.name.replace("owner:", "").toUpperCase();
+  return value === "PM" || value === "TRADER" || value === "DA" || value === "QA" || value === "CTO" ? value : null;
 }
 
 function encodeContentPath(value: string): string {
@@ -292,6 +305,16 @@ function getRepoContext() {
     owner,
     repo
   };
+}
+
+function shouldCloseStaleItems(): boolean {
+  const value = process.env.RESEARCH_ISSUES_CLOSE_STALE?.trim().toLowerCase();
+
+  if (!value) {
+    return true;
+  }
+
+  return !["0", "false", "no", "off"].includes(value);
 }
 
 async function githubRequest<T>(context: NonNullable<ReturnType<typeof getRepoContext>>, path: string, init?: RequestInit): Promise<T> {
@@ -604,6 +627,44 @@ async function closeStalePullRequests(
   }
 }
 
+function collectCompletedActionRecords(issues: GitHubIssue[], pulls: GitHubPullRequest[]): CompletedActionRecord[] {
+  const pullById = new Map<string, GitHubPullRequest>();
+
+  for (const pull of pulls) {
+    const id = parseManagedMarker(pull.body, "pr");
+
+    if (id) {
+      pullById.set(id, pull);
+    }
+  }
+
+  return issues
+    .map((issue) => {
+      const id = parseManagedMarker(issue.body, "issue");
+
+      if (!id || issue.state !== "closed") {
+        return null;
+      }
+
+      const pull = pullById.get(id) ?? null;
+      const owner = parseOwner(issue.labels);
+
+      if (!owner) {
+        return null;
+      }
+
+      return {
+        id,
+        title: issue.title.replace(/^\[Agent Council\]\s*/, ""),
+        owner,
+        completedAt: issue.closed_at ?? pull?.merged_at ?? pull?.closed_at ?? new Date().toISOString(),
+        issueUrl: issue.html_url,
+        pullRequestUrl: pull?.html_url ?? null
+      } satisfies CompletedActionRecord;
+    })
+    .filter((record): record is CompletedActionRecord => Boolean(record));
+}
+
 async function persistSnapshot(snapshot: GeneratedResearchSnapshot) {
   const contractVersion = snapshot.workspace.contractVersion ?? snapshot.contractVersion ?? RESEARCH_CONTRACT_VERSION;
   const behaviorSummary = snapshot.workspace.behaviorSummary ?? createEmptyResearchBehaviorSummary();
@@ -631,6 +692,7 @@ async function persistSnapshot(snapshot: GeneratedResearchSnapshot) {
 async function main() {
   const snapshot = await readSnapshot();
   const context = getRepoContext();
+  const closeStaleItems = shouldCloseStaleItems();
 
   if (!context) {
     process.stdout.write("issues=skipped\nreason=GITHUB_TOKEN 또는 GITHUB_REPOSITORY가 없어 GitHub 동기화를 건너뜁니다.\n");
@@ -675,8 +737,17 @@ async function main() {
     syncedItems.push(syncedItem);
   }
 
-  await closeStaleIssues(context, existingIssues, new Set(activeItems.map((item) => item.id)));
-  await closeStalePullRequests(context, existingPulls, new Set(activeItems.map((item) => item.id)));
+  if (closeStaleItems) {
+    await closeStaleIssues(context, existingIssues, new Set(activeItems.map((item) => item.id)));
+    await closeStalePullRequests(context, existingPulls, new Set(activeItems.map((item) => item.id)));
+  }
+
+  const [finalIssues, finalPulls, archived] = await Promise.all([
+    listManagedIssues(context),
+    listManagedPullRequests(context),
+    readCompletedActionArchive()
+  ]);
+  await writeCompletedActionArchive([...archived, ...collectCompletedActionRecords(finalIssues, finalPulls)]);
 
   snapshot.workspace.productReview.actionItems = syncedItems;
   await persistSnapshot(snapshot);

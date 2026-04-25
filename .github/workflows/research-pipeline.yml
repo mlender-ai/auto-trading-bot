@@ -8,7 +8,7 @@ on:
     paths-ignore:
       - generated/research/**
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 * * * *"
 
 concurrency:
   group: research-automation-${{ github.ref }}
@@ -30,6 +30,7 @@ jobs:
       AI_MODEL: ${{ secrets.AI_MODEL }}
       AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
       GITHUB_TOKEN: ${{ github.token }}
+      RESEARCH_ISSUES_CLOSE_STALE: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,7 +58,7 @@ jobs:
       - name: Publish generated snapshot to repository
         shell: bash
         run: |
-          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+          if git diff --quiet -- generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md; then
             exit 0
           fi
 
@@ -72,11 +73,11 @@ jobs:
             npm run research:generate
             npm run research:issues
 
-            if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+            if git diff --quiet -- generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md; then
               exit 0
             fi
 
-            git add generated/research/latest.json generated/research/latest.md
+            git add generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md
 
             if git diff --cached --quiet; then
               exit 0

@@ -27,6 +27,7 @@ import {
   type TraderActionPlan,
   type UserResearchPreferences
 } from "./research";
+import { readResolvedActionItemIds } from "./agentCouncilMemory";
 import { buildLiveResearchWorkspace } from "./researchLive";
 
 export interface GenerateResearchPipelineOptions {
@@ -1135,6 +1136,20 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
   const normalizedPreferences = normalizeResearchPreferences(options.preferences);
   const liveWorkspace = await buildLiveResearchWorkspace(normalizedPreferences);
   const baseWorkspace = liveWorkspace.workspace;
+  const resolvedActionItemIds = await readResolvedActionItemIds();
+  baseWorkspace.productReview = buildResearchProductReview(
+    baseWorkspace.agentPipeline,
+    baseWorkspace.userBehavior,
+    normalizedPreferences,
+    baseWorkspace.tickerAnalyses,
+    { resolvedActionItemIds }
+  );
+  baseWorkspace.meeting = buildResearchMeetingThread(
+    baseWorkspace.agentPipeline,
+    baseWorkspace.productReview,
+    baseWorkspace.news,
+    baseWorkspace.tickerAnalyses
+  );
   const { config, warnings } = resolvePipelineConfig(options);
   const combinedWarnings = [...liveWorkspace.warnings, ...warnings];
 
@@ -1176,7 +1191,9 @@ export async function generateResearchPipelineSnapshot(options: GenerateResearch
       news,
       tickerAnalyses,
       agentPipeline,
-      productReview: buildResearchProductReview(agentPipeline, baseWorkspace.userBehavior, normalizedPreferences, tickerAnalyses),
+      productReview: buildResearchProductReview(agentPipeline, baseWorkspace.userBehavior, normalizedPreferences, tickerAnalyses, {
+        resolvedActionItemIds
+      }),
       meeting: baseWorkspace.meeting,
       newsletter: buildResearchNewsletter(news, tickerAnalyses, generatedAt)
     };

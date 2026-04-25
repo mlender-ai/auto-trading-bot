@@ -219,6 +219,11 @@ export interface ProductTeamReview {
   actionItems: ProductActionItem[];
 }
 
+interface ProductReviewBuildOptions {
+  resolvedActionItemIds?: string[];
+  maxActionItems?: number;
+}
+
 export interface ResearchAgentPipeline {
   definitions: ResearchPipelineAgentDefinition[];
   steps: ResearchPipelineStep[];
@@ -968,102 +973,136 @@ export function buildResearchProductReview(
   pipeline: ResearchAgentPipeline,
   behavior: UserBehaviorSignal,
   preferences: UserResearchPreferences,
-  analyses: TickerAnalysis[]
+  analyses: TickerAnalysis[],
+  options: ProductReviewBuildOptions = {}
 ): ProductTeamReview {
   const leadTicker = analyses[0]?.ticker ?? "대표 티커";
   const selectedSectors = preferences.sectors.map(getResearchSectorLabel).join(", ");
-  const completedActionItems: ProductActionItem[] = [
-    {
-      id: "schema-contract",
+  const resolvedIds = new Set(options.resolvedActionItemIds ?? []);
+  const maxActionItems = options.maxActionItems ?? 5;
+  const createActionItem = (
+    item: Pick<ProductActionItem, "id" | "owner" | "title" | "detail" | "references" | "implementationFocus" | "targetPaths" | "verificationCommands">
+  ): ProductActionItem => ({
+    ...item,
+    issueNumber: null,
+    issueUrl: null,
+    issueState: "proposed",
+    branchName: null,
+    pullRequestNumber: null,
+    pullRequestUrl: null,
+    pullRequestState: "proposed",
+    planPath: null,
+    changedFiles: [],
+    implementationStatus: "queued"
+  });
+  const candidateActionItems = [
+    createActionItem({
+      id: "cto-council-memory-log",
       owner: "CTO",
-      title: "에이전트 출력 스키마를 API 계약으로 고정합니다.",
-      detail: "뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.",
-      references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"],
-      implementationFocus: "shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.",
+      title: "에이전트 회의 결과를 markdown memory로 누적합니다.",
+      detail: "매 런마다 나온 아이디어와 해결된 아이디어를 markdown memory에 따로 남겨, 24시간 자동 루프에서도 이미 끝난 일과 새 아이디어를 구분합니다.",
+      references: ["meeting", "news-editor", "execution-trader"],
+      implementationFocus: "회의 결과를 issue/PR와 분리된 장기 메모리 계층으로 남겨 다음 런의 입력으로 재사용합니다.",
       targetPaths: [
         "packages/shared/src/research.ts",
         "packages/shared/src/researchPipeline.ts",
-        "apps/web/lib/researchPipelineStore.ts",
-        "apps/web/app/api/research/pipeline/route.ts"
+        "scripts/research-agent-issues.ts",
+        ".github/agent-council/completed-items.md"
       ],
-      verificationCommands: ["npm run typecheck", "npm run build:web", "npm run research:generate"],
-      issueNumber: 1,
-      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/1",
-      issueState: "closed",
-      branchName: "codex/agent-council/schema-contract",
-      pullRequestNumber: 4,
-      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/4",
-      pullRequestState: "closed",
-      planPath: ".github/agent-council/schema-contract.md",
-      changedFiles: [
-        "packages/shared/src/research.ts",
-        "packages/shared/src/researchPipeline.ts",
-        "apps/web/lib/researchPipelineStore.ts",
-        "apps/web/app/api/research/pipeline/route.ts"
-      ],
-      implementationStatus: "merged"
-    },
-    {
-      id: "headline-to-action-flow",
+      verificationCommands: ["npm run typecheck", "npm run research:generate", "npm run research:issues"]
+    }),
+    createActionItem({
+      id: "pm-personalized-priority-queue",
       owner: "PM",
-      title: "메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.",
-      detail: "메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.",
+      title: "관심 섹터 우선순위로 뉴스 첫 화면을 재정렬합니다.",
+      detail: `${selectedSectors} 기준으로 헤드라인, 파생 기사, 섹터 이슈의 노출 순서를 다시 짜서 사용자가 첫 화면에서 자기 관심사만 바로 읽게 만듭니다.`,
       references: ["news-editor", "execution-trader"],
-      implementationFocus: "뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.",
-      targetPaths: [
-        "apps/web/components/research/ResearchWorkspace.tsx",
-        "apps/web/app/globals.css",
-        "packages/shared/src/research.ts"
-      ],
-      verificationCommands: ["npm run typecheck", "npm run build:web"],
-      issueNumber: 2,
-      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/2",
-      issueState: "closed",
-      branchName: "codex/agent-council/headline-to-action-flow",
-      pullRequestNumber: 5,
-      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/5",
-      pullRequestState: "closed",
-      planPath: ".github/agent-council/headline-to-action-flow.md",
-      changedFiles: [
-        "apps/web/components/research/ResearchWorkspace.tsx",
-        "apps/web/app/globals.css",
-        "packages/shared/src/research.ts"
-      ],
-      implementationStatus: "merged"
-    },
-    {
-      id: "behavior-tracking",
+      implementationFocus: "개인화된 섹터 우선순위가 레이아웃과 CTA 순서에 직접 반영되게 만듭니다.",
+      targetPaths: ["apps/web/components/research/ResearchWorkspace.tsx", "apps/web/app/globals.css", "packages/shared/src/research.ts"],
+      verificationCommands: ["npm run typecheck", "npm run build:web"]
+    }),
+    createActionItem({
+      id: "qa-cross-surface-consistency",
+      owner: "QA",
+      title: "뉴스 탭, 티커 탭, 뉴스레터의 행동 제안 일관성을 검증합니다.",
+      detail: "같은 뉴스 흐름에 대해 뉴스 탭, 티커 분석 탭, 뉴스레터가 서로 다른 행동 제안을 내지 않도록 회귀 검증 규칙을 추가합니다.",
+      references: ["news-editor", "ticker-analyst", "execution-trader", "meeting"],
+      implementationFocus: "표면별로 다른 문구를 쓰더라도 최종 행동 제안은 같은 방향을 유지하도록 테스트와 검증 규칙을 넣습니다.",
+      targetPaths: ["packages/shared/src/research.ts", "packages/shared/src/researchPipeline.ts", "scripts/research-newsletter.ts"],
+      verificationCommands: ["npm run typecheck", "npm run build:web", "npm run research:newsletter"]
+    }),
+    createActionItem({
+      id: "da-segmented-funnel-attribution",
       owner: "DA",
-      title: "핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.",
-      detail: `headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 ${behavior.frictionPoint} 지점을 실제 데이터로 확인합니다.`,
+      title: "전환 퍼널을 섹터·티커·시간대별로 분해합니다.",
+      detail: `${behavior.highIntentAction} 이후 ${behavior.frictionPoint} 구간을 섹터, 티커, 시간대별로 나눠 어떤 컨텍스트에서 이탈이 심한지 확인합니다.`,
       references: ["macro-analyst", "ticker-analyst", "execution-trader"],
-      implementationFocus: "뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.",
-      targetPaths: [
-        "apps/web/components/research/ResearchWorkspace.tsx",
-        "packages/shared/src/research.ts",
-        "apps/web/app/api/research/pipeline/route.ts",
-        "apps/web/app/api/research/behavior/route.ts",
-        "packages/shared/src/researchBehaviorStore.ts"
-      ],
-      verificationCommands: ["npm run typecheck", "npm run build:web"],
-      issueNumber: 3,
-      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/3",
-      issueState: "closed",
-      branchName: "codex/agent-council/behavior-tracking",
-      pullRequestNumber: 6,
-      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/6",
-      pullRequestState: "closed",
-      planPath: ".github/agent-council/behavior-tracking.md",
-      changedFiles: [
-        "apps/web/components/research/ResearchWorkspace.tsx",
-        "packages/shared/src/research.ts",
-        "apps/web/app/api/research/pipeline/route.ts",
-        "apps/web/app/api/research/behavior/route.ts",
-        "packages/shared/src/researchBehaviorStore.ts"
-      ],
-      implementationStatus: "merged"
-    }
+      implementationFocus: "단순 총합 이벤트 수집을 넘어서, 어떤 사용자 관심사와 어떤 시장 국면에서 전환이 끊기는지 비교 가능한 구조로 만듭니다.",
+      targetPaths: ["packages/shared/src/researchBehaviorStore.ts", "apps/web/app/api/research/behavior/route.ts", "apps/web/components/research/ResearchWorkspace.tsx"],
+      verificationCommands: ["npm run typecheck", "npm run build:web"]
+    }),
+    createActionItem({
+      id: "trader-entry-condition-ladder",
+      owner: "Trader",
+      title: "행동 제안을 진입 조건 사다리로 바꿉니다.",
+      detail: `${leadTicker} 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.`,
+      references: ["ticker-analyst", "execution-trader"],
+      implementationFocus: "행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.",
+      targetPaths: ["packages/shared/src/research.ts", "apps/web/components/research/ResearchWorkspace.tsx", "apps/web/app/globals.css"],
+      verificationCommands: ["npm run typecheck", "npm run build:web"]
+    }),
+    createActionItem({
+      id: "cto-live-data-health-check",
+      owner: "CTO",
+      title: "실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.",
+      detail: "뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.",
+      references: ["news-editor", "ticker-analyst", "meeting"],
+      implementationFocus: "실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.",
+      targetPaths: ["packages/shared/src/researchLive.ts", "packages/shared/src/researchPipeline.ts", "apps/web/components/research/ResearchWorkspace.tsx"],
+      verificationCommands: ["npm run typecheck", "npm run research:generate", "npm run build:web"]
+    }),
+    createActionItem({
+      id: "pm-newsletter-web-parity",
+      owner: "PM",
+      title: "웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.",
+      detail: "웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.",
+      references: ["news-editor", "meeting"],
+      implementationFocus: "뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.",
+      targetPaths: ["packages/shared/src/research.ts", "scripts/research-newsletter.ts", "apps/web/lib/researchPipelineStore.ts"],
+      verificationCommands: ["npm run typecheck", "npm run research:newsletter"]
+    }),
+    createActionItem({
+      id: "qa-fallback-visibility",
+      owner: "QA",
+      title: "fallback 데이터 사용 시 사용자에게 명확히 표시합니다.",
+      detail: "실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.",
+      references: ["meeting", "news-editor", "ticker-analyst"],
+      implementationFocus: "실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.",
+      targetPaths: ["packages/shared/src/researchPipeline.ts", "apps/web/components/research/ResearchWorkspace.tsx", "scripts/research-newsletter.ts"],
+      verificationCommands: ["npm run typecheck", "npm run build:web"]
+    }),
+    createActionItem({
+      id: "da-idea-yield-score",
+      owner: "DA",
+      title: "에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.",
+      detail: "회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.",
+      references: ["meeting", "execution-trader", "macro-analyst"],
+      implementationFocus: "아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.",
+      targetPaths: ["scripts/research-agent-issues.ts", ".github/workflows/research-pipeline.yml", "packages/shared/src/research.ts"],
+      verificationCommands: ["npm run typecheck", "npm run research:issues"]
+    }),
+    createActionItem({
+      id: "trader-sector-rotation-guardrail",
+      owner: "Trader",
+      title: "비관심 섹터로 신호가 번질 때 회피 규칙을 먼저 제시합니다.",
+      detail: `${selectedSectors} 중심 시황에서 자금이 다른 섹터로 번질 때, 어떤 경우엔 추격하지 말아야 하는지 회피 규칙을 먼저 노출합니다.`,
+      references: ["macro-analyst", "execution-trader"],
+      implementationFocus: "관심 섹터 밖에서 생기는 유혹성 신호를 회피 규칙과 함께 관리합니다.",
+      targetPaths: ["packages/shared/src/research.ts", "apps/web/components/research/ResearchWorkspace.tsx"],
+      verificationCommands: ["npm run typecheck", "npm run build:web"]
+    })
   ];
+  const activeActionItems = candidateActionItems.filter((item) => !resolvedIds.has(item.id)).slice(0, maxActionItems);
 
   return {
     notes: [
@@ -1113,7 +1152,7 @@ export function buildResearchProductReview(
         references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"]
       }
     ],
-    actionItems: completedActionItems
+    actionItems: activeActionItems
   };
 }
 

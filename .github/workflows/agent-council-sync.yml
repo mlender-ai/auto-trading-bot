@@ -7,30 +7,20 @@ on:
       - "codex/agent-council/**"
 
 concurrency:
-  group: research-automation-main
-  cancel-in-progress: false
+  group: agent-council-sync-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
-  contents: write
-  issues: write
-  models: read
-  pull-requests: write
+  contents: read
 
 jobs:
-  sync-agent-council:
+  summarize-agent-branch:
     runs-on: ubuntu-latest
-    env:
-      RESEARCH_PIPELINE_PROVIDER: auto
-      AI_API_URL: ${{ secrets.AI_API_URL }}
-      AI_API_KEY: ${{ secrets.AI_API_KEY }}
-      AI_MODEL: ${{ secrets.AI_MODEL }}
-      AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
-      GITHUB_TOKEN: ${{ github.token }}
     steps:
-      - name: Checkout main
+      - name: Checkout triggering branch
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,64 +31,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Validate AI configuration
+      - name: Typecheck branch
+        run: npm run typecheck
+
+      - name: Publish branch plan summary
         shell: bash
         run: |
-          test -n "$GITHUB_TOKEN"
+          echo "# Agent Council Branch" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Branch: ${GITHUB_REF_NAME}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: ${GITHUB_SHA}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Generate research snapshot
-        run: npm run research:generate
-
-      - name: Sync agent execution metadata
-        run: npm run research:issues
-
-      - name: Publish generated snapshot to repository
-        shell: bash
-        run: |
-          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
-            exit 0
+          if ls .github/agent-council/*.md >/dev/null 2>&1; then
+            for plan in .github/agent-council/*.md; do
+              echo "## $(basename "$plan")" >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              cat "$plan" >> "$GITHUB_STEP_SUMMARY"
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+            done
+          else
+            echo "No agent council plan files were found on this branch." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          branch="main"
-
-          for attempt in 1 2 3; do
-            git fetch origin "$branch"
-            git checkout -B "$branch" "origin/$branch"
-
-            npm run research:generate
-            npm run research:issues
-
-            if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
-              exit 0
-            fi
-
-            git add generated/research/latest.json generated/research/latest.md
-
-            if git diff --cached --quiet; then
-              exit 0
-            fi
-
-            git commit -m "chore: sync agent council execution snapshot [skip ci]"
-
-            if git push origin "HEAD:$branch"; then
-              exit 0
-            fi
-
-            sleep $((attempt * 5))
-          done
-
-          echo "::error::Failed to publish generated snapshot after 3 attempts."
-          exit 1
-
-      - name: Publish agent council summary
-        run: cat generated/research/latest.md >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Upload agent council artifact
+      - name: Upload branch plan artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: agent-council-sync
-          path: |
-            generated/research/latest.json
-            generated/research/latest.md
+          name: agent-council-branch
+          path: .github/agent-council

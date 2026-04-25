@@ -25,6 +25,7 @@ jobs:
       AI_MODEL: ${{ secrets.AI_MODEL }}
       AI_TEMPERATURE: ${{ secrets.AI_TEMPERATURE }}
       GITHUB_TOKEN: ${{ github.token }}
+      RESEARCH_ISSUES_CLOSE_STALE: "true"
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
       NEWSLETTER_TO: ${{ secrets.NEWSLETTER_TO }}
@@ -50,7 +51,7 @@ jobs:
       - name: Publish generated snapshot to repository
         shell: bash
         run: |
-          if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+          if git diff --quiet -- generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md; then
             exit 0
           fi
 
@@ -65,11 +66,11 @@ jobs:
             npm run research:generate
             npm run research:issues
 
-            if git diff --quiet -- generated/research/latest.json generated/research/latest.md; then
+            if git diff --quiet -- generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md; then
               exit 0
             fi
 
-            git add generated/research/latest.json generated/research/latest.md
+            git add generated/research/latest.json generated/research/latest.md .github/agent-council/completed-items.md
 
             if git diff --cached --quiet; then
               exit 0
