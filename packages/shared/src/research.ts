@@ -972,6 +972,98 @@ export function buildResearchProductReview(
 ): ProductTeamReview {
   const leadTicker = analyses[0]?.ticker ?? "대표 티커";
   const selectedSectors = preferences.sectors.map(getResearchSectorLabel).join(", ");
+  const completedActionItems: ProductActionItem[] = [
+    {
+      id: "schema-contract",
+      owner: "CTO",
+      title: "에이전트 출력 스키마를 API 계약으로 고정합니다.",
+      detail: "뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.",
+      references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"],
+      implementationFocus: "shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.",
+      targetPaths: [
+        "packages/shared/src/research.ts",
+        "packages/shared/src/researchPipeline.ts",
+        "apps/web/lib/researchPipelineStore.ts",
+        "apps/web/app/api/research/pipeline/route.ts"
+      ],
+      verificationCommands: ["npm run typecheck", "npm run build:web", "npm run research:generate"],
+      issueNumber: 1,
+      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/1",
+      issueState: "closed",
+      branchName: "codex/agent-council/schema-contract",
+      pullRequestNumber: 4,
+      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/4",
+      pullRequestState: "closed",
+      planPath: ".github/agent-council/schema-contract.md",
+      changedFiles: [
+        "packages/shared/src/research.ts",
+        "packages/shared/src/researchPipeline.ts",
+        "apps/web/lib/researchPipelineStore.ts",
+        "apps/web/app/api/research/pipeline/route.ts"
+      ],
+      implementationStatus: "merged"
+    },
+    {
+      id: "headline-to-action-flow",
+      owner: "PM",
+      title: "메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.",
+      detail: "메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.",
+      references: ["news-editor", "execution-trader"],
+      implementationFocus: "뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.",
+      targetPaths: [
+        "apps/web/components/research/ResearchWorkspace.tsx",
+        "apps/web/app/globals.css",
+        "packages/shared/src/research.ts"
+      ],
+      verificationCommands: ["npm run typecheck", "npm run build:web"],
+      issueNumber: 2,
+      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/2",
+      issueState: "closed",
+      branchName: "codex/agent-council/headline-to-action-flow",
+      pullRequestNumber: 5,
+      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/5",
+      pullRequestState: "closed",
+      planPath: ".github/agent-council/headline-to-action-flow.md",
+      changedFiles: [
+        "apps/web/components/research/ResearchWorkspace.tsx",
+        "apps/web/app/globals.css",
+        "packages/shared/src/research.ts"
+      ],
+      implementationStatus: "merged"
+    },
+    {
+      id: "behavior-tracking",
+      owner: "DA",
+      title: "핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.",
+      detail: `headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 ${behavior.frictionPoint} 지점을 실제 데이터로 확인합니다.`,
+      references: ["macro-analyst", "ticker-analyst", "execution-trader"],
+      implementationFocus: "뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.",
+      targetPaths: [
+        "apps/web/components/research/ResearchWorkspace.tsx",
+        "packages/shared/src/research.ts",
+        "apps/web/app/api/research/pipeline/route.ts",
+        "apps/web/app/api/research/behavior/route.ts",
+        "packages/shared/src/researchBehaviorStore.ts"
+      ],
+      verificationCommands: ["npm run typecheck", "npm run build:web"],
+      issueNumber: 3,
+      issueUrl: "https://github.com/mlender-ai/auto-trading-bot/issues/3",
+      issueState: "closed",
+      branchName: "codex/agent-council/behavior-tracking",
+      pullRequestNumber: 6,
+      pullRequestUrl: "https://github.com/mlender-ai/auto-trading-bot/pull/6",
+      pullRequestState: "closed",
+      planPath: ".github/agent-council/behavior-tracking.md",
+      changedFiles: [
+        "apps/web/components/research/ResearchWorkspace.tsx",
+        "packages/shared/src/research.ts",
+        "apps/web/app/api/research/pipeline/route.ts",
+        "apps/web/app/api/research/behavior/route.ts",
+        "packages/shared/src/researchBehaviorStore.ts"
+      ],
+      implementationStatus: "merged"
+    }
+  ];
 
   return {
     notes: [
@@ -1021,81 +1113,7 @@ export function buildResearchProductReview(
         references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"]
       }
     ],
-    actionItems: [
-      {
-        id: "schema-contract",
-        owner: "CTO",
-        title: "에이전트 출력 스키마를 API 계약으로 고정합니다.",
-        detail: "뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.",
-        references: ["news-editor", "macro-analyst", "ticker-analyst", "execution-trader"],
-        implementationFocus: "shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.",
-        targetPaths: [
-          "packages/shared/src/research.ts",
-          "packages/shared/src/researchPipeline.ts",
-          "apps/web/lib/researchPipelineStore.ts",
-          "apps/web/app/api/research/pipeline/route.ts"
-        ],
-        verificationCommands: ["npm run typecheck", "npm run build:web", "npm run research:generate"],
-        issueNumber: null,
-        issueUrl: null,
-        issueState: "proposed",
-        branchName: null,
-        pullRequestNumber: null,
-        pullRequestUrl: null,
-        pullRequestState: "proposed",
-        planPath: null,
-        changedFiles: [],
-        implementationStatus: "queued"
-      },
-      {
-        id: "headline-to-action-flow",
-        owner: "PM",
-        title: "메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.",
-        detail: "메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.",
-        references: ["news-editor", "execution-trader"],
-        implementationFocus: "뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.",
-        targetPaths: [
-          "apps/web/components/research/ResearchWorkspace.tsx",
-          "apps/web/app/globals.css",
-          "packages/shared/src/research.ts"
-        ],
-        verificationCommands: ["npm run typecheck", "npm run build:web"],
-        issueNumber: null,
-        issueUrl: null,
-        issueState: "proposed",
-        branchName: null,
-        pullRequestNumber: null,
-        pullRequestUrl: null,
-        pullRequestState: "proposed",
-        planPath: null,
-        changedFiles: [],
-        implementationStatus: "queued"
-      },
-      {
-        id: "behavior-tracking",
-        owner: "DA",
-        title: "핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.",
-        detail: `headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 ${behavior.frictionPoint} 지점을 실제 데이터로 확인합니다.`,
-        references: ["macro-analyst", "ticker-analyst", "execution-trader"],
-        implementationFocus: "뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.",
-        targetPaths: [
-          "apps/web/components/research/ResearchWorkspace.tsx",
-          "packages/shared/src/research.ts",
-          "apps/web/app/api/research/pipeline/route.ts"
-        ],
-        verificationCommands: ["npm run typecheck", "npm run build:web"],
-        issueNumber: null,
-        issueUrl: null,
-        issueState: "proposed",
-        branchName: null,
-        pullRequestNumber: null,
-        pullRequestUrl: null,
-        pullRequestState: "proposed",
-        planPath: null,
-        changedFiles: [],
-        implementationStatus: "queued"
-      }
-    ]
+    actionItems: completedActionItems
   };
 }
 

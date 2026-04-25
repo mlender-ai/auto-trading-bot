@@ -241,6 +241,10 @@ function implementationStatus(pr: GitHubPullRequest | null, changedFiles: string
   return "queued";
 }
 
+function isCompletedActionItem(item: ProductActionItem): boolean {
+  return item.implementationStatus === "merged" || item.issueState === "closed" || item.pullRequestState === "merged";
+}
+
 function withSyncedMetadata(
   item: ProductActionItem,
   issue: GitHubIssue | null,
@@ -637,9 +641,11 @@ async function main() {
   const repo = await repositoryInfo(context);
   const existingIssues = await listManagedIssues(context);
   const existingPulls = await listManagedPullRequests(context);
-  const syncedItems: ProductActionItem[] = [];
+  const completedItems = snapshot.workspace.productReview.actionItems.filter(isCompletedActionItem);
+  const activeItems = snapshot.workspace.productReview.actionItems.filter((item) => !isCompletedActionItem(item));
+  const syncedItems: ProductActionItem[] = [...completedItems];
 
-  for (const item of snapshot.workspace.productReview.actionItems) {
+  for (const item of activeItems) {
     const branchName = buildBranchName(item);
     const initialIssue = await upsertIssue(context, findManagedIssue(existingIssues, item.id), item, snapshot.workspace, {
       branchName,
@@ -669,8 +675,8 @@ async function main() {
     syncedItems.push(syncedItem);
   }
 
-  await closeStaleIssues(context, existingIssues, new Set(snapshot.workspace.productReview.actionItems.map((item) => item.id)));
-  await closeStalePullRequests(context, existingPulls, new Set(snapshot.workspace.productReview.actionItems.map((item) => item.id)));
+  await closeStaleIssues(context, existingIssues, new Set(activeItems.map((item) => item.id)));
+  await closeStalePullRequests(context, existingPulls, new Set(activeItems.map((item) => item.id)));
 
   snapshot.workspace.productReview.actionItems = syncedItems;
   await persistSnapshot(snapshot);
