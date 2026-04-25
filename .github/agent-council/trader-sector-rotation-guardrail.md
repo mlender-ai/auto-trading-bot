@@ -5,7 +5,7 @@
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/25
 - Branch: codex/agent-council/trader-sector-rotation-guardrail
 - Generated At: 2026-04-25T07:22:56.523Z
-- Status: queued
+- Status: ready
 
 ## Detail
 반도체, 에너지(오일) 중심 시황에서 자금이 다른 섹터로 번질 때, 어떤 경우엔 추격하지 말아야 하는지 회피 규칙을 먼저 노출합니다.
