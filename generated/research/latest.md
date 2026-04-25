@@ -1,10 +1,10 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-25T07:05:35.311Z
+- Generated At: 2026-04-25T07:06:27.303Z
 - Provider: rule-based
-- Model: n/a
-- Source: local-script
+- Model: openai/gpt-4.1
+- Source: github-actions
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
 - Tickers: NVDA, AMD, XOM
