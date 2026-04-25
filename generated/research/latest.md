@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-25T07:20:32.347Z
+- Generated At: 2026-04-25T07:23:15.142Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -48,41 +48,67 @@ References: NVDA, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-a
 - 행동 제안 확장: 0회
 
 ## Product Action Items
-- 에이전트 출력 스키마를 API 계약으로 고정합니다.
+- 행동 제안을 진입 조건 사다리로 바꿉니다.
+  Owner: Trader
+  Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.
+  Implementation Status: ready
+  Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.
+  Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css
+  Verify: npm run typecheck | npm run build:web
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/15
+  Branch: codex/agent-council/trader-entry-condition-ladder
+  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16
+  Plan: .github/agent-council/trader-entry-condition-ladder.md
+  Changed Files: none yet
+
+- 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.
   Owner: CTO
-  Detail: 뉴스 선별, 시황 해석, 티커 분석, 행동 제안 에이전트의 출력 스키마를 JSON 계약으로 고정해 프론트와 GitHub 자동화를 같은 데이터 기준으로 맞춥니다.
-  Implementation Status: merged
-  Focus: shared 타입과 API 응답이 같은 계약을 보도록 스키마 경계를 고정합니다.
-  Scope: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts
-  Verify: npm run typecheck | npm run build:web | npm run research:generate
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/1
-  Branch: codex/agent-council/schema-contract
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/4
-  Plan: .github/agent-council/schema-contract.md
-  Changed Files: packages/shared/src/research.ts, packages/shared/src/researchPipeline.ts, apps/web/lib/researchPipelineStore.ts, apps/web/app/api/research/pipeline/route.ts
+  Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.
+  Implementation Status: ready
+  Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.
+  Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx
+  Verify: npm run typecheck | npm run research:generate | npm run build:web
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/17
+  Branch: codex/agent-council/cto-live-data-health-check
+  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18
+  Plan: .github/agent-council/cto-live-data-health-check.md
+  Changed Files: none yet
 
-- 메인 헤드라인 아래에 오늘 전략과 금지 행동을 바로 노출합니다.
+- 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.
   Owner: PM
-  Detail: 메인 헤드라인 아래에 오늘 전략과 하지 말아야 할 행동을 붙여 사용자가 뉴스만 읽고 멈추지 않고 곧바로 실행 판단으로 넘어가게 만듭니다.
-  Implementation Status: merged
-  Focus: 뉴스 탭 첫 화면에서 행동 제안이 바로 읽히도록 콘텐츠 위계를 다시 묶습니다.
-  Scope: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts
-  Verify: npm run typecheck | npm run build:web
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/2
-  Branch: codex/agent-council/headline-to-action-flow
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/5
-  Plan: .github/agent-council/headline-to-action-flow.md
-  Changed Files: apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css, packages/shared/src/research.ts
+  Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.
+  Implementation Status: ready
+  Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.
+  Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts
+  Verify: npm run typecheck | npm run research:newsletter
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/19
+  Branch: codex/agent-council/pm-newsletter-web-parity
+  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20
+  Plan: .github/agent-council/pm-newsletter-web-parity.md
+  Changed Files: none yet
 
-- 핵심 전환 이벤트를 수집해 단계별 이탈을 추적합니다.
-  Owner: DA
-  Detail: headline_open, stage_continue, ticker_select, action_expand 이벤트를 수집해 시황 해석이 행동 제안으로 연결되지 않으면 티커 분석 전에 이탈하는 경향이 있습니다. 지점을 실제 데이터로 확인합니다.
-  Implementation Status: merged
-  Focus: 뉴스에서 행동 제안까지 이어지는 전환 구간을 계측해 이탈 원인을 숫자로 확인합니다.
-  Scope: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts, apps/web/app/api/research/behavior/route.ts, packages/shared/src/researchBehaviorStore.ts
+- fallback 데이터 사용 시 사용자에게 명확히 표시합니다.
+  Owner: QA
+  Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.
+  Implementation Status: ready
+  Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.
+  Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts
   Verify: npm run typecheck | npm run build:web
-  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/3
-  Branch: codex/agent-council/behavior-tracking
-  PR: https://github.com/mlender-ai/auto-trading-bot/pull/6
-  Plan: .github/agent-council/behavior-tracking.md
-  Changed Files: apps/web/components/research/ResearchWorkspace.tsx, packages/shared/src/research.ts, apps/web/app/api/research/pipeline/route.ts, apps/web/app/api/research/behavior/route.ts, packages/shared/src/researchBehaviorStore.ts
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/21
+  Branch: codex/agent-council/qa-fallback-visibility
+  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22
+  Plan: .github/agent-council/qa-fallback-visibility.md
+  Changed Files: none yet
+
+- 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.
+  Owner: DA
+  Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.
+  Implementation Status: ready
+  Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.
+  Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts
+  Verify: npm run typecheck | npm run research:issues
+  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/23
+  Branch: codex/agent-council/da-idea-yield-score
+  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24
+  Plan: .github/agent-council/da-idea-yield-score.md
+  Changed Files: none yet
