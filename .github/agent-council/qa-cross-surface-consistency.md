@@ -4,8 +4,8 @@
 - Owner: QA
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/11
 - Branch: codex/agent-council/qa-cross-surface-consistency
-- Generated At: 2026-04-25T07:12:07.303Z
-- Status: ready
+- Generated At: 2026-04-25T07:24:31.871Z
+- Status: queued
 
 ## Detail
 같은 뉴스 흐름에 대해 뉴스 탭, 티커 분석 탭, 뉴스레터가 서로 다른 행동 제안을 내지 않도록 회귀 검증 규칙을 추가합니다.
