@@ -8,6 +8,7 @@ import {
   renderResearchPipelineMarkdown,
   type ResearchBehaviorSummary,
   type ResearchWorkspaceData,
+  type TickerAnalysis,
   type UserResearchPreferences
 } from "@trading/shared/src/research";
 import { generateResearchPipelineSnapshot, type GeneratedResearchSnapshot } from "@trading/shared/src/researchPipeline";
@@ -18,13 +19,68 @@ const OUTPUT_DIR = path.join(process.cwd(), "generated", "research");
 const JSON_BASENAME = "latest.json";
 const MARKDOWN_BASENAME = "latest.md";
 const DEFAULT_PUBLISHED_SNAPSHOT_URL = "https://raw.githubusercontent.com/mlender-ai/auto-trading-bot/main/generated/research/latest.json";
+const PUBLISHED_SNAPSHOT_TTL_MS = 60_000;
 
 export const RESEARCH_PIPELINE_JSON_PATH = path.join(OUTPUT_DIR, JSON_BASENAME);
 export const RESEARCH_PIPELINE_MARKDOWN_PATH = path.join(OUTPUT_DIR, MARKDOWN_BASENAME);
 export const RESEARCH_PIPELINE_ARTIFACT_PATH = path.posix.join("generated", "research", JSON_BASENAME);
 
+let publishedSnapshotCache: {
+  fetchedAt: number;
+  snapshot: GeneratedResearchSnapshot | null;
+} | null = null;
+
 function samePreferences(left: UserResearchPreferences, right: UserResearchPreferences): boolean {
   return left.sectors.join(",") === right.sectors.join(",") && left.tickers.join(",") === right.tickers.join(",");
+}
+
+function compactChartSeries(series: TickerAnalysis["chartSeries"]): TickerAnalysis["chartSeries"] {
+  if (!series || series.length <= 28) {
+    return series;
+  }
+
+  const step = Math.max(1, Math.floor(series.length / 28));
+  const sampled = series.filter((_, index) => index === 0 || index === series.length - 1 || index % step === 0);
+  return sampled.slice(0, 28);
+}
+
+function compactWorkspaceForHome(workspace: ResearchWorkspaceData): ResearchWorkspaceData {
+  return {
+    ...workspace,
+    tickerAnalyses: workspace.tickerAnalyses.map((analysis) => {
+      const compactedSeries = compactChartSeries(analysis.chartSeries);
+
+      return compactedSeries
+        ? {
+            ...analysis,
+            chartSeries: compactedSeries
+          }
+        : analysis;
+    }),
+    meeting: {
+      ...workspace.meeting,
+      messages: []
+    },
+    productReview: {
+      notes: [],
+      actionItems: []
+    },
+    agentPipeline: {
+      ...workspace.agentPipeline,
+      definitions: [],
+      steps: [],
+      runtime: {
+        ...workspace.agentPipeline.runtime,
+        summaryMarkdown: "",
+        transcript: []
+      }
+    },
+    newsletter: {
+      ...workspace.newsletter,
+      bodyText: "",
+      bodyHtml: ""
+    }
+  };
 }
 
 function toSnapshot(workspace: ResearchWorkspaceData, warnings: string[] = []): GeneratedResearchSnapshot {
@@ -98,6 +154,10 @@ export async function readStoredResearchSnapshot(): Promise<GeneratedResearchSna
 }
 
 export async function readPublishedResearchSnapshot(): Promise<GeneratedResearchSnapshot | null> {
+  if (publishedSnapshotCache && Date.now() - publishedSnapshotCache.fetchedAt < PUBLISHED_SNAPSHOT_TTL_MS) {
+    return publishedSnapshotCache.snapshot;
+  }
+
   const snapshotUrl = process.env.RESEARCH_PUBLISHED_SNAPSHOT_URL || DEFAULT_PUBLISHED_SNAPSHOT_URL;
 
   try {
@@ -106,26 +166,41 @@ export async function readPublishedResearchSnapshot(): Promise<GeneratedResearch
         accept: "application/json"
       },
       cache: "no-store",
-      signal: AbortSignal.timeout(4_000)
+      signal: AbortSignal.timeout(1_500)
     });
 
     if (!response.ok) {
+      publishedSnapshotCache = {
+        fetchedAt: Date.now(),
+        snapshot: null
+      };
       return null;
     }
 
-    return (await response.json()) as GeneratedResearchSnapshot;
+    const snapshot = (await response.json()) as GeneratedResearchSnapshot;
+    publishedSnapshotCache = {
+      fetchedAt: Date.now(),
+      snapshot
+    };
+    return snapshot;
   } catch {
+    publishedSnapshotCache = {
+      fetchedAt: Date.now(),
+      snapshot: null
+    };
     return null;
   }
 }
 
 export async function readPreferredResearchSnapshot(preferences?: Partial<UserResearchPreferences>): Promise<GeneratedResearchSnapshot | null> {
-  const [stored, published, behaviorSummary] = await Promise.all([
-    readStoredResearchSnapshot(),
-    readPublishedResearchSnapshot(),
-    readResearchBehaviorSummary()
-  ]);
-  const candidates = [published, stored].filter((snapshot): snapshot is GeneratedResearchSnapshot => Boolean(snapshot && snapshotMatchesPreferences(snapshot, preferences)));
+  const [stored, behaviorSummary] = await Promise.all([readStoredResearchSnapshot(), readResearchBehaviorSummary()]);
+
+  if (stored && snapshotMatchesPreferences(stored, preferences)) {
+    return attachBehaviorSummary(stored, behaviorSummary);
+  }
+
+  const published = await readPublishedResearchSnapshot();
+  const candidates = [published].filter((snapshot): snapshot is GeneratedResearchSnapshot => Boolean(snapshot && snapshotMatchesPreferences(snapshot, preferences)));
 
   if (candidates.length === 0) {
     return null;
@@ -136,18 +211,20 @@ export async function readPreferredResearchSnapshot(preferences?: Partial<UserRe
 
 export async function getInitialResearchWorkspace(preferences?: Partial<UserResearchPreferences>): Promise<ResearchWorkspaceData> {
   const snapshot = await readPreferredResearchSnapshot(preferences);
+
+  if (snapshot) {
+    snapshot.workspace.agentPipeline.runtime.summaryMarkdown ||= snapshot.markdown;
+    return compactWorkspaceForHome(snapshot.workspace);
+  }
+
   const live = await buildLiveResearchWorkspace(preferences);
   const behaviorSummary = await readResearchBehaviorSummary();
   live.workspace.behaviorSummary = behaviorSummary;
   live.workspace.contractVersion = RESEARCH_CONTRACT_VERSION;
   const fallback = toSnapshot(live.workspace, live.warnings);
+  live.workspace.agentPipeline.runtime.summaryMarkdown = fallback.markdown;
 
-  if (!snapshot) {
-    return fallback.workspace;
-  }
-
-  snapshot.workspace.agentPipeline.runtime.summaryMarkdown ||= snapshot.markdown;
-  return snapshot.workspace;
+  return compactWorkspaceForHome(live.workspace);
 }
 
 export async function runAndPersistResearchPipeline(preferences?: Partial<UserResearchPreferences>, source: "web-api" | "local-script" | "github-actions" = "local-script") {

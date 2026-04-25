@@ -1,204 +1,231 @@
-# Personal Trading Bot MVP
+# AI Research Operating System
 
-Paper trading only monorepo for a personal AI trading agent console. The current priority is safe validation, reproducible deploys, and rollback-friendly operations, not real trading.
+Personal stock research product focused on one sharp job:
 
-## Stack
+`help me understand what matters, what to do next, and which related names move with it in under 3 minutes.`
 
-- Frontend: Next.js App Router in [`apps/web`](apps/web)
-- Backend: Fastify + Node.js + TypeScript in [`apps/api`](apps/api)
-- Shared contracts: [`packages/shared`](packages/shared)
-- Database: PostgreSQL + Prisma in [`prisma`](prisma)
-- Deploy target: Vercel for web, Railway for API + worker
+The product is no longer just a paper-trading console.
+It now has three core user surfaces:
 
-## Monorepo Layout
+- `뉴스`: headline-first market brief
+- `티커 분석`: deep technical and context-aware ticker analysis
+- `에이전트 회의`: internal AI product/team loop that reviews the product and creates execution items
 
-- `apps/web`: operator console, login gate, Next API proxy routes
-- `apps/api`: Fastify server, worker, notifier, strategy execution
-- `packages/shared`: DTOs and runtime/report contracts shared by web and API
-- `prisma`: schema, migrations, seed
-- `docs`: deploy and rollback runbook
+There are also two depth pages:
+
+- `/ticker/[ticker]`: ticker deep dive with chart, catalysts, scenarios, and related opportunities
+- `/sector/[sector]`: sector deep dive with routine, catalysts, and cross-market beneficiary set
+
+## Product State
+
+What is already working:
+
+- personalized home briefing for favorite sectors and tickers
+- live research data before fallback where possible
+- ticker and sector search
+- US/KR cross-market related opportunity mapping
+- GitHub Actions research pipeline and newsletter generation
+- design-system driven research UI with loading / error / not-found fallback screens
+
+What is still partial:
+
+- email newsletter delivery depends on sender secrets
+- GitHub Models can still hit rate limits and fall back
+- related opportunity graph is still rule-based, not full relationship intelligence
+- portfolio-native workflow is not implemented yet
+
+## Repository Map
+
+- `apps/web`: Next.js App Router product UI and API routes
+- `apps/api`: Fastify/worker runtime for the older console and paper-trading layer
+- `packages/shared`: shared research contracts, pipeline structs, live data shaping
+- `generated/research`: published research snapshot consumed by the app and GitHub Actions
+- `docs`: deploy, roadmap, and handoff documents
+- `DESIGN.md`: design system source of truth for future UI work
+
+## Key Entry Points
+
+Product pages:
+
+- [`apps/web/app/page.tsx`](apps/web/app/page.tsx)
+- [`apps/web/app/ticker/[ticker]/page.tsx`](apps/web/app/ticker/[ticker]/page.tsx)
+- [`apps/web/app/sector/[sector]/page.tsx`](apps/web/app/sector/[sector]/page.tsx)
+
+Main UI logic:
+
+- [`apps/web/components/research/ResearchWorkspace.tsx`](apps/web/components/research/ResearchWorkspace.tsx)
+- [`apps/web/app/globals.css`](apps/web/app/globals.css)
+- [`apps/web/lib/researchPipelineStore.ts`](apps/web/lib/researchPipelineStore.ts)
+- [`apps/web/lib/researchInsights.ts`](apps/web/lib/researchInsights.ts)
+
+Shared contracts and live data:
+
+- [`packages/shared/src/research.ts`](packages/shared/src/research.ts)
+- [`packages/shared/src/researchLive.ts`](packages/shared/src/researchLive.ts)
+- [`packages/shared/src/researchBehaviorStore.ts`](packages/shared/src/researchBehaviorStore.ts)
+
+Automation and generated content:
+
+- [`scripts/research-pipeline.ts`](scripts/research-pipeline.ts)
+- [`scripts/research-agent-issues.ts`](scripts/research-agent-issues.ts)
+- [`scripts/research-newsletter.ts`](scripts/research-newsletter.ts)
+- [`.github/workflows/research-pipeline.yml`](.github/workflows/research-pipeline.yml)
+- [`.github/workflows/daily-newsletter.yml`](.github/workflows/daily-newsletter.yml)
+
+## Design System
+
+The repo now includes a project-root [`DESIGN.md`](DESIGN.md) inspired by the `DESIGN.md` workflow popularized by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
+
+The design direction blends:
+
+- Linear: precise, quiet product hierarchy
+- Revolut: fintech trust and crisp data presentation
+- Tesla: subtraction and restraint
+
+Important UI rule:
+
+- never expose implementation words like `pipeline`, `provider`, `runtime`, `JSON`, or internal debug phrasing on user-facing primary surfaces
+
+## Docs Index
+
+- Product roadmap: [`docs/product-strategy-roadmap.md`](docs/product-strategy-roadmap.md)
+- Research MVP deploy handoff: [`docs/research-mvp-deploy-handoff.md`](docs/research-mvp-deploy-handoff.md)
+- Agent/dev handoff: [`docs/agent-handoff.md`](docs/agent-handoff.md)
+- Deployment runbook: [`docs/deployment.md`](docs/deployment.md)
+- Paper trading setup: [`docs/paper-trading-setup.md`](docs/paper-trading-setup.md)
+- Telegram setup: [`docs/telegram-setup.md`](docs/telegram-setup.md)
 
 ## Local Commands
 
-Run these from the repo root:
+Run from the repo root:
 
 ```bash
 npm install
-npm run prisma:generate
-npm run prisma:migrate:dev -- --name init
-npm run prisma:seed
-npm run dev:api
-npm run dev:worker
 npm run dev:web
+npm run dev:api
+npm run research:generate
+npm run research:issues
+npm run research:newsletter
+npm run qa:screenshot -- --url http://127.0.0.1:3100/ --out /tmp/qa-home.png --width 1440 --height 1200 --budget 7000
 ```
 
 Main scripts:
 
 - `npm run dev:web`
-- `npm run clean:web`
-- `npm run reset:web`
 - `npm run dev:api`
-- `npm run dev:worker`
 - `npm run dev`
-- `npm run paper:status`
-- `npm run research:generate`
-- `npm run telegram:test`
-- `npm run lint`
 - `npm run typecheck`
-- `npm run build`
-- `npm run ci`
-- `npm run prisma:migrate:deploy`
+- `npm run build:web`
+- `npm run research:generate`
+- `npm run research:issues`
+- `npm run research:newsletter`
+- `npm run qa:screenshot`
+- `npm run paper:status`
 
 Notes:
 
-- Web is pinned to `http://127.0.0.1:3100`.
-- Web dev artifacts and production build artifacts are intentionally separated.
-  - `next dev` uses `apps/web/.next-dev`
-  - `next build` and `next start` use `apps/web/.next-build`
-- If you ever see a local `Cannot find module './###.js'` chunk error in Next dev, run `npm run clean:web` and then restart `npm run dev:web`.
-- To run the real paper trading loop, set `LOCAL_DEMO_MODE=false`.
-- `lint` currently reuses TypeScript static checks. That keeps CI deterministic until ESLint is introduced on purpose.
+- web is pinned to `http://127.0.0.1:3100`
+- the homepage prefers stored or published snapshot data before rebuilding live data
+- the meeting tab hydrates heavier transcript/review data lazily
+- if Next dev chunks go weird, run `npm run clean:web`
 
-## Git Workflow
+## Live Data And Snapshot Flow
 
-Recommended branch strategy:
+The product prefers live data first and degrades into a published snapshot when needed.
 
-- `main`: production branch
-- `feature/*`: regular work branches such as `feature/agent-console`
-- `fix/*`: optional emergency patch branch when a hotfix should skip unrelated feature work
+Primary live sources:
 
-Recommended commit style:
+- Yahoo Finance RSS for news
+- Yahoo Finance chart API for ticker candles
+- source-page `og:image` / `twitter:image` extraction for article visuals
 
-- `feat(web): add agent console log stream`
-- `fix(api): guard empty report payload`
-- `docs(deploy): add railway rollback checklist`
-- `chore(ci): split workspace build jobs`
+Snapshot flow:
 
-Recommended PR flow:
+1. pipeline generates `generated/research/latest.json` and `generated/research/latest.md`
+2. GitHub Actions publishes the same snapshot back to `main`
+3. web reads stored snapshot first, then published snapshot, then live build as fallback
 
-1. Branch from `main`.
-2. Keep commits small and scoped.
-3. Open a PR early.
-4. Wait for GitHub Actions to pass.
-5. Validate the Vercel preview deployment.
-6. Merge to `main` with squash merge.
-7. Let production deploy from `main`.
+This keeps:
 
-PR template: [`.github/pull_request_template.md`](.github/pull_request_template.md)
+- web UI
+- newsletter generation
+- GitHub Actions summaries
 
-## CI
+on the same research data contract.
 
-GitHub Actions is defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+## GitHub Models / AI Runtime
 
-The AI research pipeline is defined in [`.github/workflows/research-pipeline.yml`](.github/workflows/research-pipeline.yml).
+The research pipeline can run without an external OpenAI key when GitHub Actions has:
 
-CI currently checks:
+- `models: read`
+- `GITHUB_TOKEN`
 
-- `npm ci`
-- `npm run prisma:generate`
-- `npm run lint`
-- `npm run typecheck`
-- `npm --workspace @trading/api run build`
-- `npm --workspace @trading/web run build`
+Supported runtime envs:
 
-Research pipeline workflow currently:
-
-- runs on `main` pushes, daily schedule, and manual dispatch
-- executes `npm run research:generate`
-- writes the latest pipeline JSON and Markdown to `generated/research/`
-- commits the latest pipeline JSON and Markdown back to `main` so the frontend can read the published snapshot
-- publishes the agent thread to the GitHub Actions job summary
-- uploads the JSON and Markdown as workflow artifacts
-- defaults to GitHub Models with the per-run `GITHUB_TOKEN` when `AI_API_KEY` is empty or set to `USE_GITHUB_TOKEN`
-
-## Deploy Overview
-
-- Vercel project: set Root Directory to `apps/web`
-- Railway API service: keep repo root as the source directory, run workspace commands for `@trading/api`
-- Railway worker service: same repo, separate service, different start command
-- Merge to `main` only after preview and CI are green
-
-Detailed setup, environment variables, deployment order, and rollback steps are documented in [`docs/deployment.md`](docs/deployment.md).
-Research MVP deploy handoff: [`docs/research-mvp-deploy-handoff.md`](docs/research-mvp-deploy-handoff.md)
-Paper trading runbook: [`docs/paper-trading-setup.md`](docs/paper-trading-setup.md)  
-Telegram setup: [`docs/telegram-setup.md`](docs/telegram-setup.md)
-
-## Environment Variables
-
-Shared or common variables:
-
-- `NEXT_PUBLIC_API_BASE_URL`
-- `API_PASSWORD`
-- `DASHBOARD_PASSWORD`
-- `BOT_PASSWORD`
-- `FRONTEND_ORIGIN`
-- `DATABASE_URL`
-- `CONFIG_ENCRYPTION_SECRET`
-- `TELEGRAM_BOT_TOKEN`
-- `TELEGRAM_CHAT_ID`
-- `TELEGRAM_NOTIFICATIONS_ENABLED`
-- `TELEGRAM_NOTIFY_SKIPPED`
-- `WORKER_INTERVAL_MS`
-- `LOCAL_DEMO_MODE`
-- `REPORT_TIMEZONE`
-- `DAILY_REPORT_HOUR`
-- `WEEKLY_REPORT_HOUR`
-- `WEEKLY_REPORT_DAY`
-- `REPORT_PROVIDER`
-- `MARKET_DATA_PROVIDER`
-- `RESEARCH_PIPELINE_PROVIDER`
 - `AI_API_URL`
 - `AI_API_KEY`
 - `AI_MODEL`
 - `AI_TEMPERATURE`
+
+Fallback behavior:
+
+- if model calls fail or rate-limit, the pipeline can still produce a rule-based snapshot instead of leaving the UI empty
+
+## Deployment Overview
+
+Current recommended path:
+
+1. Vercel for `apps/web`
+2. GitHub Actions for research snapshot generation
+3. Resend for newsletter delivery when secrets are ready
+4. Railway only if the paper-trading/API stack needs to stay active
+
+Detailed deploy info lives in [`docs/research-mvp-deploy-handoff.md`](docs/research-mvp-deploy-handoff.md) and [`docs/deployment.md`](docs/deployment.md).
+
+## Environment Variables
+
+Core research product envs:
+
+- `DASHBOARD_PASSWORD`
 - `RESEARCH_PUBLISHED_SNAPSHOT_URL`
+- `AI_API_URL`
+- `AI_API_KEY`
+- `AI_MODEL`
+- `AI_TEMPERATURE`
 - `NEWSLETTER_TO`
 - `NEWSLETTER_FROM`
 - `RESEND_API_KEY`
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL`
-- `OPENAI_BASE_URL`
+
+Legacy / broader stack envs:
+
+- `NEXT_PUBLIC_API_BASE_URL`
+- `API_PASSWORD`
+- `BOT_PASSWORD`
+- `DATABASE_URL`
+- `CONFIG_ENCRYPTION_SECRET`
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
 
 Reference values are in [`.env.example`](.env.example).
 
-## GitHub Models
+## Git Workflow
 
-The research pipeline can run without an external OpenAI API key.
+Recommended:
 
-- default endpoint: `https://models.github.ai/inference/chat/completions`
-- default model: `openai/gpt-4.1`
-- auth fallback: if `AI_API_KEY` is empty or `USE_GITHUB_TOKEN`, the runner uses `GITHUB_TOKEN`
-- GitHub Actions workflow permission required: `models: read`
+1. branch from `main`
+2. keep research UI, data, and automation changes scoped
+3. run `npm run typecheck` and `npm run build:web`
+4. if UI changed, capture a screenshot with `npm run qa:screenshot`
+5. open a PR or push to the intended branch
 
-This means the workflow can call GitHub Models directly with the token GitHub issues for that run, while still supporting OpenAI-compatible endpoints through `AI_API_URL` and `AI_API_KEY` when needed.
+PR template:
 
-## Live Research Data
+- [`.github/pull_request_template.md`](.github/pull_request_template.md)
 
-The research MVP now prefers live data before falling back to the curated sample set.
+## Operational Guardrails
 
-- news ingestion: Yahoo Finance RSS feeds for selected tickers and sector proxies
-- article links: direct source article URLs from the feed
-- article images: best-effort `og:image` / `twitter:image` extraction from the source page
-- ticker data: Yahoo Finance chart API with daily candles
-- technical layer: SMA 20/50/200, RSI 14, MACD, support/resistance, simple pattern detection
-
-If a feed or chart request fails, the pipeline records a warning and falls back to the static workspace instead of failing the UI.
-
-## Automations
-
-There are now two GitHub Actions workflows for the research product:
-
-- `Research Pipeline`
-  Runs every 6 hours, regenerates the shared research snapshot, publishes the latest markdown/json back to `generated/research/`, and keeps the local web UI in sync through the published snapshot URL.
-
-- `Daily Newsletter`
-  Runs once a day at 07:30 KST, regenerates the latest snapshot, writes `generated/research/newsletter-preview.html`, and sends the email when `RESEND_API_KEY`, `NEWSLETTER_FROM`, and `NEWSLETTER_TO` are configured.
-
-## Operational Rule
-
-Keep deploys rollback-friendly:
-
-- merge to `main` only through PR
-- keep schema changes additive where possible
-- avoid mixing risky migration changes with large UI refactors in the same PR
-- identify the previous healthy Vercel and Railway deployment before every production merge
+- keep deploys rollback-friendly
+- avoid mixing risky migration work with large UI changes in the same PR
+- prefer additive data contracts
+- keep generated snapshot updates deterministic
+- if the product cannot load, show recovery UI instead of exposing raw failure

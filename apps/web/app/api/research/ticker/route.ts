@@ -8,7 +8,14 @@ import { parseResearchPreferences } from "../../../../lib/research";
 export const dynamic = "force-dynamic";
 
 function isSectorTag(value: string): value is ResearchSectorTag {
-  return value === "semiconductors" || value === "energy-oil" || value === "ai-infra" || value === "industrial-tech";
+  return (
+    value === "semiconductors" ||
+    value === "energy-oil" ||
+    value === "ai-infra" ||
+    value === "industrial-tech" ||
+    value === "ev-mobility" ||
+    value === "battery-chain"
+  );
 }
 
 export async function POST(request: NextRequest) {

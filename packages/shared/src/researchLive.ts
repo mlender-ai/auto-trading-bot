@@ -1,12 +1,16 @@
 import {
   buildResearchWorkspace,
   buildResearchWorkspaceFromData,
+  findResearchTickerOption,
   getResearchSectorLabel,
+  inferResearchTickerMarket,
+  normalizeResearchTicker,
   normalizeResearchPreferences,
   researchTickerOptions,
   type ResearchNewsItem,
   type ResearchPriority,
   type ResearchSectorTag,
+  type ResearchTickerMarket,
   type ResearchWorkspaceData,
   type TickerAnalysis,
   type TickerPattern,
@@ -16,6 +20,7 @@ import {
 const RSS_USER_AGENT = "Mozilla/5.0 (compatible; TradingResearchBot/1.0; +https://github.com/mlender-ai/auto-trading-bot)";
 const YAHOO_RSS_URL = "https://feeds.finance.yahoo.com/rss/2.0/headline";
 const YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart";
+const YAHOO_SEARCH_URL = "https://query2.finance.yahoo.com/v1/finance/search";
 
 interface FeedContext {
   symbol: string;
@@ -66,29 +71,57 @@ export interface LiveTickerAnalysisResult {
   warnings: string[];
 }
 
+export interface LiveTickerSearchResult {
+  ticker: string;
+  label: string;
+  market: ResearchTickerMarket;
+  exchange: string;
+  tradingViewSymbol: string;
+  sectorTag: ResearchSectorTag | null;
+  typeLabel: string | null;
+}
+
 const sectorFeedMap: Record<ResearchSectorTag, FeedContext[]> = {
   semiconductors: [
     { symbol: "NVDA", sectorTag: "semiconductors", tickerTags: ["NVDA", "AMD", "TSM"] },
     { symbol: "AMD", sectorTag: "semiconductors", tickerTags: ["AMD", "NVDA", "TSM"] },
+    { symbol: "005930.KS", sectorTag: "semiconductors", tickerTags: ["005930.KS", "000660.KS", "NVDA"] },
+    { symbol: "000660.KS", sectorTag: "semiconductors", tickerTags: ["000660.KS", "005930.KS", "NVDA"] },
     { symbol: "SOXX", sectorTag: "semiconductors", tickerTags: ["NVDA", "AMD", "TSM"] }
   ],
   "energy-oil": [
     { symbol: "XOM", sectorTag: "energy-oil", tickerTags: ["XOM", "CVX", "SLB"] },
     { symbol: "CVX", sectorTag: "energy-oil", tickerTags: ["CVX", "XOM", "SLB"] },
+    { symbol: "010950.KS", sectorTag: "energy-oil", tickerTags: ["010950.KS", "096770.KS", "XOM"] },
+    { symbol: "096770.KS", sectorTag: "energy-oil", tickerTags: ["096770.KS", "010950.KS", "XOM"] },
     { symbol: "XLE", sectorTag: "energy-oil", tickerTags: ["XOM", "CVX", "SLB"] }
   ],
   "ai-infra": [
     { symbol: "VRT", sectorTag: "ai-infra", tickerTags: ["VRT", "ETN", "NVDA"] },
     { symbol: "ETN", sectorTag: "ai-infra", tickerTags: ["ETN", "VRT"] }
   ],
-  "industrial-tech": [{ symbol: "ETN", sectorTag: "industrial-tech", tickerTags: ["ETN"] }]
+  "industrial-tech": [{ symbol: "ROK", sectorTag: "industrial-tech", tickerTags: ["ROK", "ETN"] }],
+  "ev-mobility": [
+    { symbol: "TSLA", sectorTag: "ev-mobility", tickerTags: ["TSLA", "RIVN", "373220.KS"] },
+    { symbol: "RIVN", sectorTag: "ev-mobility", tickerTags: ["RIVN", "TSLA", "373220.KS"] },
+    { symbol: "373220.KS", sectorTag: "ev-mobility", tickerTags: ["373220.KS", "006400.KS", "TSLA"] },
+    { symbol: "CARZ", sectorTag: "ev-mobility", tickerTags: ["TSLA", "GM", "373220.KS"] }
+  ],
+  "battery-chain": [
+    { symbol: "373220.KS", sectorTag: "battery-chain", tickerTags: ["373220.KS", "006400.KS", "ALB"] },
+    { symbol: "006400.KS", sectorTag: "battery-chain", tickerTags: ["006400.KS", "373220.KS", "QS"] },
+    { symbol: "ALB", sectorTag: "battery-chain", tickerTags: ["ALB", "QS", "373220.KS"] },
+    { symbol: "LIT", sectorTag: "battery-chain", tickerTags: ["ALB", "373220.KS", "006400.KS"] }
+  ]
 };
 
 const sectorProxyMap: Record<ResearchSectorTag, string> = {
   semiconductors: "SOXX",
   "energy-oil": "XLE",
   "ai-infra": "VRT",
-  "industrial-tech": "ETN"
+  "industrial-tech": "ROK",
+  "ev-mobility": "CARZ",
+  "battery-chain": "LIT"
 };
 
 const sourceWeightMap: Record<string, number> = {
@@ -125,8 +158,106 @@ const lowSignalPatterns = [
   /\bshould (you|investors?) buy\b/i,
   /\btop \d+\b/i,
   /\bdividend\b/i,
-  /\bdecade\b/i
+  /\bdecade\b/i,
+  /\bweek in numbers\b/i,
+  /\bmarket size\b/i,
+  /\bto surpass\b/i,
+  /\bby 203\d\b/i
 ];
+
+const sectorSearchIntentPatterns: Array<{ sectorTag: ResearchSectorTag; patterns: RegExp[] }> = [
+  {
+    sectorTag: "semiconductors",
+    patterns: [/\bsemi\b/i, /\bsemiconductor\b/i, /\bchip\b/i, /\bgpu\b/i, /\bhbm\b/i, /\bmemory\b/i, /반도체/i, /메모리/i]
+  },
+  {
+    sectorTag: "energy-oil",
+    patterns: [/\boil\b/i, /\benergy\b/i, /\bcrude\b/i, /\bopec\b/i, /오일/i, /에너지/i, /정유/i]
+  },
+  {
+    sectorTag: "ai-infra",
+    patterns: [/\bpower\b/i, /\bcooling\b/i, /\bdatacenter\b/i, /\bdata center\b/i, /데이터센터/i, /전력/i, /냉각/i]
+  },
+  {
+    sectorTag: "industrial-tech",
+    patterns: [/\bautomation\b/i, /\bindustrial\b/i, /\brobot\b/i, /산업/i, /자동화/i, /공급망/i]
+  },
+  {
+    sectorTag: "ev-mobility",
+    patterns: [/\bev\b/i, /\belectric vehicle\b/i, /\brobotaxi\b/i, /\btesla\b/i, /\brivian\b/i, /전기차/i, /자동차/i]
+  },
+  {
+    sectorTag: "battery-chain",
+    patterns: [/\bbattery\b/i, /\blithium\b/i, /\bcell\b/i, /\bcathode\b/i, /\banode\b/i, /배터리/i, /리튬/i, /양극재/i]
+  }
+];
+
+const sectorNewsProfiles: Record<
+  ResearchSectorTag,
+  {
+    minScore: number;
+    positive: Array<{ pattern: RegExp; score: number }>;
+    negative: Array<{ pattern: RegExp; penalty: number }>;
+  }
+> = {
+  semiconductors: {
+    minScore: 9,
+    positive: [
+      { pattern: /\b(chip|semiconductor|gpu|hbm|memory|foundry|ai chip|micron)\b/i, score: 10 },
+      { pattern: /\b(nvidia|amd|tsmc|samsung|hynix|intel|arm|broadcom|qualcomm)\b/i, score: 8 },
+      { pattern: /\b(export control|fab|wafer|packaging)\b/i, score: 8 }
+    ],
+    negative: [{ pattern: /\b(oil|crude|gold|battery market size)\b/i, penalty: 10 }]
+  },
+  "energy-oil": {
+    minScore: 9,
+    positive: [
+      { pattern: /\b(oil|energy|crude|opec|refin|upstream|downstream|drilling|capex)\b/i, score: 10 },
+      { pattern: /\b(exxon|chevron|slb|halliburton|s-oil|sk innovation)\b/i, score: 8 }
+    ],
+    negative: [{ pattern: /\b(semiconductor|gpu|battery|gold|robotaxi)\b/i, penalty: 10 }]
+  },
+  "ai-infra": {
+    minScore: 8,
+    positive: [
+      { pattern: /\b(power|cooling|data center|datacenter|grid|electrical|server|rack)\b/i, score: 10 },
+      { pattern: /\b(vertiv|eaton|hyperscaler|load growth)\b/i, score: 8 }
+    ],
+    negative: [{ pattern: /\b(oil|gold|lithium|robotaxi)\b/i, penalty: 8 }]
+  },
+  "industrial-tech": {
+    minScore: 8,
+    positive: [
+      { pattern: /\b(automation|industrial|robot|factory|machinery|supply chain|backlog|orders)\b/i, score: 8 },
+      { pattern: /\b(rockwell|eaton|motion control)\b/i, score: 6 }
+    ],
+    negative: [{ pattern: /\b(gold|oil|battery market size)\b/i, penalty: 8 }]
+  },
+  "ev-mobility": {
+    minScore: 12,
+    positive: [
+      { pattern: /\b(tesla|rivian|gm|ford|evgo|robotaxi|cybercab)\b/i, score: 12 },
+      { pattern: /\b(ev|electric vehicle|electric vehicles|autonomous|vehicle sales|delivery)\b/i, score: 10 },
+      { pattern: /\b(battery|charging|price cut|capex)\b/i, score: 6 }
+    ],
+    negative: [
+      { pattern: /\b(intel|semiconductor|gpu|hbm|memory)\b/i, penalty: 18 },
+      { pattern: /\b(gold|steel|gas price|oil|protest)\b/i, penalty: 12 }
+    ]
+  },
+  "battery-chain": {
+    minScore: 14,
+    positive: [
+      { pattern: /\b(battery|cell|lithium|lithium-ion|solid-state|cathode|anode|separator|nickel|cobalt)\b/i, score: 12 },
+      { pattern: /\b(lg energy solution|samsung sdi|albemarle|quantumscape|sk on|catl|elanf|엘앤에프)\b/i, score: 10 },
+      { pattern: /\b(ev|electric vehicle|gigafactory)\b/i, score: 6 }
+    ],
+    negative: [
+      { pattern: /\b(gold|steel|oil|gas price)\b/i, penalty: 14 },
+      { pattern: /\b(intel|semiconductor|gpu|memory)\b/i, penalty: 16 }
+    ]
+  }
+};
 
 function parseCsvEnv(value: string | undefined): string[] {
   return (value ?? "")
@@ -181,6 +312,261 @@ function dedupeByKey<T>(items: T[], getKey: (item: T) => string): T[] {
     seen.add(key);
     return true;
   });
+}
+
+function inferSearchMarket(symbol: string, exchange: string): ResearchTickerMarket {
+  if (symbol.endsWith(".KS") || symbol.endsWith(".KQ")) {
+    return "KR";
+  }
+
+  if (/(kospi|kosdaq|krx|korea exchange)/i.test(exchange)) {
+    return "KR";
+  }
+
+  return "US";
+}
+
+function inferSectorIntentFromQuery(query: string): ResearchSectorTag | null {
+  for (const entry of sectorSearchIntentPatterns) {
+    if (entry.patterns.some((pattern) => pattern.test(query))) {
+      return entry.sectorTag;
+    }
+  }
+
+  return null;
+}
+
+function isSupportedUsExchange(exchange: string): boolean {
+  return /(nasdaq|nasdaqgs|nasdaqcm|nms|ngm|nyse|nyq|amex|arca|bats|cboe|otc|pnk)/i.test(exchange);
+}
+
+function normalizeSearchExchange(symbol: string, exchange: string, market: ResearchTickerMarket): string {
+  if (symbol.endsWith(".KQ") || /kosdaq/i.test(exchange)) {
+    return "KOSDAQ";
+  }
+
+  if (symbol.endsWith(".KS") || /(kospi|krx|korea exchange)/i.test(exchange)) {
+    return "KRX";
+  }
+
+  if (/(nasdaq|nasdaqgs|nasdaqcm|nms|ngm)/i.test(exchange)) {
+    return "NASDAQ";
+  }
+
+  if (/(nyse|nyq)/i.test(exchange)) {
+    return "NYSE";
+  }
+
+  return exchange || (market === "KR" ? "KRX" : "US");
+}
+
+function buildTradingViewSymbol(symbol: string, exchange: string, market: ResearchTickerMarket): string {
+  if (market === "KR") {
+    if (symbol.endsWith(".KQ")) {
+      return `KOSDAQ:${symbol.replace(".KQ", "")}`;
+    }
+
+    if (symbol.endsWith(".KS")) {
+      return `KRX:${symbol.replace(".KS", "")}`;
+    }
+
+    return `KRX:${symbol}`;
+  }
+
+  if (exchange === "NASDAQ") {
+    return `NASDAQ:${symbol}`;
+  }
+
+  if (exchange === "NYSE") {
+    return `NYSE:${symbol}`;
+  }
+
+  return symbol;
+}
+
+function inferSearchSectorTag(symbol: string, label: string): ResearchSectorTag | null {
+  const option = findResearchTickerOption(symbol);
+
+  if (option) {
+    return option.sectorTag;
+  }
+
+  const haystack = `${symbol} ${label}`.toLowerCase();
+
+  if (/(chip|semi|semiconductor|memory|foundry|gpu|hbm|nvidia|amd|tsmc|samsungelec|samsung elec|hynix|broadcom|micron|arm|intel|marvell|qualcomm)/i.test(haystack)) {
+    return "semiconductors";
+  }
+
+  if (/(oil|energy|petroleum|refin|drilling|chevron|exxon|slb|halliburton|s-oil|sk innovation|conocophillips|occidental)/i.test(haystack)) {
+    return "energy-oil";
+  }
+
+  if (/(power|cooling|data center|datacenter|electric|grid|vertiv|eaton|server)/i.test(haystack)) {
+    return "ai-infra";
+  }
+
+  if (/\b(tesla|rivian|ev|electric vehicle|electric vehicles|autonomous|robotaxi|automotive|general motors|ford|carz|evgo)\b/i.test(haystack)) {
+    return "ev-mobility";
+  }
+
+  if (/\b(battery|cell|cathode|anode|lithium|lg energy solution|sdi|quantumscape|albemarle|elanf|엘앤에프|solid-state)\b/i.test(haystack)) {
+    return "battery-chain";
+  }
+
+  if (/(automation|robot|industrial|factory|equipment|machinery|supply chain)/i.test(haystack)) {
+    return "industrial-tech";
+  }
+
+  return null;
+}
+
+export async function searchResearchTickers(query: string, market?: ResearchTickerMarket): Promise<LiveTickerSearchResult[]> {
+  const normalizedQuery = query.trim();
+  const sectorIntent = inferSectorIntentFromQuery(normalizedQuery);
+
+  if (!normalizedQuery) {
+    return [];
+  }
+
+  const themedSeedResults = sectorIntent
+    ? researchTickerOptions
+        .filter((item) => item.sectorTag === sectorIntent)
+        .filter((item) => !market || item.market === market)
+        .map((item) => ({
+          ticker: item.ticker,
+          label: item.label,
+          market: item.market,
+          exchange: item.exchange,
+          tradingViewSymbol: item.tradingViewSymbol,
+          sectorTag: item.sectorTag,
+          typeLabel: "Theme"
+        }))
+    : [];
+
+  const fallbackResults = dedupeByKey(
+    [
+      ...themedSeedResults,
+      ...researchTickerOptions
+        .filter((item) => !market || item.market === market)
+        .filter((item) => {
+          const haystack = `${item.ticker} ${item.label}`.toLowerCase();
+          return haystack.includes(normalizedQuery.toLowerCase());
+        })
+        .map((item) => ({
+          ticker: item.ticker,
+          label: item.label,
+          market: item.market,
+          exchange: item.exchange,
+          tradingViewSymbol: item.tradingViewSymbol,
+          sectorTag: item.sectorTag,
+          typeLabel: "Seed"
+        }))
+    ],
+    (item) => item.ticker
+  ).slice(0, 8);
+
+  try {
+    const url = new URL(YAHOO_SEARCH_URL);
+    url.searchParams.set("q", normalizedQuery);
+    url.searchParams.set("quotesCount", "16");
+    url.searchParams.set("newsCount", "0");
+    url.searchParams.set("enableFuzzyQuery", "true");
+    url.searchParams.set("quotesQueryId", "tss_match_phrase_query");
+    url.searchParams.set("multiQuoteQueryId", "multi_quote_single_token_query");
+    url.searchParams.set("lang", "en-US");
+    url.searchParams.set("region", market === "KR" ? "KR" : "US");
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        accept: "application/json",
+        "user-agent": RSS_USER_AGENT
+      },
+      cache: "no-store",
+      signal: AbortSignal.timeout(4_000)
+    });
+
+    if (!response.ok) {
+      return fallbackResults;
+    }
+
+    const payload = (await response.json()) as {
+      quotes?: Array<{
+        symbol?: string;
+        shortname?: string;
+        longname?: string;
+        exchDisp?: string;
+        exchange?: string;
+        quoteType?: string;
+        typeDisp?: string;
+      }>;
+    };
+
+    const results = dedupeByKey(
+      (payload.quotes ?? [])
+        .filter((item) => Boolean(item.symbol))
+        .filter((item) => {
+          const quoteType = item.quoteType?.toUpperCase() ?? "";
+          return quoteType === "EQUITY" || quoteType === "ETF";
+        })
+        .map((item) => {
+          const symbol = item.symbol!.toUpperCase();
+          const label = item.shortname?.trim() || item.longname?.trim() || symbol;
+          const rawExchange = item.exchDisp?.trim() || item.exchange?.trim() || "";
+          const inferredMarket = inferSearchMarket(symbol, rawExchange);
+
+          if (market && inferredMarket !== market) {
+            return null;
+          }
+
+          if (market === "US" && !isSupportedUsExchange(rawExchange)) {
+            return null;
+          }
+
+          const exchange = normalizeSearchExchange(symbol, rawExchange, inferredMarket);
+
+          return {
+            ticker: normalizeTicker(symbol),
+            label,
+            market: inferredMarket,
+            exchange,
+            tradingViewSymbol: buildTradingViewSymbol(symbol, exchange, inferredMarket),
+            sectorTag: inferSearchSectorTag(symbol, label),
+            typeLabel: item.typeDisp?.trim() || item.quoteType?.trim() || null
+          } satisfies LiveTickerSearchResult;
+        })
+        .filter((item): item is LiveTickerSearchResult => Boolean(item))
+        .sort((left, right) => {
+          const leftIntent = sectorIntent && left.sectorTag === sectorIntent ? 1 : 0;
+          const rightIntent = sectorIntent && right.sectorTag === sectorIntent ? 1 : 0;
+
+          if (leftIntent !== rightIntent) {
+            return rightIntent - leftIntent;
+          }
+
+          const leftExact = left.ticker === normalizedQuery.toUpperCase() || left.label.toLowerCase() === normalizedQuery.toLowerCase() ? 1 : 0;
+          const rightExact = right.ticker === normalizedQuery.toUpperCase() || right.label.toLowerCase() === normalizedQuery.toLowerCase() ? 1 : 0;
+
+          if (leftExact !== rightExact) {
+            return rightExact - leftExact;
+          }
+
+          const leftStarts = left.ticker.startsWith(normalizedQuery.toUpperCase()) || left.label.toLowerCase().startsWith(normalizedQuery.toLowerCase()) ? 1 : 0;
+          const rightStarts = right.ticker.startsWith(normalizedQuery.toUpperCase()) || right.label.toLowerCase().startsWith(normalizedQuery.toLowerCase()) ? 1 : 0;
+
+          if (leftStarts !== rightStarts) {
+            return rightStarts - leftStarts;
+          }
+
+          return left.ticker.localeCompare(right.ticker);
+        }),
+      (item) => item.ticker
+    ).slice(0, 10);
+
+    const mergedResults = dedupeByKey([...themedSeedResults, ...results], (item) => item.ticker).slice(0, 10);
+    return mergedResults.length > 0 ? mergedResults : fallbackResults;
+  } catch {
+    return fallbackResults;
+  }
 }
 
 function extractTag(block: string, tag: string): string {
@@ -245,6 +631,32 @@ async function fetchYahooFeed(context: FeedContext): Promise<ParsedRssItem[]> {
   return parseYahooRss(await fetchText(url.toString()));
 }
 
+function buildSectorRelevance(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerTags: string[]) {
+  const text = `${item.title} ${item.description}`.toLowerCase();
+  const title = item.title.toLowerCase();
+  const profile = sectorNewsProfiles[sectorTag];
+  const positiveScore = profile.positive.reduce((total, entry) => total + (entry.pattern.test(text) ? entry.score : 0), 0);
+  const titleScore = profile.positive.reduce((total, entry) => total + (entry.pattern.test(title) ? Math.ceil(entry.score * 0.6) : 0), 0);
+  const negativePenalty = profile.negative.reduce((total, entry) => total + (entry.pattern.test(text) ? entry.penalty : 0), 0);
+  const tickerScore = tickerTags.reduce((total, ticker) => {
+    const normalizedTicker = ticker.toLowerCase().replace(/\.ks$|\.kq$/u, "");
+    return total + (text.includes(normalizedTicker) ? 6 : 0);
+  }, 0);
+
+  return {
+    minScore: profile.minScore,
+    positiveScore,
+    titleScore,
+    negativePenalty,
+    tickerScore
+  };
+}
+
+function isSectorRelevantArticle(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerTags: string[]) {
+  const relevance = buildSectorRelevance(item, sectorTag, tickerTags);
+  return relevance.positiveScore + relevance.titleScore + relevance.tickerScore - relevance.negativePenalty >= relevance.minScore;
+}
+
 function scoreArticle(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerTags: string[], preferences: UserResearchPreferences): number {
   const ageHours = (Date.now() - Date.parse(item.publishedAt)) / 3_600_000;
   const recencyScore = ageHours <= 8 ? 24 : ageHours <= 24 ? 18 : ageHours <= 48 ? 12 : ageHours <= 96 ? 6 : -18;
@@ -255,8 +667,26 @@ function scoreArticle(item: ParsedRssItem, sectorTag: ResearchSectorTag, tickerT
   const lowSignalPenalty = lowSignalPatterns.reduce((total, pattern) => total + (pattern.test(text) ? 18 : 0), 0);
   const tickerScore = tickerTags.reduce((total, ticker) => total + (text.includes(ticker.toLowerCase()) ? 5 : 0), 0);
   const preferenceScore = preferences.sectors.includes(sectorTag) ? 8 : 0;
+  const sectorRelevance = buildSectorRelevance(item, sectorTag, tickerTags);
+  const titleMismatchPenalty = sectorRelevance.positiveScore > 0 && sectorRelevance.titleScore === 0 && tickerScore === 0 ? 10 : 0;
 
-  return clamp(Math.round(38 + recencyScore + sourceScore + keywordScore + tickerScore + preferenceScore - lowSignalPenalty), 20, 98);
+  return clamp(
+    Math.round(
+      34 +
+        recencyScore +
+        sourceScore +
+        keywordScore +
+        tickerScore +
+        preferenceScore +
+        sectorRelevance.positiveScore +
+        sectorRelevance.titleScore -
+        lowSignalPenalty -
+        sectorRelevance.negativePenalty -
+        titleMismatchPenalty
+    ),
+    20,
+    98
+  );
 }
 
 function inferPriority(score: number): ResearchPriority {
@@ -294,6 +724,14 @@ function buildNewsAnalysis(item: ParsedRssItem, sectorTag: ResearchSectorTag): s
     return "AI 인프라는 GPU 기대가 실제 설비 발주로 번지는 순간 멀티플이 다시 열릴 수 있어, 후행 CAPEX 확인 뉴스의 영향이 큽니다.";
   }
 
+  if (sectorTag === "ev-mobility") {
+    return "전기차 섹터는 판매량보다 가격 정책, 자율주행 기대, 배터리 원가가 동시에 밸류에이션을 흔들어 뉴스 한 건의 파급력이 큽니다.";
+  }
+
+  if (sectorTag === "battery-chain") {
+    return "배터리 공급망은 완성차 수요보다도 셀 가격과 원재료 스프레드 변화에 민감해, 관련 뉴스가 수혜주와 피해주를 빠르게 가릅니다.";
+  }
+
   return "공급망과 생산성 투자 회복 속도가 실제 주문으로 이어지는지 확인하는 뉴스라, 업종 확산 강도를 판단하는 데 유효합니다.";
 }
 
@@ -317,18 +755,35 @@ function buildNewsRecommendation(item: ParsedRssItem, sectorTag: ResearchSectorT
     return "AI 인프라는 반도체 리더를 이미 담았을 때만 보조 성장축으로 접근하고, 급등일 추격은 자제합니다.";
   }
 
+  if (sectorTag === "ev-mobility") {
+    return `${leadTicker ?? "전기차 리더"}는 가격 인하나 자율주행 기대 같은 단일 재료에 추격하지 말고, 판매량과 마진이 같이 개선될 때만 비중을 늘리는 편이 좋습니다.`;
+  }
+
+  if (sectorTag === "battery-chain") {
+    return `${leadTicker ?? "배터리 셀 리더"}는 완성차 수요와 원재료 스프레드가 동시에 받쳐줄 때만 확장하고, 소재주는 수급 확인 전까지 추격을 피합니다.`;
+  }
+
   return "주도 업종 확인 전까지는 감시 리스트 위주로 두고, 실적과 주문잔고가 함께 확인될 때만 비중 확대를 검토합니다.";
 }
 
 function buildFeedContexts(preferences: UserResearchPreferences): FeedContext[] {
   const selectedTickers = preferences.tickers
-    .map((ticker) => researchTickerOptions.find((option) => option.ticker === ticker))
-    .filter((item): item is NonNullable<typeof item> => Boolean(item))
-    .map((item) => ({
-      symbol: item.ticker,
-      sectorTag: item.sectorTag,
-      tickerTags: [item.ticker, ...researchTickerOptions.filter((candidate) => candidate.sectorTag === item.sectorTag).slice(0, 2).map((candidate) => candidate.ticker)]
-    }));
+    .map((ticker) => {
+      const option = findResearchTickerOption(ticker);
+      const sectorTag = option?.sectorTag ?? preferences.sectors[0] ?? "semiconductors";
+
+      return {
+        symbol: ticker,
+        sectorTag,
+        tickerTags: [
+          ticker,
+          ...researchTickerOptions
+            .filter((candidate) => candidate.sectorTag === sectorTag && candidate.ticker !== ticker)
+            .slice(0, 2)
+            .map((candidate) => candidate.ticker)
+        ]
+      } satisfies FeedContext;
+    });
 
   const sectorFeeds = preferences.sectors.flatMap((sector) => sectorFeedMap[sector] ?? []);
   return dedupeByKey([...selectedTickers, ...sectorFeeds], (context) => `${context.symbol}:${context.sectorTag}`);
@@ -340,6 +795,10 @@ function isRecentEnough(iso: string): boolean {
 
 function toResearchNewsItem(item: ParsedRssItem, context: FeedContext, preferences: UserResearchPreferences): ResearchNewsItem | null {
   if (!isRecentEnough(item.publishedAt)) {
+    return null;
+  }
+
+  if (!isSectorRelevantArticle(item, context.sectorTag, context.tickerTags)) {
     return null;
   }
 
@@ -836,18 +1295,19 @@ function buildTickerImportance(snapshot: PriceSnapshot, linkedNews: ResearchNews
 }
 
 function buildSelectedTickers(preferences: UserResearchPreferences): string[] {
-  if (preferences.tickers.length > 0) {
-    return preferences.tickers;
-  }
+  const selectedBySector = preferences.sectors.flatMap((sectorTag) => {
+    const sectorOptions = researchTickerOptions.filter((option) => option.sectorTag === sectorTag);
+    const usLead = sectorOptions.find((option) => option.market === "US");
+    const krLead = sectorOptions.find((option) => option.market === "KR");
 
-  return researchTickerOptions
-    .filter((option) => preferences.sectors.includes(option.sectorTag))
-    .slice(0, 3)
-    .map((option) => option.ticker);
+    return [usLead, krLead].filter((option): option is (typeof researchTickerOptions)[number] => Boolean(option));
+  });
+
+  return Array.from(new Set([...preferences.tickers, ...selectedBySector.map((option) => option.ticker)])).slice(0, 6);
 }
 
 function normalizeTicker(ticker: string): string {
-  return ticker.trim().toUpperCase();
+  return normalizeResearchTicker(ticker) ?? ticker.trim().toUpperCase();
 }
 
 async function buildLiveNews(preferences: UserResearchPreferences): Promise<{ items: ResearchNewsItem[]; warnings: string[] }> {
@@ -920,11 +1380,21 @@ function buildTickerAnalysisFromBars(
 ): TickerAnalysis {
   const snapshot = buildPriceSnapshot(bars);
   const patternAnalysis = buildPatternAnalysis(bars, snapshot);
+  const option = findResearchTickerOption(ticker);
+  const latestBar = bars[bars.length - 1] ?? null;
+  const previousBar = bars[bars.length - 2] ?? null;
+  const priceChange = latestBar && previousBar ? latestBar.close - previousBar.close : null;
+  const priceChangePercent = latestBar && previousBar && previousBar.close !== 0 ? (priceChange! / previousBar.close) * 100 : null;
 
   return {
     ticker,
     company,
     sectorTag,
+    market: option?.market ?? inferResearchTickerMarket(ticker),
+    exchange: option?.exchange ?? (ticker.endsWith(".KQ") ? "KOSDAQ" : ticker.endsWith(".KS") ? "KRX" : "US"),
+    tradingViewSymbol:
+      option?.tradingViewSymbol ??
+      (ticker.endsWith(".KQ") ? `KOSDAQ:${ticker.replace(".KQ", "")}` : ticker.endsWith(".KS") ? `KRX:${ticker.replace(".KS", "")}` : ticker),
     importanceScore: buildTickerImportance(snapshot, relatedNews),
     summary:
       snapshot.sma20 !== null && snapshot.sma50 !== null && snapshot.price > snapshot.sma20 && snapshot.sma20 > snapshot.sma50
@@ -947,7 +1417,14 @@ function buildTickerAnalysisFromBars(
       relatedNews[0] ? `연결 뉴스에서는 "${relatedNews[0].title}"가 가장 큰 가격 재료로 작동하고 있습니다.` : "직결 뉴스보다 업종 흐름 자체가 더 중요하게 작동하는 구간입니다."
     ].join(" "),
     recommendation: buildTickerRecommendation(snapshot, ticker),
-    linkedNewsIds: relatedNews.map((item) => item.id)
+    linkedNewsIds: relatedNews.map((item) => item.id),
+    latestPrice: latestBar?.close ?? null,
+    priceChange: priceChange ?? null,
+    priceChangePercent: priceChangePercent ?? null,
+    chartSeries: bars.slice(-90).map((bar) => ({
+      date: bar.date,
+      close: bar.close
+    }))
   };
 }
 
@@ -962,11 +1439,11 @@ export async function analyzeLiveTicker(
     sectors: preferences?.sectors?.length ? preferences.sectors : [sectorTag]
   });
   const warnings: string[] = [];
-  const company = researchTickerOptions.find((entry) => entry.ticker === normalizedTicker)?.label ?? normalizedTicker;
+  const company = findResearchTickerOption(normalizedTicker)?.label ?? normalizedTicker;
   const feedContext: FeedContext = {
     symbol: normalizedTicker,
     sectorTag,
-    tickerTags: [normalizedTicker, ...researchTickerOptions.filter((entry) => entry.sectorTag === sectorTag).slice(0, 2).map((entry) => entry.ticker)]
+    tickerTags: [normalizedTicker, ...researchTickerOptions.filter((entry) => entry.sectorTag === sectorTag && entry.ticker !== normalizedTicker).slice(0, 2).map((entry) => entry.ticker)]
   };
 
   const [feedResult, chartResult, proxyResult] = await Promise.allSettled([
@@ -1040,15 +1517,11 @@ async function buildLiveTickerAnalyses(
         return null;
       }
 
-      const option = researchTickerOptions.find((entry) => entry.ticker === ticker);
-
-      if (!option) {
-        return null;
-      }
-
-      const linkedNews = newsItems.filter((item) => item.tickerTags.includes(ticker) || item.sectorTag === option.sectorTag).slice(0, 3);
-      const proxySnapshot = proxySnapshotBySymbol.get(sectorProxyMap[option.sectorTag]);
-      return buildTickerAnalysisFromBars(ticker, option.label, option.sectorTag, result.value, linkedNews, proxySnapshot);
+      const option = findResearchTickerOption(ticker);
+      const sectorTag = option?.sectorTag ?? preferences.sectors[0] ?? "semiconductors";
+      const linkedNews = newsItems.filter((item) => item.tickerTags.includes(ticker) || item.sectorTag === sectorTag).slice(0, 3);
+      const proxySnapshot = proxySnapshotBySymbol.get(sectorProxyMap[sectorTag]);
+      return buildTickerAnalysisFromBars(ticker, option?.label ?? ticker, sectorTag, result.value, linkedNews, proxySnapshot);
     })
     .filter((item): item is TickerAnalysis => Boolean(item))
     .sort((left, right) => right.importanceScore - left.importanceScore);

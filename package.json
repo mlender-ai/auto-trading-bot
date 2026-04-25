@@ -26,6 +26,7 @@
     "typecheck:shared": "npm --workspace @trading/shared run typecheck",
     "typecheck:web": "npm --workspace @trading/web run typecheck",
     "paper:status": "tsx scripts/paper-status.ts",
+    "qa:screenshot": "tsx scripts/qa-screenshot.ts",
     "research:generate": "tsx scripts/research-pipeline.ts",
     "research:issues": "tsx scripts/research-agent-issues.ts",
     "research:newsletter": "tsx scripts/research-newsletter.ts",

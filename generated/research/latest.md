@@ -1,41 +1,41 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-25T10:20:58.445Z
+- Generated At: 2026-04-25T10:21:37.072Z
 - Provider: rule-based
 - Model: n/a
 - Source: local-script
 - Status: fallback
 - Sectors: 반도체, 에너지(오일)
-- Tickers: NVDA, AMD, XOM
+- Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM
 
 ## Main Headline
-- China warns of global supply chain disruption as U.S. chip export bills advance
+- Pony.ai Announces New Generation Autonomous Driving Compute Platform Built on NVIDIA DRIVE Hyperion
 - Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.
 - Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "China warns of global supply chain disruption as U.S. chip export bills advance"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-da-davidson-analyst-resets-amd-stock-price-target-for-2026
+메인 헤드라인을 "Pony.ai Announces New Generation Autonomous Driving Compute Platform Built on NVIDIA DRIVE Hyperion"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-pony-ai-announces-new-generation-autonomous-driving-compute-platform-built-on-nv, live-semiconductors-nvidia-s-nvda-solid-bond-with-gamers-is-fracturing-over-ai, live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel, live-energy-oil-analysts-estimate-exxon-mobil-xom-to-report-a-decline-in-earnings-what-to-look-o
+References: live-semiconductors-pony-ai-announces-new-generation-autonomous-driving-compute-platform-built-on-nv, live-semiconductors-nvidia-s-nvda-solid-bond-with-gamers-is-fracturing-over-ai, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market
+References: NVDA, live-semiconductors-pony-ai-announces-new-generation-autonomous-driving-compute-platform-built-on-nv, live-semiconductors-nvidia-s-nvda-solid-bond-with-gamers-is-fracturing-over-ai, live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance
 
 ### 04 Execution Trader -> Operator
-NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel, live-semiconductors-dow-jones-futures-apple-amazon-google-lead-earnings-wave-for-ai-led-stock-market, live-semiconductors-da-davidson-analyst-resets-amd-stock-price-target-for-2026
+NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
+References: NVDA, live-semiconductors-nvidia-s-nvda-solid-bond-with-gamers-is-fracturing-over-ai, live-semiconductors-china-warns-of-global-supply-chain-disruption-as-u-s-chip-export-bills-advance, live-semiconductors-jim-cramer-says-he-shouldn-t-have-missed-amd-and-intel
 
 ## Trader Plan
-- Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
+- Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
 - Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.
 - Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.
-- Do: XOM 같은 방어형 에너지로 포지션 균형을 맞춥니다.
+- Do: 010950.KS 같은 방어형 에너지로 포지션 균형을 맞춥니다.
 - Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.
 - Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.
 - Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.

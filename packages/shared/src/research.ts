@@ -1,5 +1,7 @@
 export type ResearchTab = "news" | "signals" | "meeting";
-export type ResearchSectorTag = "semiconductors" | "energy-oil" | "ai-infra" | "industrial-tech";
+export type ResearchSectorTag = "semiconductors" | "energy-oil" | "ai-infra" | "industrial-tech" | "ev-mobility" | "battery-chain";
+export type ResearchTickerMarket = "US" | "KR";
+export type ResearchTickerInputMarket = "US" | "KRX" | "KOSDAQ";
 export type ResearchPriority = "critical" | "focus" | "monitor";
 export type PatternConfidence = "high" | "medium" | "low";
 export type AgentRole = "PM" | "Trader" | "DA" | "QA" | "CTO";
@@ -20,6 +22,9 @@ export interface TickerOption {
   ticker: string;
   label: string;
   sectorTag: ResearchSectorTag;
+  market: ResearchTickerMarket;
+  exchange: string;
+  tradingViewSymbol: string;
 }
 
 export interface UserResearchPreferences {
@@ -59,6 +64,9 @@ export interface TickerAnalysis {
   ticker: string;
   company: string;
   sectorTag: ResearchSectorTag;
+  market?: ResearchTickerMarket;
+  exchange?: string;
+  tradingViewSymbol?: string;
   importanceScore: number;
   summary: string;
   technicalAnalysis: string;
@@ -66,6 +74,10 @@ export interface TickerAnalysis {
   marketContext: string;
   recommendation: string;
   linkedNewsIds: string[];
+  latestPrice?: number | null;
+  priceChange?: number | null;
+  priceChangePercent?: number | null;
+  chartSeries?: Array<{ date: string; close: number }>;
 }
 
 export interface AgentMeetingMessage {
@@ -348,18 +360,42 @@ export const researchSectorOptions: ResearchSectorOption[] = [
     id: "industrial-tech",
     label: "산업 기술",
     description: "자동화, 장비, 공급망 효율화"
+  },
+  {
+    id: "ev-mobility",
+    label: "전기차",
+    description: "완성차, 자율주행, EV 수요 확산"
+  },
+  {
+    id: "battery-chain",
+    label: "배터리",
+    description: "셀, 소재, 광물, 공급망 수혜"
   }
 ];
 
 export const researchTickerOptions: TickerOption[] = [
-  { ticker: "NVDA", label: "NVIDIA", sectorTag: "semiconductors" },
-  { ticker: "AMD", label: "AMD", sectorTag: "semiconductors" },
-  { ticker: "TSM", label: "TSMC", sectorTag: "semiconductors" },
-  { ticker: "XOM", label: "ExxonMobil", sectorTag: "energy-oil" },
-  { ticker: "CVX", label: "Chevron", sectorTag: "energy-oil" },
-  { ticker: "SLB", label: "SLB", sectorTag: "energy-oil" },
-  { ticker: "VRT", label: "Vertiv", sectorTag: "ai-infra" },
-  { ticker: "ETN", label: "Eaton", sectorTag: "ai-infra" }
+  { ticker: "NVDA", label: "NVIDIA", sectorTag: "semiconductors", market: "US", exchange: "NASDAQ", tradingViewSymbol: "NASDAQ:NVDA" },
+  { ticker: "AMD", label: "AMD", sectorTag: "semiconductors", market: "US", exchange: "NASDAQ", tradingViewSymbol: "NASDAQ:AMD" },
+  { ticker: "TSM", label: "TSMC", sectorTag: "semiconductors", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:TSM" },
+  { ticker: "005930.KS", label: "삼성전자", sectorTag: "semiconductors", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:005930" },
+  { ticker: "000660.KS", label: "SK하이닉스", sectorTag: "semiconductors", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:000660" },
+  { ticker: "042700.KS", label: "한미반도체", sectorTag: "semiconductors", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:042700" },
+  { ticker: "XOM", label: "ExxonMobil", sectorTag: "energy-oil", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:XOM" },
+  { ticker: "CVX", label: "Chevron", sectorTag: "energy-oil", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:CVX" },
+  { ticker: "SLB", label: "SLB", sectorTag: "energy-oil", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:SLB" },
+  { ticker: "010950.KS", label: "S-Oil", sectorTag: "energy-oil", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:010950" },
+  { ticker: "096770.KS", label: "SK이노베이션", sectorTag: "energy-oil", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:096770" },
+  { ticker: "VRT", label: "Vertiv", sectorTag: "ai-infra", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:VRT" },
+  { ticker: "ETN", label: "Eaton", sectorTag: "ai-infra", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:ETN" },
+  { ticker: "ROK", label: "Rockwell Automation", sectorTag: "industrial-tech", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:ROK" },
+  { ticker: "TSLA", label: "Tesla", sectorTag: "ev-mobility", market: "US", exchange: "NASDAQ", tradingViewSymbol: "NASDAQ:TSLA" },
+  { ticker: "RIVN", label: "Rivian", sectorTag: "ev-mobility", market: "US", exchange: "NASDAQ", tradingViewSymbol: "NASDAQ:RIVN" },
+  { ticker: "GM", label: "General Motors", sectorTag: "ev-mobility", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:GM" },
+  { ticker: "373220.KS", label: "LG에너지솔루션", sectorTag: "battery-chain", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:373220" },
+  { ticker: "006400.KS", label: "삼성SDI", sectorTag: "battery-chain", market: "KR", exchange: "KRX", tradingViewSymbol: "KRX:006400" },
+  { ticker: "066970.KQ", label: "엘앤에프", sectorTag: "battery-chain", market: "KR", exchange: "KOSDAQ", tradingViewSymbol: "KOSDAQ:066970" },
+  { ticker: "ALB", label: "Albemarle", sectorTag: "battery-chain", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:ALB" },
+  { ticker: "QS", label: "QuantumScape", sectorTag: "battery-chain", market: "US", exchange: "NYSE", tradingViewSymbol: "NYSE:QS" }
 ];
 
 export const defaultResearchPreferences: UserResearchPreferences = {
@@ -706,9 +742,55 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
 const validSectorSet = new Set<ResearchSectorTag>(researchSectorOptions.map((sector) => sector.id));
 const validTickerSet = new Set<string>(researchTickerOptions.map((ticker) => ticker.ticker));
 
+export function normalizeResearchTicker(value: string, market: ResearchTickerInputMarket = "US"): string | null {
+  const normalized = value.trim().toUpperCase().replace(/\s+/g, "");
+
+  if (!normalized) {
+    return null;
+  }
+
+  if (market === "KRX" || market === "KOSDAQ") {
+    if (/^\d{6}$/.test(normalized)) {
+      return `${normalized}.${market === "KRX" ? "KS" : "KQ"}`;
+    }
+
+    if (/^\d{6}\.K[QS]$/.test(normalized)) {
+      return normalized;
+    }
+  }
+
+  if (/^\d{6}$/.test(normalized)) {
+    return `${normalized}.KS`;
+  }
+
+  return normalized;
+}
+
+export function inferResearchTickerInputMarket(ticker: string): ResearchTickerInputMarket {
+  if (ticker.endsWith(".KQ")) {
+    return "KOSDAQ";
+  }
+
+  if (ticker.endsWith(".KS")) {
+    return "KRX";
+  }
+
+  return "US";
+}
+
+export function inferResearchTickerMarket(ticker: string): ResearchTickerMarket {
+  return ticker.endsWith(".KS") || ticker.endsWith(".KQ") ? "KR" : "US";
+}
+
+export function findResearchTickerOption(ticker: string): TickerOption | null {
+  return researchTickerOptions.find((option) => option.ticker === ticker) ?? null;
+}
+
 export function normalizeResearchPreferences(preferences?: Partial<UserResearchPreferences>): UserResearchPreferences {
   const sectors = (preferences?.sectors ?? defaultResearchPreferences.sectors).filter((sector): sector is ResearchSectorTag => validSectorSet.has(sector));
-  const tickers = (preferences?.tickers ?? defaultResearchPreferences.tickers).filter((ticker) => validTickerSet.has(ticker));
+  const tickers = (preferences?.tickers ?? defaultResearchPreferences.tickers)
+    .map((ticker) => normalizeResearchTicker(ticker, inferResearchTickerInputMarket(ticker)))
+    .filter((ticker): ticker is string => Boolean(ticker));
 
   return {
     sectors: sectors.length > 0 ? Array.from(new Set(sectors)) : defaultResearchPreferences.sectors,
@@ -753,11 +835,15 @@ function buildNextDailyRun(generatedAt: string, hour = 7, minute = 30): string {
 }
 
 function buildTickerSelection(preferences: UserResearchPreferences): string[] {
-  if (preferences.tickers.length > 0) {
-    return preferences.tickers;
-  }
+  const selectedBySector = preferences.sectors.flatMap((sectorTag) => {
+    const sectorOptions = researchTickerOptions.filter((option) => option.sectorTag === sectorTag);
+    const usLead = sectorOptions.find((option) => option.market === "US");
+    const krLead = sectorOptions.find((option) => option.market === "KR");
 
-  return researchTickerOptions.filter((option) => preferences.sectors.includes(option.sectorTag)).slice(0, 3).map((option) => option.ticker);
+    return [usLead, krLead].filter((option): option is TickerOption => Boolean(option));
+  });
+
+  return Array.from(new Set([...preferences.tickers, ...selectedBySector.map((option) => option.ticker)])).slice(0, 6);
 }
 
 function buildMarketInterpretation(news: ResearchNewsBoard, analyses: TickerAnalysis[], preferences: UserResearchPreferences): MarketInterpretation {
@@ -1306,6 +1392,25 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
   const generatedAt = input.generatedAt ?? new Date().toISOString();
   const selectedTickers = buildTickerSelection(normalizedPreferences);
   const allowedSectors = new Set(normalizedPreferences.sectors);
+  const fallbackSector: ResearchSectorTag = normalizedPreferences.sectors[0] ?? defaultResearchPreferences.sectors[0] ?? "semiconductors";
+  const availableTickers = [
+    ...researchTickerOptions.filter((ticker) => allowedSectors.has(ticker.sectorTag)),
+    ...normalizedPreferences.tickers
+      .filter((ticker) => !validTickerSet.has(ticker))
+      .map((ticker) => ({
+        ticker,
+        label: ticker,
+        sectorTag: fallbackSector,
+        market: inferResearchTickerMarket(ticker),
+        exchange: ticker.endsWith(".KQ") ? "KOSDAQ" : ticker.endsWith(".KS") ? "KRX" : "US",
+        tradingViewSymbol:
+          ticker.endsWith(".KQ")
+            ? `KOSDAQ:${ticker.replace(".KQ", "")}`
+            : ticker.endsWith(".KS")
+              ? `KRX:${ticker.replace(".KS", "")}`
+              : ticker
+      }))
+  ];
 
   const eligibleNews = (input.newsItems ?? researchNewsWire)
     .filter((item) => allowedSectors.has(item.sectorTag))
@@ -1366,7 +1471,7 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
     },
     focusedTickers: selectedTickers,
     availableSectors: researchSectorOptions,
-    availableTickers: researchTickerOptions.filter((ticker) => allowedSectors.has(ticker.sectorTag)),
+    availableTickers,
     userBehavior,
     behaviorSummary: createEmptyResearchBehaviorSummary(),
     news,

@@ -44,7 +44,7 @@ export async function readResearchBehaviorSummary(): Promise<ResearchBehaviorSum
     const raw = await fs.readFile(SUMMARY_PATH, "utf8");
     return normalizeBehaviorSummary(JSON.parse(raw));
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT" || error instanceof SyntaxError) {
       return createEmptyResearchBehaviorSummary();
     }
 
