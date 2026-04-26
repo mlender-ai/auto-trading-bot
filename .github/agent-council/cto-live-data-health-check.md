@@ -4,8 +4,8 @@
 - Owner: CTO
 - Issue: https://github.com/mlender-ai/auto-trading-bot/issues/17
 - Branch: codex/agent-council/cto-live-data-health-check
-- Generated At: 2026-04-26T23:03:46.674Z
-- Status: ready
+- Generated At: 2026-04-26T23:04:16.632Z
+- Status: queued
 
 ## Detail
 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.
