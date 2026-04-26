@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-26T17:34:51.124Z
+- Generated At: 2026-04-26T18:40:53.462Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -17,19 +17,19 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "NVIDIA’s Company Wide Codex Rollout Puts AI Use And Valuation In Focus"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-nio-chip-push-raises-new-questions-for-volatile-stock-valuation, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis
+References: live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis, live-semiconductors-5-big-analyst-ai-moves-palo-alto-and-reddit-get-fresh-buy-calls-amd-upgraded
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-nio-chip-push-raises-new-questions-for-volatile-stock-valuation, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o
+References: live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-nio-chip-push-raises-new-questions-for-volatile-stock-valuation, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions
+References: NVDA, live-semiconductors-nvidia-s-company-wide-codex-rollout-puts-ai-use-and-valuation-in-focus, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-nio-chip-push-raises-new-questions-for-volatile-stock-valuation, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis
+References: NVDA, live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis, live-semiconductors-5-big-analyst-ai-moves-palo-alto-and-reddit-get-fresh-buy-calls-amd-upgraded
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
