@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-04-27T02:03:19.240Z
+- Generated At: 2026-04-27T05:47:23.935Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -21,7 +21,7 @@ References: live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis, live-energy-oil-lawsuit-claims-exxon-mobil-empire-petroleum-defrauded-taxpayers-in-orphan-well-s
+References: live-semiconductors-amd-s-french-ai-deal-adds-european-public-sector-growth-questions, live-semiconductors-nvidia-trades-at-half-amd-s-multiple-but-here-s-the-real-story-the-market-is-mis, live-energy-oil-exxon-stock-and-chevron-stock-are-up-20-ytd-why-the-long-oil-trade-is-stalling-o
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
