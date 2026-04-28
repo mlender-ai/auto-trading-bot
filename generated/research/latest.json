@@ -42,7 +42,7 @@
   },
   "workspace": {
     "contractVersion": "2026-04-21.1",
-    "generatedAt": "2026-04-28T12:24:06.920Z",
+    "generatedAt": "2026-04-28T15:23:26.926Z",
     "preferences": {
       "sectors": [
         "semiconductors",
@@ -227,13 +227,13 @@
     },
     "news": {
       "headline": {
-        "id": "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-        "title": "Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)",
-        "summary": "Stock Market Today: The Dow Jones index rose, but tech futures sold off on the OpenAI report. Nvidia stock stumbled.",
+        "id": "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+        "title": "Nvidia Expands India Footprint With $130M Bengaluru Lease",
+        "summary": "Large office deal signals continued AI and engineering investment in India",
         "source": "FINANCE",
-        "sourceUrl": "https://finance.yahoo.com/m/210216ba-f50c-300d-8b38-70d0e52edd57/stock-market-today%3A-tech.html?.tsrc=rss",
-        "publishedAt": "2026-04-28T12:13:02.000Z",
-        "imageUrl": "https://s.yimg.com/os/en/ibd.com/4f1fa106a49c603c17f0aadb20cc8971",
+        "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/nvidia-expands-india-footprint-130m-145154966.html?.tsrc=rss",
+        "publishedAt": "2026-04-28T14:51:54.000Z",
+        "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
         "sectorTag": "semiconductors",
         "tickerTags": [
           "NVDA",
@@ -247,12 +247,50 @@
       },
       "derivedArticles": [
         {
-          "id": "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-          "title": "Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
+          "id": "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+          "title": "Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet",
+          "summary": "Nvidia Locks In Huge Office Deal as Global AI Push Accelerates",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-rises-doubles-down-144904666.html?.tsrc=rss",
+          "publishedAt": "2026-04-28T14:49:04.000Z",
+          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+          "sectorTag": "semiconductors",
+          "tickerTags": [
+            "NVDA",
+            "AMD",
+            "TSM"
+          ],
+          "importanceScore": 98,
+          "priority": "critical",
+          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
+          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
+        },
+        {
+          "id": "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp",
+          "title": "ONEMETA Integration into Holoscan for Media Announced at NVIDIA GTC 2026 to Support Real-Time Multilingual AI in Live Media Workflows",
+          "summary": "Strategic NVIDIA Ecosystem Alignment Expands OneMeta's Position in Real-Time AI Media BOUNTIFUL, UT / ACCESS Newswire / April 28, 2026 /ONEMETA Inc. (OTCQB:ONEI), a provider of real-time multilingual communication technologies, today announced its ...",
+          "source": "FINANCE",
+          "sourceUrl": "https://finance.yahoo.com/sectors/technology/articles/onemeta-integration-holoscan-media-announced-141500501.html?.tsrc=rss",
+          "publishedAt": "2026-04-28T14:15:00.000Z",
+          "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
+          "sectorTag": "semiconductors",
+          "tickerTags": [
+            "NVDA",
+            "AMD",
+            "TSM"
+          ],
+          "importanceScore": 98,
+          "priority": "critical",
+          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
+          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
+        },
+        {
+          "id": "live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
+          "title": "Nvidia Stock Drops. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
           "summary": "Nvidia, Advanced Micro Devices and Broadcom were all dropping amid worries about the sustainability of OpenAI's spending.",
           "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/m/6951deae-e2c2-391d-b5bf-5b75b3d985ab/nvidia-stock-falls.-what%E2%80%99s.html?.tsrc=rss",
-          "publishedAt": "2026-04-28T11:33:00.000Z",
+          "sourceUrl": "https://finance.yahoo.com/m/6951deae-e2c2-391d-b5bf-5b75b3d985ab/nvidia-stock-drops.-what%E2%80%99s.html?.tsrc=rss",
+          "publishedAt": "2026-04-28T13:57:00.000Z",
           "imageUrl": "https://s.yimg.com/ny/api/res/1.2/xa115sRzLN.MNrTYe_FKlg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02MDA-/https://media.zenfs.com/en/Barrons.com/85414445d2d91e04bf29923092f97376",
           "sectorTag": "semiconductors",
           "tickerTags": [
@@ -264,44 +302,6 @@
           "priority": "critical",
           "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
           "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
-        },
-        {
-          "id": "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact",
-          "title": "OpenAI Hit a Speed Bump. Here’s Why Nvidia’s Long-Term Story Is Still Intact",
-          "summary": "Bloomberg’s report that OpenAI is missing internal targets sent OpenAI-linked names lower, and NVIDIA (NASDAQ:NVDA) caught the chop. I’ve watched NVDA since 2010, and headlines like this come and go. The thesis does not. OpenAI is one customer. Nvidia’s $62.3 billion in Q4 FY2026 Data Center revenue, up 75% year over year, is spread across ... OpenAI Hit a Speed Bump. Here’s Why Nvidia’s Long-Term Story Is Still Intact",
-          "source": "247WALLST",
-          "sourceUrl": "https://247wallst.com/investing/2026/04/28/openai-hit-a-speed-bump-heres-why-nvidias-long-term-story-is-still-intact/?.tsrc=rss",
-          "publishedAt": "2026-04-28T11:15:31.000Z",
-          "imageUrl": "https://247wallst.com/wp-content/uploads/2025/07/NVDA-Chip.jpg",
-          "sectorTag": "semiconductors",
-          "tickerTags": [
-            "NVDA",
-            "AMD",
-            "TSM"
-          ],
-          "importanceScore": 98,
-          "priority": "critical",
-          "analysis": "반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.",
-          "recommendation": "NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다."
-        },
-        {
-          "id": "live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat",
-          "title": "AMD Supplier Up 40% This Month Soars On Earnings Beat",
-          "summary": "Data center stock Sanmina trounced analyst expectations when it reported earnings on Monday, as demand for its AI hardware soars.",
-          "source": "FINANCE",
-          "sourceUrl": "https://finance.yahoo.com/m/093dd76c-5951-3940-9854-0f0a34aca380/amd-supplier-up-40%25-this.html?.tsrc=rss",
-          "publishedAt": "2026-04-28T11:42:06.000Z",
-          "imageUrl": "https://s.yimg.com/os/en/ibd.com/571786716f5729a7e84df2731b8af419",
-          "sectorTag": "semiconductors",
-          "tickerTags": [
-            "AMD",
-            "NVDA",
-            "TSM"
-          ],
-          "importanceScore": 98,
-          "priority": "critical",
-          "analysis": "실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.",
-          "recommendation": "AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다."
         }
       ],
       "sectorIssues": [
@@ -309,13 +309,13 @@
           "sectorTag": "semiconductors",
           "sectorLabel": "반도체",
           "item": {
-            "id": "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-            "title": "Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
-            "summary": "Nvidia, Advanced Micro Devices and Broadcom were all dropping amid worries about the sustainability of OpenAI's spending.",
+            "id": "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+            "title": "Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet",
+            "summary": "Nvidia Locks In Huge Office Deal as Global AI Push Accelerates",
             "source": "FINANCE",
-            "sourceUrl": "https://finance.yahoo.com/m/6951deae-e2c2-391d-b5bf-5b75b3d985ab/nvidia-stock-falls.-what%E2%80%99s.html?.tsrc=rss",
-            "publishedAt": "2026-04-28T11:33:00.000Z",
-            "imageUrl": "https://s.yimg.com/ny/api/res/1.2/xa115sRzLN.MNrTYe_FKlg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02MDA-/https://media.zenfs.com/en/Barrons.com/85414445d2d91e04bf29923092f97376",
+            "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-rises-doubles-down-144904666.html?.tsrc=rss",
+            "publishedAt": "2026-04-28T14:49:04.000Z",
+            "imageUrl": "https://s.yimg.com/cv/apiv2/cv/apiv2/social/images/yahoo-finance-default-logo.png",
             "sectorTag": "semiconductors",
             "tickerTags": [
               "NVDA",
@@ -332,12 +332,12 @@
           "sectorTag": "energy-oil",
           "sectorLabel": "에너지(오일)",
           "item": {
-            "id": "live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war",
-            "title": "BP Profit Jumps as Oil Trading Boomed During Iran War",
-            "summary": "(Bloomberg) -- BP Plc’s posted earnings that far exceeded analyst expectations in the first quarter, as energy market turmoil caused by the Iran war led to a surge in profits from its oil trading operation. Most Read from BloombergTrump Being ‘Humiliated’ in Iran Talks, German Leader SaysSergey Brin Confronted Gavin Newsom — Then Launched a Political WarThe Billion-Barrel Hormuz Oil Shock Is About to Crash DemandOpenAI Breaks Free From Exclusive AI Pact With MicrosoftThe $1 Million Retirement My",
+            "id": "live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading",
+            "title": "Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading.",
+            "summary": "BP stock was rising on Tuesday after the rally in crude prices helped the British oil major to double its first-quarter profit. BP’s American depositary receipts climbed 2.4% to $47.09 ahead of the opening bell. The results cover a period where the war in the Middle East disrupted shipping through the Strait of Hormuz, sparking a surge in oil prices.",
             "source": "FINANCE",
-            "sourceUrl": "https://finance.yahoo.com/sectors/energy/articles/bp-profit-jumps-oil-trading-082414524.html?.tsrc=rss",
-            "publishedAt": "2026-04-28T11:11:22.000Z",
+            "sourceUrl": "https://finance.yahoo.com/m/342a3325-b203-3dfe-bbdb-ec6e8adcd526/exxon%2C-chevron-stocks-jump..html?.tsrc=rss",
+            "publishedAt": "2026-04-28T12:37:00.000Z",
             "imageUrl": null,
             "sectorTag": "energy-oil",
             "tickerTags": [
@@ -363,34 +363,25 @@
         "tradingViewSymbol": "NASDAQ:NVDA",
         "importanceScore": 97,
         "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $164.27 / $164.27, 저항은 $216.83 / $216.83입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $166.96 / $164.27, 저항은 $216.83 / $216.83입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
         "patternAnalysis": [
-          {
-            "name": "상승 추세 내 눌림 후 재가속",
-            "detail": "20일선 위에서 가격이 버티고 있어, 고점 재시험이 실패하지 않으면 추세 지속 확률이 높습니다.",
-            "confidence": "high"
-          },
           {
             "name": "AB=CD 조정형",
             "detail": "직전 하락파와 최근 조정파 길이가 유사해 164.27 부근이 패턴 완성 구간으로 읽힙니다.",
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-          "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-          "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact"
+          "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+          "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+          "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp"
         ],
-        "latestPrice": 216.61000061035156,
-        "priceChange": 8.339996337890625,
-        "priceChangePercent": 4.0044155023784205,
+        "latestPrice": 209.39999389648438,
+        "priceChange": -7.2100067138671875,
+        "priceChangePercent": -3.3285659450400416,
         "chartSeries": [
-          {
-            "date": "2025-12-16T14:30:00.000Z",
-            "close": 177.72000122070312
-          },
           {
             "date": "2025-12-17T14:30:00.000Z",
             "close": 170.94000244140625
@@ -746,6 +737,10 @@
           {
             "date": "2026-04-27T13:30:00.000Z",
             "close": 216.61000061035156
+          },
+          {
+            "date": "2026-04-28T13:30:00.000Z",
+            "close": 209.39999389648438
           }
         ]
       },
@@ -758,7 +753,7 @@
         "tradingViewSymbol": "NASDAQ:AMD",
         "importanceScore": 97,
         "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $192.87 / $188.22, 저항은 $352.99 / $352.99입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $196.41 / $188.22, 저항은 $352.99 / $352.99입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
         "patternAnalysis": [
           {
             "name": "뚜렷한 패턴 없음",
@@ -766,21 +761,17 @@
             "confidence": "low"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-          "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-          "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact"
+          "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+          "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+          "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp"
         ],
-        "latestPrice": 334.6300048828125,
-        "priceChange": -13.17999267578125,
-        "priceChangePercent": -3.7894231817073876,
+        "latestPrice": 320.3299865722656,
+        "priceChange": -14.300018310546875,
+        "priceChangePercent": -4.273381974684172,
         "chartSeries": [
-          {
-            "date": "2025-12-16T14:30:00.000Z",
-            "close": 209.1699981689453
-          },
           {
             "date": "2025-12-17T14:30:00.000Z",
             "close": 198.11000061035156
@@ -1136,6 +1127,10 @@
           {
             "date": "2026-04-27T13:30:00.000Z",
             "close": 334.6300048828125
+          },
+          {
+            "date": "2026-04-28T13:30:00.000Z",
+            "close": 320.3299865722656
           }
         ]
       },
@@ -1148,25 +1143,34 @@
         "tradingViewSymbol": "KRX:005930",
         "importanceScore": 97,
         "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $175000.00 / $150400.00, 저항은 $229500.00 / $229500.00입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $167000.00 / $150400.00, 저항은 $229500.00 / $229500.00입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
         "patternAnalysis": [
+          {
+            "name": "상승 추세 내 눌림 후 재가속",
+            "detail": "20일선 위에서 가격이 버티고 있어, 고점 재시험이 실패하지 않으면 추세 지속 확률이 높습니다.",
+            "confidence": "high"
+          },
           {
             "name": "AB=CD 반등형",
             "detail": "직전 상승파와 최근 반등파 길이가 유사해 209000.00 부근에서 과열 해소 여부를 봐야 합니다.",
             "confidence": "high"
           }
         ],
-        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "marketContext": "섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"가 가장 큰 가격 재료로 작동하고 있습니다.",
         "recommendation": "005930.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
         "linkedNewsIds": [
-          "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-          "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-          "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact"
+          "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+          "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+          "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp"
         ],
-        "latestPrice": 222000,
-        "priceChange": -2500,
-        "priceChangePercent": -1.1135857461024499,
+        "latestPrice": 224500,
+        "priceChange": 5000,
+        "priceChangePercent": 2.277904328018223,
         "chartSeries": [
+          {
+            "date": "2025-12-12T00:00:00.000Z",
+            "close": 108900
+          },
           {
             "date": "2025-12-15T00:00:00.000Z",
             "close": 104800
@@ -1522,10 +1526,6 @@
           {
             "date": "2026-04-27T00:00:00.000Z",
             "close": 224500
-          },
-          {
-            "date": "2026-04-28T00:00:00.000Z",
-            "close": 222000
           }
         ]
       },
@@ -1536,9 +1536,9 @@
         "market": "KR",
         "exchange": "KRX",
         "tradingViewSymbol": "KRX:010950",
-        "importanceScore": 97,
-        "summary": "추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-        "technicalAnalysis": "단기와 중기 추세가 모두 상방입니다. 주요 지지는 $105400.00 / $94600.00, 저항은 $124500.00 / $177100.00입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
+        "importanceScore": 88,
+        "summary": "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
+        "technicalAnalysis": "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다. 주요 지지는 $104700.00 / $94600.00, 저항은 $124500.00 / $177100.00입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
         "patternAnalysis": [
           {
             "name": "뚜렷한 패턴 없음",
@@ -1546,16 +1546,19 @@
             "confidence": "low"
           }
         ],
-        "marketContext": "섹터 흐름은 중립이라 개별 실적과 뉴스 반응이 더 중요합니다. 연결 뉴스에서는 \"BP Profit Jumps as Oil Trading Boomed During Iran War\"가 가장 큰 가격 재료로 작동하고 있습니다.",
-        "recommendation": "010950.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
+        "marketContext": "섹터 흐름은 중립이라 개별 실적과 뉴스 반응이 더 중요합니다. 연결 뉴스에서는 \"Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "recommendation": "010950.KS는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
         "linkedNewsIds": [
-          "live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war",
-          "live-energy-oil-bp-stock-rises-after-huge-jump-in-earnings-what-it-means-for-exxon-and-chevron"
+          "live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading"
         ],
-        "latestPrice": 118700,
-        "priceChange": 3300,
-        "priceChangePercent": 2.859618717504333,
+        "latestPrice": 115400,
+        "priceChange": -4000,
+        "priceChangePercent": -3.350083752093802,
         "chartSeries": [
+          {
+            "date": "2025-12-12T00:00:00.000Z",
+            "close": 81600
+          },
           {
             "date": "2025-12-15T00:00:00.000Z",
             "close": 86400
@@ -1911,10 +1914,6 @@
           {
             "date": "2026-04-27T00:00:00.000Z",
             "close": 115400
-          },
-          {
-            "date": "2026-04-28T00:00:00.000Z",
-            "close": 118700
           }
         ]
       },
@@ -1925,30 +1924,25 @@
         "market": "US",
         "exchange": "NYSE",
         "tradingViewSymbol": "NYSE:XOM",
-        "importanceScore": 88,
-        "summary": "방향성 확정 전이라 조건부 접근이 필요한 중립 구간입니다.",
-        "technicalAnalysis": "추세는 살아 있지만 방향 확신이 강한 구간은 아닙니다. 주요 지지는 $141.97 / $137.83, 저항은 $176.41 / $176.41입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
+        "importanceScore": 82,
+        "summary": "반등보다 구조 복원 확인이 먼저 필요한 방어 구간입니다.",
+        "technicalAnalysis": "단기와 중기 추세가 함께 꺾여 있어 반등보다 방어가 우선입니다. 주요 지지는 $141.97 / $138.06, 저항은 $174.38 / $176.41입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 하방 모멘텀이 우세해 섣부른 추격은 불리합니다.",
         "patternAnalysis": [
           {
-            "name": "뚜렷한 패턴 없음",
-            "detail": "지금은 강한 패턴보다 지지/저항 반응 확인이 더 중요합니다.",
-            "confidence": "low"
+            "name": "단기 구조 이탈",
+            "detail": "20일선과 50일선 아래로 밀려 단기 반등이 나와도 저항 확인이 먼저 필요한 구조입니다.",
+            "confidence": "medium"
           }
         ],
-        "marketContext": "섹터 흐름은 중립이라 개별 실적과 뉴스 반응이 더 중요합니다. 연결 뉴스에서는 \"BP Profit Jumps as Oil Trading Boomed During Iran War\"가 가장 큰 가격 재료로 작동하고 있습니다.",
-        "recommendation": "XOM는 방향이 정리되기 전이라 고점 추격보다 지지 구간 확인 후 분할 접근이 적절합니다.",
+        "marketContext": "섹터 흐름은 중립이라 개별 실적과 뉴스 반응이 더 중요합니다. 연결 뉴스에서는 \"Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading.\"가 가장 큰 가격 재료로 작동하고 있습니다.",
+        "recommendation": "XOM는 단기 반등이 나와도 20일선 회복 전까지는 신규 진입보다 회피가 우선입니다.",
         "linkedNewsIds": [
-          "live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war",
-          "live-energy-oil-bp-stock-rises-after-huge-jump-in-earnings-what-it-means-for-exxon-and-chevron"
+          "live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading"
         ],
-        "latestPrice": 148.19000244140625,
-        "priceChange": -0.720001220703125,
-        "priceChangePercent": -0.48351433953146267,
+        "latestPrice": 151.80999755859375,
+        "priceChange": 3.6199951171875,
+        "priceChangePercent": 2.4428065709890463,
         "chartSeries": [
-          {
-            "date": "2025-12-16T14:30:00.000Z",
-            "close": 114.68000030517578
-          },
           {
             "date": "2025-12-17T14:30:00.000Z",
             "close": 117.41000366210938
@@ -2304,6 +2298,10 @@
           {
             "date": "2026-04-27T13:30:00.000Z",
             "close": 148.19000244140625
+          },
+          {
+            "date": "2026-04-28T13:30:00.000Z",
+            "close": 151.80999755859375
           }
         ]
       }
@@ -2350,21 +2348,21 @@
           "name": "News Editor",
           "roleLabel": "뉴스 선별",
           "objective": "가격 영향이 큰 뉴스만 추려 메인 헤드라인과 파생 뉴스, 섹터 핵심 이슈를 만든다.",
-          "summary": "메인 헤드라인을 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+          "summary": "메인 헤드라인을 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
           "outputLines": [
-            "메인 헤드라인: Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)",
-            "파생 뉴스: Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
-            "파생 뉴스: OpenAI Hit a Speed Bump. Here’s Why Nvidia’s Long-Term Story Is Still Intact",
-            "파생 뉴스: AMD Supplier Up 40% This Month Soars On Earnings Beat",
-            "반도체: Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
-            "에너지(오일): BP Profit Jumps as Oil Trading Boomed During Iran War"
+            "메인 헤드라인: Nvidia Expands India Footprint With $130M Bengaluru Lease",
+            "파생 뉴스: Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet",
+            "파생 뉴스: ONEMETA Integration into Holoscan for Media Announced at NVIDIA GTC 2026 to Support Real-Time Multilingual AI in Live Media Workflows",
+            "파생 뉴스: Nvidia Stock Drops. What’s Hitting AMD, Broadcom, and the AI Chip Players.",
+            "반도체: Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet",
+            "에너지(오일): Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading."
           ],
           "handoffNote": "이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
           "references": [
-            "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-            "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-            "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact",
-            "live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat"
+            "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+            "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+            "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp",
+            "live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players"
           ]
         },
         {
@@ -2381,9 +2379,9 @@
           ],
           "handoffNote": "이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
           "references": [
-            "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-            "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-            "live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war"
+            "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+            "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+            "live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading"
           ]
         },
         {
@@ -2395,16 +2393,16 @@
           "summary": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다.",
           "outputLines": [
             "요약: 추세 우위가 유지되는 동안 눌림 확인 매매가 유리한 구조입니다.",
-            "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $164.27 / $164.27, 저항은 $216.83 / $216.83입니다. RSI는 과열권에 가까워 추격보다 눌림 확인이 우선입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
-            "패턴: 상승 추세 내 눌림 후 재가속, AB=CD 조정형",
-            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"가 가장 큰 가격 재료로 작동하고 있습니다."
+            "기술적 상태: 단기와 중기 추세가 모두 상방입니다. 주요 지지는 $166.96 / $164.27, 저항은 $216.83 / $216.83입니다. RSI는 중립대에서 추세 지속 여부를 보는 구간입니다. MACD는 상방 모멘텀이 남아 있어 추세 추종 쪽이 우세합니다.",
+            "패턴: AB=CD 조정형",
+            "시황 연결: 섹터 프록시도 20일선과 50일선 위에 있어 업종 흐름이 종목을 지지하는 구간입니다. 연결 뉴스에서는 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"가 가장 큰 가격 재료로 작동하고 있습니다."
           ],
           "handoffNote": "이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
           "references": [
             "NVDA",
-            "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-            "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-            "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact"
+            "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+            "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+            "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp"
           ]
         },
         {
@@ -2425,9 +2423,9 @@
           "handoffNote": "이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
           "references": [
             "NVDA",
-            "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-            "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact",
-            "live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat"
+            "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+            "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp",
+            "live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players"
           ]
         }
       ],
@@ -2496,14 +2494,14 @@
         ]
       },
       "runtime": {
-        "runId": "fallback-2026-04-28T12:24:06.920Z",
+        "runId": "fallback-2026-04-28T15:23:26.926Z",
         "provider": "rule-based",
         "model": "openai/gpt-4.1",
         "source": "github-actions",
         "status": "fallback",
-        "generatedAt": "2026-04-28T12:24:06.920Z",
+        "generatedAt": "2026-04-28T15:23:26.926Z",
         "artifactPath": "generated/research/latest.json",
-        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-28T12:24:06.920Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM\n\n## Main Headline\n- Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact, live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact, live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: 010950.KS 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 행동 제안을 진입 조건 사다리로 바꿉니다.\n  Owner: Trader\n  Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.\n  Implementation Status: ready\n  Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.\n  Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/37\n  Branch: codex/agent-council/trader-entry-condition-ladder\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16\n  Plan: .github/agent-council/trader-entry-condition-ladder.md\n  Changed Files: none yet\n\n- 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.\n  Owner: CTO\n  Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.\n  Implementation Status: ready\n  Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.\n  Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx\n  Verify: npm run typecheck | npm run research:generate | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/38\n  Branch: codex/agent-council/cto-live-data-health-check\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18\n  Plan: .github/agent-council/cto-live-data-health-check.md\n  Changed Files: none yet\n\n- 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.\n  Owner: PM\n  Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.\n  Implementation Status: ready\n  Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.\n  Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts\n  Verify: npm run typecheck | npm run research:newsletter\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/39\n  Branch: codex/agent-council/pm-newsletter-web-parity\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20\n  Plan: .github/agent-council/pm-newsletter-web-parity.md\n  Changed Files: none yet\n\n- fallback 데이터 사용 시 사용자에게 명확히 표시합니다.\n  Owner: QA\n  Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.\n  Implementation Status: ready\n  Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.\n  Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/40\n  Branch: codex/agent-council/qa-fallback-visibility\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22\n  Plan: .github/agent-council/qa-fallback-visibility.md\n  Changed Files: none yet\n\n- 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.\n  Owner: DA\n  Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.\n  Implementation Status: ready\n  Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.\n  Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run research:issues\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/41\n  Branch: codex/agent-council/da-idea-yield-score\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24\n  Plan: .github/agent-council/da-idea-yield-score.md\n  Changed Files: none yet\n",
+        "summaryMarkdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-28T15:23:26.926Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM\n\n## Main Headline\n- Nvidia Expands India Footprint With $130M Bengaluru Lease\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp, live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp, live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: 010950.KS 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 행동 제안을 진입 조건 사다리로 바꿉니다.\n  Owner: Trader\n  Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.\n  Implementation Status: ready\n  Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.\n  Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/37\n  Branch: codex/agent-council/trader-entry-condition-ladder\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16\n  Plan: .github/agent-council/trader-entry-condition-ladder.md\n  Changed Files: none yet\n\n- 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.\n  Owner: CTO\n  Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.\n  Implementation Status: ready\n  Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.\n  Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx\n  Verify: npm run typecheck | npm run research:generate | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/38\n  Branch: codex/agent-council/cto-live-data-health-check\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18\n  Plan: .github/agent-council/cto-live-data-health-check.md\n  Changed Files: none yet\n\n- 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.\n  Owner: PM\n  Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.\n  Implementation Status: ready\n  Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.\n  Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts\n  Verify: npm run typecheck | npm run research:newsletter\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/39\n  Branch: codex/agent-council/pm-newsletter-web-parity\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20\n  Plan: .github/agent-council/pm-newsletter-web-parity.md\n  Changed Files: none yet\n\n- fallback 데이터 사용 시 사용자에게 명확히 표시합니다.\n  Owner: QA\n  Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.\n  Implementation Status: ready\n  Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.\n  Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/40\n  Branch: codex/agent-council/qa-fallback-visibility\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22\n  Plan: .github/agent-council/qa-fallback-visibility.md\n  Changed Files: none yet\n\n- 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.\n  Owner: DA\n  Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.\n  Implementation Status: ready\n  Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.\n  Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run research:issues\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/41\n  Branch: codex/agent-council/da-idea-yield-score\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24\n  Plan: .github/agent-council/da-idea-yield-score.md\n  Changed Files: none yet\n",
         "transcript": [
           {
             "id": "news-editor-message-1",
@@ -2512,13 +2510,13 @@
             "author": "News Editor",
             "roleLabel": "뉴스 선별",
             "audience": "Macro Analyst",
-            "summary": "메인 헤드라인을 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
-            "text": "메인 헤드라인을 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
+            "summary": "메인 헤드라인을 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"로 고정하고 파생 뉴스 3개를 연결했습니다.",
+            "text": "메인 헤드라인을 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.",
             "references": [
-              "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-              "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-              "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact",
-              "live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat"
+              "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+              "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+              "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp",
+              "live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players"
             ]
           },
           {
@@ -2531,9 +2529,9 @@
             "summary": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다.",
             "text": "지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.",
             "references": [
-              "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-              "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-              "live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war"
+              "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+              "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+              "live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading"
             ]
           },
           {
@@ -2547,9 +2545,9 @@
             "text": "NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.",
             "references": [
               "NVDA",
-              "live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia",
-              "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-              "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact"
+              "live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease",
+              "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+              "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp"
             ]
           },
           {
@@ -2563,9 +2561,9 @@
             "text": "NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.",
             "references": [
               "NVDA",
-              "live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players",
-              "live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact",
-              "live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat"
+              "live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet",
+              "live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp",
+              "live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players"
             ]
           }
         ]
@@ -2795,7 +2793,7 @@
       ]
     },
     "meeting": {
-      "topic": "Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)",
+      "topic": "Nvidia Expands India Footprint With $130M Bengaluru Lease",
       "objective": "뉴스 → 시황 → 분석 → 행동 체인이 실제 제품 흐름으로 이어지는지 점검합니다.",
       "nextAction": "NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.",
       "messages": [
@@ -2856,17 +2854,17 @@
     },
     "newsletter": {
       "cadence": "daily",
-      "generatedAt": "2026-04-28T12:24:06.920Z",
+      "generatedAt": "2026-04-28T15:23:26.926Z",
       "nextRunAt": "2026-04-29T07:30:00.000Z",
-      "subject": "[Daily Brief] Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)",
-      "previewText": "Stock Market Today: The Dow Jones index rose, but tech futures sold off on the OpenAI report. Nvidia stock stumbled. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
+      "subject": "[Daily Brief] Nvidia Expands India Footprint With $130M Bengaluru Lease",
+      "previewText": "Large office deal signals continued AI and engineering investment in India / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.",
       "to": [],
-      "bodyText": "[Daily Brief] Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\n\nStock Market Today: The Dow Jones index rose, but tech futures sold off on the OpenAI report. Nvidia stock stumbled. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nStock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- OpenAI Hit a Speed Bump. Here’s Why Nvidia’s Long-Term Story Is Still Intact\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- AMD Supplier Up 40% This Month Soars On Earnings Beat\n  분석: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.\n  행동: AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): BP Profit Jumps as Oil Trading Boomed During Iran War\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- NVDA: NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- 005930.KS: 005930.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
-      "bodyHtml": "<h1>[Daily Brief] Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)</h1><p>Stock Market Today: The Dow Jones index rose, but tech futures sold off on the OpenAI report. Nvidia stock stumbled. / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>OpenAI Hit a Speed Bump. Here’s Why Nvidia’s Long-Term Story Is Still Intact</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>AMD Supplier Up 40% This Month Soars On Earnings Beat</strong><br />실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.<br />AMD는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Nvidia Stock Falls. What’s Hitting AMD, Broadcom, and the AI Chip Players.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - BP Profit Jumps as Oil Trading Boomed During Iran War<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>NVDA</strong> - NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>005930.KS</strong> - 005930.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li></ul>"
+      "bodyText": "[Daily Brief] Nvidia Expands India Footprint With $130M Bengaluru Lease\n\nLarge office deal signals continued AI and engineering investment in India / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[메인 헤드라인]\nNvidia Expands India Footprint With $130M Bengaluru Lease\n- 분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- 행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[파생 기사]\n- Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- ONEMETA Integration into Holoscan for Media Announced at NVIDIA GTC 2026 to Support Real-Time Multilingual AI in Live Media Workflows\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- Nvidia Stock Drops. What’s Hitting AMD, Broadcom, and the AI Chip Players.\n  분석: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n[섹터별 핵심 이슈]\n- 반도체: Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet\n  행동: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n- 에너지(오일): Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading.\n  행동: XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.\n\n[티커 행동 우선순위]\n- NVDA: NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- AMD: AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.\n- 005930.KS: 005930.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.",
+      "bodyHtml": "<h1>[Daily Brief] Nvidia Expands India Footprint With $130M Bengaluru Lease</h1><p>Large office deal signals continued AI and engineering investment in India / 행동 제안: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p><h2>메인 헤드라인</h2><article><strong>Nvidia Expands India Footprint With $130M Bengaluru Lease</strong><p>반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.</p><p>NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</p></article><h2>파생 기사</h2><ul><li><strong>Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>ONEMETA Integration into Holoscan for Media Announced at NVIDIA GTC 2026 to Support Real-Time Multilingual AI in Live Media Workflows</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>Nvidia Stock Drops. What’s Hitting AMD, Broadcom, and the AI Chip Players.</strong><br />반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li></ul><h2>섹터별 핵심 이슈</h2><ul><li><strong>반도체</strong> - Nvidia Stock Falls. Doubles Down on India With Massive 10-Year Bet<br />NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.</li><li><strong>에너지(오일)</strong> - Exxon, Chevron Stocks Jump. BP Doubles Profit on ‘Exceptional’ Oil Trading.<br />XOM 비중을 우선 두고, 서비스주는 메이저 capex 유지가 확인될 때만 확장하는 편이 안전합니다.</li></ul><h2>티커 행동 우선순위</h2><ul><li><strong>NVDA</strong> - NVDA는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>AMD</strong> - AMD는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li><li><strong>005930.KS</strong> - 005930.KS는 추격보다 20일선 근처 눌림 확인 뒤 진입하는 편이 유리하고, 20일선이 무너지면 관망으로 전환하는 게 좋습니다.</li></ul>"
     }
   },
-  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-28T12:24:06.920Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM\n\n## Main Headline\n- Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Stock Market Today: Tech Futures Sell Off On OpenAI Report; Broadcom, Micron, Nvidia Tumble (Live Coverage)\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact, live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-energy-oil-bp-profit-jumps-as-oil-trading-boomed-during-iran-war\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-stock-market-today-tech-futures-sell-off-on-openai-report-broadcom-micron-nvidia, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-nvidia-stock-falls-what-s-hitting-amd-broadcom-and-the-ai-chip-players, live-semiconductors-openai-hit-a-speed-bump-here-s-why-nvidia-s-long-term-story-is-still-intact, live-semiconductors-amd-supplier-up-40-this-month-soars-on-earnings-beat\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: 010950.KS 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 행동 제안을 진입 조건 사다리로 바꿉니다.\n  Owner: Trader\n  Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.\n  Implementation Status: ready\n  Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.\n  Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/37\n  Branch: codex/agent-council/trader-entry-condition-ladder\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16\n  Plan: .github/agent-council/trader-entry-condition-ladder.md\n  Changed Files: none yet\n\n- 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.\n  Owner: CTO\n  Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.\n  Implementation Status: ready\n  Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.\n  Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx\n  Verify: npm run typecheck | npm run research:generate | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/38\n  Branch: codex/agent-council/cto-live-data-health-check\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18\n  Plan: .github/agent-council/cto-live-data-health-check.md\n  Changed Files: none yet\n\n- 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.\n  Owner: PM\n  Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.\n  Implementation Status: ready\n  Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.\n  Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts\n  Verify: npm run typecheck | npm run research:newsletter\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/39\n  Branch: codex/agent-council/pm-newsletter-web-parity\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20\n  Plan: .github/agent-council/pm-newsletter-web-parity.md\n  Changed Files: none yet\n\n- fallback 데이터 사용 시 사용자에게 명확히 표시합니다.\n  Owner: QA\n  Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.\n  Implementation Status: ready\n  Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.\n  Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/40\n  Branch: codex/agent-council/qa-fallback-visibility\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22\n  Plan: .github/agent-council/qa-fallback-visibility.md\n  Changed Files: none yet\n\n- 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.\n  Owner: DA\n  Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.\n  Implementation Status: ready\n  Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.\n  Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run research:issues\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/41\n  Branch: codex/agent-council/da-idea-yield-score\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24\n  Plan: .github/agent-council/da-idea-yield-score.md\n  Changed Files: none yet\n",
+  "markdown": "# Research Pipeline\n\n- Contract Version: 2026-04-21.1\n- Generated At: 2026-04-28T15:23:26.926Z\n- Provider: rule-based\n- Model: openai/gpt-4.1\n- Source: github-actions\n- Status: fallback\n- Sectors: 반도체, 에너지(오일)\n- Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM\n\n## Main Headline\n- Nvidia Expands India Footprint With $130M Bengaluru Lease\n- Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.\n- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.\n\n## Agent Transcript\n### 01 News Editor -> Macro Analyst\n메인 헤드라인을 \"Nvidia Expands India Footprint With $130M Bengaluru Lease\"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.\nReferences: live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp, live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players\n\n### 02 Macro Analyst -> Ticker Analyst\n지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.\nReferences: live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-energy-oil-exxon-chevron-stocks-jump-bp-doubles-profit-on-exceptional-oil-trading\n\n### 03 Ticker Analyst -> Execution Trader\nNVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.\nReferences: NVDA, live-semiconductors-nvidia-expands-india-footprint-with-130m-bengaluru-lease, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp\n\n### 04 Execution Trader -> Operator\nNVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.\nReferences: NVDA, live-semiconductors-nvidia-stock-falls-doubles-down-on-india-with-massive-10-year-bet, live-semiconductors-onemeta-integration-into-holoscan-for-media-announced-at-nvidia-gtc-2026-to-supp, live-semiconductors-nvidia-stock-drops-what-s-hitting-amd-broadcom-and-the-ai-chip-players\n\n## Trader Plan\n- Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.\n- Do: NVDA는 추격 대신 조정 구간에서만 분할 진입합니다.\n- Do: AMD는 이벤트 전 기대가 과열되면 비중을 늘리지 않고, 가이던스 확인 뒤 확장합니다.\n- Do: 010950.KS 같은 방어형 에너지로 포지션 균형을 맞춥니다.\n- Avoid: 서비스주나 후행 확산주를 뉴스 헤드라인만 보고 추격 매수하지 않습니다.\n- Avoid: 행동 조건 없이 모든 관심 티커를 동시에 매수하는 분산 진입은 피합니다.\n- Risk: 리드타임 둔화나 고객 믹스 악화 코멘트가 나오면 반도체 강세 논리가 빠르게 약해질 수 있습니다.\n- Risk: 메이저 오일의 capex 보수화는 에너지 내 강세 확산을 막고 서비스주를 먼저 흔들 수 있습니다.\n\n## Behavior Funnel\n- 헤드라인 열람: 0회\n- 다음 단계 이동: 0회\n- 티커 선택: 0회\n- 행동 제안 확장: 0회\n\n## Product Action Items\n- 행동 제안을 진입 조건 사다리로 바꿉니다.\n  Owner: Trader\n  Detail: NVDA 같은 대표 티커는 추천 행동을 한 줄 조언으로 끝내지 말고, 진입 조건, 무효화 조건, 추격 금지 규칙 순서로 보여줘 실행 오류를 줄입니다.\n  Implementation Status: ready\n  Focus: 행동 제안을 매수/관망/회피 분류보다 조건 기반 의사결정 카드로 재구성합니다.\n  Scope: packages/shared/src/research.ts, apps/web/components/research/ResearchWorkspace.tsx, apps/web/app/globals.css\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/37\n  Branch: codex/agent-council/trader-entry-condition-ladder\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/16\n  Plan: .github/agent-council/trader-entry-condition-ladder.md\n  Changed Files: none yet\n\n- 실데이터 fetch와 fallback 상태를 운영 패널에 드러냅니다.\n  Owner: CTO\n  Detail: 뉴스 RSS, 차트 API, 기사 이미지 추출이 실패해 fallback으로 내려간 경우를 회의 탭과 markdown summary에서 바로 알 수 있게 만듭니다.\n  Implementation Status: ready\n  Focus: 실데이터 성공률과 fallback 사용 여부를 구조화된 운영 신호로 표면화합니다.\n  Scope: packages/shared/src/researchLive.ts, packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx\n  Verify: npm run typecheck | npm run research:generate | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/38\n  Branch: codex/agent-council/cto-live-data-health-check\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/18\n  Plan: .github/agent-council/cto-live-data-health-check.md\n  Changed Files: none yet\n\n- 웹과 뉴스레터의 섹션 구조 차이를 자동 점검합니다.\n  Owner: PM\n  Detail: 웹에서는 보이는데 뉴스레터에는 빠지는 요소, 뉴스레터에는 있는데 웹에는 없는 요소를 자동 점검해 동일 데이터 기반 경험을 유지합니다.\n  Implementation Status: ready\n  Focus: 뉴스, 시황, 행동, 섹터 이슈의 섹션 parity를 검증 가능한 규칙으로 정의합니다.\n  Scope: packages/shared/src/research.ts, scripts/research-newsletter.ts, apps/web/lib/researchPipelineStore.ts\n  Verify: npm run typecheck | npm run research:newsletter\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/39\n  Branch: codex/agent-council/pm-newsletter-web-parity\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/20\n  Plan: .github/agent-council/pm-newsletter-web-parity.md\n  Changed Files: none yet\n\n- fallback 데이터 사용 시 사용자에게 명확히 표시합니다.\n  Owner: QA\n  Detail: 실제 뉴스나 가격 데이터를 가져오지 못해 fallback snapshot을 쓴 경우, 웹과 뉴스레터에 분명한 상태 표시를 넣어 신뢰 저하를 막습니다.\n  Implementation Status: ready\n  Focus: 실패를 숨기지 않고 사용자와 운영자가 즉시 구분할 수 있는 disclosure 패턴을 도입합니다.\n  Scope: packages/shared/src/researchPipeline.ts, apps/web/components/research/ResearchWorkspace.tsx, scripts/research-newsletter.ts\n  Verify: npm run typecheck | npm run build:web\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/40\n  Branch: codex/agent-council/qa-fallback-visibility\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/22\n  Plan: .github/agent-council/qa-fallback-visibility.md\n  Changed Files: none yet\n\n- 에이전트 아이디어가 실제 구현으로 이어지는 비율을 측정합니다.\n  Owner: DA\n  Detail: 회의에서 나온 아이디어가 issue 생성, PR 생성, merge 완료로 얼마나 이어지는지 추적해 council의 아이디어 품질을 평가합니다.\n  Implementation Status: ready\n  Focus: 아이디어 생산량보다 실제 실행 전환율을 기준으로 council의 품질을 평가하는 지표를 만듭니다.\n  Scope: scripts/research-agent-issues.ts, .github/workflows/research-pipeline.yml, packages/shared/src/research.ts\n  Verify: npm run typecheck | npm run research:issues\n  Issue: https://github.com/mlender-ai/auto-trading-bot/issues/41\n  Branch: codex/agent-council/da-idea-yield-score\n  PR: https://github.com/mlender-ai/auto-trading-bot/pull/24\n  Plan: .github/agent-council/da-idea-yield-score.md\n  Changed Files: none yet\n",
   "warnings": [
-    "AI 파이프라인 실행 실패: AI request failed (429): Too many requests. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).\n"
+    "AI 파이프라인 실행 실패: Expected ',' or ']' after array element in JSON at position 3401"
   ]
 }
