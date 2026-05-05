@@ -7739,3 +7739,345 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Radical Magazine Layout (Toss Invest / Moneytoring Style)
+   ========================================================================== */
+
+body {
+  background-color: #f5f7f9;
+}
+
+.magazine-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+}
+
+.magazine-main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.magazine-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.magazine-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b82f6; /* Blue accent */
+  letter-spacing: -0.02em;
+}
+
+.magazine-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.magazine-title {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #111827;
+  margin: 0;
+}
+
+.magazine-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin-top: 12px;
+  max-width: 80%;
+  line-height: 1.6;
+}
+
+.magazine-search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background-color: #f3f4f6;
+  border: none;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.magazine-search-trigger:hover {
+  background-color: #e5e7eb;
+}
+
+.magazine-search-trigger kbd {
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.magazine-chips {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.magazine-chip {
+  padding: 8px 16px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.magazine-content-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.strategy-highlight-card {
+  background-color: #f8fafc;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.strategy-highlight-card .eyebrow {
+  color: #94a3b8;
+}
+
+.strategy-highlight-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.strategy-highlight-card p {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.strategy-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.magazine-btn {
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.magazine-btn.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.magazine-btn.primary {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.magazine-btn.secondary {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.core-check-block, .routine-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.magazine-core-check {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.core-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.core-item strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.core-item p {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.routine-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.routine-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.routine-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #111827;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.routine-text strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.routine-text p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.magazine-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-left: 40px;
+  border-left: 1px solid #f3f4f6;
+}
+
+.sidebar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sidebar-head h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 4px 0 0;
+}
+
+.watch-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.watch-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.watch-item:last-child {
+  border-bottom: none;
+}
+
+.watch-item-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.watch-ident {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.watch-ident strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.watch-ident span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.watch-move {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.watch-move.positive {
+  color: #10b981;
+}
+
+.watch-move.negative {
+  color: #ef4444;
+}
+
+.watch-desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.checkpoint-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkpoint-list li {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.checkpoint-list li strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
