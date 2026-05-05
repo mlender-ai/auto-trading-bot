@@ -7450,6 +7450,150 @@ a {
   }
 }
 
+/* --- Fallback banner (Issue #40) --- */
+
+.fallback-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--research-radius-sm);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.10), rgba(245, 158, 11, 0.04));
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  color: var(--research-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  animation: fallback-fade-in 400ms ease;
+}
+
+.fallback-banner-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fallback-banner p {
+  margin: 0;
+}
+
+.fallback-banner strong {
+  color: #b45309;
+  font-weight: 700;
+}
+
+@keyframes fallback-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Health check strip (Issue #38) --- */
+
+.health-check-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--research-text-dim);
+}
+
+.health-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.health-dot.ok {
+  background: var(--research-positive);
+  box-shadow: 0 0 6px rgba(15, 159, 110, 0.4);
+}
+
+.health-dot.warn {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+.health-model {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--research-surface-muted);
+  border: 1px solid var(--research-line);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- Entry condition ladder (Issue #37) --- */
+
+.entry-ladder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.entry-ladder-card {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: var(--research-radius-sm);
+  border: 1px solid var(--research-line);
+  background: var(--research-surface);
+}
+
+.entry-ladder-card.entry {
+  background: linear-gradient(135deg, rgba(15, 159, 110, 0.06), rgba(15, 159, 110, 0.02));
+  border-color: rgba(15, 159, 110, 0.18);
+}
+
+.entry-ladder-card.invalidation {
+  background: linear-gradient(135deg, rgba(217, 72, 95, 0.06), rgba(217, 72, 95, 0.02));
+  border-color: rgba(217, 72, 95, 0.18);
+}
+
+.entry-ladder-card.no-chase {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.02));
+  border-color: rgba(245, 158, 11, 0.22);
+}
+
+.entry-ladder-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.entry-ladder-card.entry .entry-ladder-label {
+  color: var(--research-positive);
+}
+
+.entry-ladder-card.invalidation .entry-ladder-label {
+  color: var(--research-danger);
+}
+
+.entry-ladder-card.no-chase .entry-ladder-label {
+  color: #b45309;
+}
+
+.entry-ladder-card p {
+  margin: 0;
+  color: var(--research-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.signal-section.entry-ladder h3 {
+  color: var(--research-text);
+  font-size: 1.08rem;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 900px) {
+  .entry-ladder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 780px) {
   .research-app {
     --research-max-width: 100%;

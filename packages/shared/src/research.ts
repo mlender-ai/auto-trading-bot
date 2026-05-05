@@ -60,6 +60,12 @@ export interface TickerPattern {
   confidence: PatternConfidence;
 }
 
+export interface EntryConditionLadder {
+  entryCondition: string;
+  invalidationCondition: string;
+  noChaseRule: string;
+}
+
 export interface TickerAnalysis {
   ticker: string;
   company: string;
@@ -73,6 +79,7 @@ export interface TickerAnalysis {
   patternAnalysis: TickerPattern[];
   marketContext: string;
   recommendation: string;
+  entryLadder?: EntryConditionLadder | null;
   linkedNewsIds: string[];
   latestPrice?: number | null;
   priceChange?: number | null;
@@ -604,6 +611,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "반도체 뉴스가 실적 추정치 상향으로 연결될 때 가장 먼저 반응하는 종목입니다. HBM 병목 해소 여부가 가장 큰 체크포인트입니다.",
     recommendation: "추격 매수보다 조정 시 분할 접근이 유효합니다. 리드타임 둔화 코멘트가 나오기 전까지는 코어 포지션 유지 관점이 우세합니다.",
+    entryLadder: {
+      entryCondition: "20일선 부근에서 거래량 감소 후 반등 시 분할 진입",
+      invalidationCondition: "리드타임 둔화 코멘트 또는 HBM 수요 감소 신호 출현",
+      noChaseRule: "고점 돌파 직후 갭업 추격 금지 — 눌림 확인 후 대응"
+    },
     linkedNewsIds: ["news-hbm-allocation", "news-memory-pricing"]
   },
   {
@@ -627,6 +639,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "가동률 회복과 고객 믹스 개선 뉴스에 가장 민감한 종목 중 하나입니다. 시장이 리더 분산을 기대할 때 상대 수혜가 큽니다.",
     recommendation: "결정은 단순 추세 추종보다 실적 전후 가이던스 확인 이후가 낫습니다. 공격적으로 보더라도 비중은 NVDA보다 낮게 두는 편이 안전합니다.",
+    entryLadder: {
+      entryCondition: "박스 상단 돌파 + 거래량 동반 확인 시 제한적 진입",
+      invalidationCondition: "실적 가이던스에서 제품 믹스 개선 미확인",
+      noChaseRule: "실적 발표 전 선반영 랠리 추격 금지 — 가이던스 확인 후 대응"
+    },
     linkedNewsIds: ["news-hbm-allocation", "news-foundry-utilization"]
   },
   {
@@ -645,6 +662,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "상위 고객의 수요 집중도가 높아질수록 가동률 회복 속도가 빨라집니다. 반대로 고객 다변화 둔화는 디레이팅 요인입니다.",
     recommendation: "TSM은 공격 포지션보다 업황 확인용 코어로 두고, 고객 믹스가 개선될 때 추가 비중을 검토합니다.",
+    entryLadder: {
+      entryCondition: "고객 믹스 개선 코멘트 + 가동률 70% 이상 확인",
+      invalidationCondition: "고객 다변화 둔화 또는 설비투자 축소 발표",
+      noChaseRule: "업황 기대감 뉴스만으로 추격 금지 — 실적 발표 후 확인"
+    },
     linkedNewsIds: ["news-foundry-utilization", "news-memory-pricing"]
   },
   {
@@ -663,6 +685,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "유가가 급등하지 않는 구간일수록 현금흐름의 질과 주주환원 정책이 더 부각됩니다. 방어적 에너지 익스포저의 중심입니다.",
     recommendation: "에너지 노출의 기본값으로 두기 좋습니다. 공격적 단기 매매보다 비중 유지와 배당 방어 관점이 적합합니다.",
+    entryLadder: {
+      entryCondition: "배당 수익률 방어 구간에서 지지선 확인 시 코어 유지",
+      invalidationCondition: "현금흐름 악화 또는 주주환원 축소 발표",
+      noChaseRule: "유가 급등 뉴스 후 추격 금지 — 현금흐름 기반 판단"
+    },
     linkedNewsIds: ["news-oil-cashflow", "news-refining-spread"]
   },
   {
@@ -681,6 +708,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "정유 마진 부담이 있는 환경에서도 업스트림 비중 덕분에 실적 변동성이 상대적으로 완만합니다.",
     recommendation: "에너지 섹터를 넓게 보유할 필요가 있을 때 XOM과 짝을 이루는 보조 코어로 적합합니다.",
+    entryLadder: {
+      entryCondition: "지지선 확인 + 업스트림 실적 안정성 유지 시 보조 편입",
+      invalidationCondition: "정유 마진 급락 또는 업스트림 생산 차질",
+      noChaseRule: "XOM 대비 상대 강세 구간에서 단독 추격 금지"
+    },
     linkedNewsIds: ["news-oil-cashflow", "news-refining-spread"]
   },
   {
@@ -699,6 +731,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "서비스주는 오일 메이저의 설비투자 코멘트와 함께 봐야 합니다. 메이저가 보수적으로 돌아서면 민감도가 크게 꺾입니다.",
     recommendation: "코어보다 전술적 관찰 종목으로 두고, 메이저 capex 유지가 확인될 때만 비중을 올립니다.",
+    entryLadder: {
+      entryCondition: "메이저 capex 유지 확인 + 눌림 구간 거래량 감소",
+      invalidationCondition: "메이저 투자 계획 축소 또는 프로젝트 지연 발표",
+      noChaseRule: "해상 프로젝트 뉴스만으로 추격 금지 — capex 확인 후 대응"
+    },
     linkedNewsIds: ["news-refining-spread", "news-oil-service"]
   },
   {
@@ -717,6 +754,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "GPU 뉴스가 실제 데이터센터 설비 CAPEX로 이어질 때 밸류에이션이 더 열릴 수 있습니다.",
     recommendation: "반도체 핵심 노출을 이미 갖고 있다면, VRT는 보조 성장 축으로만 접근하는 편이 좋습니다.",
+    entryLadder: {
+      entryCondition: "GPU 발주 → 데이터센터 CAPEX 전이 확인 시 분할 진입",
+      invalidationCondition: "데이터센터 투자 지연 또는 전력 수요 둔화 신호",
+      noChaseRule: "급등일 추격 금지 — 눌림 후 거래량 감소 확인 필수"
+    },
     linkedNewsIds: ["news-power-density", "news-memory-pricing"]
   },
   {
@@ -735,6 +777,11 @@ const tickerAnalysisLibrary: TickerAnalysis[] = [
     ],
     marketContext: "전력 인프라와 자동화가 모두 열릴 때 수혜를 받는 구조라 변동성이 낮은 편입니다.",
     recommendation: "고베타 대신 안정적 AI 인프라 확장을 원할 때 보조 편입 후보로 볼 수 있습니다.",
+    entryLadder: {
+      entryCondition: "전력+자동화 양쪽 수요 확인 시 장기 관점 편입",
+      invalidationCondition: "산업 자동화 백로그 감소 또는 전력 인프라 투자 축소",
+      noChaseRule: "AI 테마 급등 시 동반 추격 금지 — 독자 펀더멘탈 확인"
+    },
     linkedNewsIds: ["news-power-density", "news-automation-backlog"]
   }
 ];

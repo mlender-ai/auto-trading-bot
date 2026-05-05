@@ -1577,6 +1577,12 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
           </div>
 
           {activeNotice ? <p className="toolbar-notice">{activeNotice}</p> : null}
+          {workspace.agentPipeline.runtime.status === "fallback" ? (
+            <div className="fallback-banner" id="fallback-data-banner">
+              <span className="fallback-banner-icon">⚠</span>
+              <p>실시간 AI 분석이 불가하여 <strong>저장된 스냅샷 데이터</strong>를 표시하고 있습니다. 브리핑 업데이트를 눌러 최신 분석을 다시 시도해 주세요.</p>
+            </div>
+          ) : null}
         </section>
 
         {isSearchPaletteOpen ? (
@@ -2292,6 +2298,25 @@ function SignalsTab({
               <h3>행동 제안</h3>
               <p>{analysis.recommendation}</p>
             </section>
+            {analysis.entryLadder ? (
+              <section className="section-panel signal-section entry-ladder" id="entry-condition-ladder">
+                <h3>진입 조건 사다리</h3>
+                <div className="entry-ladder-grid">
+                  <article className="entry-ladder-card entry">
+                    <span className="entry-ladder-label">✅ 진입 조건</span>
+                    <p>{analysis.entryLadder.entryCondition}</p>
+                  </article>
+                  <article className="entry-ladder-card invalidation">
+                    <span className="entry-ladder-label">🚫 무효화 조건</span>
+                    <p>{analysis.entryLadder.invalidationCondition}</p>
+                  </article>
+                  <article className="entry-ladder-card no-chase">
+                    <span className="entry-ladder-label">⛔ 추격 금지</span>
+                    <p>{analysis.entryLadder.noChaseRule}</p>
+                  </article>
+                </div>
+              </section>
+            ) : null}
             <section className="section-panel signal-section patterns">
               <h3>패턴 분석</h3>
               <div className="pattern-list">
@@ -2343,10 +2368,15 @@ function MeetingTab({ isHydrating, workspace }: { isHydrating: boolean; workspac
           <strong>{workspace.meeting.nextAction}</strong>
           <p>{workspace.agentPipeline.actionPlan.strategy}</p>
         </article>
-        <article className="section-panel compact-panel">
+        <article className="section-panel compact-panel" id="runtime-health-panel">
           <span className="eyebrow">런타임</span>
           <strong>{workspace.agentPipeline.runtime.provider.toUpperCase()}</strong>
           <p>{formatResearchDateTime(workspace.agentPipeline.runtime.generatedAt)}</p>
+          <div className="health-check-strip">
+            <span className={`health-dot ${workspace.agentPipeline.runtime.status === "completed" ? "ok" : "warn"}`} />
+            <span>{workspace.agentPipeline.runtime.status === "completed" ? "정상 운영" : "Fallback 모드"}</span>
+            {workspace.agentPipeline.runtime.model ? <span className="health-model">{workspace.agentPipeline.runtime.model}</span> : null}
+          </div>
         </article>
         <article className="section-panel compact-panel">
           <span className="eyebrow">전환 인사이트</span>
