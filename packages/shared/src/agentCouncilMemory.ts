@@ -93,3 +93,52 @@ export async function readResolvedActionItemIds(): Promise<string[]> {
   const archive = await readCompletedActionArchive();
   return archive.map((record) => record.id);
 }
+
+export function computeIdeaYieldScore(
+  records: CompletedActionRecord[],
+  openIssueCount: number,
+  closedIssueCount: number,
+  totalProposed: number
+): import("./research").IdeaYieldScore {
+  const ownerMap = new Map<AgentRole, { proposed: number; merged: number }>();
+  const allOwners: AgentRole[] = ["PM", "Trader", "DA", "QA", "CTO"];
+
+  for (const role of allOwners) {
+    ownerMap.set(role, { proposed: 0, merged: 0 });
+  }
+
+  for (const record of records) {
+    const entry = ownerMap.get(record.owner);
+
+    if (entry) {
+      entry.merged += 1;
+    }
+  }
+
+  const totalMerged = records.length;
+  const totalClosed = closedIssueCount;
+  const totalOpen = openIssueCount;
+  const conversionRate = totalProposed > 0 ? Math.round((totalClosed / totalProposed) * 100) : 0;
+  const mergeRate = totalProposed > 0 ? Math.round((totalMerged / totalProposed) * 100) : 0;
+
+  return {
+    totalProposed,
+    totalOpen,
+    totalClosed,
+    totalMerged,
+    conversionRate,
+    mergeRate,
+    byOwner: allOwners.map((owner) => {
+      const entry = ownerMap.get(owner)!;
+      return {
+        owner,
+        proposed: entry.proposed,
+        merged: entry.merged,
+        rate: entry.proposed > 0 ? Math.round((entry.merged / entry.proposed) * 100) : 0
+      };
+    }).filter((entry) => entry.merged > 0 || entry.proposed > 0),
+    lastUpdatedAt: records.length > 0
+      ? records.reduce((latest, record) => (Date.parse(record.completedAt) > Date.parse(latest) ? record.completedAt : latest), records[0]!.completedAt)
+      : null
+  };
+}

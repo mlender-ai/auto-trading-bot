@@ -243,6 +243,22 @@ interface ProductReviewBuildOptions {
   maxActionItems?: number;
 }
 
+export interface IdeaYieldScore {
+  totalProposed: number;
+  totalOpen: number;
+  totalClosed: number;
+  totalMerged: number;
+  conversionRate: number;
+  mergeRate: number;
+  byOwner: Array<{
+    owner: AgentRole;
+    proposed: number;
+    merged: number;
+    rate: number;
+  }>;
+  lastUpdatedAt: string | null;
+}
+
 export interface ResearchAgentPipeline {
   definitions: ResearchPipelineAgentDefinition[];
   steps: ResearchPipelineStep[];
@@ -281,6 +297,7 @@ export interface ResearchWorkspaceData {
   tickerAnalyses: TickerAnalysis[];
   agentPipeline: ResearchAgentPipeline;
   productReview: ProductTeamReview;
+  yieldScore: IdeaYieldScore;
   meeting: AgentMeetingThread;
   newsletter: NewsletterEnvelope;
 }
@@ -344,6 +361,19 @@ export function createEmptyResearchBehaviorSummary(): ResearchBehaviorSummary {
       lastTriggeredAt: null,
       lastValue: null
     }))
+  };
+}
+
+export function createEmptyIdeaYieldScore(): IdeaYieldScore {
+  return {
+    totalProposed: 0,
+    totalOpen: 0,
+    totalClosed: 0,
+    totalMerged: 0,
+    conversionRate: 0,
+    mergeRate: 0,
+    byOwner: [],
+    lastUpdatedAt: null
   };
 }
 
@@ -1525,6 +1555,7 @@ export function buildResearchWorkspaceFromData(input: ResearchWorkspaceBuildInpu
     tickerAnalyses,
     agentPipeline,
     productReview,
+    yieldScore: createEmptyIdeaYieldScore(),
     meeting,
     newsletter
   };

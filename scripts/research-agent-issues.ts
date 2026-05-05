@@ -9,7 +9,7 @@ import {
   type ProductActionItem,
   type ResearchWorkspaceData
 } from "../packages/shared/src/research";
-import { readCompletedActionArchive, writeCompletedActionArchive, type CompletedActionRecord } from "../packages/shared/src/agentCouncilMemory";
+import { readCompletedActionArchive, writeCompletedActionArchive, computeIdeaYieldScore, type CompletedActionRecord } from "../packages/shared/src/agentCouncilMemory";
 import { type GeneratedResearchSnapshot } from "../packages/shared/src/researchPipeline";
 
 const SNAPSHOT_PATH = "generated/research/latest.json";
@@ -763,6 +763,17 @@ async function main() {
   await writeCompletedActionArchive([...archived, ...collectCompletedActionRecords(finalIssues, finalPulls)]);
 
   snapshot.workspace.productReview.actionItems = syncedItems;
+
+  const openIssueCount = finalIssues.filter((issue) => issue.state === "open").length;
+  const closedIssueCount = finalIssues.filter((issue) => issue.state === "closed").length;
+  const allCompletedRecords = [...archived, ...collectCompletedActionRecords(finalIssues, finalPulls)];
+  snapshot.workspace.yieldScore = computeIdeaYieldScore(
+    allCompletedRecords,
+    openIssueCount,
+    closedIssueCount,
+    finalIssues.length
+  );
+
   await persistSnapshot(snapshot);
 
   process.stdout.write(

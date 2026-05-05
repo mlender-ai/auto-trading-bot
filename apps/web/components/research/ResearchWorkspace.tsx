@@ -28,6 +28,7 @@ import {
   type ResearchTickerMarket,
   type ResearchWorkspaceData,
   type TickerAnalysis,
+  type IdeaYieldScore,
   type UserResearchPreferences
 } from "@trading/shared/src/research";
 import type { GeneratedResearchSnapshot } from "@trading/shared/src/researchPipeline";
@@ -2353,6 +2354,65 @@ function SignalsTab({
   );
 }
 
+function IdeaYieldPanel({ yieldScore }: { yieldScore: IdeaYieldScore }) {
+  if (yieldScore.totalProposed === 0) {
+    return <p className="panel-empty-copy">아직 에이전트 아이디어 기록이 없습니다. 파이프라인이 실행되면 자동으로 채워집니다.</p>;
+  }
+
+  return (
+    <div className="yield-panel" id="idea-yield-panel">
+      <div className="yield-stat-grid">
+        <article className="yield-stat-card">
+          <span className="eyebrow">제안됨</span>
+          <strong>{yieldScore.totalProposed}</strong>
+        </article>
+        <article className="yield-stat-card">
+          <span className="eyebrow">진행 중</span>
+          <strong>{yieldScore.totalOpen}</strong>
+        </article>
+        <article className="yield-stat-card">
+          <span className="eyebrow">닫힘</span>
+          <strong>{yieldScore.totalClosed}</strong>
+        </article>
+        <article className="yield-stat-card accent">
+          <span className="eyebrow">머지됨</span>
+          <strong>{yieldScore.totalMerged}</strong>
+        </article>
+      </div>
+      <div className="yield-rate-strip">
+        <div className="yield-rate-item">
+          <span className="eyebrow">전환율 (닫힘/전체)</span>
+          <strong>{yieldScore.conversionRate}%</strong>
+          <div className="yield-bar-track">
+            <div className="yield-bar-fill conversion" style={{ width: `${Math.min(yieldScore.conversionRate, 100)}%` }} />
+          </div>
+        </div>
+        <div className="yield-rate-item">
+          <span className="eyebrow">머지율 (머지/전체)</span>
+          <strong>{yieldScore.mergeRate}%</strong>
+          <div className="yield-bar-track">
+            <div className="yield-bar-fill merge" style={{ width: `${Math.min(yieldScore.mergeRate, 100)}%` }} />
+          </div>
+        </div>
+      </div>
+      {yieldScore.byOwner.length > 0 ? (
+        <div className="yield-owner-list">
+          <span className="eyebrow">역할별 머지</span>
+          {yieldScore.byOwner.map((entry) => (
+            <div className="yield-owner-row" key={entry.owner}>
+              <span className={`role-pill role-${entry.owner.toLowerCase()}`}>{entry.owner}</span>
+              <span>{entry.merged}건 머지</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
+      {yieldScore.lastUpdatedAt ? (
+        <p className="yield-updated">마지막 업데이트 {formatResearchDateTime(yieldScore.lastUpdatedAt)}</p>
+      ) : null}
+    </div>
+  );
+}
+
 function MeetingTab({ isHydrating, workspace }: { isHydrating: boolean; workspace: ResearchWorkspaceData }) {
   return (
     <section className="meeting-desk">
@@ -2515,6 +2575,17 @@ function MeetingTab({ isHydrating, workspace }: { isHydrating: boolean; workspac
                 <ReviewNoteCard key={note.role} note={note} />
               ))}
             </div>
+          </section>
+
+          <section className="section-panel">
+            <div className="section-heading compact">
+              <div>
+                <span className="section-kicker">Idea Yield</span>
+                <h2>아이디어 구현율</h2>
+              </div>
+              <p>에이전트 제안 → 이슈 → PR → 머지 전환율을 측정합니다.</p>
+            </div>
+            <IdeaYieldPanel yieldScore={workspace.yieldScore} />
           </section>
 
           <section className="section-panel">
