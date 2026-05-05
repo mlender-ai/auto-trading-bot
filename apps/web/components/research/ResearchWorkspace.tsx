@@ -1312,19 +1312,38 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   return (
     <main className="research-app">
       <div className="research-shell">
+        {workspace.agentPipeline.runtime.status === "fallback" ? (
+          <div className="global-fallback-banner">
+            <svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 9V11M12 15H12.01M5.07183 19H18.9282C20.4678 19 21.4301 17.3333 20.6603 16L13.7321 4C12.9623 2.66667 11.0378 2.66667 10.268 4L3.33978 16C2.56998 17.3333 3.53223 19 5.07183 19Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+            </svg>
+            현재 실시간 API 지연으로 인해 스냅샷(Fallback) 데이터를 표시하고 있습니다.
+          </div>
+        ) : null}
+
+        <header className="global-top-nav">
+          <div className="nav-search-container">
+            <button className="magazine-global-search" onClick={() => setIsSearchPaletteOpen(true)} type="button">
+              <span className="search-placeholder">
+                <svg fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                </svg>
+                오늘의 HOT 이슈, 종목, 섹터를 검색해보세요
+              </span>
+              <kbd>⌘K</kbd>
+            </button>
+          </div>
+          <div className="nav-runtime-info">
+            <div className="health-badge">
+              <span className={`health-dot ${workspace.agentPipeline.runtime.status === "completed" ? "ok" : "warn"}`} />
+              <span className="health-label">{workspace.agentPipeline.runtime.provider.toUpperCase()} {workspace.agentPipeline.runtime.model?.replace("gpt-4o", "GPT-4o") ?? "AI"}</span>
+            </div>
+          </div>
+        </header>
+
         <section className="magazine-layout" style={{ display: activeTab === "overview" ? "grid" : "none" }}>
           <div className="magazine-main">
             <header className="magazine-hero">
-              <button className="magazine-global-search" onClick={() => setIsSearchPaletteOpen(true)} type="button">
-                <span className="search-placeholder">
-                  <svg fill="none" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-                  </svg>
-                  오늘의 HOT 이슈, 종목, 섹터를 검색해보세요
-                </span>
-                <kbd>⌘K / Ctrl K</kbd>
-              </button>
-              
               <div className="magazine-title-row">
                 <div>
                   <span className="magazine-eyebrow">오늘 브리핑 &middot; 업데이트 {formatResearchDateTime(workspace.generatedAt)}</span>
@@ -1355,6 +1374,12 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                       handleTabChange("signals");
                     }} type="button">{getDisplayTicker(leadTickerAnalysis?.ticker ?? "주요 종목")} 분석</button>
                   </div>
+                  {leadTickerAnalysis?.entryLadder ? (
+                    <div className="strategy-ladder-summary">
+                      <div className="ladder-chip entry">진입: {compactCopy(leadTickerAnalysis.entryLadder.entryCondition, 35)}</div>
+                      <div className="ladder-chip invalid">무효: {compactCopy(leadTickerAnalysis.entryLadder.invalidationCondition, 35)}</div>
+                    </div>
+                  ) : null}
                 </article>
               </div>
 
