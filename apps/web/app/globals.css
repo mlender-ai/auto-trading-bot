@@ -8092,3 +8092,104 @@ body {
   display: flex;
   justify-content: flex-start;
 }
+
+/* ==========================================================================
+   1-Viewport Dashboard Overrides
+   ========================================================================== */
+
+body {
+  overflow: hidden; /* Prevent global scroll */
+}
+
+.magazine-layout {
+  height: calc(100vh - 40px);
+  padding: 32px 20px;
+  grid-template-columns: 1fr 1fr 340px; /* Force strict 3-col layout */
+  gap: 24px; /* Reduced from 40px */
+  border-radius: 24px;
+}
+
+.magazine-main {
+  grid-column: span 2;
+  gap: 24px; /* Reduced from 48px */
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.magazine-hero {
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.magazine-title {
+  font-size: 32px; /* Reduced from 40px */
+}
+
+.magazine-content-split {
+  gap: 24px; /* Reduced from 40px */
+  overflow: hidden; /* Contains the scrollable children */
+  flex-grow: 1;
+}
+
+.magazine-core-check, .magazine-strategy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px; /* Scrollbar padding */
+}
+
+.routine-list {
+  gap: 16px;
+}
+
+/* Button normalizations */
+.core-item, .routine-row, .watch-item, .checkpoint-item {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 8px;
+  margin: -8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  width: calc(100% + 16px);
+}
+
+.watch-item {
+  padding: 12px 8px;
+  margin: 0 -8px;
+  border-bottom: 1px solid transparent; /* Remove existing bottom border for buttons */
+}
+
+.core-item:hover, .routine-row:hover, .watch-item:hover, .checkpoint-item:hover {
+  background-color: #f8fafc;
+}
+
+.magazine-sidebar {
+  padding-left: 24px; /* Reduced from 40px */
+  gap: 32px; /* Reduced from 48px */
+  height: 100%;
+  overflow-y: auto;
+}
+
+.watch-list, .checkpoint-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkpoint-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.checkpoint-item strong {
+  font-size: 14px;
+  color: #111827;
+}

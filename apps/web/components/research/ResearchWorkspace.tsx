@@ -1354,31 +1354,31 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
               <div className="magazine-core-check">
                 <section className="core-check-block">
                   <span className="eyebrow">핵심 체크</span>
-                  <div className="core-item">
+                  <button className="core-item" onClick={() => handleTabChange("news")} type="button">
                     <strong>헤드라인</strong>
                     <p>{topHeadline ? compactCopy(topHeadline.title, 60) : "핵심 헤드라인 대기"}</p>
-                  </div>
-                  <div className="core-item">
+                  </button>
+                  <button className="core-item" onClick={() => handleTabChange("news")} type="button">
                     <strong>강세</strong>
                     <p>{topStrongSector ? `${topStrongSector.sector} · ${compactCopy(topStrongSector.reason, 64)}` : "강세 섹터 대기"}</p>
-                  </div>
-                  <div className="core-item">
+                  </button>
+                  <button className="core-item" onClick={() => handleTabChange("news")} type="button">
                     <strong>리스크</strong>
                     <p>{topRiskSector ? `${topRiskSector.sector} · ${compactCopy(topRiskSector.reason, 64)}` : "리스크 대기"}</p>
-                  </div>
+                  </button>
                 </section>
 
                 <section className="routine-block">
                   <span className="eyebrow">지금 볼 순서</span>
                   <div className="routine-list">
                     {routineSteps.map((step, index) => (
-                      <div className="routine-row" key={step.id}>
+                      <button className="routine-row" key={step.id} onClick={() => handleTabChange("meeting")} type="button">
                         <span className="routine-badge">0{index + 1}</span>
                         <div className="routine-text">
                           <strong>{step.title}</strong>
                           <p>{compactCopy(step.detail, 80)}</p>
                         </div>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </section>
@@ -1397,7 +1397,15 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
               </div>
               <div className="watch-list">
                 {briefingTickers.map((analysis) => (
-                  <div className="watch-item" key={analysis.ticker}>
+                  <button 
+                    className="watch-item" 
+                    key={analysis.ticker}
+                    onClick={() => {
+                      handleSelectTicker(analysis.ticker);
+                      handleTabChange("signals");
+                    }}
+                    type="button"
+                  >
                     <div className="watch-item-main">
                       <span className="ticker-logo-shell">
                         <TickerLogo label={analysis.company} ticker={analysis.ticker} />
@@ -1411,7 +1419,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                       </div>
                     </div>
                     <p className="watch-desc">{compactCopy(analysis.summary, 45)}</p>
-                  </div>
+                  </button>
                 ))}
               </div>
             </section>
@@ -1423,21 +1431,242 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                   <h2>이벤트와 유의사항</h2>
                 </div>
               </div>
-              <ul className="checkpoint-list">
+              <div className="checkpoint-list">
                 {workspace.agentPipeline.market.keyEvents.slice(0, 2).map((event) => (
-                  <li key={event.title}>
+                  <button className="checkpoint-item" key={event.title} onClick={() => handleTabChange("meeting")} type="button">
                     <strong>{event.title}</strong>{compactCopy(event.reason, 80)}
-                  </li>
+                  </button>
                 ))}
                 {workspace.agentPipeline.actionPlan.avoidActions.slice(0, 2).map((item) => (
-                  <li key={item}>
+                  <button className="checkpoint-item" key={item} onClick={() => handleTabChange("meeting")} type="button">
                     <strong>메이저 오일 capex 가이던스</strong>{item}
-                  </li>
+                  </button>
                 ))}
-              </ul>
+              </div>
             </section>
           </aside>
         </section>
+
+        {isSearchPaletteOpen ? (
+          <div
+            className="command-palette-backdrop"
+            onClick={() => setIsSearchPaletteOpen(false)}
+            role="presentation"
+          >
+            <section
+              aria-label="티커 및 섹터 검색"
+              aria-modal="true"
+              className="command-palette"
+              onClick={(event) => event.stopPropagation()}
+              role="dialog"
+            >
+              <div className="command-palette-head">
+                <div>
+                  <span className="section-kicker">빠른 검색</span>
+                  <h2>티커와 섹터를 바로 찾아 분석하기</h2>
+                </div>
+                <button className="command-close" onClick={() => setIsSearchPaletteOpen(false)} type="button">
+                  닫기
+                </button>
+              </div>
+
+              <div className="toolbar-search palette">
+                <input
+                  className="toolbar-search-input palette"
+                  onChange={(event) => setTickerQuery(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                      void handleApplyTickerQuery();
+                    }
+                  }}
+                  placeholder="티커, 종목명, 섹터, 테마를 검색해 보세요"
+                  ref={searchInputRef}
+                  type="text"
+                  value={tickerQuery}
+                />
+                <button className="api-button" onClick={() => void handleApplyTickerQuery()} type="button">
+                  바로 분석
+                </button>
+              </div>
+
+              <div className="ticker-market-row command-market-row" role="tablist" aria-label="검색 시장 필터">
+                {[
+                  { id: "ALL", label: "전체" },
+                  { id: "US", label: "미장" },
+                  { id: "KR", label: "국장" }
+                ].map((marketOption) => (
+                  <button
+                    aria-selected={tickerMarketFilter === marketOption.id}
+                    className={`market-chip ${tickerMarketFilter === marketOption.id ? "active" : ""}`}
+                    key={marketOption.id}
+                    onClick={() => setTickerMarketFilter(marketOption.id as TickerMarketFilter)}
+                    role="tab"
+                    type="button"
+                  >
+                    {marketOption.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="command-shortcuts">
+                {["테슬라", "005930", "전기차", "배터리", "반도체", "오일"].map((shortcut) => (
+                  <button
+                    className="subtle-chip command-shortcut"
+                    key={shortcut}
+                    onClick={() => setTickerQuery(shortcut)}
+                    type="button"
+                  >
+                    {shortcut}
+                  </button>
+                ))}
+              </div>
+
+              {tickerQuery.trim() ? (
+                <div className="command-results-grid">
+                  <section className="command-result-panel">
+                    <div className="command-result-head">
+                      <span className="eyebrow">섹터 결과</span>
+                      <strong>섹터 인사이트</strong>
+                    </div>
+                    <div className="ticker-search-results">
+                      {matchedSectorResults.length === 0 ? <p className="panel-empty-copy">맞는 섹터가 없습니다.</p> : null}
+                      {matchedSectorResults.map((sector) => (
+                        <article className="search-result-card" key={sector.id}>
+                          <div className="search-result-main">
+                            <span className="ticker-logo-shell">
+                              <span className="ticker-logo-fallback">{sector.label.slice(0, 1)}</span>
+                            </span>
+                            <div>
+                              <strong>{sector.label}</strong>
+                              <span>{sector.description}</span>
+                            </div>
+                          </div>
+                          <div className="search-result-actions">
+                            <Link
+                              className="api-button subtle"
+                              href={getSectorDetailHref(sector.id)}
+                              onClick={() => setIsSearchPaletteOpen(false)}
+                            >
+                              섹터 인사이트
+                            </Link>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="command-result-panel">
+                    <div className="command-result-head">
+                      <span className="eyebrow">티커 결과</span>
+                      <strong>티커 상세</strong>
+                    </div>
+                    <div className="ticker-search-results">
+                      {isSearchingTickers ? <p className="panel-empty-copy">티커를 검색하고 있습니다.</p> : null}
+                      {!isSearchingTickers && tickerSearchResults.length === 0 ? (
+                        <p className="panel-empty-copy">검색 결과가 없습니다. 티커 코드, 종목명, 섹터명을 다시 입력해 주세요.</p>
+                      ) : null}
+                      {tickerSearchResults.map((result) => (
+                        <article className="search-result-card" key={result.ticker}>
+                          <div className="search-result-main">
+                            <span className="ticker-logo-shell">
+                              <TickerLogo label={result.label} ticker={result.ticker} />
+                            </span>
+                            <div>
+                              <strong>{getDisplayTicker(result.ticker)}</strong>
+                              <span>{result.label}</span>
+                            </div>
+                          </div>
+                          <div className="search-result-side">
+                            <span>{getTickerMarketLabel(result.market, result.exchange)}</span>
+                            <span>{result.typeLabel ?? result.exchange}</span>
+                          </div>
+                          <div className="search-result-actions">
+                            <Link
+                              className="api-button subtle"
+                              href={getTickerDetailHref(result.ticker, result.market)}
+                              onClick={() => setIsSearchPaletteOpen(false)}
+                            >
+                              상세 보기
+                            </Link>
+                            <button className="api-button" onClick={() => void handleApplySearchResult(result)} type="button">
+                              메인 추가
+                            </button>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                </div>
+              ) : (
+                <div className="command-results-grid">
+                  <section className="command-result-panel">
+                    <div className="command-result-head">
+                      <span className="eyebrow">추천 섹터</span>
+                      <strong>바로 들어갈 섹터</strong>
+                    </div>
+                    <div className="command-sector-grid">
+                      {researchSectorOptions.map((sector) => (
+                        <Link
+                          className="command-sector-card"
+                          href={getSectorDetailHref(sector.id)}
+                          key={sector.id}
+                          onClick={() => setIsSearchPaletteOpen(false)}
+                        >
+                          <strong>{sector.label}</strong>
+                          <span>{sector.description}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="command-result-panel">
+                    <div className="command-result-head">
+                      <span className="eyebrow">저장한 티커</span>
+                      <strong>메인에 저장된 티커</strong>
+                    </div>
+                    <div className="ticker-search-results">
+                      {paletteFavoriteTickers.length === 0 ? <p className="panel-empty-copy">아직 저장된 티커가 없습니다.</p> : null}
+                      {paletteFavoriteTickers.map((ticker) => (
+                        <article className="search-result-card" key={ticker.ticker}>
+                          <div className="search-result-main">
+                            <span className="ticker-logo-shell">
+                              <TickerLogo label={ticker.label} ticker={ticker.ticker} />
+                            </span>
+                            <div>
+                              <strong>{getDisplayTicker(ticker.ticker)}</strong>
+                              <span>{ticker.label}</span>
+                            </div>
+                          </div>
+                          <div className="search-result-actions">
+                            <Link
+                              className="api-button subtle"
+                              href={getTickerDetailHref(ticker.ticker, ticker.market)}
+                              onClick={() => setIsSearchPaletteOpen(false)}
+                            >
+                              상세 보기
+                            </Link>
+                            <button
+                              className="api-button"
+                              onClick={() => {
+                                setIsSearchPaletteOpen(false);
+                                handleSelectTicker(ticker.ticker);
+                                handleTabChange("signals");
+                              }}
+                              type="button"
+                            >
+                              바로 보기
+                            </button>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                </div>
+              )}
+            </section>
+          </div>
+        ) : null}
 
         {activeTab !== "overview" ? (
           <section className="research-stage">
