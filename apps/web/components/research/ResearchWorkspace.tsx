@@ -500,10 +500,10 @@ function NewsCard({ item }: { item: ResearchNewsItem }) {
         <h3>{item.title}</h3>
         <p className="news-row-why">
           <strong>왜 중요한가</strong>
-          <span>{compactCopy(item.analysis, 132)}</span>
+          <span>{compactCopy(item.analysis, 80)}</span>
         </p>
         <div className="news-row-footer">
-          <span className="decision-callout">{compactCopy(item.recommendation, 92)}</span>
+          <span className="decision-callout">{compactCopy(item.recommendation, 60)}</span>
           <span className="story-linked-tickers">{item.tickerTags.join(" · ")}</span>
         </div>
         {item.sourceUrl ? (
