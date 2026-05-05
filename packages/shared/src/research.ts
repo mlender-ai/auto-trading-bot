@@ -273,6 +273,13 @@ export interface ResearchNewsBoard {
   sectorIssues: ResearchSectorIssue[];
 }
 
+export interface NewsletterSection {
+  id: string;
+  title: string;
+  htmlContent: string;
+  textContent: string;
+}
+
 export interface NewsletterEnvelope {
   cadence: "daily";
   generatedAt: string;
@@ -282,6 +289,7 @@ export interface NewsletterEnvelope {
   to: string[];
   bodyText: string;
   bodyHtml: string;
+  sections: NewsletterSection[];
 }
 
 export interface ResearchWorkspaceData {
@@ -1349,44 +1357,54 @@ export function buildResearchNewsletter(news: ResearchNewsBoard, analyses: Ticke
     ? `${headline.summary} / 행동 제안: ${headline.recommendation}`
     : "선택한 관심사에 맞춰 핵심 뉴스와 행동 제안을 정리합니다.";
 
+  const sections: NewsletterSection[] = [
+    {
+      id: "headline",
+      title: "메인 헤드라인",
+      textContent: headline ? `${headline.title}\n- 분석: ${headline.analysis}\n- 행동: ${headline.recommendation}` : "핵심 헤드라인 없음",
+      htmlContent: headline
+        ? `<article><strong>${escapeHtml(headline.title)}</strong><p>${escapeHtml(headline.analysis)}</p><p>${escapeHtml(headline.recommendation)}</p></article>`
+        : "<p>핵심 헤드라인이 없습니다.</p>"
+    },
+    {
+      id: "derived-articles",
+      title: "파생 기사",
+      textContent: news.derivedArticles.map((item) => `- ${item.title}\n  분석: ${item.analysis}\n  행동: ${item.recommendation}`).join("\n"),
+      htmlContent: `<ul>${news.derivedArticles
+        .map((item) => `<li><strong>${escapeHtml(item.title)}</strong><br />${escapeHtml(item.analysis)}<br />${escapeHtml(item.recommendation)}</li>`)
+        .join("")}</ul>`
+    },
+    {
+      id: "sector-issues",
+      title: "섹터별 핵심 이슈",
+      textContent: news.sectorIssues.map((issue) => `- ${issue.sectorLabel}: ${issue.item.title}\n  행동: ${issue.item.recommendation}`).join("\n"),
+      htmlContent: `<ul>${news.sectorIssues
+        .map((issue) => `<li><strong>${escapeHtml(issue.sectorLabel)}</strong> - ${escapeHtml(issue.item.title)}<br />${escapeHtml(issue.item.recommendation)}</li>`)
+        .join("")}</ul>`
+    },
+    {
+      id: "signals",
+      title: "티커 행동 우선순위",
+      textContent: analyses.slice(0, 3).map((analysis) => `- ${analysis.ticker}: ${analysis.recommendation}`).join("\n"),
+      htmlContent: `<ul>${analyses
+        .slice(0, 3)
+        .map((analysis) => `<li><strong>${escapeHtml(analysis.ticker)}</strong> - ${escapeHtml(analysis.recommendation)}</li>`)
+        .join("")}</ul>`
+    }
+  ];
+
   const textSections = [
     subject,
     "",
     previewText,
     "",
-    "[메인 헤드라인]",
-    headline ? `${headline.title}\n- 분석: ${headline.analysis}\n- 행동: ${headline.recommendation}` : "핵심 헤드라인 없음",
-    "",
-    "[파생 기사]",
-    ...news.derivedArticles.map((item) => `- ${item.title}\n  분석: ${item.analysis}\n  행동: ${item.recommendation}`),
-    "",
-    "[섹터별 핵심 이슈]",
-    ...news.sectorIssues.map((issue) => `- ${issue.sectorLabel}: ${issue.item.title}\n  행동: ${issue.item.recommendation}`),
-    "",
-    "[티커 행동 우선순위]",
-    ...analyses.slice(0, 3).map((analysis) => `- ${analysis.ticker}: ${analysis.recommendation}`)
+    ...sections.map(sec => `[${sec.title}]\n${sec.textContent}\n`)
   ];
 
   const htmlSections = [
     `<h1>${escapeHtml(subject)}</h1>`,
     `<p>${escapeHtml(previewText)}</p>`,
-    `<h2>메인 헤드라인</h2>`,
-    headline
-      ? `<article><strong>${escapeHtml(headline.title)}</strong><p>${escapeHtml(headline.analysis)}</p><p>${escapeHtml(headline.recommendation)}</p></article>`
-      : "<p>핵심 헤드라인이 없습니다.</p>",
-    `<h2>파생 기사</h2>`,
-    `<ul>${news.derivedArticles
-      .map((item) => `<li><strong>${escapeHtml(item.title)}</strong><br />${escapeHtml(item.analysis)}<br />${escapeHtml(item.recommendation)}</li>`)
-      .join("")}</ul>`,
-    `<h2>섹터별 핵심 이슈</h2>`,
-    `<ul>${news.sectorIssues
-      .map((issue) => `<li><strong>${escapeHtml(issue.sectorLabel)}</strong> - ${escapeHtml(issue.item.title)}<br />${escapeHtml(issue.item.recommendation)}</li>`)
-      .join("")}</ul>`,
-    `<h2>티커 행동 우선순위</h2>`,
-    `<ul>${analyses
-      .slice(0, 3)
-      .map((analysis) => `<li><strong>${escapeHtml(analysis.ticker)}</strong> - ${escapeHtml(analysis.recommendation)}</li>`)
-      .join("")}</ul>`
+    ...sections.map(sec => `<h2>${escapeHtml(sec.title)}</h2>\n${sec.htmlContent}`)
   ];
 
   return {
@@ -1397,7 +1415,8 @@ export function buildResearchNewsletter(news: ResearchNewsBoard, analyses: Ticke
     previewText,
     to: [],
     bodyText: textSections.join("\n"),
-    bodyHtml: htmlSections.join("")
+    bodyHtml: htmlSections.join(""),
+    sections
   };
 }
 

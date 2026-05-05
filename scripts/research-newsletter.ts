@@ -76,6 +76,16 @@ async function main() {
   const recipients = readNewsletterRecipients();
   const snapshot = (await readPreferredResearchSnapshot()) ?? (await runAndPersistResearchPipeline(undefined, process.env.GITHUB_ACTIONS ? "github-actions" : "local-script"));
   const envelope = snapshot.workspace.newsletter;
+  
+  // Parity Check: Verify newsletter sections match web UI expectations
+  const requiredSections = ["headline", "derived-articles", "sector-issues", "signals"];
+  const presentSections = envelope.sections.map((s) => s.id);
+  const missingSections = requiredSections.filter((id) => !presentSections.includes(id));
+  
+  if (missingSections.length > 0) {
+    throw new Error(`[Parity Check Failed] Newsletter is missing required sections: ${missingSections.join(", ")}. Ensure the data contract matches Web UI.`);
+  }
+
   const subject = envelope.subject;
   const html = wrapNewsletterHtml(subject, envelope.previewText, envelope.bodyHtml);
 
