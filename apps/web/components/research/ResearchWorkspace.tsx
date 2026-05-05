@@ -597,6 +597,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   const [pipelineNotice, setPipelineNotice] = useState<string | null>(null);
   const [isActionPlanExpanded, setIsActionPlanExpanded] = useState(false);
   const [isHydratingMeeting, setIsHydratingMeeting] = useState(false);
+  const [activeNewsSector, setActiveNewsSector] = useState<ResearchSectorTag | null>(null);
   const trackedHeadlineRef = useRef<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const relatedNewsLookup = useMemo(() => buildNewsLookup(workspace, supplementalNews), [workspace, supplementalNews]);
@@ -1239,11 +1240,12 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
     await handleAnalyzeTicker(query, customTickerMarket, customTickerSector);
   }
 
-  function handleTabChange(nextTab: ResearchTab | "overview") {
-    if (activeTab === nextTab) {
+  function handleTabChange(nextTab: ResearchTab | "overview", sector?: ResearchSectorTag) {
+    if (activeTab === nextTab && activeNewsSector === (sector ?? null)) {
       return;
     }
 
+    setActiveNewsSector(sector ?? null);
     if (activeTab === "news" && nextTab !== "news") {
       void recordBehaviorEvent("stage_continue", nextTab);
     }
@@ -1375,11 +1377,25 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                     <strong>헤드라인</strong>
                     <p>{topHeadline ? compactCopy(topHeadline.title, 60) : "핵심 헤드라인 대기"}</p>
                   </button>
-                  <button className="core-item" onClick={() => handleTabChange("news")} type="button">
+                  <button 
+                    className="core-item" 
+                    onClick={() => {
+                      const tag = topStrongSector ? researchSectorOptions.find(o => o.label === topStrongSector.sector)?.id : undefined;
+                      handleTabChange("news", tag);
+                    }} 
+                    type="button"
+                  >
                     <strong>강세</strong>
                     <p>{topStrongSector ? `${topStrongSector.sector} · ${compactCopy(topStrongSector.reason, 64)}` : "강세 섹터 대기"}</p>
                   </button>
-                  <button className="core-item" onClick={() => handleTabChange("news")} type="button">
+                  <button 
+                    className="core-item" 
+                    onClick={() => {
+                      const tag = topRiskSector ? researchSectorOptions.find(o => o.label === topRiskSector.sector)?.id : undefined;
+                      handleTabChange("news", tag);
+                    }} 
+                    type="button"
+                  >
                     <strong>리스크</strong>
                     <p>{topRiskSector ? `${topRiskSector.sector} · ${compactCopy(topRiskSector.reason, 64)}` : "리스크 대기"}</p>
                   </button>
@@ -1695,6 +1711,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
             
             {activeTab === "news" ? (
               <NewsTab
+                activeNewsSector={activeNewsSector}
                 isActionPlanExpanded={isActionPlanExpanded}
                 newsletterHref={newsletterHref}
                 onToggleActionPlan={handleToggleActionPlan}
@@ -1736,12 +1753,14 @@ function NewsTab({
   newsletterHref,
   workspace,
   isActionPlanExpanded,
-  onToggleActionPlan
+  onToggleActionPlan,
+  activeNewsSector
 }: {
   newsletterHref: string;
   workspace: ResearchWorkspaceData;
   isActionPlanExpanded: boolean;
   onToggleActionPlan: () => void;
+  activeNewsSector: ResearchSectorTag | null;
 }) {
   if (!workspace.news.headline) {
     return (
@@ -1752,7 +1771,9 @@ function NewsTab({
     );
   }
 
-  const headline = workspace.news.headline;
+  const headline = activeNewsSector 
+    ? workspace.news.sectorIssues.find(s => s.sectorTag === activeNewsSector)?.item ?? workspace.news.headline
+    : workspace.news.headline;
   const actionPlan = workspace.agentPipeline.actionPlan;
 
   return (
