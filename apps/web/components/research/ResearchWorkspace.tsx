@@ -577,7 +577,7 @@ function TranscriptMessageCard({ message, isLast }: { message: ResearchPipelineT
 }
 
 export function ResearchWorkspace({ initialData }: { initialData: ResearchWorkspaceData }) {
-  const [activeTab, setActiveTab] = useState<ResearchTab>("news");
+  const [activeTab, setActiveTab] = useState<ResearchTab | "overview">("overview");
   const [preferences, setPreferences] = useState<UserResearchPreferences>(initialData.preferences);
   const [workspace, setWorkspace] = useState<ResearchWorkspaceData>(initialData);
   const [selectedTicker, setSelectedTicker] = useState(initialData.focusedTickers[0] ?? "");
@@ -1239,8 +1239,8 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
     await handleAnalyzeTicker(query, customTickerMarket, customTickerSector);
   }
 
-  function handleTabChange(nextTab: ResearchTab) {
-    if (nextTab === activeTab) {
+  function handleTabChange(nextTab: ResearchTab | "overview") {
+    if (activeTab === nextTab) {
       return;
     }
 
@@ -1312,7 +1312,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
   return (
     <main className="research-app">
       <div className="research-shell">
-        <section className="magazine-layout">
+        <section className="magazine-layout" style={{ display: activeTab === "overview" ? "grid" : "none" }}>
           <div className="magazine-main">
             <header className="magazine-hero">
               <span className="magazine-eyebrow">오늘 브리핑 &middot; 업데이트 {formatResearchDateTime(workspace.generatedAt)}</span>
@@ -1340,8 +1340,13 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                   <h2>{workspace.agentPipeline.actionPlan.strategy}</h2>
                   <p>{leadAction}</p>
                   <div className="strategy-actions">
-                    <button className="magazine-btn secondary" type="button">뉴스 보기</button>
-                    <button className="magazine-btn primary" type="button">{getDisplayTicker(leadTickerAnalysis?.ticker ?? "주요 종목")} 분석</button>
+                    <button className="magazine-btn secondary" onClick={() => handleTabChange("news")} type="button">뉴스 보기</button>
+                    <button className="magazine-btn primary" onClick={() => {
+                      if (leadTickerAnalysis) {
+                        handleSelectTicker(leadTickerAnalysis.ticker);
+                      }
+                      handleTabChange("signals");
+                    }} type="button">{getDisplayTicker(leadTickerAnalysis?.ticker ?? "주요 종목")} 분석</button>
                   </div>
                 </article>
               </div>
@@ -1382,13 +1387,13 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
           </div>
 
           <aside className="magazine-sidebar">
-            <section className="sidebar-section">
+            <section className="magazine-sidebar-section">
               <div className="sidebar-head">
                 <div>
                   <span className="eyebrow">관심 종목</span>
                   <h2>내 관심 종목</h2>
                 </div>
-                <button className="magazine-btn small" type="button">종목 보기</button>
+                <button className="magazine-btn small" onClick={() => handleTabChange("signals")} type="button">종목 보기</button>
               </div>
               <div className="watch-list">
                 {briefingTickers.map((analysis) => (
@@ -1411,7 +1416,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
               </div>
             </section>
 
-            <section className="sidebar-section">
+            <section className="magazine-sidebar-section">
               <div className="sidebar-head">
                 <div>
                   <span className="eyebrow">체크 포인트</span>
@@ -1433,6 +1438,49 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
             </section>
           </aside>
         </section>
+
+        {activeTab !== "overview" ? (
+          <section className="research-stage">
+            <div className="back-to-overview-row">
+              <button className="magazine-btn secondary small" onClick={() => handleTabChange("overview")} type="button">
+                &larr; 한눈에 보기 (Overview)
+              </button>
+            </div>
+            
+            {activeTab === "news" ? (
+              <NewsTab
+                isActionPlanExpanded={isActionPlanExpanded}
+                newsletterHref={newsletterHref}
+                onToggleActionPlan={handleToggleActionPlan}
+                workspace={workspace}
+              />
+            ) : null}
+
+            {activeTab === "signals" ? (
+              <SignalsTab
+                analysis={activeAnalysis}
+                customTickerInput={customTickerInput}
+                customTickerMarket={customTickerMarket}
+                customTickerSector={customTickerSector}
+                isAnalyzingTicker={isAnalyzingTicker}
+                newsLookup={relatedNewsLookup}
+                onAnalyzeTicker={handleAnalyzeTicker}
+                onChangeTickerInput={setCustomTickerInput}
+                onChangeTickerMarket={setCustomTickerMarket}
+                onChangeTickerMarketFilter={setTickerMarketFilter}
+                onChangeTickerSector={setCustomTickerSector}
+                onSelectTicker={handleSelectTicker}
+                onToggleTicker={handleToggleTicker}
+                tickerMarketFilter={tickerMarketFilter}
+                tickerNotice={tickerNotice}
+                visibleAvailableTickers={visibleAvailableTickers}
+                workspace={workspace}
+              />
+            ) : null}
+
+            {activeTab === "meeting" ? <MeetingTab isHydrating={isHydratingMeeting} workspace={workspace} /> : null}
+          </section>
+        ) : null}
       </div>
     </main>
   );

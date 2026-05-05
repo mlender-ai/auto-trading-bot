@@ -8081,3 +8081,14 @@ body {
   color: #111827;
   margin-bottom: 4px;
 }
+
+.magazine-sidebar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-to-overview-row {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-start;
+}
