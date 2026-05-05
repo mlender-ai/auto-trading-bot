@@ -1315,15 +1315,22 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
         <section className="magazine-layout" style={{ display: activeTab === "overview" ? "grid" : "none" }}>
           <div className="magazine-main">
             <header className="magazine-hero">
-              <span className="magazine-eyebrow">오늘 브리핑 &middot; 업데이트 {formatResearchDateTime(workspace.generatedAt)}</span>
+              <button className="magazine-global-search" onClick={() => setIsSearchPaletteOpen(true)} type="button">
+                <span className="search-placeholder">
+                  <svg fill="none" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                  </svg>
+                  오늘의 HOT 이슈, 종목, 섹터를 검색해보세요
+                </span>
+                <kbd>⌘K / Ctrl K</kbd>
+              </button>
+              
               <div className="magazine-title-row">
                 <div>
+                  <span className="magazine-eyebrow">오늘 브리핑 &middot; 업데이트 {formatResearchDateTime(workspace.generatedAt)}</span>
                   <h1 className="magazine-title">오늘 시장 한눈에 보기</h1>
                   <p className="magazine-subtitle">{workspace.agentPipeline.market.summary}</p>
                 </div>
-                <button className="magazine-search-trigger" onClick={() => setIsSearchPaletteOpen(true)} type="button">
-                  티커 또는 섹터 검색 <kbd>⌘K / Ctrl K</kbd>
-                </button>
               </div>
               
               <div className="magazine-chips">
