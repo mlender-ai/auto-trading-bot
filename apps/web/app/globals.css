@@ -8198,10 +8198,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f3f4f6;
-  padding: 16px 24px;
+  background-color: #ffffff;
+  padding: 14px 24px;
   border-radius: 100px;
-  border: 1px solid transparent;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: 0;
@@ -8225,7 +8226,7 @@ body {
 }
 
 .magazine-global-search kbd {
-  background-color: #ffffff;
+  background-color: #f3f4f6;
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 13px;
@@ -8242,14 +8243,12 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 12px 24px;
+  background-color: transparent;
+  padding: 20px 24px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #f3f4f6;
-  height: 64px;
+  height: auto;
 }
 
 /* Adjust magazine-layout height to account for sticky header */
