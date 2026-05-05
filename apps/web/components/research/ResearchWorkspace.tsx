@@ -1330,7 +1330,7 @@ export function ResearchWorkspace({ initialData }: { initialData: ResearchWorksp
                 </svg>
                 오늘의 HOT 이슈, 종목, 섹터를 검색해보세요
               </span>
-              <kbd>⌘K</kbd>
+              <kbd>⌘K / Ctrl K</kbd>
             </button>
           </div>
           <div className="nav-runtime-info">

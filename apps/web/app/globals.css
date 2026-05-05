@@ -8102,7 +8102,6 @@ body {
 }
 
 .magazine-layout {
-  height: calc(100vh - 40px);
   padding: 32px 20px;
   grid-template-columns: 1fr 1fr 340px; /* Force strict 3-col layout */
   gap: 24px; /* Reduced from 40px */
