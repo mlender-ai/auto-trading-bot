@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-05-07T11:03:33.597Z
+- Generated At: 2026-05-07T13:47:55.701Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -10,26 +10,26 @@
 - Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM
 
 ## Main Headline
-- Dow Jones Futures: Stock Market Hits Highs On Iran-Deal Hopes, Nvidia Leads New Buys; ARM Is Earnings Mover
+- IonQ Doubles Down on Nvidia Comparison. Why the Stock Is Falling After Blowout Earnings.
 - Why it matters: 실적과 가이던스 변화가 공급 체인 기대치를 바로 다시 가격에 반영할 수 있어 리더 종목 밸류에이션에 직접 연결됩니다.
 - Action: NVDA는 추격보다 실적 코멘트 확인 뒤 눌림 구간에서만 대응하고, 후행주는 확산 신호가 나올 때까지 보수적으로 봅니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "Dow Jones Futures: Stock Market Hits Highs On Iran-Deal Hopes, Nvidia Leads New Buys; ARM Is Earnings Mover"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-dow-jones-futures-stock-market-hits-highs-on-iran-deal-hopes-nvidia-leads-new-bu, live-semiconductors-al-chip-market-research-and-global-forecast-report-2025-2030-lucrative-opportuni, live-semiconductors-zacks-investment-ideas-feature-highlights-amd-nvidia-and-broadcom, live-semiconductors-ionq-doubles-down-on-nvidia-comparison-why-the-stock-is-falling-after-blowout-ea
+메인 헤드라인을 "IonQ Doubles Down on Nvidia Comparison. Why the Stock Is Falling After Blowout Earnings."로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-ionq-doubles-down-on-nvidia-comparison-why-the-stock-is-falling-after-blowout-ea, live-semiconductors-amd-jumps-on-ai-surge-profit-nearly-doubles, live-semiconductors-the-cpu-is-having-its-moment-it-s-a-boon-for-amd-stock, live-semiconductors-rackspace-technology-and-amd-sign-memorandum-of-understanding-to-establish-new-c
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-dow-jones-futures-stock-market-hits-highs-on-iran-deal-hopes-nvidia-leads-new-bu, live-semiconductors-al-chip-market-research-and-global-forecast-report-2025-2030-lucrative-opportuni, live-energy-oil-shell-profits-climb-as-iran-war-boosts-oil-trading
+References: live-semiconductors-ionq-doubles-down-on-nvidia-comparison-why-the-stock-is-falling-after-blowout-ea, live-semiconductors-amd-jumps-on-ai-surge-profit-nearly-doubles, live-energy-oil-shell-earnings-surge-on-iran-war-oil-boom-why-the-stock-is-falling
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-dow-jones-futures-stock-market-hits-highs-on-iran-deal-hopes-nvidia-leads-new-bu, live-semiconductors-al-chip-market-research-and-global-forecast-report-2025-2030-lucrative-opportuni, live-semiconductors-zacks-investment-ideas-feature-highlights-amd-nvidia-and-broadcom
+References: NVDA, live-semiconductors-ionq-doubles-down-on-nvidia-comparison-why-the-stock-is-falling-after-blowout-ea, live-semiconductors-amd-jumps-on-ai-surge-profit-nearly-doubles, live-semiconductors-the-cpu-is-having-its-moment-it-s-a-boon-for-amd-stock
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-al-chip-market-research-and-global-forecast-report-2025-2030-lucrative-opportuni, live-semiconductors-zacks-investment-ideas-feature-highlights-amd-nvidia-and-broadcom, live-semiconductors-ionq-doubles-down-on-nvidia-comparison-why-the-stock-is-falling-after-blowout-ea
+References: NVDA, live-semiconductors-amd-jumps-on-ai-surge-profit-nearly-doubles, live-semiconductors-the-cpu-is-having-its-moment-it-s-a-boon-for-amd-stock, live-semiconductors-rackspace-technology-and-amd-sign-memorandum-of-understanding-to-establish-new-c
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
