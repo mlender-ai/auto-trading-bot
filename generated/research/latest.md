@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-05-07T16:02:39.117Z
+- Generated At: 2026-05-07T18:19:20.467Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -10,26 +10,26 @@
 - Tickers: NVDA, AMD, 005930.KS, 010950.KS, XOM
 
 ## Main Headline
-- Nvidia CEO Jensen Huang Warns of ‘Horrible Outcome’ if China’s Huawei Gains AI Advantage
+- Qualcomm Climbs 8% as Buyback, Snap AR Partnership Power Pivot Beyond Smartphones
 - Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.
-- Action: AMD 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
+- Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "Nvidia CEO Jensen Huang Warns of ‘Horrible Outcome’ if China’s Huawei Gains AI Advantage"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-nvidia-ceo-jensen-huang-warns-of-horrible-outcome-if-china-s-huawei-gains-ai-adv, live-semiconductors-tech-led-stealth-rally-pushes-markets-to-record-highs, live-semiconductors-rackspace-and-amd-partner-on-ai-infrastructure-for-regulated-industries, live-semiconductors-these-stocks-are-today-s-movers-arm-amd-fortinet-ionq-datadog-whirlpool-doordash
+메인 헤드라인을 "Qualcomm Climbs 8% as Buyback, Snap AR Partnership Power Pivot Beyond Smartphones"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-qualcomm-climbs-8-as-buyback-snap-ar-partnership-power-pivot-beyond-smartphones, live-semiconductors-nvidia-wants-your-next-house-to-be-a-mini-data-center, live-semiconductors-can-nvidia-hit-300-by-2027-here-s-why-the-answer-is-yes, live-semiconductors-amd-stock-eyes-600-breakout-as-crypto-joins-wall-street-s-agentic-ai-rally
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-nvidia-ceo-jensen-huang-warns-of-horrible-outcome-if-china-s-huawei-gains-ai-adv, live-semiconductors-tech-led-stealth-rally-pushes-markets-to-record-highs, live-energy-oil-argus-hikes-exxon-mobil-price-target-to-169-as-permian-guyana-production-power-2
+References: live-semiconductors-qualcomm-climbs-8-as-buyback-snap-ar-partnership-power-pivot-beyond-smartphones, live-semiconductors-nvidia-wants-your-next-house-to-be-a-mini-data-center, live-energy-oil-oil-supply-shock-worsens-amid-plunging-petroleum-inventories
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-nvidia-ceo-jensen-huang-warns-of-horrible-outcome-if-china-s-huawei-gains-ai-adv, live-semiconductors-tech-led-stealth-rally-pushes-markets-to-record-highs, live-semiconductors-rackspace-and-amd-partner-on-ai-infrastructure-for-regulated-industries
+References: NVDA, live-semiconductors-qualcomm-climbs-8-as-buyback-snap-ar-partnership-power-pivot-beyond-smartphones, live-semiconductors-nvidia-wants-your-next-house-to-be-a-mini-data-center, live-semiconductors-can-nvidia-hit-300-by-2027-here-s-why-the-answer-is-yes
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-tech-led-stealth-rally-pushes-markets-to-record-highs, live-semiconductors-rackspace-and-amd-partner-on-ai-infrastructure-for-regulated-industries, live-semiconductors-these-stocks-are-today-s-movers-arm-amd-fortinet-ionq-datadog-whirlpool-doordash
+References: NVDA, live-semiconductors-nvidia-wants-your-next-house-to-be-a-mini-data-center, live-semiconductors-can-nvidia-hit-300-by-2027-here-s-why-the-answer-is-yes, live-semiconductors-amd-stock-eyes-600-breakout-as-crypto-joins-wall-street-s-agentic-ai-rally
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
