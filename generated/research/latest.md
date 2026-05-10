@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-05-10T22:39:01.743Z
+- Generated At: 2026-05-10T23:13:25.199Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -17,7 +17,7 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "Jim Cramer Says Nvidia Is 'Tough To Beat' On Corning Deal, Points Out Google, Amazon Still Have An 'Opponent With Multiple Legs Up'"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-jim-cramer-says-nvidia-is-tough-to-beat-on-corning-deal-points-out-google-amazon, live-semiconductors-coreweave-ceo-says-nvidia-must-expand-ai-capacity-or-risk-losing-customers-to-am, live-semiconductors-nvidia-s-huang-says-ai-will-make-intelligence-a-commodity-for-billions, live-semiconductors-advanced-micro-devices-amd-doesn-t-need-to-beat-nvidia-nvda-to-be-a-winner-cathi
+References: live-semiconductors-jim-cramer-says-nvidia-is-tough-to-beat-on-corning-deal-points-out-google-amazon, live-semiconductors-coreweave-ceo-says-nvidia-must-expand-ai-capacity-or-risk-losing-customers-to-am, live-semiconductors-nvidia-s-huang-says-ai-will-make-intelligence-a-commodity-for-billions, live-semiconductors-cathie-wood-dumps-another-3-million-in-amd-stock-as-ark-invest-trims-for-third-d
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
@@ -29,7 +29,7 @@ References: NVDA, live-semiconductors-jim-cramer-says-nvidia-is-tough-to-beat-on
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-coreweave-ceo-says-nvidia-must-expand-ai-capacity-or-risk-losing-customers-to-am, live-semiconductors-nvidia-s-huang-says-ai-will-make-intelligence-a-commodity-for-billions, live-semiconductors-advanced-micro-devices-amd-doesn-t-need-to-beat-nvidia-nvda-to-be-a-winner-cathi
+References: NVDA, live-semiconductors-coreweave-ceo-says-nvidia-must-expand-ai-capacity-or-risk-losing-customers-to-am, live-semiconductors-nvidia-s-huang-says-ai-will-make-intelligence-a-commodity-for-billions, live-semiconductors-cathie-wood-dumps-another-3-million-in-amd-stock-as-ark-invest-trims-for-third-d
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
