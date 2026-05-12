@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-05-12T14:01:45.299Z
+- Generated At: 2026-05-12T17:05:07.685Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -10,26 +10,26 @@
 - Tickers: NVDA, AMD, 005930.KS, XOM, 010950.KS
 
 ## Main Headline
-- This Will Be Nvidia’s Stock Price This Year
+- Nvidia’s Huang Wants to Sell Chips to China. Trump Has Other Priorities.
 - Why it matters: 반도체는 수급보다 리드타임과 고객 믹스에 더 민감해져 있어, 기사 한 건이 업황 기대의 방향을 빠르게 바꿀 수 있습니다.
 - Action: NVDA 중심으로만 노출을 유지하고, 제목만 강한 후행 설계주 추격은 피하는 편이 좋습니다.
 
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
-메인 헤드라인을 "This Will Be Nvidia’s Stock Price This Year"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-this-will-be-nvidia-s-stock-price-this-year, live-semiconductors-the-next-phase-of-the-ai-chip-supercycle-is-here-1-growth-stock-buy-before-it-is, live-semiconductors-alpha-compute-closes-32-2-million-revenue-contract-with-ai-lab-customer, live-semiconductors-fortinet-deepens-integration-to-uniquely-secure-enterprise-ai-at-scale-with-nvid
+메인 헤드라인을 "Nvidia’s Huang Wants to Sell Chips to China. Trump Has Other Priorities."로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
+References: live-semiconductors-nvidia-s-huang-wants-to-sell-chips-to-china-trump-has-other-priorities, live-semiconductors-are-memory-specialists-a-better-way-to-play-the-ai-boom-than-ai-chipmakers, live-semiconductors-msft-dell-and-intel-which-is-the-better-buy, live-semiconductors-these-stocks-are-today-s-movers-qualcomm-intel-micron-zebra-nvidia-quantum-compu
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-this-will-be-nvidia-s-stock-price-this-year, live-semiconductors-the-next-phase-of-the-ai-chip-supercycle-is-here-1-growth-stock-buy-before-it-is
+References: live-semiconductors-nvidia-s-huang-wants-to-sell-chips-to-china-trump-has-other-priorities, live-semiconductors-are-memory-specialists-a-better-way-to-play-the-ai-boom-than-ai-chipmakers
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
-References: NVDA, live-semiconductors-this-will-be-nvidia-s-stock-price-this-year, live-semiconductors-the-next-phase-of-the-ai-chip-supercycle-is-here-1-growth-stock-buy-before-it-is, live-semiconductors-alpha-compute-closes-32-2-million-revenue-contract-with-ai-lab-customer
+References: NVDA, live-semiconductors-nvidia-s-huang-wants-to-sell-chips-to-china-trump-has-other-priorities, live-semiconductors-are-memory-specialists-a-better-way-to-play-the-ai-boom-than-ai-chipmakers, live-semiconductors-msft-dell-and-intel-which-is-the-better-buy
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-the-next-phase-of-the-ai-chip-supercycle-is-here-1-growth-stock-buy-before-it-is, live-semiconductors-alpha-compute-closes-32-2-million-revenue-contract-with-ai-lab-customer, live-semiconductors-fortinet-deepens-integration-to-uniquely-secure-enterprise-ai-at-scale-with-nvid
+References: NVDA, live-semiconductors-are-memory-specialists-a-better-way-to-play-the-ai-boom-than-ai-chipmakers, live-semiconductors-msft-dell-and-intel-which-is-the-better-buy, live-semiconductors-these-stocks-are-today-s-movers-qualcomm-intel-micron-zebra-nvidia-quantum-compu
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, XOM로 방어 노출을 병행하는 전략이 우세합니다.
