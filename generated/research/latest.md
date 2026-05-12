@@ -1,7 +1,7 @@
 # Research Pipeline
 
 - Contract Version: 2026-04-21.1
-- Generated At: 2026-05-12T03:27:00.154Z
+- Generated At: 2026-05-12T06:32:55.035Z
 - Provider: rule-based
 - Model: openai/gpt-4.1
 - Source: github-actions
@@ -17,11 +17,11 @@
 ## Agent Transcript
 ### 01 News Editor -> Macro Analyst
 메인 헤드라인을 "Arm Holdings (ARM) Price Target Raised to $300 on AI and Data Center Momentum"로 고정하고 파생 뉴스 3개를 연결했습니다. 이 출력은 시황 해석 에이전트의 입력으로 넘어갑니다.
-References: live-semiconductors-arm-holdings-arm-price-target-raised-to-300-on-ai-and-data-center-momentum, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings, live-semiconductors-applied-materials-makes-unexpected-ai-move-as-demand-explodes, live-semiconductors-nvidia-expands-ai-investment-push
+References: live-semiconductors-arm-holdings-arm-price-target-raised-to-300-on-ai-and-data-center-momentum, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings, live-semiconductors-applied-materials-makes-unexpected-ai-move-as-demand-explodes, live-semiconductors-amd-mi450-ai-deals-with-meta-and-openai-test-rich-valuation
 
 ### 02 Macro Analyst -> Ticker Analyst
 지금 시장은 반도체 리더십과 방어형 에너지로 자금이 압축되는 국면입니다. 이 해석은 티커 딥분석과 행동 제안 에이전트의 공통 컨텍스트가 됩니다.
-References: live-semiconductors-arm-holdings-arm-price-target-raised-to-300-on-ai-and-data-center-momentum, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings
+References: live-semiconductors-arm-holdings-arm-price-target-raised-to-300-on-ai-and-data-center-momentum, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings, live-energy-oil-the-5-most-interesting-analyst-questions-from-exxonmobil-s-q1-earnings-call
 
 ### 03 Ticker Analyst -> Execution Trader
 NVDA를 대표 분석 티커로 선택해 추세, 패턴, 섹터 연결을 해석했습니다. 이 출력은 행동 제안 에이전트가 진입/관망/회피 조건을 만드는 기준이 됩니다.
@@ -29,7 +29,7 @@ References: NVDA, live-semiconductors-arm-holdings-arm-price-target-raised-to-30
 
 ### 04 Execution Trader -> Operator
 NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다. 이 출력은 사용자에게 보이는 최종 실행 제안이자 제품 팀 리뷰의 평가 대상입니다.
-References: NVDA, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings, live-semiconductors-applied-materials-makes-unexpected-ai-move-as-demand-explodes, live-semiconductors-nvidia-expands-ai-investment-push
+References: NVDA, live-semiconductors-nvidia-nvda-draws-bullish-goldman-sachs-call-ahead-of-earnings, live-semiconductors-applied-materials-makes-unexpected-ai-move-as-demand-explodes, live-semiconductors-amd-mi450-ai-deals-with-meta-and-openai-test-rich-valuation
 
 ## Trader Plan
 - Strategy: NVDA 중심의 조정 매수만 허용하고, 010950.KS로 방어 노출을 병행하는 전략이 우세합니다.
