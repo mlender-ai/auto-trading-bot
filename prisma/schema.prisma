@@ -78,6 +78,66 @@ enum NewsletterDigestStatus {
   FAILED
 }
 
+// ─── Tarot 앱 전용 enum ───────────────────────────────────────────────────────
+
+enum TarotAuthProvider {
+  APPLE
+  GOOGLE
+}
+
+enum TarotMembershipStatus {
+  FREE
+  PRO
+}
+
+enum TarotSpreadType {
+  SINGLE
+  THREE_CARD
+}
+
+enum TarotMarket {
+  US
+  KR
+}
+
+enum TarotInterpretationSource {
+  LLM
+  CACHE
+  FALLBACK
+}
+
+enum TarotCreditReason {
+  SIGNUP_BONUS
+  PURCHASE
+  REWARD_AD
+  DRAW_SINGLE
+  DRAW_THREE
+  REFUND
+}
+
+enum TarotDisclaimerVersion {
+  V1
+}
+
+enum TarotFeedbackRating {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+enum TarotReportStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+}
+
+enum TarotCardStatus {
+  ACTIVE
+  INACTIVE
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String?  @unique
@@ -85,9 +145,25 @@ model User {
   displayName  String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  bots         Bot[]
-  researchProfile ResearchProfile?
-  agentThreads AgentMeetingThread[]
+  // 타로 앱 전용 필드
+  authProvider        TarotAuthProvider?
+  authProviderId      String?
+  membershipStatus    TarotMembershipStatus @default(FREE)
+  pushToken           String?
+  disclaimerVersion   TarotDisclaimerVersion?
+  disclaimerAgreedAt  DateTime?
+  // 관계
+  bots                Bot[]
+  researchProfile     ResearchProfile?
+  agentThreads        AgentMeetingThread[]
+  creditLedger        TarotCreditLedger[]
+  drawHistory         TarotDrawHistory[]
+  favorites           TarotFavorite[]
+  feedbacks           TarotFeedback[]
+  reports             TarotReport[]
+
+  @@unique([authProvider, authProviderId])
+  @@index([authProvider, authProviderId])
 }
 
 model Bot {
@@ -437,4 +513,134 @@ model AgentMeetingMessage {
 
   @@unique([threadId, position])
   @@index([threadId, createdAt])
+}
+
+// ─── Tarot 앱 전용 모델 ───────────────────────────────────────────────────────
+
+// 타로 카드 메타데이터 (어드민이 관리)
+model TarotCard {
+  id               String         @id
+  name             String
+  nameKo           String
+  arcana           String         @default("major")
+  number           Int
+  keywords         Json
+  keywordsKo       Json
+  meaningUpright   String
+  meaningReversed  String
+  imageUrl         String
+  toneGuide        String
+  status           TarotCardStatus @default(ACTIVE)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  drawHistoryCards TarotDrawHistoryCard[]
+}
+
+// 크레딧(뽑기권) 원장 — insert-only, 잔액은 SUM(amount)로 계산
+model TarotCreditLedger {
+  id          String            @id @default(cuid())
+  userId      String
+  amount      Int               // 양수: 충전, 음수: 차감
+  reason      TarotCreditReason
+  referenceId String?           // 결제 ID, 광고 세션 ID 등
+  createdAt   DateTime          @default(now())
+  user        User              @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+}
+
+// 뽑기 기록
+model TarotDrawHistory {
+  id              String                   @id @default(cuid())
+  userId          String
+  ticker          String
+  market          TarotMarket
+  spread          TarotSpreadType
+  headline        String
+  summary         String
+  detail          String
+  source          TarotInterpretationSource
+  idempotencyKey  String                   @unique
+  creditCost      Int
+  cacheKey        String?
+  createdAt       DateTime                 @default(now())
+  user            User                     @relation(fields: [userId], references: [id])
+  cards           TarotDrawHistoryCard[]
+  feedbacks       TarotFeedback[]
+  reports         TarotReport[]
+
+  @@index([userId, createdAt])
+  @@index([ticker, createdAt])
+}
+
+// 뽑기 결과에 포함된 카드 목록 (1장 또는 3장)
+model TarotDrawHistoryCard {
+  id          String           @id @default(cuid())
+  drawId      String
+  cardId      String
+  orientation String           // "upright" | "reversed"
+  slot        String?          // "past" | "present" | "future" (3장 스프레드)
+  position    Int              // 순서
+  draw        TarotDrawHistory @relation(fields: [drawId], references: [id], onDelete: Cascade)
+  card        TarotCard        @relation(fields: [cardId], references: [id])
+
+  @@index([drawId])
+}
+
+// 관심 종목/섹터 즐겨찾기
+model TarotFavorite {
+  id        String      @id @default(cuid())
+  userId    String
+  ticker    String
+  market    TarotMarket
+  label     String?     // 표시명 (예: "삼성전자")
+  alertEnabled Boolean  @default(false)
+  createdAt DateTime    @default(now())
+  user      User        @relation(fields: [userId], references: [id])
+
+  @@unique([userId, ticker])
+  @@index([userId])
+}
+
+// 해석 피드백 (만족도)
+model TarotFeedback {
+  id        String              @id @default(cuid())
+  userId    String
+  drawId    String
+  rating    TarotFeedbackRating
+  comment   String?
+  createdAt DateTime            @default(now())
+  user      User                @relation(fields: [userId], references: [id])
+  draw      TarotDrawHistory    @relation(fields: [drawId], references: [id])
+
+  @@unique([userId, drawId])
+  @@index([drawId])
+}
+
+// 부적절한 콘텐츠 신고
+model TarotReport {
+  id        String             @id @default(cuid())
+  userId    String
+  drawId    String
+  reason    String
+  status    TarotReportStatus  @default(PENDING)
+  createdAt DateTime           @default(now())
+  user      User               @relation(fields: [userId], references: [id])
+  draw      TarotDrawHistory   @relation(fields: [drawId], references: [id])
+
+  @@index([status, createdAt])
+}
+
+// 프롬프트 버전 이력 (어드민 관리)
+model TarotPromptVersion {
+  id          String   @id @default(cuid())
+  version     String   @unique  // "1.0.0"
+  content     String
+  isActive    Boolean  @default(false)
+  activatedAt DateTime?
+  createdBy   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isActive])
 }
