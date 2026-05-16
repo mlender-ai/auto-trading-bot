@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "타로 증권",
+    "slug": "tarot-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "scheme": "tarot",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0a0f"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.tarostock.app",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "광고를 최적화하기 위해 사용됩니다."
+      }
+    },
+    "android": {
+      "package": "com.tarostock.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0a0f"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "react-native-reanimated"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

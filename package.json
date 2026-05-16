@@ -27,6 +27,8 @@
     "typecheck:web": "npm --workspace @trading/web run typecheck",
     "typecheck:core": "npm --workspace @taro/core run typecheck",
     "build:core": "npm --workspace @taro/core run build",
+    "dev:mobile": "npm --workspace tarot-mobile run start",
+    "typecheck:mobile": "npm --workspace tarot-mobile run typecheck",
     "paper:status": "tsx scripts/paper-status.ts",
     "qa:screenshot": "tsx scripts/qa-screenshot.ts",
     "research:generate": "tsx scripts/research-pipeline.ts",
