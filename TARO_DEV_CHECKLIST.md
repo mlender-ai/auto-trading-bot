@@ -103,13 +103,17 @@
 
 ## Phase 4: 부가 기능
 
-### 4-1. 뽑기 기록/분석 🟡
+### 4-1. 뽑기 기록/분석 ✅ — `feature/admin-panel` 브랜치
 > 기능명세서 §2
 
-- ⬜ 기록 목록 화면 (FlatList, 페이지네이션)
-- ⬜ 기록 상세 화면 (카드 + 해석 재조회)
-- ⬜ 필터/정렬 (종목, 기간, 카드)
-- ⬜ 개인 성향 요약 (자주 나온 카드, 자주 선택한 종목)
+- ✅ API: `GET /api/tarot/history` — 목록 (페이지네이션, 필터, 정렬)
+- ✅ API: `GET /api/tarot/history/[id]` — 상세 (카드메타 + 피드백)
+- ✅ API: `GET /api/tarot/analytics` — 개인 분석 (Top5 카드/종목, 소스분포, 7일활동)
+- ✅ 기록 목록 화면 (FlatList, 무한스크롤, 풀투리프레시)
+- ✅ 기록 상세 화면 (카드 + 해석 전문 + 면책 + 메타)
+- ✅ 필터/정렬 (스프레드 타입, 최신/오래된순)
+- ✅ 개인 성향 요약 (자주 나온 카드, 자주 선택한 종목, 7일 활동 차트)
+- ✅ `lib/historyStore.ts` — zustand 스토어 (목록+상세+분석+필터)
 
 ### 4-2. 온보딩/면책 고지 🔴
 > 기능명세서 §7
@@ -129,14 +133,21 @@
 
 ---
 
-## Phase 5: 어드민/운영
+## Phase 5: 어드민/운영 — 🔄 진행중
 
-### 5-1. 웹 어드민 (apps/web 확장) 🟡
+### 5-1. 웹 어드민 (apps/web 확장) ✅ — `feature/admin-panel` 브랜치
 > 기능명세서 §9
 
-- ⬜ 카드 CRUD 관리 화면
-- ⬜ 프롬프트 버전 관리 + 롤백
-- ⬜ 데이터/비용 모니터링 대시보드
+- ✅ `/admin` 대시보드 — 핵심 지표 (카드수, 뽑기수, 사용자, 활성 프롬프트, 소스 분포)
+- ✅ `/admin/cards` — 22장 카드 CRUD (인라인 수정, 활성/비활성 토글, 필터)
+- ✅ `/admin/prompts` — 프롬프트 버전 생성, 활성화/롤백, 내용 조회
+- ✅ `/admin/monitoring` — 호출량(24h/7d), 캐시적중률, LLM비용추정, 크레딧흐름, 만족도, 폴백이력
+- ✅ API: `PATCH/GET /api/admin/cards/[id]`
+- ✅ API: `GET/POST /api/admin/prompts`
+- ✅ API: `POST /api/admin/prompts/[id]/activate`
+- ✅ `apps/web/lib/prisma.ts` — Prisma 싱글턴
+- ✅ `apps/web/lib/admin-auth.ts` — DASHBOARD_PASSWORD 인증 가드
+- ✅ 다크 테마 어드민 CSS (700+ lines)
 
 ### 5-2. AI 콘텐츠 생성 파이프라인 🔴
 > 기능명세서 §11
