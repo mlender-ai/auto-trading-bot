@@ -115,21 +115,25 @@
 - ✅ 개인 성향 요약 (자주 나온 카드, 자주 선택한 종목, 7일 활동 차트)
 - ✅ `lib/historyStore.ts` — zustand 스토어 (목록+상세+분석+필터)
 
-### 4-2. 온보딩/면책 고지 🔴
+### 4-2. 온보딩/면책 고지 ✅
 > 기능명세서 §7
 
-- ⬜ 최초 실행 온보딩 화면
-- ⬜ 면책 고지 문구 + 동의 흐름
-- ⬜ 동의 이력 저장 (버전 + 타임스탬프)
-- ⬜ 해석 결과 하단 면책 상시 노출 (REQUIRED_DISCLAIMER 활용)
+- ✅ 최초 실행 온보딩 화면 (3슬라이드 + 면책 고지 슬라이드, 수평 스와이프)
+- ✅ 면책 고지 문구 + 동의 흐름 (체크박스 → 동의 버튼)
+- ✅ 동의 이력 저장 (버전 + 타임스탬프, `POST /api/tarot/disclaimer`)
+- ✅ 동의 상태 조회 (`GET /api/tarot/disclaimer`)
+- ✅ `lib/onboardingStore.ts` — zustand 스토어 (동의 상태, 버전 관리)
 
-### 4-3. 관심 종목 + 푸시 알림 🟡
+### 4-3. 관심 종목 + 푸시 알림 ✅
 > 기능명세서 §8
 
-- ⬜ 즐겨찾기 저장/해제 (`TarotFavorite`)
-- ⬜ `expo-notifications` 푸시 토큰 등록
-- ⬜ 알림 조건 설정 UI
-- ⬜ 딥링크 라우팅 (`expo-linking` + `expo-router`)
+- ✅ API: `GET/POST/DELETE /api/tarot/favorites` — 즐겨찾기 CRUD (upsert)
+- ✅ API: `PATCH /api/tarot/favorites/[id]` — 알림 토글
+- ✅ API: `POST/DELETE /api/tarot/push` — 푸시 토큰 등록/해제
+- ✅ 즐겨찾기 화면 (목록, 알림 토글 Switch, 삭제 확인)
+- ✅ `lib/favoritesStore.ts` — 낙관적 업데이트 + 롤백
+- ✅ `lib/notifications.ts` — Expo 푸시 등록, 권한 요청, 딥링크 처리
+- ✅ `expo-notifications`, `expo-device` 의존성 추가
 
 ---
 
