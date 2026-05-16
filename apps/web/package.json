@@ -11,6 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "@trading/shared": "*",
     "lightweight-charts": "^5.1.0",
     "next": "^14.2.25",
