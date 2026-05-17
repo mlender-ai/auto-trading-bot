@@ -1,13 +1,21 @@
-import { Stack } from "expo-router";
+import { Stack, SplashScreen } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 import { Colors } from "../constants/theme";
 
+// expo-router가 자동으로 숨기는 걸 막고 splash에서 직접 제어
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
 export default function RootLayout() {
+  useEffect(() => {
+    // 네이티브 스플래시는 즉시 숨김 (우리 스플래시 화면이 대신)
+    void SplashScreen.hideAsync();
+  }, []);
+
   return (
     <>
       <StatusBar style="light" />
       <Stack
-        initialRouteName="splash/index"
         screenOptions={{
           headerStyle: { backgroundColor: Colors.ebonyCanvas },
           headerTintColor: Colors.whiteout,
@@ -16,17 +24,11 @@ export default function RootLayout() {
           animation: "fade",
         }}
       >
-        {/* 초기화 화면 */}
+        <Stack.Screen name="index" options={{ animation: "none" }} />
         <Stack.Screen name="splash/index" options={{ animation: "none" }} />
-
-        {/* 온보딩 / 로그인 */}
         <Stack.Screen name="onboarding/index" options={{ animation: "slide_from_bottom", gestureEnabled: false }} />
         <Stack.Screen name="login/index" options={{ animation: "slide_from_bottom" }} />
-
-        {/* 메인 탭 */}
-        <Stack.Screen name="(tabs)" />
-
-        {/* 결과 / 컬렉션 / 관심종목 */}
+        <Stack.Screen name="(tabs)" options={{ animation: "none" }} />
         <Stack.Screen name="result/index" options={{ animation: "slide_from_right" }} />
         <Stack.Screen name="collection/index" options={{ animation: "slide_from_right" }} />
         <Stack.Screen name="favorites/index" options={{ animation: "slide_from_right" }} />
