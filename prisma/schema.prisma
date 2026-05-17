@@ -161,6 +161,7 @@ model User {
   favorites           TarotFavorite[]
   feedbacks           TarotFeedback[]
   reports             TarotReport[]
+  cardCollection      TarotCardCollection[]
 
   @@unique([authProvider, authProviderId])
   @@index([authProvider, authProviderId])
@@ -534,6 +535,7 @@ model TarotCard {
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
   drawHistoryCards TarotDrawHistoryCard[]
+  collections      TarotCardCollection[]
 }
 
 // 크레딧(뽑기권) 원장 — insert-only, 잔액은 SUM(amount)로 계산
@@ -643,4 +645,18 @@ model TarotPromptVersion {
   updatedAt   DateTime @updatedAt
 
   @@index([isActive])
+}
+
+// 카드 컬렉션/도감 — 사용자가 수집한 카드 기록
+model TarotCardCollection {
+  id           String   @id @default(cuid())
+  userId       String
+  cardId       String   // TarotCard.id 참조
+  firstDrawnAt DateTime @default(now())
+  drawCount    Int      @default(1)
+  user         User     @relation(fields: [userId], references: [id])
+  card         TarotCard @relation(fields: [cardId], references: [id])
+
+  @@unique([userId, cardId])
+  @@index([userId])
 }

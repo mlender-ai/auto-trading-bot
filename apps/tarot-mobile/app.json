@@ -17,7 +17,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.tarostock.app",
       "infoPlist": {
-        "NSUserTrackingUsageDescription": "광고를 최적화하기 위해 사용됩니다."
+        "NSUserTrackingUsageDescription": "관심 있는 주제와 관련된 광고를 보여드리기 위해 기기 식별자를 사용합니다. 동의하지 않아도 앱을 정상 이용할 수 있습니다."
       }
     },
     "android": {
@@ -27,7 +27,12 @@
         "backgroundColor": "#0a0a0f"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,8 +40,17 @@
     "plugins": [
       "expo-router"
     ],
+    "extra": {
+      "revenueCatIosKey": "",
+      "revenueCatAndroidKey": "",
+      "apiBaseUrl": "",
+      "eas": {
+        "projectId": ""
+      }
+    },
     "experiments": {
       "typedRoutes": true
     }
   }
 }
+

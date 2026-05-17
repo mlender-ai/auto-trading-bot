@@ -110,6 +110,17 @@ export async function POST(req: NextRequest) {
     },
   });
 
+  // 카드 컬렉션 자동 기록 (fire-and-forget)
+  void Promise.all(
+    drawnCards.map((dc) =>
+      prisma.tarotCardCollection.upsert({
+        where: { userId_cardId: { userId, cardId: dc.card.id } },
+        create: { userId, cardId: dc.card.id },
+        update: { drawCount: { increment: 1 } },
+      })
+    )
+  );
+
   return NextResponse.json({
     drawId: saved.id,
     ticker,
