@@ -1,66 +1,37 @@
-import { NextResponse } from "next/server";
-import { prisma } from "../../../../lib/prisma";
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/tarot/prisma";
+import { requireAuth } from "@/lib/tarot/auth";
+
+export const dynamic = "force-dynamic";
 
 // 푸시 토큰 등록/갱신
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { userId, pushToken } = body;
+export async function POST(req: NextRequest) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
 
-    if (!userId || !pushToken) {
-      return NextResponse.json(
-        { error: "userId and pushToken are required", code: "MISSING_FIELDS" },
-        { status: 400 }
-      );
-    }
-
-    const user = await prisma.user.update({
-      where: { id: userId },
-      data: { pushToken },
-      select: {
-        id: true,
-        pushToken: true,
-      },
-    });
-
-    return NextResponse.json(user);
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Token update failed",
-        code: "UPDATE_FAILED",
-      },
-      { status: 500 }
-    );
+  const body = (await req.json().catch(() => ({}))) as { pushToken?: string };
+  if (!body.pushToken) {
+    return NextResponse.json({ error: "pushToken is required", code: "MISSING_FIELDS" }, { status: 400 });
   }
+
+  const user = await prisma.user.update({
+    where: { id: auth.userId },
+    data: { pushToken: body.pushToken },
+    select: { id: true, pushToken: true },
+  });
+
+  return NextResponse.json(user);
 }
 
-// 푸시 토큰 해제
-export async function DELETE(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get("userId");
+// 알림 발송 (수동 트리거용 — 향후 cron으로 전환)
+export async function GET(req: NextRequest) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
 
-    if (!userId) {
-      return NextResponse.json(
-        { error: "userId is required", code: "MISSING_USER_ID" },
-        { status: 400 }
-      );
-    }
+  const user = await prisma.user.findUnique({
+    where: { id: auth.userId },
+    select: { pushToken: true },
+  });
 
-    await prisma.user.update({
-      where: { id: userId },
-      data: { pushToken: null },
-    });
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Token delete failed",
-        code: "DELETE_FAILED",
-      },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json({ hasPushToken: !!user?.pushToken });
 }
