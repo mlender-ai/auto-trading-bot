@@ -63,13 +63,20 @@ export default function SplashScreen() {
       return;
     }
 
-    // 토큰 복원 시도 — 실패해도 게스트로 메인 진입
+    // 토큰 복원 시도
     try {
-      await restoreSession();
+      const restored = await restoreSession();
+      if (restored) {
+        // 이미 로그인 → 바로 메인
+        router.replace("/(tabs)");
+        return;
+      }
     } catch {}
 
-    router.replace("/(tabs)");
+    // 동의는 했지만 로그인 안 됨 → 로그인 화면
+    router.replace("/login");
   }
+
 
   const dotOpacity = dotAnim.interpolate({ inputRange: [0, 1], outputRange: [0.3, 1] });
 

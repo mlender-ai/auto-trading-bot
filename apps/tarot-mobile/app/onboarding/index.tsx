@@ -1,13 +1,14 @@
 import { useState, useRef } from "react";
 import {
   View, TouchableOpacity, ScrollView, StyleSheet,
-  Dimensions, Animated,
+  Dimensions,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "../../components/ui/Text";
 import { Button } from "../../components/ui/Button";
 import { Colors, Spacing } from "../../constants/theme";
+import { useOnboardingStore } from "../../lib/onboardingStore";
 
 const { width } = Dimensions.get("window");
 
@@ -37,6 +38,7 @@ const SLIDES = [
 
 export default function OnboardingScreen() {
   const router = useRouter();
+  const { agreeDisclaimer } = useOnboardingStore();
   const [page, setPage] = useState(0);
   const [agreed, setAgreed] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
@@ -44,10 +46,12 @@ export default function OnboardingScreen() {
   const isLast = page === SLIDES.length - 1;
   const slide = SLIDES[page];
 
-  const goNext = () => {
+  const goNext = async () => {
     if (isLast) {
       if (!agreed) return;
-      router.replace("/(tabs)");
+      // AsyncStorage에 동의 저장 (서버 없어도 로컬 저장)
+      await agreeDisclaimer("guest", "V1");
+      router.replace("/login");
       return;
     }
     const next = page + 1;
@@ -115,7 +119,7 @@ export default function OnboardingScreen() {
           onPress={goNext}
         />
         {!isLast && (
-          <TouchableOpacity onPress={() => router.replace("/(tabs)")}>
+          <TouchableOpacity onPress={() => router.replace("/login")}>
             <Text variant="caption" color={Colors.ironOutline} style={styles.skip}>
               건너뛰기
             </Text>
