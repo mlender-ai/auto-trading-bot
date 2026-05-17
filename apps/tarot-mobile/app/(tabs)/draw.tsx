@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   creditBadge:    { borderWidth: 1, borderColor: Colors.deepInsight, borderRadius: 9999, paddingHorizontal: 12, paddingVertical: 4 },
   tickerRow:      { marginBottom: Spacing.s24, gap: 4 },
   spreadRow:      { flexDirection: "row", gap: 12, marginBottom: Spacing.s32 },
-  spreadOpt:      { flex: 1, alignItems: "center", paddingVertical: Spacing.s16, backgroundColor: Colors.graphiteBase, borderRadius: Radius.card, borderWidth: 1, borderColor: Colors.carbonBorder, gap: 4 },
+  spreadOpt:      { flex: 1, alignItems: "center", paddingVertical: Spacing.s16, backgroundColor: Colors.graphiteBase, borderRadius: Radius.cards, borderWidth: 1, borderColor: Colors.carbonBorder, gap: 4 },
   spreadOptActive:{ borderColor: Colors.taroEssence, backgroundColor: Colors.voidGreen },
   cardsArea:      { flex: 1, alignItems: "center", justifyContent: "center" },
   cardsRow:       { flexDirection: "row", gap: 12 },

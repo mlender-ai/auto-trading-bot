@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   spreadLabel:    { letterSpacing: 1, marginBottom: 4 },
   tickerTitle:    { color: Colors.whiteout },
   cards:          { gap: 16, marginBottom: Spacing.s24 },
-  cardReveal:     { backgroundColor: Colors.graphiteBase, borderRadius: Radius.card, padding: Spacing.s24, borderWidth: 1, borderColor: Colors.carbonBorder },
+  cardReveal:     { backgroundColor: Colors.graphiteBase, borderRadius: Radius.cards, padding: Spacing.s24, borderWidth: 1, borderColor: Colors.carbonBorder },
   cardHeader:     { flexDirection: "row", gap: 16, marginBottom: Spacing.s16 },
   cardThumb:      { width: 56, height: 80, backgroundColor: Colors.ebonyCanvas, borderRadius: 8, borderWidth: 1, borderColor: Colors.taroEssence, alignItems: "center", justifyContent: "center" },
   cardThumSymbol: { fontSize: 14, color: Colors.taroEssence, fontWeight: "700" },
