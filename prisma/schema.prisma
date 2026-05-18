@@ -164,6 +164,7 @@ model User {
   feedbacks           TarotFeedback[]
   reports             TarotReport[]
   cardCollection      TarotCardCollection[]
+  analyticsEvents     TarotAnalyticsEvent[]
 
   @@unique([authProvider, authProviderId])
   @@index([authProvider, authProviderId])
@@ -661,4 +662,19 @@ model TarotCardCollection {
 
   @@unique([userId, cardId])
   @@index([userId])
+}
+
+// 모바일 앱 이벤트 트래킹
+model TarotAnalyticsEvent {
+  id              String   @id @default(cuid())
+  userId          String
+  event           String   // e.g. "draw_start", "ad_earned", "iap_complete"
+  properties      Json     @default("{}")
+  clientTimestamp  DateTime
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([event])
+  @@index([createdAt])
 }

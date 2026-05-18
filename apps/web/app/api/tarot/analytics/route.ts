@@ -4,6 +4,43 @@ import { requireAuth } from "@/lib/tarot/auth";
 
 export const dynamic = "force-dynamic";
 
+interface AnalyticsEvent {
+  event: string;
+  properties?: Record<string, string | number | boolean>;
+  timestamp: string;
+}
+
+/**
+ * POST /api/tarot/analytics — 모바일 앱 이벤트 배치 수집
+ */
+export async function POST(req: NextRequest) {
+  const auth = requireAuth(req);
+  if (auth instanceof NextResponse) return auth;
+  const { userId } = auth;
+
+  const body = (await req.json().catch(() => ({}))) as { events?: AnalyticsEvent[] };
+  const { events } = body;
+
+  if (!events || !Array.isArray(events) || events.length === 0) {
+    return NextResponse.json({ error: "events array required", code: "MISSING_EVENTS" }, { status: 400 });
+  }
+
+  if (events.length > 50) {
+    return NextResponse.json({ error: "max 50 events per batch", code: "TOO_MANY_EVENTS" }, { status: 400 });
+  }
+
+  const rows = events.map((e) => ({
+    userId,
+    event: e.event,
+    properties: e.properties ?? {},
+    clientTimestamp: new Date(e.timestamp),
+  }));
+
+  await prisma.tarotAnalyticsEvent.createMany({ data: rows });
+
+  return NextResponse.json({ received: rows.length });
+}
+
 export async function GET(req: NextRequest) {
   const auth = requireAuth(req);
   if (auth instanceof NextResponse) return auth;

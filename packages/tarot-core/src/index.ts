@@ -5,3 +5,4 @@ export * from "./cache.js";
 export { checkSafety, sanitizeInterpretation, REQUIRED_DISCLAIMER } from "./safety/forbidden.js";
 export { getFallbackInterpretation } from "./fallback/templates.js";
 export { buildInterpretationPrompt, PROMPT_VERSION } from "./prompts/interpret-v1.0.0.js";
+export { buildInterpretationPromptV1_1, PROMPT_VERSION_1_1 } from "./prompts/interpret-v1.1.0.js";

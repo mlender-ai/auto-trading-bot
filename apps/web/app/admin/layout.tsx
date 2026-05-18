@@ -41,6 +41,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               모니터링
             </a>
           </li>
+          <li>
+            <a href="/admin/analytics" className="admin-nav-link">
+              <span className="admin-nav-icon">📈</span>
+              분석
+            </a>
+          </li>
         </ul>
         <div className="admin-sidebar-footer">
           <a href="/" className="admin-nav-link">← 메인으로</a>

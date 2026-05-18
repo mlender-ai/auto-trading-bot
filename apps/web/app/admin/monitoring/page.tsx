@@ -1,4 +1,5 @@
 import { prisma } from "../../../lib/prisma";
+import { ReportManager } from "./ReportManager";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,9 @@ async function getMonitoringData() {
     feedbackStats,
     reportsPending,
     recentErrors,
+    pendingReports,
+    topUsers,
+    dailyDraws,
   ] = await Promise.all([
     prisma.tarotDrawHistory.count({
       where: { createdAt: { gte: last24h } },
@@ -53,6 +57,32 @@ async function getMonitoringData() {
         createdAt: true,
       },
     }),
+    // 미처리 신고 목록
+    prisma.tarotReport.findMany({
+      where: { status: "PENDING" },
+      orderBy: { createdAt: "desc" },
+      take: 20,
+      include: {
+        user: { select: { id: true, email: true } },
+        draw: { select: { id: true, ticker: true, headline: true } },
+      },
+    }),
+    // 유저별 사용량 탑10 (7일)
+    prisma.tarotDrawHistory.groupBy({
+      by: ["userId"],
+      _count: true,
+      where: { createdAt: { gte: last7d } },
+      orderBy: { _count: { id: "desc" } },
+      take: 10,
+    }),
+    // 일별 뽑기 수 (7일)
+    prisma.$queryRaw<Array<{ day: string; count: bigint }>>`
+      SELECT DATE("createdAt") as day, COUNT(*)::bigint as count
+      FROM "TarotDrawHistory"
+      WHERE "createdAt" >= ${last7d}
+      GROUP BY DATE("createdAt")
+      ORDER BY day ASC
+    `.catch(() => [] as Array<{ day: string; count: bigint }>),
   ]);
 
   // 캐시 적중률 계산 (24시간)
@@ -63,6 +93,13 @@ async function getMonitoringData() {
   // LLM 호출 수
   const llmCalls = drawsBySource24h.find((d) => d.source === "LLM")?._count ?? 0;
   const fallbackCalls = drawsBySource24h.find((d) => d.source === "FALLBACK")?._count ?? 0;
+
+  // 유저별 이메일 조회
+  const userIds = topUsers.map((u) => u.userId);
+  const users = userIds.length > 0
+    ? await prisma.user.findMany({ where: { id: { in: userIds } }, select: { id: true, email: true } })
+    : [];
+  const userMap = new Map(users.map((u) => [u.id, u.email]));
 
   return {
     draws24h,
@@ -82,6 +119,24 @@ async function getMonitoringData() {
     })),
     reportsPending,
     recentErrors,
+    pendingReports: pendingReports.map((r) => ({
+      id: r.id,
+      reason: r.reason,
+      status: r.status,
+      createdAt: r.createdAt.toISOString(),
+      userEmail: r.user?.email ?? "unknown",
+      drawTicker: r.draw?.ticker ?? "-",
+      drawHeadline: r.draw?.headline ?? "-",
+    })),
+    topUsers: topUsers.map((u) => ({
+      userId: u.userId,
+      email: userMap.get(u.userId) ?? "unknown",
+      draws: u._count,
+    })),
+    dailyDraws: dailyDraws.map((d) => ({
+      day: String(d.day).slice(0, 10),
+      count: Number(d.count),
+    })),
   };
 }
 
@@ -225,6 +280,58 @@ export default async function MonitoringPage() {
           )}
         </section>
       </div>
+
+      {/* 일별 추이 + 유저 탑10 */}
+      <div className="admin-grid-2col">
+        <section className="admin-section-card">
+          <h2>일별 뽑기 추이 (7일)</h2>
+          {data.dailyDraws.length === 0 ? (
+            <p className="admin-empty">데이터 없음</p>
+          ) : (
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: 120 }}>
+              {data.dailyDraws.map((d) => {
+                const maxCount = Math.max(...data.dailyDraws.map((dd) => dd.count), 1);
+                const heightPct = (d.count / maxCount) * 100;
+                return (
+                  <div key={d.day} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 11, color: "#f4f5f7" }}>{d.count}</span>
+                    <div style={{ width: "100%", height: `${heightPct}%`, minHeight: 2, background: "#3ecf8e", borderRadius: 4 }} />
+                    <span style={{ fontSize: 10, color: "#999" }}>{d.day.slice(5)}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
+        <section className="admin-section-card">
+          <h2>유저 사용량 Top 10 (7일)</h2>
+          {data.topUsers.length === 0 ? (
+            <p className="admin-empty">데이터 없음</p>
+          ) : (
+            <table className="admin-table">
+              <thead>
+                <tr><th>#</th><th>유저</th><th>뽑기 수</th></tr>
+              </thead>
+              <tbody>
+                {data.topUsers.map((u, i) => (
+                  <tr key={u.userId}>
+                    <td>{i + 1}</td>
+                    <td style={{ fontSize: 12 }}>{u.email}</td>
+                    <td><strong>{u.draws}</strong></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </section>
+      </div>
+
+      {/* 신고 관리 */}
+      <section className="admin-section-card" style={{ marginTop: 24 }}>
+        <h2>신고 관리 ({data.reportsPending}건 대기)</h2>
+        <ReportManager reports={data.pendingReports} />
+      </section>
     </div>
   );
 }

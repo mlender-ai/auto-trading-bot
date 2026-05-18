@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { apiFetch } from "../api";
 import { useUserStore } from "../store";
+import { trackEvent } from "../analytics";
 
 type Status = "idle" | "loading" | "ready" | "showing" | "earned" | "error";
 
@@ -40,9 +41,11 @@ export function useRewardedAd() {
       });
       useUserStore.getState().setCredits(result.credits);
       setStatus("earned");
+      trackEvent("ad_earned", { credits: result.credits });
       return result;
     } catch (e) {
       const msg = e instanceof Error ? e.message : "리워드 지급 실패";
+      trackEvent("ad_error", { error: msg });
       if (msg.includes("429") || msg.includes("쿨다운")) {
         setErrorMessage("30분 후 다시 시도해 주세요");
       } else {
@@ -69,6 +72,7 @@ export function useRewardedAd() {
 
     const unsubLoaded = ad.addAdEventListener(RewardedAdEventType.LOADED, () => {
       setStatus("ready");
+      trackEvent("ad_loaded");
     });
     const unsubEarned = ad.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
       void claimReward();
@@ -93,6 +97,7 @@ export function useRewardedAd() {
   const show = useCallback(() => {
     if (!adRef.current || status !== "ready") return;
     setStatus("showing");
+    trackEvent("ad_shown");
     adRef.current.show();
   }, [status]);
 

@@ -9,6 +9,7 @@ export async function PATCH(
     const body = await request.json();
     const allowedFields = [
       "nameKo",
+      "keywordsKo",
       "meaningUpright",
       "meaningReversed",
       "toneGuide",

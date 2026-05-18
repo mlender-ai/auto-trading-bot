@@ -11,6 +11,7 @@ import { useDrawStore, type DrawnCard } from "../../lib/drawStore";
 import { useRewardedAd } from "../../lib/ads/useRewardedAd";
 import { useUserStore } from "../../lib/store";
 import { apiFetch } from "../../lib/api";
+import { trackEvent } from "../../lib/analytics";
 
 const DISCLAIMER = "본 해석은 오락 목적으로 제공되며 투자 조언이 아닙니다. 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.";
 
@@ -65,6 +66,7 @@ export default function ResultScreen() {
 
   const handleFeedback = async (rating: number) => {
     setFeedbackRating(rating);
+    trackEvent("feedback_submit", { rating, drawId: result.id ?? "" });
     if (!isLoggedIn || !result.id) return;
     try {
       const ratingMap = ["ONE", "TWO", "THREE", "FOUR", "FIVE"] as const;
@@ -77,6 +79,7 @@ export default function ResultScreen() {
   };
 
   const handleReport = () => {
+    trackEvent("report_submit", { drawId: result.id ?? "" });
     if (!isLoggedIn || !result.id) return;
     Alert.alert(
       "부적절한 해석 신고",
