@@ -44,6 +44,10 @@
       "revenueCatIosKey": "",
       "revenueCatAndroidKey": "",
       "apiBaseUrl": "",
+      "adMobBannerIos": "",
+      "adMobBannerAndroid": "",
+      "adMobRewardedIos": "",
+      "adMobRewardedAndroid": "",
       "eas": {
         "projectId": ""
       }
