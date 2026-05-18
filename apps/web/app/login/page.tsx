@@ -27,6 +27,8 @@ export default function LoginPage({ searchParams }: { searchParams?: { error?: s
         <p className="eyebrow">Personal dashboard</p>
         <h1>Paper trading access</h1>
         <p>개인용 봇 대시보드입니다. 비밀번호로만 보호합니다.</p>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-expect-error -- Next.js 14 server action; .next/types not generated yet */}
         <form action={login} className="login-form">
           <input name="password" type="password" placeholder="Dashboard password" required />
           <button type="submit">Enter dashboard</button>
