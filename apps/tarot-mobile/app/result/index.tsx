@@ -9,6 +9,7 @@ import { Button } from "../../components/ui/Button";
 import { Colors, Spacing, Radius } from "../../constants/theme";
 import { useDrawStore, type DrawnCard } from "../../lib/drawStore";
 import { apiFetch } from "../../lib/api";
+import { trackEvent } from "../../lib/tracking";
 
 const DISCLAIMER = "본 해석은 오락 목적으로 제공되며 투자 조언이 아닙니다. 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.";
 
@@ -65,6 +66,7 @@ function FeedbackSection({ drawId }: { drawId: string }) {
         body: JSON.stringify({ drawId, rating: star }),
       });
       setSubmitted(true);
+      trackEvent("feedback_submitted", { drawId, rating: star });
     } catch {
       setRating(0);
     }
@@ -79,6 +81,7 @@ function FeedbackSection({ drawId }: { drawId: string }) {
       });
       setReportSubmitted(true);
       setReportVisible(false);
+      trackEvent("report_submitted", { drawId });
     } catch {
       Alert.alert("오류", "신고 전송에 실패했습니다.");
     }

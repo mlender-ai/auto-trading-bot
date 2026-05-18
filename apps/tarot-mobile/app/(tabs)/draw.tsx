@@ -11,6 +11,7 @@ import { useDrawStore, type SpreadType } from "../../lib/drawStore";
 import { useUserStore } from "../../lib/store";
 import { apiFetch } from "../../lib/api";
 import { localDraw, saveLocalDraw } from "../../lib/localEngine";
+import { trackEvent } from "../../lib/tracking";
 
 const SPREAD_OPTIONS: { type: SpreadType; label: string; desc: string; cost: number }[] = [
   { type: "single",     label: "1장",  desc: "핵심 흐름",    cost: 1 },
@@ -65,6 +66,7 @@ export default function DrawScreen() {
     if (isDrawing) return;
     setDrawing(true);
     setPhase("flipping");
+    trackEvent("draw_started", { ticker: ticker || "AAPL", spread });
 
     try {
       // 애니메이션 + API 호출 병렬 (1.2초 최소 대기)
@@ -111,11 +113,12 @@ export default function DrawScreen() {
         void saveLocalDraw(drawResult, market);
       }
 
+      trackEvent("draw_completed", { ticker: ticker || "AAPL", spread, source: apiResult.status === "fulfilled" ? "api" : "local" });
       setResult(drawResult);
       setPhase("done");
       setTimeout(() => router.push("/result"), 400);
     } catch {
-      // 로컬 엔진도 실패하는 극단적 케이스
+      trackEvent("draw_failed", { ticker: ticker || "AAPL", spread });
       const fallback = localDraw(ticker || "AAPL", tickerName || "AAPL", spread);
       void saveLocalDraw(fallback, market);
       setResult(fallback);
